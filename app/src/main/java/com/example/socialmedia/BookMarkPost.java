@@ -34,7 +34,7 @@ public class BookMarkPost extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference likesrefernce;
     FirebaseDatabase database;
-    int chek=0;
+
 
 
     @Override

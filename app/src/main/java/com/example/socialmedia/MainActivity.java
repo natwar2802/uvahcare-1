@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btnshare;
     MainActivity obj;
     TextView displaynotifcount;
+    int Natwar=0;
 
     //@SuppressLint("WrongViewCast")
     @Override
