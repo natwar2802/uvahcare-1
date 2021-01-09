@@ -41,7 +41,7 @@ import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-
+int praveen=1;
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     myAdapter adapter;
