@@ -1,3 +1,6 @@
+<ScrollView android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -55,8 +58,8 @@
     <ImageView
         android:id="@+id/imgviewProfile"
         android:layout_width="match_parent"
-        android:layout_height="250sp"
-        android:scaleType="centerCrop"
+        android:layout_height="200sp"
+        android:scaleType="fitXY"
         />
 <LinearLayout
     android:layout_width="wrap_content"
@@ -68,7 +71,6 @@ android:id="@+id/btnbrowseProfile"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:layout_gravity="left"
-
 android:text="Browse"/>
 
     <Button
@@ -87,3 +89,4 @@ android:text="Browse"/>
         android:id="@+id/nexttoPreference"/>
 </LinearLayout>
 </LinearLayout>
+</ScrollView>
