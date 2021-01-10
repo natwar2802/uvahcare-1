@@ -85,23 +85,24 @@ public class descriptionActivity extends AppCompatActivity {
                      //   double sum = Double.parseDouble(snapshot.child(postkey).child("sum").getValue());
                   //  a.getClass().getName()
 
-                    if (snapshot.child(postkey).child("sum").getValue().getClass().getName().equals("java.lang.Double")) {
+                   /* if (snapshot.child(postkey).child("sum").getValue().getClass().getName().equals("java.lang.Double")) {
                         double sum = (double) snapshot.child(postkey).child("sum").getValue();
                         Double avrate = sum / n;
                         float avr = avrate.floatValue();
                         ratingBardescription.setRating(avr);
 
-                    }
-                    else{
-                        Long sum = (Long) snapshot.child(postkey).child("sum").getValue();
+                    }*/
+
+                      try{  Long sum = (Long) snapshot.child(postkey).child("sum").getValue();
                          double d = sum.doubleValue();
                         Double avrate = d/ n;
 
                         float avr = avrate.floatValue();
                         ratingBardescription.setRating(avr);
+                      }catch (Exception e){}
 
 
-                    }
+
 
 
 
@@ -180,7 +181,7 @@ public class descriptionActivity extends AppCompatActivity {
                      if (snapshot.hasChild(postkey)) {
 
                          int n = (int) snapshot.child(postkey).getChildrenCount();
-                         if (snapshot.child(postkey).child("sum").getValue().getClass().getName().equals("java.lang.Double")){
+                       /*  if (snapshot.child(postkey).child("sum").getValue().getClass().getName().equals("java.lang.Double")){
 
                              double sum = (double) snapshot.child(postkey).child("sum").getValue();
                          // float sum = (float) snapshot.child(postkey).child("sum").getValue();
@@ -191,8 +192,8 @@ public class descriptionActivity extends AppCompatActivity {
                          ratingBardescription.setRating(avrate);
                          refrate.child(postkey).child(cid).setValue(frate);
                          refrate.child(postkey).child("sum").setValue(fsum);
-                         }
-                         else {
+                         }*/
+          try{
                              Long sum1 = (Long) snapshot.child(postkey).child("sum").getValue();
                              // float sum = (float) snapshot.child(postkey).child("sum").getValue();
                              double sum=sum1.doubleValue();
@@ -203,7 +204,8 @@ public class descriptionActivity extends AppCompatActivity {
                              ratingBardescription.setRating(avrate);
                              refrate.child(postkey).child(cid).setValue(frate);
                              refrate.child(postkey).child("sum").setValue(fsum);
-                         }
+          }catch (Exception e){}
+
 
                      }
                      else {

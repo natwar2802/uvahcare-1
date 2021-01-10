@@ -415,21 +415,22 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                 if(snapshot.hasChild(postkey)) {
                     int n = (int) snapshot.child(postkey).getChildrenCount()-1;
                    // if(snapshot.child(postkey).child("sum").get)
-                    if (snapshot.child(postkey).child("sum").getValue().getClass().getName().equals("java.lang.Double")){
+                 /*   if (snapshot.child(postkey).child("sum").getValue().getClass().getName().equals("java.lang.Double")){
                     Double sum1 = (Double) snapshot.child(postkey).child("sum").getValue();
                     double sum=sum1.doubleValue();
                     double avrate=sum/n;
                     String avr=Double.toString(avrate);
 
                    holder.displayrate.setText(avr);
-                    }
-                    else{
-                        Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
+                    }*/
+
+                      try{  Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
                        double sum=sum1.doubleValue();
                         float avrate=((float) sum)/n;
                         String avr=Float.toString(avrate);
                         holder.displayrate.setText(avr);
-                    }
+                      }catch (Exception e){}
+
 
                 }
                 else{

@@ -249,8 +249,6 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Home Selected", Toast.LENGTH_SHORT).show();
                                 Log.i("matching", "matching inside1 bro" +id1 );
                                 in=new Intent(getBaseContext(),MainActivity.class);
-                                in.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
                                 startActivity(in);
                                 finish();
                                 break;
@@ -258,8 +256,6 @@ public class MainActivity extends AppCompatActivity {
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Post Selected", Toast.LENGTH_SHORT).show();
                                 in=new Intent(getBaseContext(),newPost.class);
-                                in.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
                                 startActivity(in);
                                 finish();
                                 break;
@@ -267,8 +263,6 @@ public class MainActivity extends AppCompatActivity {
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Profile selected", Toast.LENGTH_SHORT).show();
                                 in=new Intent(getBaseContext(), profileActivity.class);
-                                in.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
                                 startActivity(in);
                                 finish();
                                 break;
