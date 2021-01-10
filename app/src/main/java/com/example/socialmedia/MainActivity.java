@@ -2,6 +2,7 @@ package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btnshare;
     MainActivity obj;
     TextView displaynotifcount;
+    CardView cardView;
     //int Natwar=0;
 
     //@SuppressLint("WrongViewCast")
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         //onStart();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         notifyreference = FirebaseDatabase.getInstance().getReference("notification");
-
+        cardView=findViewById(R.id.pic);
         if(user==null){
             startActivity(new Intent(MainActivity.this,loginActivity.class));
             finish();
@@ -111,9 +113,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int notifcount= (int) snapshot.getChildrenCount();
-                String count=String.valueOf(notifcount);
-                displaynotifcount.setText(count);
-
+                if(notifcount>0) {
+                    cardView.setVisibility(View.VISIBLE);
+                    String count = String.valueOf(notifcount);
+                    displaynotifcount.setText(count);
+                }
 
             }
 
@@ -169,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                cardView.setVisibility(View.GONE);
                 Intent intent=new Intent(MainActivity.this,Notify.class);
                 startActivity(intent);
             }

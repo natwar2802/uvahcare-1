@@ -25,6 +25,7 @@
             android:id="@+id/pic"
             android:layout_height="30dp"
             android:elevation="12dp"
+            android:visibility="gone"
             android:layout_alignParentRight="true"
             cardView:cardCornerRadius="50dp"
             cardView:cardBackgroundColor="#FF0000"
@@ -35,7 +36,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="11"
                 android:id="@+id/displynotifycount"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF" />
