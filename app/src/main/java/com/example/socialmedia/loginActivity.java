@@ -136,12 +136,12 @@ public class loginActivity extends AppCompatActivity {
                             // FirebaseUser user = task.getResult().getUser();
                             // check=true;
                             Intent intent = new Intent(loginActivity.this, EditProfileActivity.class);
-                            startActivity(intent);
+                           // startActivity(intent);
                            // finish();
 
-                           // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            //startActivity(intent);
-                           // finish();
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                             finish();
 
                         } else {
 
