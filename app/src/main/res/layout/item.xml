@@ -53,7 +53,6 @@
                     android:textSize="30sp"
                     android:id="@+id/itemuserN"/>
                 <Button
-                    android:src="@drawable/followicon"
                     android:id="@+id/btnfollow"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
@@ -62,10 +61,11 @@
                     />
                 <ImageButton
                     android:scaleType="fitXY"
+                    android:layout_marginTop="10dp"
                     android:id="@+id/imageButton"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/reporticon"
+                    android:layout_height="40dp"
+                    android:src="@drawable/overflow"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:layout_below="@+id/item_detail"
@@ -130,10 +130,11 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <ImageButton
-                        android:src="@drawable/clapicon"
+                        android:src="@drawable/clapping"
                         android:layout_weight="1"
                         android:id="@+id/inc"
-                        android:layout_width="0dp"
+                        android:scaleType="centerCrop"
+                        android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:text="0 Claps"
 
@@ -148,31 +149,31 @@
                 </LinearLayout>
 
 
-             <!--   <Button
-                    android:id="@+id/cmnt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="comments"
-                    android:layout_weight="1"
-                    /> -->
+                <!--   <Button
+                       android:id="@+id/cmnt"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="10dp"
+                       android:text="comments"
+                       android:layout_weight="1"
+                       /> -->
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/star"
-                    android:id="@+id/star"/>
-                <TextView
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="20sp"
-                    android:id="@+id/displayrate"/>
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/star"
+                        android:id="@+id/star"/>
+                    <TextView
+                        android:layout_margin="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="20sp"
+                        android:id="@+id/displayrate"/>
                 </LinearLayout>
 
                 <ImageButton
