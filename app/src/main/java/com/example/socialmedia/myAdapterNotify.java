@@ -80,12 +80,15 @@ public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myview
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
 
 
-            holder.titlenotify.setText(mlist.get(position).getTitle());
-            Glide.with(context).load(mlist.get(position).getUrlimage()).into(holder.postpicnotify);
-            //String id=mlist.get(position).getPid();
+           try {
+               holder.titlenotify.setText(mlist.get(position).getTitle());
+               Glide.with(context).load(mlist.get(position).getUrlimage()).into(holder.postpicnotify);
+               //String id=mlist.get(position).getPid();
+
+           }catch (Exception e){}
+
         String postkey = mlist.get(position).getPid();
         String idbloger = mlist.get(position).getBlogerid();
-
 
         FirebaseUser userlike = FirebaseAuth.getInstance().getCurrentUser();
         String curentUserId = userlike.getUid();
@@ -94,8 +97,10 @@ public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myview
         profileref.child(idbloger).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String imgurl=snapshot.child("imgUrlP").getValue().toString();
+                try {
+                    String imgurl = snapshot.child("imgUrlP").getValue().toString();
                     Glide.with(context).load(imgurl).into(holder.blogpicnotify);
+                }catch (Exception e){}
             }
 
             @Override
@@ -115,12 +120,14 @@ public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myview
         holder.notififyreferece.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Boolean check= (Boolean) snapshot.child(postkey).getValue();
+                try{
+                Boolean check= (Boolean) snapshot.child(mlist.get(position).getBlogerid()).child(postkey).getValue();
                 Log.e(TAG, String.valueOf(check));
+
                 if(check==false){
                    holder.cardViewNotify.setCardBackgroundColor(Color.WHITE);
 
-                }
+                }}catch (Exception e){}
             }
 
             @Override

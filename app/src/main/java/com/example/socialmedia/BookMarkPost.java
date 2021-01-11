@@ -34,6 +34,7 @@ public class BookMarkPost extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference likesrefernce;
     FirebaseDatabase database;
+    int bookch=0;
 
 
 
@@ -58,23 +59,29 @@ public class BookMarkPost extends AppCompatActivity {
         root2= FirebaseDatabase.getInstance().getReference("bookmark").child(myuserida1);
         //databaseReference=database.getReference("healthPost");
         // likesrefernce = database.getReference("likes");
-        root2.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
-                    arrayList.add(model);
+  try{
+       root2.addValueEventListener(new ValueEventListener() {
 
-                }
+           @Override
+           public void onDataChange(@NonNull DataSnapshot snapshot) {
+               if (bookch == 0) {
+                   for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                   modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
+                   arrayList.add(model);
 
-                adapter2.notifyDataSetChanged();
-            }
+               }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+               adapter2.notifyDataSetChanged();
+           }
+           bookch=1;
+           }
 
-            }
-        });
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
+
+           }
+       });}catch (Exception e){}
+
 
 
         adapter2.setOnItemClickListener(new ClickListener<modelGeneral>() {

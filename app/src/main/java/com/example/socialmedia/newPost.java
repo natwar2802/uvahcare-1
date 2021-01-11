@@ -211,7 +211,7 @@ import java.util.List;
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                             //  notifyreference.child("old").child(dataSnapshot.getKey()).child(ImageUploadId).setValue(true);
-                                                notifyreference.child("new").child(dataSnapshot.getKey()).child(ImageUploadId).setValue(true);
+                                                notifyreference.child("new").child(dataSnapshot.getKey()).child(myuserida).child(ImageUploadId).setValue(true);
 
                                             }
 

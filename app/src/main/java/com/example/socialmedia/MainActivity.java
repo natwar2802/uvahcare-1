@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     TextView displaynotifcount;
     CardView cardView;
     //int Natwar=0;
+    int mainch=0;
 
     //@SuppressLint("WrongViewCast")
     @Override
@@ -112,15 +113,18 @@ public class MainActivity extends AppCompatActivity {
        notifyreference.child("new").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int notifcount= (int) snapshot.getChildrenCount();
-                if(notifcount>0) {
-                    cardView.setVisibility(View.VISIBLE);
-                    String count = String.valueOf(notifcount);
-                    displaynotifcount.setText(count);
-                }
+                int sum=0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren())
+                    sum=sum+(int)dataSnapshot.getChildrenCount();
+                    int notifcount = sum;
+                    if (notifcount > 0) {
+                        cardView.setVisibility(View.VISIBLE);
+                        String count = String.valueOf(notifcount);
+                        displaynotifcount.setText(count);
+                    }
+
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -180,16 +184,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         root.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
-                    arrayList.add(model);
-                    adapter.notifyDataSetChanged();
+                if (mainch == 0) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
+                        arrayList.add(model);
+                        adapter.notifyDataSetChanged();
+                    }
+
                 }
-
+                mainch=1;
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -231,9 +238,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("postkey",data.getPid());
                 intent.putExtra("blogid",data.getBlogerid());
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
                 startActivity(intent);
-                finish();
+               // finish();
             }
 
         });
@@ -255,21 +261,21 @@ public class MainActivity extends AppCompatActivity {
                                 Log.i("matching", "matching inside1 bro" +id1 );
                                 in=new Intent(getBaseContext(),MainActivity.class);
                                 startActivity(in);
-                                finish();
+                                //finish();
                                 break;
                             case R.id.action_schedules:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Post Selected", Toast.LENGTH_SHORT).show();
                                 in=new Intent(getBaseContext(),newPost.class);
                                 startActivity(in);
-                                finish();
+                              //  finish();
                                 break;
                             case R.id.action_music:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Profile selected", Toast.LENGTH_SHORT).show();
                                 in=new Intent(getBaseContext(), profileActivity.class);
                                 startActivity(in);
-                                finish();
+                                //finish();
                                 break;
                         }
                         return true;
