@@ -194,7 +194,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
 
                 //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
                 if(curentUserId.equals(idbloger)){
-                    holder.btnfollow.setVisibility(View.GONE);
+                     holder.btnfollow.setVisibility(View.GONE);
                 }
                 else{
                    // if(followerchecker.equals(true)){

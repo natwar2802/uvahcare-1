@@ -1,6 +1,7 @@
 <ScrollView android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto">
 <LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -55,37 +56,86 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About me"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/aboutmeProfile"
+        android:layout_width="match_parent"
+        android:minLines="2"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/pic"
+        android:layout_height="200dp"
+        android:layout_marginRight="10dp"
+        android:elevation="15dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
     <ImageView
         android:id="@+id/imgviewProfile"
         android:layout_width="match_parent"
-        android:layout_height="200sp"
+        android:layout_height="match_parent"
         android:scaleType="fitXY"
         />
+            <androidx.cardview.widget.CardView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:elevation="12dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                cardView:cardBackgroundColor="#000000"
+                android:shape="ring"
+                android:thicknessRatio="1.9"
+                >
+               <ImageView
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:scaleType="centerCrop"
+                   android:id="@+id/btnbrowseProfile"
+                   android:src="@drawable/plus"></ImageView>
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
   <Button
+      android:layout_weight="1"
       android:layout_margin="20dp"
-android:id="@+id/btnbrowseProfile"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_gravity="left"
-android:text="Browse"/>
+      android:layout_width="0dp"
+      android:visibility="invisible"
+      android:layout_height="wrap_content"
+      android:text="Browse"/>
 
     <Button
+        android:layout_weight="1"
         android:layout_margin="20dp"
         android:id="@+id/updateProfile"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="update"
         android:onClick="update"/>
     <Button
+        android:layout_weight="1"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="next"
-        android:layout_gravity="left"
         android:id="@+id/nexttoPreference"/>
 </LinearLayout>
 </LinearLayout>
