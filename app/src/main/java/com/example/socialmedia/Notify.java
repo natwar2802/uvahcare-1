@@ -82,10 +82,13 @@ public class Notify extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
                     // modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
                     //arrayList.add(model);
-                    String postid=dataSnapshot.getKey();
-                    root2.child(postid).setValue(true);
+                    String postid=dataSnapshot1.getKey();
+                    root2.child(dataSnapshot.getKey()).child(postid).setValue(true);
+                    }
 
                    // arrayList.add(snapshot.getValue(modelGeneral.class));
                   /*  root1.child(postid).addValueEventListener(new ValueEventListener() {
@@ -122,9 +125,11 @@ public class Notify extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                if(checknotify==0) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+
                         // modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
                         //arrayList.add(model);
-                        String postid = dataSnapshot.getKey();
+                        String postid = dataSnapshot1.getKey();
                         root1.child(postid).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot1) {
@@ -145,7 +150,7 @@ public class Notify extends AppCompatActivity {
                         });
 
 
-                    }
+                    }}
 
                     checknotify = 1;
                 }
@@ -158,7 +163,7 @@ public class Notify extends AppCompatActivity {
         }
 
         );
-        adapter2.notifyDataSetChanged();
+       adapter2.notifyDataSetChanged();
 
         recyclerViewnotify.setAdapter(adapter2);
 
@@ -169,7 +174,7 @@ public class Notify extends AppCompatActivity {
             public void onItemClick(modelGeneral data) {
                 Intent intent = new Intent(Notify.this, descriptionActivity.class);
                 // intent.putExtra("Arraylist",arrayList);
-                root2.child(data.pid).setValue(false);
+              //  root2.child(data.blogerid).child(data.pid).setValue(false);
                 intent.putExtra("title", data.getTitle().toString());
                 intent.putExtra("Bdesc", data.getBrief().toString());
                 intent.putExtra("im", data.getUrlimage());

@@ -56,6 +56,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
     DatabaseReference likesref,postref,profilereference,followerreference,followedreference;
     FirebaseDatabase database;
     public int ch=0;
+    public int bookmarkch=0;
 
 
 
@@ -114,7 +115,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
             }
         });*/
 
-        if(ch==1){
+       if(ch==1){
             holder.btndel.setVisibility(View.VISIBLE);
             holder.btndel.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -132,8 +133,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                             mlist.remove(position);
                             holder.followerefernce1.child(curentUserId).addValueEventListener(new ValueEventListener() {
                                 @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                    for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
                                         holder.notifyreference1.child(dataSnapshot.getKey()).child(postkey).removeValue();
 
                                     }
@@ -285,18 +286,22 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
 
                         modelGeneral info = new modelGeneral(bmtitle,bmbrief,bmuri,bmdis,bmpostid,blogerid);
                         //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
+
                         if(bookmarkchecker.equals(true)){
                             if(snapshot.child(curentUserId).hasChild(postkey)){
+                                
                                 holder.bookmarkref.child(curentUserId).child(postkey).removeValue();
                                 holder.btnbookmark.setImageResource(R.drawable.imagesb);
                                 bookmarkchecker=false;
                             }
                             else{
+
                                 holder.bookmarkref.child(curentUserId).child(postkey).setValue(info);
                                 holder.btnbookmark.setImageResource(R.drawable.images);
                                 bookmarkchecker=false;
                             }
                         }
+
                         //String mobno=databaseReference.Auythecation(mobno);
 
                         // databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
@@ -308,6 +313,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                     }
                 });
             }
+
         });
 
 
@@ -346,9 +352,24 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                         //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
                         if(followerchecker.equals(true)){
                             if(snapshot.child(idbloger).hasChild(curentUserId)){
+                                 holder.notifyreference1.addValueEventListener(new ValueEventListener() {
+                                     @Override
+                                     public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                         if(snapshot1.child(curentUserId).hasChild(idbloger)){
+                                         holder.notifyreference1.child(curentUserId).child(idbloger).removeValue();
+                                         holder.notifyreference2.child(curentUserId).child(idbloger).removeValue();
+                                         }
+                                     }
+
+                                     @Override
+                                     public void onCancelled(@NonNull DatabaseError error) {
+
+                                     }
+                                 });
+
+
                                 followerreference.child(idbloger).child(curentUserId).removeValue();
                                 followedreference.child(curentUserId).child(idbloger).removeValue();
-
                                 holder.btnfollow.setText("follow");
                                 //holder.btnfollow.setImageResource(R.drawable.followicon);
                                 followerchecker=false;
@@ -415,21 +436,22 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                 if(snapshot.hasChild(postkey)) {
                     int n = (int) snapshot.child(postkey).getChildrenCount()-1;
                    // if(snapshot.child(postkey).child("sum").get)
-                    if (snapshot.child(postkey).child("sum").getValue().getClass().getName().equals("java.lang.Double")){
+                 /*   if (snapshot.child(postkey).child("sum").getValue().getClass().getName().equals("java.lang.Double")){
                     Double sum1 = (Double) snapshot.child(postkey).child("sum").getValue();
                     double sum=sum1.doubleValue();
                     double avrate=sum/n;
                     String avr=Double.toString(avrate);
 
                    holder.displayrate.setText(avr);
-                    }
-                    else{
-                        Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
+                    }*/
+
+                      try{  Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
                        double sum=sum1.doubleValue();
                         float avrate=((float) sum)/n;
                         String avr=Float.toString(avrate);
                         holder.displayrate.setText(avr);
-                    }
+                      }catch (Exception e){}
+
 
                 }
                 else{
@@ -503,7 +525,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
         ImageView img,img2;
         LinearLayout itemlayout;
         TextView title,title2,descrip,descrip2,likeddisplay;
-        DatabaseReference likesref,bookmarkref,profileref, referencerate,mypostref,postref3,followerefernce1,notifyreference1;
+        DatabaseReference likesref,bookmarkref,profileref, referencerate,mypostref,postref3,followerefernce1,notifyreference1,notifyreference2;
         FirebaseDatabase database;
         ImageButton btnbookmark,mImageButton,inc,hbtnsharepost;
         int likescount;
@@ -552,7 +574,9 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
 
             mypostref = FirebaseDatabase.getInstance().getReference("mypost");
             postref3 = FirebaseDatabase.getInstance().getReference("hPost");
-            notifyreference1 = FirebaseDatabase.getInstance().getReference("notification");
+            notifyreference1 =  FirebaseDatabase.getInstance().getReference("notification").child("old");
+            notifyreference2 =  FirebaseDatabase.getInstance().getReference("notification").child("new");
+
             followerefernce1 = FirebaseDatabase.getInstance().getReference("follower");
 
 
@@ -569,7 +593,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     likescount=(int)snapshot.child(postkey).getChildrenCount();
-                    displayclap.setText(Integer.toString(likescount)+" Claps");
+                    displayclap.setText(Integer.toString(likescount));
 
                 }
 
