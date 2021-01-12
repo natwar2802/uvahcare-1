@@ -13,6 +13,7 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,7 +31,8 @@ import java.io.IOException;
 public class EditProfileActivity extends AppCompatActivity {
     Button  btnuploadProfile,btnNextPreference;
     EditText etNameProfile,etcityProfile,etcountryProfile;
-    ImageView imgviewProfile,btnbrowseProfile;
+    ImageView imgviewProfile;
+    ImageButton btnbrowseProfile;
     Uri FilePathUri;
     StorageReference storageReferenceProfile;
     DatabaseReference databaseReferenceProfile;
@@ -42,7 +44,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
         storageReferenceProfile = FirebaseStorage.getInstance().getReference("profile");
         databaseReferenceProfile = FirebaseDatabase.getInstance().getReference("profile");
-        btnbrowseProfile = (ImageView)findViewById(R.id.btnbrowseProfile);
+        btnbrowseProfile = (ImageButton) findViewById(R.id.btnbrowseProfile);
         btnuploadProfile= (Button)findViewById(R.id.updateProfile);
         etNameProfile=(EditText)findViewById(R.id.usernameProfile);
         etcityProfile=(EditText)findViewById(R.id.cityProfile);

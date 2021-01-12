@@ -1,5 +1,5 @@
-<ScrollView android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardView="http://schemas.android.com/apk/res-auto">
 <LinearLayout android:layout_height="match_parent"
@@ -71,6 +71,28 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone(Optional)"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/phoneProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Profile pic"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
     <androidx.cardview.widget.CardView
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -90,28 +112,19 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY"
         />
-            <androidx.cardview.widget.CardView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:elevation="12dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                cardView:cardBackgroundColor="#000000"
-                android:shape="ring"
-                android:thicknessRatio="1.9"
-                >
-               <ImageView
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
+
+               <ImageButton
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:layout_centerHorizontal="true"
+                   android:layout_centerVertical="true"
                    android:scaleType="centerCrop"
                    android:id="@+id/btnbrowseProfile"
-                   android:src="@drawable/plus"></ImageView>
-
-            </androidx.cardview.widget.CardView>
+                   android:src="@drawable/plus"></ImageButton>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 <LinearLayout
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
   <Button
