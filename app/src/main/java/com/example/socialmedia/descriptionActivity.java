@@ -46,7 +46,11 @@ public class descriptionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_description);
+        //setContentView(R.layout.activity_description);
+        LinearLayout dynamicContent;
+        dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
+        View wizard = getLayoutInflater().inflate(R.layout.activity_description, null);
+        dynamicContent.addView(wizard);
         ratingBardescription=findViewById(R.id.ratingdescription);
         btnratedesc=findViewById(R.id.ratedesc);
         btnsubmitrate=findViewById(R.id.submitrating);

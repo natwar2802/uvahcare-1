@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -36,8 +38,11 @@ public class followDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_follow_detail);
-
+        //setContentView(R.layout.activity_follow_detail);
+        LinearLayout dynamicContent;
+        dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
+        View wizard = getLayoutInflater().inflate(R.layout.activity_follow_detail, null);
+        dynamicContent.addView(wizard);
         usenamedetail=findViewById(R.id.itemuserNfdetail);
         countrydetail=findViewById(R.id.itemuserCounfdetail);
         citydetail=findViewById(R.id.itemuserCfdetail);

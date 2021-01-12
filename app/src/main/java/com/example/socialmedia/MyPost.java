@@ -11,6 +11,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -38,8 +39,11 @@ public class MyPost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_post);
-
+        //setContentView(R.layout.activity_my_post);
+        LinearLayout dynamicContent;
+        dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
+        View wizard = getLayoutInflater().inflate(R.layout.activity_my_post, null);
+        dynamicContent.addView(wizard);
         recyclerView2 = (RecyclerView) findViewById(R.id.recycleView2);
         arrayList = new ArrayList<modelGeneral>();
         adapter2 = new myAdapter(this, arrayList);
