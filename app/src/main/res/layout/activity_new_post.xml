@@ -315,27 +315,32 @@
             android:layout_margin="10dp"></TextView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            cardView2:cardCornerRadius="2dp"
-            cardView2:cardElevation="8dp"
+            android:layout_height="200dp"
+            cardView2:cardCornerRadius="4dp"
+            cardView2:cardElevation="12dp"
             android:layout_margin="10dp"
             cardView2:cardBackgroundColor="#FFFFFF"
             >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imgview"
                 android:layout_width="match_parent"
-                android:layout_height="250sp"
+                android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 />
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/btnbrowse"
+                    android:src="@drawable/plus"></ImageButton>
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
-        <Button
-            android:id="@+id/btnbrowse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:text="Browse"/>
         <Button
             android:id="@+id/btnPost"
             android:layout_width="wrap_content"
