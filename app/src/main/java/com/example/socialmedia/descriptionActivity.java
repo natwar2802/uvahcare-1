@@ -98,11 +98,11 @@ public class descriptionActivity extends MainActivity {
                     }*/
 
                       try{  Long sum = (Long) snapshot.child(postkey).child("sum").getValue();
-                         double d = sum.doubleValue();
-                        Double avrate = d/ n;
+                        // double d = sum.doubleValue();
+                        float avrate =((float) sum)/ n;
 
-                        float avr = avrate.floatValue();
-                        ratingBardescription.setRating(avr);
+                       // float avr = avrate.floatValue();
+                        ratingBardescription.setRating(avrate);
                       }catch (Exception e){}
 
 

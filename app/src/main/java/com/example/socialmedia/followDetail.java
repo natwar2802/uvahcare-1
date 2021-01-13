@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class followDetail extends AppCompatActivity {
+public class followDetail extends MainActivity{
     ImageView imgprofiledetail;
     TextView usenamedetail,countrydetail,citydetail,followerdetail;
     RecyclerView recycledetail;

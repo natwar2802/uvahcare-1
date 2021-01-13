@@ -50,7 +50,7 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static androidx.core.content.ContextCompat.getSystemService;
 
 
-public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myviewholder>{
+public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myviewholder> {
     private ArrayList<modelGeneral> mlist;
     private Context context;
     modelGeneral model;
@@ -87,8 +87,10 @@ public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myview
 
            }catch (Exception e){}
 
-        String postkey = mlist.get(position).getPid();
-        String idbloger = mlist.get(position).getBlogerid();
+try{
+    String postkey = mlist.get(position).getPid();
+    String idbloger = mlist.get(position).getBlogerid();
+
 
         FirebaseUser userlike = FirebaseAuth.getInstance().getCurrentUser();
         String curentUserId = userlike.getUid();
@@ -134,7 +136,7 @@ public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myview
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });}catch (Exception e){}
     }
 
     @Override
@@ -165,7 +167,7 @@ public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myview
            user=FirebaseAuth.getInstance();
           String userid=user.getUid();
           cardViewNotify=itemView.findViewById(R.id.carViewnotify);
-          cardViewNotify.setCardBackgroundColor(Integer.parseInt("#AED6F1"));
+//          cardViewNotify.setCardBackgroundColor(Integer.parseInt("#AED6F1"));
         notififyreferece=FirebaseDatabase.getInstance().getReference("notification").child("old").child(userid);
         }
 
