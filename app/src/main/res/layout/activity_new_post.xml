@@ -337,6 +337,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:scaleType="centerCrop"
+                    android:backgroundTint="#FFFFFF"
                     android:id="@+id/btnbrowse"
                     android:src="@drawable/plus"></ImageButton>
             </RelativeLayout>
