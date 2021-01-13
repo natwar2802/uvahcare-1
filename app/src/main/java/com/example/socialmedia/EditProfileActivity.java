@@ -27,12 +27,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class EditProfileActivity extends  AppCompatActivity{
 
     Button  btnuploadProfile,btnNextPreference;
-    EditText etNameProfile,etcityProfile,etcountryProfile;
+    EditText etNameProfile,etcityProfile,etcountryProfile,aboutmeProfile;
     ImageView imgviewProfile;
     ImageButton btnbrowseProfile;
     Uri FilePathUri;
@@ -56,6 +57,7 @@ public class EditProfileActivity extends  AppCompatActivity{
         etcityProfile=(EditText)findViewById(R.id.cityProfile);
         etcountryProfile=(EditText)findViewById(R.id.countryProfile);
         btnNextPreference=findViewById(R.id.nexttoPreference);
+        aboutmeProfile=findViewById(R.id.aboutmeProfile);
         // txtname = (EditText)findViewById(R.id.txtname);
         // txtcouse=(EditText)findViewById(R.id.txtcourse);
         //txtemail=(EditText)findViewById(R.id.txtemail);
@@ -93,6 +95,8 @@ public class EditProfileActivity extends  AppCompatActivity{
                 String userNameProfile1=etNameProfile.getText().toString().trim();
                 String cityProfile1= etcityProfile.getText().toString().trim();
                 String countryProfile1=etcountryProfile.getText().toString().trim();
+                String aboutmeProfile1=aboutmeProfile.getText().toString().trim();
+
 
 
                 if (inputValidatorHelper.isNullOrEmpty(userNameProfile1)) {
@@ -105,6 +109,10 @@ public class EditProfileActivity extends  AppCompatActivity{
                 }
                 else if(inputValidatorHelper.isNullOrEmpty(countryProfile1)) {
                     errMsg.append("- Country name should not be empty.\n");
+                    //allowSave = false;
+                }
+                else if(inputValidatorHelper.isNullOrEmpty(aboutmeProfile1)) {
+                    errMsg.append("- About me should not be empty.\n");
                     //allowSave = false;
                 }
                 else {
@@ -130,6 +138,8 @@ public class EditProfileActivity extends  AppCompatActivity{
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 25, baos);
                 imgviewProfile.setImageBitmap(bitmap);
             }
             catch (IOException e) {
@@ -169,13 +179,16 @@ public class EditProfileActivity extends  AppCompatActivity{
                                     String userNameProfile=etNameProfile.getText().toString().trim();
                                     String cityProfile= etcityProfile.getText().toString().trim();
                                     String countryProfile=etcountryProfile.getText().toString().trim();
+                                    String aboutme=aboutmeProfile.getText().toString().trim();
                                     FirebaseUser myuserP= FirebaseAuth.getInstance().getCurrentUser();
                                     String myuseridaP=myuserP.getUid();
+
+
                                     // String email=txtemail.getText().toString().trim();
                                     progressDialogProfile.dismiss();
                                     Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                                     @SuppressWarnings("VisibleForTests")
-                                    modelProfile imageUploadInfo = new modelProfile(userNameProfile,cityProfile,countryProfile,uriP,myuseridaP);
+                                    modelProfile imageUploadInfo = new modelProfile(userNameProfile,cityProfile,countryProfile,uriP,myuseridaP,aboutme);
                                    String ImageUploadId = databaseReferenceProfile.push().getKey();
                                  //   String ImageUploadId = databaseReferenceProfile.push();
                                     //String mobno=databaseReference.Auythecation(mobno);

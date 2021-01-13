@@ -1,17 +1,26 @@
 package com.example.socialmedia;
 
 public class modelProfile {
-    String usernameP,cityP,countryP,imgUrlP,id;
+    String usernameP,cityP,countryP,imgUrlP,id,userdetail;
 
     public modelProfile() {
     }
 
-    public modelProfile(String usernameP, String cityP, String countryP, String imgUrlP,String id) {
+    public modelProfile(String usernameP, String cityP, String countryP, String imgUrlP,String id,String userdetail) {
         this.usernameP = usernameP;
         this.cityP = cityP;
         this.countryP = countryP;
         this.imgUrlP = imgUrlP;
         this.id=id;
+        this.userdetail=userdetail;
+    }
+
+    public String getUserdetail() {
+        return userdetail;
+    }
+
+    public void setUserdetail(String userdetail) {
+        this.userdetail = userdetail;
     }
 
     public String getId() {

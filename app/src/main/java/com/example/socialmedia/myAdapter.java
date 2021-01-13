@@ -308,7 +308,7 @@ try{
                             }
                             else{
 
-                                holder.bookmarkref.child(curentUserId).child(postkey).setValue(info);
+                                holder.bookmarkref.child(curentUserId).child(postkey).setValue(true);
                                 holder.btnbookmark.setImageResource(R.drawable.images);
                                 bookmarkchecker=false;
                             }

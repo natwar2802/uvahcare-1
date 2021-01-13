@@ -30,7 +30,7 @@ public class BookMarkPost extends MainActivity{
     RecyclerView recyclerView3;
     myAdapter adapter2;
     ArrayList<modelGeneral> arrayList;
-    private DatabaseReference root2;
+    private DatabaseReference root2,root3;
     private static MainActivity instance;
     FirebaseAuth mAuth;
     DatabaseReference likesrefernce;
@@ -61,6 +61,8 @@ public class BookMarkPost extends MainActivity{
 
 
         root2= FirebaseDatabase.getInstance().getReference("bookmark").child(myuserida1);
+        root3= FirebaseDatabase.getInstance().getReference("hPost");
+
         //databaseReference=database.getReference("healthPost");
         // likesrefernce = database.getReference("likes");
   try{
@@ -70,8 +72,19 @@ public class BookMarkPost extends MainActivity{
            public void onDataChange(@NonNull DataSnapshot snapshot) {
                if (bookch == 0) {
                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                   modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
-                   arrayList.add(model);
+                       root3.child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                           @Override
+                           public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                               modelGeneral model = snapshot1.getValue(modelGeneral.class);
+                               arrayList.add(model);
+                           }
+
+                           @Override
+                           public void onCancelled(@NonNull DatabaseError error) {
+
+                           }
+                       });
+
 
                }
 
