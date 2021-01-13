@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -42,8 +43,11 @@ public class followActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_follow);
-
+        //setContentView(R.layout.activity_follow);
+        LinearLayout dynamicContent;
+        dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
+        View wizard = getLayoutInflater().inflate(R.layout.activity_follow, null);
+        dynamicContent.addView(wizard);
         recyclerViewfollow = (RecyclerView) findViewById(R.id.recycleViewfollow);
         arrayListProfile = new ArrayList<modelProfile>();
         adapterProfile = new myProfileAdapter(this, arrayListProfile);

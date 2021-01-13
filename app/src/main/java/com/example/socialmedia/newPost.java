@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -43,7 +44,8 @@ import java.util.List;
 
 
  public class newPost extends MainActivity implements AdapterView.OnItemSelectedListener {
-    Button btnbrowse, btnupload;
+    Button  btnupload;
+    ImageButton btnbrowse;
     EditText etitle,etoverview,etdes,etbenefit,etprecausion,ethowtodo,etproblem,etsolution;
     ImageView imgview;
     Uri FilePathUri;
@@ -93,7 +95,7 @@ import java.util.List;
         notifyreference = FirebaseDatabase.getInstance().getReference("notification");
         followerefernce = FirebaseDatabase.getInstance().getReference("follower");
 
-        btnbrowse = (Button)findViewById(R.id.btnbrowse);
+        btnbrowse = (ImageButton) findViewById(R.id.btnbrowse);
         btnupload= (Button)findViewById(R.id.btnPost);
         etitle=(EditText)findViewById(R.id.heading);
         etoverview=(EditText)findViewById(R.id.overview);

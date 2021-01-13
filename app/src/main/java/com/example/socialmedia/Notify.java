@@ -11,6 +11,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -41,8 +42,11 @@ public class Notify extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notify);
-
+        //setContentView(R.layout.activity_notify);
+        LinearLayout dynamicContent;
+        dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
+        View wizard = getLayoutInflater().inflate(R.layout.activity_notify, null);
+        dynamicContent.addView(wizard);
         recyclerViewnotify = (RecyclerView) findViewById(R.id.recycleViewnotify);
         arrayList = new ArrayList<modelGeneral>();
         adapter2 = new myAdapterNotify(this, arrayList);
