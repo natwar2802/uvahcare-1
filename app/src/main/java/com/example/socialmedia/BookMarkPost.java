@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class BookMarkPost extends AppCompatActivity {
+public class BookMarkPost extends MainActivity{
     RecyclerView recyclerView3;
     myAdapter adapter2;
     ArrayList<modelGeneral> arrayList;

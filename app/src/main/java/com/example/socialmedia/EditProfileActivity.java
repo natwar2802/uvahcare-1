@@ -29,7 +29,11 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
+<<<<<<< HEAD
 public class EditProfileActivity extends AppCompatActivity{
+=======
+public class EditProfileActivity extends  MainActivity{
+>>>>>>> e4d1de42881a6927028c1074bfe524749466a1c5
     Button  btnuploadProfile,btnNextPreference;
     EditText etNameProfile,etcityProfile,etcountryProfile;
     ImageView imgviewProfile;
@@ -58,6 +62,10 @@ public class EditProfileActivity extends AppCompatActivity{
         // txtname = (EditText)findViewById(R.id.txtname);
         // txtcouse=(EditText)findViewById(R.id.txtcourse);
         //txtemail=(EditText)findViewById(R.id.txtemail);
+        InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
+        StringBuilder errMsg = new StringBuilder("Unable to save. Please fix the following errors and try again.\n");
+
+
 
         btnNextPreference.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,8 +93,26 @@ public class EditProfileActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
 
+                String userNameProfile1=etNameProfile.getText().toString().trim();
+                String cityProfile1= etcityProfile.getText().toString().trim();
+                String countryProfile1=etcountryProfile.getText().toString().trim();
 
-                UploadImage();
+
+                if (inputValidatorHelper.isNullOrEmpty(userNameProfile1)) {
+                    errMsg.append(" UserName should not be empty.\n");
+                    //allowSave = false;
+                }
+                 else if(inputValidatorHelper.isNullOrEmpty(cityProfile1)) {
+                    errMsg.append("City name should not be empty.\n");
+                   // allowSave = false;
+                }
+                else if(inputValidatorHelper.isNullOrEmpty(countryProfile1)) {
+                    errMsg.append("- Country name should not be empty.\n");
+                    //allowSave = false;
+                }
+                else {
+                    UploadImage();
+                }
 
             }
         });

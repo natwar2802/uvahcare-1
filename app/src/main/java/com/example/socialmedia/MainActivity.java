@@ -42,6 +42,8 @@ import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference("hPost");
     private static MainActivity instance;
     FirebaseAuth mAuth;
-    DatabaseReference likesrefernce,notifyreference;
+    DatabaseReference likesrefernce,notifyreference,ratingreference;
     FirebaseDatabase database;
     Button btnmypost,btnbookmark;
     // Button btnshare;
@@ -80,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
         //onStart();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         notifyreference = FirebaseDatabase.getInstance().getReference("notification");
+        likesrefernce= FirebaseDatabase.getInstance().getReference("likes");
+        ratingreference = FirebaseDatabase.getInstance().getReference("rating");
+
+
+
         cardView=findViewById(R.id.pic);
         if(user==null){
             startActivity(new Intent(MainActivity.this,loginActivity.class));
@@ -189,12 +196,24 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (mainch == 0) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+
                         modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
                         arrayList.add(model);
-                        adapter.notifyDataSetChanged();
+
+                     //   adapter.notifyDataSetChanged();
                     }
+                    Collections.sort(arrayList, new Comparator<modelGeneral>() {
+                        @Override
+                        public int compare(modelGeneral lhs,modelGeneral rhs) {
+
+                            // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                            return lhs.getClaps()> rhs.getClaps()? -1 : (lhs.getClaps()< rhs.getClaps() ) ? 1 : 0;
+                        }
+                    });
 
                 }
+                adapter.notifyDataSetChanged();
                 mainch=1;
             }
             @Override

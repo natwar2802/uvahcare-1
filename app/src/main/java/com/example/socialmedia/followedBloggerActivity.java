@@ -26,11 +26,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 public class followedBloggerActivity extends MainActivity {
+=======
+public class followedBloggerActivity extends  MainActivity{
+>>>>>>> e4d1de42881a6927028c1074bfe524749466a1c5
     RecyclerView recyclerViewfollowed;
     myProfileAdapter adapterProfile;
     ArrayList<modelProfile> arrayListProfile;
-
     private static MainActivity instance;
     FirebaseAuth mAuth;
     DatabaseReference followedereference,profilereference;
