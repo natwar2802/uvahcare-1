@@ -165,7 +165,7 @@ public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myview
            user=FirebaseAuth.getInstance();
           String userid=user.getUid();
           cardViewNotify=itemView.findViewById(R.id.carViewnotify);
-          cardViewNotify.setCardBackgroundColor(Color.BLUE);
+          cardViewNotify.setCardBackgroundColor(Integer.parseInt("#AED6F1"));
         notififyreferece=FirebaseDatabase.getInstance().getReference("notification").child("old").child(userid);
         }
 
