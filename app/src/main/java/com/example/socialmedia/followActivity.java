@@ -27,11 +27,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD
+
 public class followActivity extends MainActivity {
-=======
-public class followActivity extends  MainActivity{
->>>>>>> e4d1de42881a6927028c1074bfe524749466a1c5
+
+
+
     RecyclerView recyclerViewfollow;
     myProfileAdapter adapterProfile;
     ArrayList<modelProfile> arrayListProfile;
@@ -60,7 +60,7 @@ public class followActivity extends  MainActivity{
         recyclerViewfollow.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewfollow.setAdapter(adapterProfile);
         // instance = this;
-        delete1=findViewById(R.id.delete1);
+//        delete1=findViewById(R.id.delete1);
 
 
         // database = FirebaseDatabase.getInstance();

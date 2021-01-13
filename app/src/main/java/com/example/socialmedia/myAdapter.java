@@ -569,7 +569,7 @@ try{
             descrip2=(TextView) itemView.findViewById(R.id.desc12);
             inc=(ImageButton) itemView.findViewById(R.id.inc);
            hbtnsharepost=(ImageButton) itemView.findViewById(R.id.btnsharepost);
-            likeddisplay=(TextView) itemView.findViewById(R.id.likedisplay);
+            likeddisplay=(TextView) itemView.findViewById(R.id.displayclap);
             itemlayout=(LinearLayout)itemView.findViewById(R.id.ll);
             btnbookmark=(ImageButton) itemView.findViewById(R.id.bm);
             btnupdateProfile= (Button)itemView.findViewById(R.id.updateProfile);
