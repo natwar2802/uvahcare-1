@@ -24,12 +24,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-public class PreferenceActivity extends AppCompatActivity {
+public class PreferenceActivity extends MainActivity {
     Button btnNextMain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preference);
+      //  setContentView(R.layout.activity_preference);
+        LinearLayout dynamicContent;
+        dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
+        View wizard = getLayoutInflater().inflate(R.layout.activity_preference, null);
+        dynamicContent.addView(wizard);
         btnNextMain=findViewById(R.id.nexttoMain);
         btnNextMain.setOnClickListener(new View.OnClickListener() {
             @Override

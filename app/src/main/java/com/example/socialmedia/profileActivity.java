@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ public class profileActivity extends MainActivity {
     TextView username,usercountry,usercity;
     ImageView profilepic;
     int followcount;
+    ImageButton logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class profileActivity extends MainActivity {
         View wizard = getLayoutInflater().inflate(R.layout.activity_profile, null);
         dynamicContent.addView(wizard);
         editp=findViewById(R.id.editprofile);
+        logout=findViewById(R.id.logout);
         btnmypostp=findViewById(R.id.btnmypostp);
         btnbookmarkp=findViewById(R.id.btnmybookmarkp);
        // btninfollow=findViewById(R.id.btninfollow);
@@ -64,6 +67,15 @@ public class profileActivity extends MainActivity {
                 startActivity(i);
             }
         });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent =new Intent(profileActivity.this,loginActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btnmypostp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

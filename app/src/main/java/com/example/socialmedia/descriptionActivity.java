@@ -33,7 +33,7 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static android.widget.Toast.LENGTH_SHORT;
 import static androidx.core.content.ContextCompat.getSystemService;
 
-public class descriptionActivity extends AppCompatActivity {
+public class descriptionActivity extends MainActivity {
 
     RatingBar ratingBardescription,ratingpop;
     Button btnratedesc,btnsubmitrate;

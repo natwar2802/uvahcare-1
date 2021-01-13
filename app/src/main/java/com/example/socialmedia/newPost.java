@@ -42,8 +42,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.widget.Toast.LENGTH_SHORT;
 
- public class newPost extends MainActivity implements AdapterView.OnItemSelectedListener {
+
+public class newPost extends MainActivity implements AdapterView.OnItemSelectedListener {
     Button  btnupload;
     ImageButton btnbrowse;
     EditText etitle,etoverview,etdes,etbenefit,etprecausion,ethowtodo,etproblem,etsolution;
@@ -69,8 +71,11 @@ import java.util.List;
 
         // Spinner click listener
 
-
+        InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
+        StringBuilder errMsg = new StringBuilder("Unable to save. Please fix the following errors and try again.\n");
         // Spinner Drop down elements
+
+
         List<String> categories = new ArrayList<String>();
         categories.add("General");
         categories.add("Yoga and Health");
@@ -113,6 +118,9 @@ import java.util.List;
         progressDialog = new ProgressDialog(newPost.this);// context name as per your project name
 
 
+
+
+
         btnbrowse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,8 +135,39 @@ import java.util.List;
             @Override
             public void onClick(View view) {
 
+                String title1=etitle.getText().toString();
+                String overview1= etoverview.getText().toString().trim();
+                String desc1=etdes.getText().toString().trim();
+                String benefit1=etbenefit.getText().toString().trim();
+                String howtodo1=ethowtodo.getText().toString().trim();
+                String problem1=etproblem.getText().toString().trim();
+                String solution1=etsolution.getText().toString().trim();
+                String precaution1=etprecausion.getText().toString().trim();
+                String description1=desc1+"\n"+benefit1+"\n"+howtodo1+"\n"+problem1+"\n"+solution1+"\n"+precaution1;
 
-                UploadImage();
+                if (inputValidatorHelper.isNullOrEmpty(title1)) {
+                    errMsg.append(" Title should not be empty.\n");
+                    Toast.makeText(getApplicationContext(),"Title should not be empty",Toast.LENGTH_SHORT).show();
+                    //allowSave = false;
+                }
+                else if(inputValidatorHelper.isNullOrEmpty(overview1)) {
+                    errMsg.append("Overview should not be empty.\n");
+                    Toast.makeText(getApplicationContext(),"Overview should not be empty",Toast.LENGTH_SHORT).show();
+
+                    // allowSave = false;
+                }
+                else if(inputValidatorHelper.isNullOrEmpty(description1)) {
+                    errMsg.append("- Description should not be empty.\n");
+                    Toast.makeText(getApplicationContext(),"Description should not be empty.",Toast.LENGTH_SHORT).show();
+
+                    //allowSave = false;
+                }
+                else {
+                    UploadImage();
+                }
+
+
+
 
             }
         });

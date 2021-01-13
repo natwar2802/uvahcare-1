@@ -129,6 +129,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                             holder.mypostref.child(curentUserId).child(postkey).removeValue();
                             holder.postref3.child(postkey).removeValue();
                             holder.bookmarkref.child(curentUserId).child(postkey).removeValue();
+                            holder.likesref.child(postkey).removeValue();
+                            holder.referencerate.child(postkey).removeValue();
 
                             mlist.remove(position);
                             holder.followerefernce1.child(curentUserId).addValueEventListener(new ValueEventListener() {
@@ -593,6 +595,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     likescount=(int)snapshot.child(postkey).getChildrenCount();
+                    postref3.child(postkey).child("claps").setValue(likescount);
                     displayclap.setText(Integer.toString(likescount));
 
                 }
