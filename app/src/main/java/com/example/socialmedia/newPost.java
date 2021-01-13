@@ -9,6 +9,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 //import android.support.annotation.NonNull;
 //import android.support.v7.app.AppCompatActivity;
@@ -40,6 +41,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static android.widget.Toast.LENGTH_SHORT;
@@ -232,6 +234,12 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
                                        solution=etsolution.getText().toString().trim();
                                        precaution=etprecausion.getText().toString().trim();
                                        String description=desc+"\n"+benefit+"\n"+howtodo+"\n"+problem+"\n"+solution+"\n"+precaution;
+                                    long data=System.currentTimeMillis();
+                                    long rateno=0;
+                                    float rating=0;
+                                    int claps=0;
+
+                                    String prefrence="preference";
 
                                     // String email=txtemail.getText().toString().trim();
                                     FirebaseUser myuser= FirebaseAuth.getInstance().getCurrentUser();
@@ -240,11 +248,13 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
                                     progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                                     @SuppressWarnings("VisibleForTests")
-                                    modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida);
+
+                                        modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida,prefrence,data,rateno,rating,claps);
 
                                     //String mobno=databaseReference.Auythecation(mobno);
 
                                     databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
+                                    databaseReference.child(ImageUploadId).child("datetime").setValue(data);
                                     mypostdatabaseReference.child(myuserida).child(ImageUploadId).setValue(imageUploadInfo);
 
                                     followerefernce.child(myuserida).addValueEventListener(new ValueEventListener() {

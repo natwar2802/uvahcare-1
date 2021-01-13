@@ -137,7 +137,12 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot1) {
                                     for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
-                                        holder.notifyreference1.child(dataSnapshot.getKey()).child(postkey).removeValue();
+                                        try{
+                                        holder.notifyreference1.child(dataSnapshot.getKey()).child(postkey).removeValue();}
+                                        catch (Exception e){}
+                                        try {
+                                            holder.notifyreference2.child(dataSnapshot.getKey()).child(postkey).removeValue();
+                                        }catch (Exception e){}
 
                                     }
 
@@ -189,7 +194,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
         });
         //final String postkey=postref.push().getKey();
 
-
+try{
         followerreference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -224,7 +229,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });}catch (Exception e){}
 
         holder.itemlayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -285,8 +290,13 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                         String bmuri=mlist.get(position).getUrlimage();
                         String bmpostid=mlist.get(position).getPid();
                         String blogerid=mlist.get(position).getBlogerid();
+                        String prefrence="prefernce";
+                        long data=System.currentTimeMillis();
+                        long rateno=0;
+                        float rating=0;
+                        int claps=0;
 
-                        modelGeneral info = new modelGeneral(bmtitle,bmbrief,bmuri,bmdis,bmpostid,blogerid);
+                        modelGeneral info = new modelGeneral(bmtitle,bmbrief,bmuri,bmdis,bmpostid,blogerid,prefrence,data,rateno,rating,claps);
                         //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
 
                         if(bookmarkchecker.equals(true)){
@@ -397,30 +407,27 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                 });
             }
         });
+        try{
         profilereference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 modelProfile modelp=snapshot.child(idbloger).getValue(modelProfile.class);
-                try{
+
                     String userp=modelp.getUsernameP();
                     String url=modelp.getImgUrlP();
 
                     holder.itemusername.setText(userp);
                     // String url=snapshot.child(idbloger).child("imgUrlP").getValue().toString();
                     Glide.with(context.getApplicationContext()).load(url).into(holder.itemprofilepic);
-                }catch(NullPointerException e){
-                    Log.e(TAG, e.toString());
                 }
 
 
-
-            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });}catch (Exception e){}
 /*        holder.btnupdateProfile.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {

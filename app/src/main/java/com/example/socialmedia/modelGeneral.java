@@ -1,26 +1,26 @@
 package com.example.socialmedia;
 
 public class modelGeneral {
-    String title,brief,urlimage,description,pid,blogerid;
+    String title,brief,urlimage,description,pid,blogerid,prefrence;
+    long datetime,rateno;
+    float rating;
 
     private int claps=0;
     public modelGeneral() {
     }
-    public modelGeneral(String title, String brief, String urlimage, String description,String pid,String blogerid) {
-        this.pid=pid;
+
+    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid, String prefrence, long datetime, long rateno, float rating, int claps) {
         this.title = title;
         this.brief = brief;
         this.urlimage = urlimage;
         this.description = description;
-        this.blogerid=blogerid;
-    }
-
-    public String getBlogerid() {
-        return blogerid;
-    }
-
-    public void setBlogerid(String blogerid) {
+        this.pid = pid;
         this.blogerid = blogerid;
+        this.prefrence = prefrence;
+        this.datetime = datetime;
+        this.rateno = rateno;
+        this.rating = rating;
+        this.claps = claps;
     }
 
     public String getTitle() {
@@ -55,16 +55,56 @@ public class modelGeneral {
         this.description = description;
     }
 
-    public int getClaps() {
-        return claps;
-    }
-
     public String getPid() {
         return pid;
     }
 
     public void setPid(String pid) {
         this.pid = pid;
+    }
+
+    public String getBlogerid() {
+        return blogerid;
+    }
+
+    public void setBlogerid(String blogerid) {
+        this.blogerid = blogerid;
+    }
+
+    public String getPrefrence() {
+        return prefrence;
+    }
+
+    public void setPrefrence(String prefrence) {
+        this.prefrence = prefrence;
+    }
+
+    public long getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(long datetime) {
+        this.datetime = datetime;
+    }
+
+    public long getRateno() {
+        return rateno;
+    }
+
+    public void setRateno(long rateno) {
+        this.rateno = rateno;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public int getClaps() {
+        return claps;
     }
 
     public void setClaps(int claps) {

@@ -42,8 +42,6 @@ import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -52,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference("hPost");
     private static MainActivity instance;
     FirebaseAuth mAuth;
-    DatabaseReference likesrefernce,notifyreference,ratingreference;
+    DatabaseReference likesrefernce,notifyreference;
     FirebaseDatabase database;
     Button btnmypost,btnbookmark;
     // Button btnshare;
@@ -82,11 +80,6 @@ public class MainActivity extends AppCompatActivity {
         //onStart();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         notifyreference = FirebaseDatabase.getInstance().getReference("notification");
-        likesrefernce= FirebaseDatabase.getInstance().getReference("likes");
-        ratingreference = FirebaseDatabase.getInstance().getReference("rating");
-
-
-
         cardView=findViewById(R.id.pic);
         if(user==null){
             startActivity(new Intent(MainActivity.this,loginActivity.class));
@@ -116,13 +109,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-   try{
-       notifyreference.child("new").child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int sum=0;
-                for (DataSnapshot dataSnapshot : snapshot.getChildren())
-                    sum=sum+(int)dataSnapshot.getChildrenCount();
+        try{
+            notifyreference.child("new").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    int sum=0;
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren())
+                        sum=sum+(int)dataSnapshot.getChildrenCount();
                     int notifcount = sum;
                     if (notifcount > 0) {
                         cardView.setVisibility(View.VISIBLE);
@@ -131,12 +124,12 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });}catch (Exception e){}
+                }
+            });}catch (Exception e){}
 
 
 
@@ -196,24 +189,12 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (mainch == 0) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
-
                         modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
                         arrayList.add(model);
-
-                     //   adapter.notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                     }
-                    Collections.sort(arrayList, new Comparator<modelGeneral>() {
-                        @Override
-                        public int compare(modelGeneral lhs,modelGeneral rhs) {
-
-                            // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-                            return lhs.getClaps()> rhs.getClaps()? -1 : (lhs.getClaps()< rhs.getClaps() ) ? 1 : 0;
-                        }
-                    });
 
                 }
-                adapter.notifyDataSetChanged();
                 mainch=1;
             }
             @Override
@@ -258,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("blogid",data.getBlogerid());
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
-               // finish();
+                // finish();
             }
 
         });
@@ -287,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Post Selected", Toast.LENGTH_SHORT).show();
                                 in=new Intent(getBaseContext(),newPost.class);
                                 startActivity(in);
-                              //  finish();
+                                //  finish();
                                 break;
                             case R.id.action_music:
                                 Log.i("matching", "matching inside1 bro" + id1);
@@ -348,8 +329,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-       //  FirebaseUser user=mAuth.getCurrentUser();
-       // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //  FirebaseUser user=mAuth.getCurrentUser();
+        // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
      /*   if(user==null){

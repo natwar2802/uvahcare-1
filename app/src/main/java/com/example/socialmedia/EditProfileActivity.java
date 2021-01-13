@@ -29,11 +29,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
-<<<<<<< HEAD
-public class EditProfileActivity extends AppCompatActivity{
-=======
-public class EditProfileActivity extends  MainActivity{
->>>>>>> e4d1de42881a6927028c1074bfe524749466a1c5
+public class EditProfileActivity extends  AppCompatActivity{
+
     Button  btnuploadProfile,btnNextPreference;
     EditText etNameProfile,etcityProfile,etcountryProfile;
     ImageView imgviewProfile;
@@ -46,11 +43,11 @@ public class EditProfileActivity extends  MainActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_edit_profile);
-        LinearLayout dynamicContent;
+        setContentView(R.layout.activity_edit_profile);
+        /*LinearLayout dynamicContent;
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_edit_profile, null);
-        dynamicContent.addView(wizard);
+        dynamicContent.addView(wizard);*/
         storageReferenceProfile = FirebaseStorage.getInstance().getReference("profile");
         databaseReferenceProfile = FirebaseDatabase.getInstance().getReference("profile");
         btnbrowseProfile = (ImageButton) findViewById(R.id.btnbrowseProfile);

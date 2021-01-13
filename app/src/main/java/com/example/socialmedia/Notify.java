@@ -52,7 +52,7 @@ public class Notify extends MainActivity{
         adapter2 = new myAdapterNotify(this, arrayList);
         recyclerViewnotify.setHasFixedSize(true);
         recyclerViewnotify.setLayoutManager(new LinearLayoutManager(this));
-         checknotify=0;
+        checknotify=0;
         // instance = this;
 
         // database = FirebaseDatabase.getInstance();
@@ -80,7 +80,7 @@ public class Notify extends MainActivity{
 
             }
         });*/
-   // checknotify=1;
+        // checknotify=1;
 
         root3.addValueEventListener(new ValueEventListener() {
             @Override
@@ -88,13 +88,13 @@ public class Notify extends MainActivity{
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-                    // modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
-                    //arrayList.add(model);
-                    String postid=dataSnapshot1.getKey();
-                    root2.child(dataSnapshot.getKey()).child(postid).setValue(true);
+                        // modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
+                        //arrayList.add(model);
+                        String postid=dataSnapshot1.getKey();
+                        root2.child(dataSnapshot.getKey()).child(postid).setValue(true);
                     }
 
-                   // arrayList.add(snapshot.getValue(modelGeneral.class));
+                    // arrayList.add(snapshot.getValue(modelGeneral.class));
                   /*  root1.child(postid).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -125,49 +125,49 @@ public class Notify extends MainActivity{
 
         root2.addValueEventListener(new ValueEventListener() {
 
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-               if(checknotify==0) {
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if(checknotify==0) {
+                                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                                    for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
 
-                        // modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
-                        //arrayList.add(model);
-                        String postid = dataSnapshot1.getKey();
-                        root1.child(postid).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                                Boolean chek = arrayList.contains(snapshot1.getValue(modelGeneral.class));
-                                if (chek == false) {
-                                    arrayList.add(snapshot1.getValue(modelGeneral.class));
+                                                        // modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
+                                                        //arrayList.add(model);
+                                                        String postid = dataSnapshot1.getKey();
+                                                        root1.child(postid).addValueEventListener(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                                                Boolean chek = arrayList.contains(snapshot1.getValue(modelGeneral.class));
+                                                                if (chek == false) {
+                                                                    arrayList.add(snapshot1.getValue(modelGeneral.class));
 
-                                    // adapter2.notifyDataSetChanged();
-                                }
-                                adapter2.notifyDataSetChanged();
+                                                                    // adapter2.notifyDataSetChanged();
+                                                                }
+                                                                adapter2.notifyDataSetChanged();
 
-                            }
+                                                            }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError error) {
 
-                            }
-                        });
+                                                            }
+                                                        });
 
 
-                    }}
+                                                    }}
 
-                    checknotify = 1;
-                }
-            }
+                                                checknotify = 1;
+                                            }
+                                        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        }
+                                        }
+                                    }
 
         );
-       adapter2.notifyDataSetChanged();
+        adapter2.notifyDataSetChanged();
 
         recyclerViewnotify.setAdapter(adapter2);
 
@@ -178,7 +178,7 @@ public class Notify extends MainActivity{
             public void onItemClick(modelGeneral data) {
                 Intent intent = new Intent(Notify.this, descriptionActivity.class);
                 // intent.putExtra("Arraylist",arrayList);
-              //  root2.child(data.blogerid).child(data.pid).setValue(false);
+                //  root2.child(data.blogerid).child(data.pid).setValue(false);
                 intent.putExtra("title", data.getTitle().toString());
                 intent.putExtra("Bdesc", data.getBrief().toString());
                 intent.putExtra("im", data.getUrlimage());
