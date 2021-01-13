@@ -12,7 +12,7 @@
         cardView:cardCornerRadius="20dp"
         cardView:cardElevation="8dp"
         android:layout_margin="15dp"
-        cardView:cardBackgroundColor="#ECF0F1"
+        cardView:cardBackgroundColor="#FFFFFF"
         >
         <LinearLayout
             android:layout_height="wrap_content"
@@ -34,7 +34,6 @@
                     android:innerRadius="0dp"
                     android:shape="ring"
                     android:thicknessRatio="1.9"
-                    cardView:cardBackgroundColor="#ECF0F1"
                     >
 
                     <!--<ImageView

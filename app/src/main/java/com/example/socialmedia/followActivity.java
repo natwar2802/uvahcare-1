@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class followActivity extends AppCompatActivity {
+public class followActivity extends MainActivity {
     RecyclerView recyclerViewfollow;
     myProfileAdapter adapterProfile;
     ArrayList<modelProfile> arrayListProfile;

@@ -59,8 +59,6 @@ public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myview
     FirebaseDatabase database;
 
 
-
-
     public myAdapterNotify(Context context, ArrayList<modelGeneral> mlist){
 
         this.context=context;

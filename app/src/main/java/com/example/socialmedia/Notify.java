@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Notify extends AppCompatActivity {
+public class Notify extends MainActivity{
 
     RecyclerView recyclerViewnotify;
     myAdapterNotify adapter2;

@@ -29,7 +29,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
-public class EditProfileActivity extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity{
     Button  btnuploadProfile,btnNextPreference;
     EditText etNameProfile,etcityProfile,etcountryProfile;
     ImageView imgviewProfile;
@@ -38,7 +38,7 @@ public class EditProfileActivity extends AppCompatActivity {
     StorageReference storageReferenceProfile;
     DatabaseReference databaseReferenceProfile;
     int Image_Request_Code_Profile = 7;
-    ProgressDialog progressDialogProfile ;
+    ProgressDialog progressDialogProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
