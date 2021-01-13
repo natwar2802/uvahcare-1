@@ -65,6 +65,8 @@ public class loginActivity extends AppCompatActivity {
                     return;
                 }
                 else {
+                    Intent intentO=new Intent(loginActivity.this,OtpVerification.class);
+                    startActivity(intentO);
 
                     loadingimage.setVisibility(View.VISIBLE);
 
@@ -76,6 +78,7 @@ public class loginActivity extends AppCompatActivity {
                                     .setCallbacks(mcallback)          // OnVerificationStateChangedCallbacks
                                     .build();
                     PhoneAuthProvider.verifyPhoneNumber(options);
+
 
                 }
 
@@ -136,9 +139,6 @@ public class loginActivity extends AppCompatActivity {
                             // FirebaseUser user = task.getResult().getUser();
                             // check=true;
                             Intent intent = new Intent(loginActivity.this, EditProfileActivity.class);
-                           // startActivity(intent);
-                           // finish();
-
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                              finish();

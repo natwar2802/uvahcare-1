@@ -1,5 +1,6 @@
 <LinearLayout android:layout_height="wrap_content"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/llf"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardView="http://schemas.android.com/tools">
@@ -11,7 +12,7 @@
         cardView:cardCornerRadius="20dp"
         cardView:cardElevation="8dp"
         android:layout_margin="15dp"
-        cardView:cardBackgroundColor="#FFFFFF"
+        cardView:cardBackgroundColor="#F0F3F4"
         >
         <LinearLayout
             android:layout_height="wrap_content"
@@ -34,15 +35,15 @@
                     android:shape="ring"
                     android:thicknessRatio="1.9"
                     >
-
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:src="@drawable/prof"
-                        android:layout_centerHorizontal="true"
                         android:id="@+id/itemprofilepicf"
-                        android:scaleType="fitXY">
-                    </ImageView>
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"
+                        cardView:ignore="MissingClass" />
+
                 </androidx.cardview.widget.CardView>
 
                 <TextView

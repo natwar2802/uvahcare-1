@@ -42,6 +42,7 @@ public class OtpVerification extends AppCompatActivity {
                 if (!verifcationCode.isEmpty()) {
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(OTP, verifcationCode);
                     signInWithPhoneAuthCredential(credential);
+
                 } else {
                     Toast.makeText(OtpVerification.this, "enter otp", Toast.LENGTH_SHORT);
                 }
