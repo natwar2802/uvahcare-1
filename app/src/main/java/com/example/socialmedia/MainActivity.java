@@ -225,7 +225,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
-
         adapter.setOnItemClickListener(new ClickListener<modelGeneral>() {
             @Override
             public void onItemClick(modelGeneral data) {
