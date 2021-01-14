@@ -58,34 +58,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
                 <TextView
-                    android:padding="8dp"
-                    android:layout_weight="4"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Username"
                     android:textColor="#000000"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:id="@+id/itemuserN"/>
-                <Button
-                    android:id="@+id/btnfollow"
-                    android:layout_weight="3"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:text="Follow"
-                    />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnfollow"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="follow" />
+                    </LinearLayout>
                 <ImageButton
-                    android:layout_weight="1"
                     android:scaleType="fitXY"
                     android:layout_marginTop="5dp"
                     android:id="@+id/imageButton"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/overflow"
                     android:backgroundTint="#FFFFFF"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+
                     android:layout_below="@+id/item_detail"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
@@ -104,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="16dp"
-                    android:paddingTop="16dp"
+                    android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
                     android:textColor="#000000"
@@ -212,15 +214,21 @@
                     android:scaleType="fitXY"
                     android:backgroundTint="#FFFFFF"
                     android:id="@+id/btnsharepost"
+                    android:layout_marginRight="10dp"
                     android:text="share"
                     />
 
-                    <Button
+
+                    <ImageButton
+                        android:src="@drawable/delete"
                         android:id="@+id/btndel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:visibility="gone"
+                        android:backgroundTint="#FFFFFF"
+                        android:scaleType="fitXY"
                         android:text="delete"
-                        android:visibility="gone" />
+                        />
                 </LinearLayout>
 
             </LinearLayout>

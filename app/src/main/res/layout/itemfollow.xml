@@ -12,7 +12,7 @@
         cardView:cardCornerRadius="20dp"
         cardView:cardElevation="8dp"
         android:layout_margin="15dp"
-        cardView:cardBackgroundColor="#F0F3F4"
+        cardView:cardBackgroundColor="#FFFFFF"
         >
         <LinearLayout
             android:layout_height="wrap_content"
@@ -26,7 +26,6 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="50dp"
                     android:id="@+id/pic"
-                    android:layout_weight="1"
                     android:layout_height="50dp"
                     android:elevation="12dp"
                     cardView:cardCornerRadius="25dp"
@@ -45,24 +44,29 @@
                         cardView:ignore="MissingClass" />
 
                 </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
 
                 <TextView
-                    android:padding="8dp"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Username"
-                    android:layout_weight="2"
-                    android:textSize="30sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
                     android:id="@+id/itemuserNf"/>
-
-
-                <Button
-                    android:id="@+id/btnfollowf"
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:id="@+id/btnfollowf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Follow"
-                    android:layout_weight="1"
                     />
+                </LinearLayout>
 
             </LinearLayout>
             <LinearLayout

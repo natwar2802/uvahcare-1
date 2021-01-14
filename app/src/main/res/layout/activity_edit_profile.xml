@@ -113,27 +113,19 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:orientation="horizontal">
-  <Button
-      android:layout_weight="1"
-      android:layout_margin="20dp"
-      android:layout_width="0dp"
-      android:visibility="invisible"
-      android:layout_height="wrap_content"
-      android:text="Browse"/>
-
-    <Button
-        android:layout_weight="1"
-        android:layout_margin="20dp"
+    <com.google.android.material.button.MaterialButton
+        android:layout_margin="10dp"
         android:id="@+id/updateProfile"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="update"
-        android:onClick="update"/>
+        android:onClick="update"
+        style="@style/Widget.MaterialComponents.Button.TextButton" />
     <Button
-        android:layout_weight="1"
-        android:layout_margin="20dp"
-        android:layout_width="0dp"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="next"
         android:id="@+id/nexttoPreference"/>
