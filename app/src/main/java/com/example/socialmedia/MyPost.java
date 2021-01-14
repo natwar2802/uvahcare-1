@@ -55,7 +55,6 @@ public class MyPost extends MainActivity {
         //recyclerView2.setAdapter(adapter2);
        // instance = this;
 
-
        // database = FirebaseDatabase.getInstance();
         FirebaseUser myuser= FirebaseAuth.getInstance().getCurrentUser();
         String myuserida=myuser.getUid();
