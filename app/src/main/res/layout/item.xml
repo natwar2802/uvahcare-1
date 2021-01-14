@@ -223,6 +223,7 @@
                         android:id="@+id/btndel"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:visibility="gone"
                         android:backgroundTint="#FFFFFF"
                         android:scaleType="fitXY"
                         android:text="delete"
