@@ -26,11 +26,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD
+
 public class followedBloggerActivity extends MainActivity {
-=======
-public class followedBloggerActivity extends  MainActivity{
->>>>>>> e4d1de42881a6927028c1074bfe524749466a1c5
+
     RecyclerView recyclerViewfollowed;
     myProfileAdapter adapterProfile;
     ArrayList<modelProfile> arrayListProfile;
@@ -82,8 +80,9 @@ public class followedBloggerActivity extends  MainActivity{
                             String usercountry=snapshot1.child("countryP").getValue().toString();
                             String usercity=snapshot1.child("cityP").getValue().toString();
                             String imgUrl=snapshot1.child("imgUrlP").getValue().toString();
+                            String aboutme=snapshot1.child("userdetail").getValue().toString();
 
-                            modelProfile modelp=new modelProfile(username,usercountry,usercity,imgUrl,id);
+                            modelProfile modelp=new modelProfile(username,usercountry,usercity,imgUrl,id,aboutme);
                             if(arrayListProfile.contains(modelp)){
                                 arrayListProfile.remove(modelp);
                             }

@@ -39,6 +39,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -184,12 +186,18 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
 
         super.onActivityResult(requestCode, resultCode, data);
 
+
+
         if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             FilePathUri = data.getData();
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
+               // Bitmap bmp = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 25, baos);
+                //byte[] data = baos.toByteArray();
                 imgview.setImageBitmap(bitmap);
             }
             catch (IOException e) {
@@ -209,13 +217,14 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     }
 
 
-    public void UploadImage() {
+    public void UploadImage()  {
 
         if (FilePathUri != null) {
 
             progressDialog.setTitle("Image is Uploading...");
             progressDialog.show();
             StorageReference storageReference2 = storageReference.child(System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
+
             storageReference2.putFile(FilePathUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -254,8 +263,8 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
                                     //String mobno=databaseReference.Auythecation(mobno);
 
                                     databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
-                                    databaseReference.child(ImageUploadId).child("datetime").setValue(data);
-                                    mypostdatabaseReference.child(myuserida).child(ImageUploadId).setValue(imageUploadInfo);
+                                   // databaseReference.child(ImageUploadId).child("datetime").setValue(data);
+                                    mypostdatabaseReference.child(myuserida).child(ImageUploadId).setValue(true);
 
                                     followerefernce.child(myuserida).addValueEventListener(new ValueEventListener() {
                                         @Override

@@ -26,15 +26,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD
+
 public class MyPost extends MainActivity {
-=======
-public class MyPost extends MainActivity{
->>>>>>> e4d1de42881a6927028c1074bfe524749466a1c5
+
     RecyclerView recyclerView2;
     myAdapter adapter2;
     ArrayList<modelGeneral> arrayList;
-    private DatabaseReference root1;
+    private DatabaseReference root1,root2;
     private static MainActivity instance;
     FirebaseAuth mAuth;
     DatabaseReference likesrefernce;
@@ -62,14 +60,29 @@ public class MyPost extends MainActivity{
         FirebaseUser myuser= FirebaseAuth.getInstance().getCurrentUser();
         String myuserida=myuser.getUid();
         root1 = FirebaseDatabase.getInstance().getReference("mypost").child(myuserida);
+        root2 = FirebaseDatabase.getInstance().getReference("hPost");
+
         //databaseReference=database.getReference("healthPost");
        // likesrefernce = database.getReference("likes");
+
         root1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
-                    arrayList.add(model);
+                    root2.child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                            modelGeneral model = snapshot1.getValue(modelGeneral.class);
+                            arrayList.add(model);
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
                    // recyclerView2.setAdapter(adapter2);
 
                 }
