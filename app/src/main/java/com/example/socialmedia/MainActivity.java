@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     CardView cardView;
     //int Natwar=0;
     int mainch=0;
+    private static final String TAG = "xyz";
+
 
     //@SuppressLint("WrongViewCast")
     @Override
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
         btnshare=findViewById(R.id.btnsharepost);
         displaynotifcount=findViewById(R.id.displynotifycount);
         obj=new MainActivity();
+
+        String sharelinktext="https://healthappinnovation.page.link";
 
         bellnotify=findViewById(R.id.bellnotify);
         //onStart();
@@ -154,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
         //pager.setAdapter(adapter);
         //setProfileInPost();
+
         Dynamiclink();
         // CategoryAdapter categoryAdapter=new CategoryAdapter(this,)
        /* btnmypost.setOnClickListener(new View.OnClickListener() {
@@ -368,15 +373,63 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
     private void Dynamiclink() {
+
         FirebaseDynamicLinks.getInstance().getDynamicLink(getIntent()).addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
             @Override
             public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
                 Uri deeplink=null;
+
                 if(pendingDynamicLinkData!=null){
                     deeplink=pendingDynamicLinkData.getLink();
+                   // deeplink.toString();
+
+
+                    String s= deeplink.toString();
+                    Log.e(TAG,s);
+                    Toast.makeText(getApplicationContext(),"Hello"+s,Toast.LENGTH_LONG).show();
+
+                    int i;
+                    int count=0;
+                    for(i=s.length()-1;i>=0;i--)
+                    {
+                        char c=s.charAt(i);
+                        if(c=='/'){
+                            count++;
+                            if(count==2)
+                            break;}
+                    }
+                    String id=s.substring(i+1,s.length()-1);
+                    Log.e(TAG,id);
+                   DatabaseReference postref=FirebaseDatabase.getInstance().getReference("hPost");
+                    try {
+                        postref.child(id).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                modelGeneral data = snapshot.getValue(modelGeneral.class);
+                                Intent intent = new Intent(MainActivity.this, descriptionActivity.class);
+                                intent.putExtra("title", data.getTitle().toString());
+                                intent.putExtra("Bdesc", data.getBrief().toString());
+                                intent.putExtra("im", data.getUrlimage());
+                                intent.putExtra("Ddesc", data.getDescription());
+                                intent.putExtra("postkey", data.getPid());
+                                intent.putExtra("blogid", data.getBlogerid());
+                                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }catch (Exception e){}
+
+                    //Intent intent=new Intent(MainActivity.this,profileActivity .class);
+                    // startActivity(intent);
                 }
 
-
+                 //    Intent intent=new Intent(MainActivity.this,profileActivity.class);
+                 // startActivity(intent);
             }
         }).addOnFailureListener(this, new OnFailureListener() {
             @Override

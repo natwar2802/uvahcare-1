@@ -38,6 +38,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -329,20 +331,34 @@ try{
         });
 
 
+
+
        holder.hbtnsharepost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BitmapDrawable bitmapDrawable=(BitmapDrawable)holder.img.getDrawable();
+                DynamicLink link = FirebaseDynamicLinks.getInstance()
+                        .createDynamicLink()
+                        .setLink(Uri.parse("https://"+postkey+"/"))
+                        .setDomainUriPrefix("https://healthappinnovation.page.link")
+                        .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.socialmedia").build())
 
-                if(bitmapDrawable==null){
-                    //post without image
-                    shareTextOnly(holder.title,holder.descrip);
-                }
-                else{
-                    //post with the image
-                    Bitmap bitmap=bitmapDrawable.getBitmap();
-                    shareTextAndImage(holder.title,holder.descrip,bitmap);
-                }
+                        .buildDynamicLink();
+
+                Uri dynamic=link.getUri();
+
+                Log.e("link","hello"+link.getUri());
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        intent.putExtra(Intent.EXTRA_TEXT, link.getUri().toString());
+                        context.startActivity(Intent.createChooser(intent, "Share Link"));
+
+              //  Uri domain=mlist.get(position).getPid().to;
+              //  taskSnapshot.getDownloadUrl()
+
+              //  BitmapDrawable bitmapDrawable=(BitmapDrawable)holder.img.getDrawable();
+
+              //  onShareClicked();
+
             }
 
 
@@ -476,6 +492,17 @@ try{
         });
 
     }
+   /* private void onShareClicked() {
+
+
+        Uri link = DynamicLinksUtil.generateContentLink(mlist.);
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, link.toString());
+
+        context.startActivity(Intent.createChooser(intent, "Share Link"));
+    }*/
 
     private void shareTextAndImage(TextView title, TextView descrip, Bitmap bitmap) {
         String shareBody=title + "\n" + descrip;
@@ -688,6 +715,8 @@ try{
             }
         });
     }*/
+
+
 
 
 
