@@ -2,6 +2,7 @@ package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 import android.app.ProgressDialog;
@@ -24,6 +25,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -63,6 +65,24 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // setContentView(R.layout.activity_new_post);
+        TextView txt=(TextView) findViewById(R.id.select_text);
+        LinearLayout l=(LinearLayout) findViewById(R.id.newdefense);
+        txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                l.setVisibility(View.VISIBLE);
+                for(int i=0;i<l.getChildCount();i++)
+                {
+                    LinearLayout l1=(LinearLayout)(l.getChildAt(i));
+                    for(int j=0;j<l1.getChildCount();j++)
+                    {
+                        CardView c=(CardView)(l1.getChildAt(j));
+                        TextView t = ((TextView) c.getChildAt(0));
+                        t.setTextSize(20);
+                    }
+                }
+            }
+        });
 
         LinearLayout dynamicContent;
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
