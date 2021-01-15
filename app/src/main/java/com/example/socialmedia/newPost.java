@@ -67,6 +67,24 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // setContentView(R.layout.activity_new_post);
+        TextView txt=(TextView) findViewById(R.id.select_text);
+        LinearLayout l=(LinearLayout) findViewById(R.id.newdefense);
+        txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                l.setVisibility(View.VISIBLE);
+                for(int i=0;i<l.getChildCount();i++)
+                {
+                    LinearLayout l1=(LinearLayout)(l.getChildAt(i));
+                    for(int j=0;j<l1.getChildCount();j++)
+                    {
+                        CardView c=(CardView)(l1.getChildAt(j));
+                        TextView t = ((TextView) c.getChildAt(0));
+                        t.setTextSize(20);
+                    }
+                }
+            }
+        });
 
         LinearLayout dynamicContent;
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
