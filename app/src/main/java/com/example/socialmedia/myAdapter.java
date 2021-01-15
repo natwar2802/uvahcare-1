@@ -312,11 +312,12 @@ try{
                         String blogerid=mlist.get(position).getBlogerid();
                         String prefrence="prefernce";
                         long data=System.currentTimeMillis();
-                        long rateno=0;
+                        long ratesum=0;
                         float rating=0;
                         int claps=0;
+                        double postscore=0;
 
-                        modelGeneral info = new modelGeneral(bmtitle,bmbrief,bmuri,bmdis,bmpostid,blogerid,prefrence,data,rateno,rating,claps);
+                        modelGeneral info = new modelGeneral(bmtitle,bmbrief,bmuri,bmdis,bmpostid,blogerid,prefrence,data,ratesum,rating,claps,postscore);
                         //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
 
                         if(bookmarkchecker.equals(true)){

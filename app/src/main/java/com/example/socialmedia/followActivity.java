@@ -86,8 +86,10 @@ public class followActivity extends MainActivity {
                             String usercity=snapshot1.child("cityP").getValue().toString();
                             String imgUrl=snapshot1.child("imgUrlP").getValue().toString();
                             String aboutme=snapshot1.child("userdetail").getValue().toString();
+                            ArrayList<String> userPreference = new ArrayList<String>();
+                            userPreference.add("userPreference");
 
-                            modelProfile modelp=new modelProfile(username,usercountry,usercity,imgUrl,id,aboutme);
+                            modelProfile modelp=new modelProfile(username,usercountry,usercity,imgUrl,id,aboutme,userPreference);
                              if(arrayListProfile.contains(modelp)){
                                  arrayListProfile.remove(modelp);
                              }

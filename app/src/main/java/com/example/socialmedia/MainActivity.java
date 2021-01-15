@@ -34,6 +34,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -225,7 +226,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        root.addValueEventListener(new ValueEventListener() {
+
+        Query myTopPostsQuery = database.getReference("hPost")
+                .orderByChild("datetime");
+        myTopPostsQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int count=0,insert=0;
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    count++;
+                   modelGeneral modelg= postSnapshot.getValue(modelGeneral.class);
+                  // if(modelg.getPrefrence().equals())
+                    arrayList.add(0,postSnapshot.getValue(modelGeneral.class));
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        });
+
+
+
+     /*   root.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -243,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
 
 /*        btnshare.setOnClickListener(new View.OnClickListener() {

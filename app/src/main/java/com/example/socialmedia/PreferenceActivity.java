@@ -22,10 +22,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PreferenceActivity extends AppCompatActivity {
     Button btnNextMain;
+    ArrayList<String> temp=new ArrayList<String>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,41 +39,53 @@ public class PreferenceActivity extends AppCompatActivity {
         View wizard = getLayoutInflater().inflate(R.layout.activity_preference, null);
         dynamicContent.addView(wizard);*/
         btnNextMain=findViewById(R.id.nexttoMain);
+        LinearLayout l=findViewById(R.id.defense);
+        FirebaseUser userpreference1= FirebaseAuth.getInstance().getCurrentUser();
+        String idpreference1=userpreference1.getUid();
+        DatabaseReference prefeference1= FirebaseDatabase.getInstance().getReference("profile").child(idpreference1).child("userPreference");
+
+
         btnNextMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+           prefeference1.setValue(temp);
+
                 Intent i = new Intent(PreferenceActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
-       LinearLayout l=findViewById(R.id.defense);
-        for(int i=0;i<l.getChildCount();i++)
-        {
-            LinearLayout l1=(LinearLayout)(l.getChildAt(i));
-            for(int j=0;j<l1.getChildCount();j++)
-            {
-                CardView c=(CardView)(l1.getChildAt(j));
-                TextView t = ((TextView) c.getChildAt(0));
-                String k=t.getText().toString();
-                DatabaseReference prefeference= FirebaseDatabase.getInstance().getReference("preference");
-                FirebaseUser userpreference= FirebaseAuth.getInstance().getCurrentUser();
-                String idpreference=userpreference.getUid();
-                prefeference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.child(k).hasChild(idpreference)){
+        try{
+        prefeference1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                 temp= (ArrayList<String>) snapshot.getValue();
+
+
+                for(int i=0;i<l.getChildCount();i++)
+                {
+                    LinearLayout l1=(LinearLayout)(l.getChildAt(i));
+                    for(int j=0;j<l1.getChildCount();j++)
+                    {
+                        CardView c=(CardView)(l1.getChildAt(j));
+                        TextView t = ((TextView) c.getChildAt(0));
+                        String k=t.getText().toString();
+
+                        if(temp.contains(k)){
                             c.setCardBackgroundColor(Color.parseColor("#B388FF"));
+
                         }
                     }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                }
 
             }
-        }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });}catch (Exception e){}
+
         for(int i=0;i<l.getChildCount();i++)
         {
             LinearLayout l1=(LinearLayout)(l.getChildAt(i));
@@ -87,21 +103,35 @@ public class PreferenceActivity extends AppCompatActivity {
         CardView c=(CardView)findViewById(view.getId());
         TextView t = ((TextView) c.getChildAt(0));
         String k=t.getText().toString();
+
+        if(temp.contains(k)){
+            c.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+            temp.remove(k);
+
+        }
+        else {
+            c.setCardBackgroundColor(Color.parseColor("#B388FF"));
+            temp.add(k);
+        }}
+
+
         //List<String> l2=MainActivity.getInstance().pref;
 
-        DatabaseReference prefeference= FirebaseDatabase.getInstance().getReference("preference");
-        FirebaseUser userpreference= FirebaseAuth.getInstance().getCurrentUser();
+        //DatabaseReference prefeference= FirebaseDatabase.getInstance().getReference("preference");
+       /* FirebaseUser userpreference= FirebaseAuth.getInstance().getCurrentUser();
         String idpreference=userpreference.getUid();
+        DatabaseReference prefeference= FirebaseDatabase.getInstance().getReference("profile").child(idpreference).child("userPreference");
+
         prefeference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child(k).hasChild(idpreference)){
                     c.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
-                    prefeference.child(k).child(idpreference).removeValue();
+                    prefeference.child(k).removeValue();
                 }
                 else{
                     c.setCardBackgroundColor(Color.parseColor("#B388FF"));
-                    prefeference.child(k).child(idpreference).setValue(true);
+                    prefeference.child(k).setValue(true);
                 }
             }
 
@@ -109,8 +139,7 @@ public class PreferenceActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
 
     }
-}
