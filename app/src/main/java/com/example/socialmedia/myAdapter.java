@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -120,19 +121,25 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
        if(ch==1){
             holder.btndel.setVisibility(View.VISIBLE);
             holder.btndel.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
 
 
                     holder.mypostref.addValueEventListener(new ValueEventListener() {
+
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            try{
 
                             holder.mypostref.child(curentUserId).child(postkey).removeValue();
                             holder.postref3.child(postkey).removeValue();
                             holder.bookmarkref.child(curentUserId).child(postkey).removeValue();
                             holder.likesref.child(postkey).removeValue();
                             holder.referencerate.child(postkey).removeValue();
+                            }catch (Exception e){
+
+                            }
 
 
                             mlist.remove(position);
@@ -140,12 +147,14 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot1) {
                                     for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
-                                        try{
-                                        holder.notifyreference1.child(dataSnapshot.getKey()).child(postkey).removeValue();}
-                                        catch (Exception e){}
+                                        try {
+                                            holder.notifyreference1.child(dataSnapshot.getKey()).child(postkey).removeValue();
+                                        } catch (Exception e) {
+                                        }
                                         try {
                                             holder.notifyreference2.child(dataSnapshot.getKey()).child(postkey).removeValue();
-                                        }catch (Exception e){}
+                                        } catch (Exception e) {
+                                        }
 
                                     }
 
@@ -177,7 +186,15 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
         holder.mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reportreference.child(postkey).child(curentUserId).setValue(true);
+                holder.cardView_report.setVisibility(View.VISIBLE);
+                holder.report.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        holder.cardView_report.setVisibility(View.GONE);
+                        reportreference.child(postkey).child(curentUserId).setValue(true);
+                    }
+                });
+               
             }
         });
 
@@ -574,10 +591,14 @@ try{
         ImageView profilepic;
 
         ImageView itemprofilepic;
-        TextView itemusername,displayclap;
+        TextView itemusername,displayclap,report;
         Button btnrating;
         TextView displayrate;
+
         ImageButton btndel;
+
+       // Button btndel;
+        CardView cardView_report;
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);
@@ -589,7 +610,7 @@ try{
             likesref=database.getReference("likes");
             bookmarkref=database.getReference("bookmark");
             displayrate=itemView.findViewById(R.id.displayrate);
-
+            report=itemView.findViewById(R.id.report);
             img=(ImageView) itemView.findViewById(R.id.img1);
             title=(TextView) itemView.findViewById(R.id.title1);
             descrip=(TextView) itemView.findViewById(R.id.desc1);
@@ -608,7 +629,7 @@ try{
             btnfollow=itemView.findViewById(R.id.btnfollow);
             referencerate= FirebaseDatabase.getInstance().getReference("rating");
             btndel=itemView.findViewById(R.id.btndel);
-
+            cardView_report= itemView.findViewById(R.id.cardview_report);
             displayclap=itemView.findViewById(R.id.displayclap);
             universal = FirebaseDatabase.getInstance().getReference();
 

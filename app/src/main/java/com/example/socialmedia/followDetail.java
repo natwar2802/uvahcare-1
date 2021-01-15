@@ -75,15 +75,19 @@ public class followDetail extends MainActivity {
         root1 = FirebaseDatabase.getInstance().getReference("mypost").child(blogerid);
         //databaseReference=database.getReference("healthPost");
         // likesrefernce = database.getReference("likes");
+
         root1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    try {
+
+
                     modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
                     arrayList.add(model);
-
+                    adapter2.notifyDataSetChanged();}catch (Exception e){}
                 }
-                adapter2.notifyDataSetChanged();
+
             }
 
             @Override
