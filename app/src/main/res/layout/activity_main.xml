@@ -9,15 +9,16 @@
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/grey"
+        android:layout_marginLeft="5dp"
+        android:background="@color/teal_200"
         xmlns:cardView="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_marginLeft="5dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_marginTop="5dp"
+
+            android:layout_height="40dp"
             android:src="@drawable/logo"
             android:layout_alignParentLeft="true"
             android:scaleType="fitXY"
@@ -28,7 +29,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
             android:scaleType="fitXY"
             android:src="@drawable/search" />-->
         <SearchView
@@ -46,10 +48,11 @@
             />
        <!-- <EditText
             android:id="@+id/search_bar"
+            android:hint="Search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:visibility="gone"/>
             -->
 
@@ -57,16 +60,15 @@
 
         <ImageView
             android:layout_width="40dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:src="@drawable/bell"
             android:layout_alignParentRight="true"
             android:id="@+id/bellnotify"
             android:scaleType="fitXY"></ImageView>
         <androidx.cardview.widget.CardView
-            android:layout_width="30dp"
+            android:layout_width="20dp"
             android:id="@+id/pic"
-            android:layout_height="30dp"
-            android:elevation="12dp"
+            android:layout_height="20dp"
             android:visibility="gone"
             android:layout_alignParentRight="true"
             cardView:cardCornerRadius="50dp"
@@ -79,7 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/displynotifycount"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:layout_marginLeft="2dp"
                 android:textColor="#FFFFFF" />
         </androidx.cardview.widget.CardView>
 
