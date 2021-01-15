@@ -134,6 +134,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                             holder.likesref.child(postkey).removeValue();
                             holder.referencerate.child(postkey).removeValue();
 
+
                             mlist.remove(position);
                             holder.followerefernce1.child(curentUserId).addValueEventListener(new ValueEventListener() {
                                 @Override
@@ -470,9 +471,11 @@ try{
                    holder.displayrate.setText(avr);
                     }*/
 
-                      try{  Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
+                      try{
+                          Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
                        double sum=sum1.doubleValue();
                         float avrate=((float) sum)/n;
+                        holder.postref3.child(postkey).child("rating").setValue(avrate);
                         String avr=Float.toString(avrate);
                         holder.displayrate.setText(avr);
                       }catch (Exception e){}
@@ -561,7 +564,7 @@ try{
         ImageView img,img2;
         LinearLayout itemlayout;
         TextView title,title2,descrip,descrip2,likeddisplay;
-        DatabaseReference likesref,bookmarkref,profileref, referencerate,mypostref,postref3,followerefernce1,notifyreference1,notifyreference2;
+        DatabaseReference likesref,bookmarkref,profileref, referencerate,mypostref,postref3,followerefernce1,notifyreference1,notifyreference2,universal;
         FirebaseDatabase database;
         ImageButton btnbookmark,mImageButton,inc,hbtnsharepost;
         int likescount;
@@ -574,7 +577,7 @@ try{
         TextView itemusername,displayclap;
         Button btnrating;
         TextView displayrate;
-        Button btndel;
+        ImageButton btndel;
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);
@@ -607,6 +610,7 @@ try{
             btndel=itemView.findViewById(R.id.btndel);
 
             displayclap=itemView.findViewById(R.id.displayclap);
+            universal = FirebaseDatabase.getInstance().getReference();
 
             mypostref = FirebaseDatabase.getInstance().getReference("mypost");
             postref3 = FirebaseDatabase.getInstance().getReference("hPost");

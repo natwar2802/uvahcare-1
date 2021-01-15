@@ -22,21 +22,36 @@
             android:layout_alignParentLeft="true"
             android:scaleType="fitXY"
             />
-        <ImageView
+        <!--<ImageView
+
             android:id="@+id/search_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="70dp"
             android:scaleType="fitXY"
-            android:src="@drawable/search" />
-        <EditText
+            android:src="@drawable/search" />-->
+        <SearchView
+            android:id="@+id/search_"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="70dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/search"
+            android:title="search data"
+            app:showAsAction="always"
+
+            app:actionViewClass="android.widget.SearchView"
+            />
+       <!-- <EditText
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
             android:layout_marginRight="50dp"
             android:visibility="gone"/>
+            -->
 
 
 

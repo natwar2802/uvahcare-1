@@ -73,6 +73,7 @@ public class MyPost extends MainActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot1) {
                             modelGeneral model = snapshot1.getValue(modelGeneral.class);
                             arrayList.add(model);
+                            adapter2.notifyDataSetChanged();
 
                         }
 
@@ -85,7 +86,7 @@ public class MyPost extends MainActivity {
                    // recyclerView2.setAdapter(adapter2);
 
                 }
-                adapter2.notifyDataSetChanged();
+
             }
 
             @Override

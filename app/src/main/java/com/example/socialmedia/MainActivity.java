@@ -16,11 +16,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btnshare;
     MainActivity obj;
     TextView displaynotifcount;
+    SearchView search_;
     CardView cardView;
+   // EditText searchbar;
     //int Natwar=0;
     int mainch=0;
     private static final String TAG = "xyz";
@@ -75,13 +80,17 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_SocialMedia);
         setContentView(R.layout.activity_main);
         btnshare=findViewById(R.id.btnsharepost);
+        search_=findViewById(R.id.search_);
+       // searchbar=findViewById(R.id.search_bar);
         displaynotifcount=findViewById(R.id.displynotifycount);
         obj=new MainActivity();
 
         String sharelinktext="https://healthappinnovation.page.link";
 
         bellnotify=findViewById(R.id.bellnotify);
+
         //onStart();
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         notifyreference = FirebaseDatabase.getInstance().getReference("notification");
         cardView=findViewById(R.id.pic);
@@ -175,6 +184,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });*/
+
+
+        search_.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                processearch(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                processearch(s);
+                return false;
+            }
+
+
+        });
 
         bellnotify.setOnClickListener(new View.OnClickListener() {
 
@@ -330,9 +356,7 @@ public class MainActivity extends AppCompatActivity {
         shareintent.putExtra(Intent.EXTRA_TEXT,shareBody);
         startActivity(Intent.createChooser(shareintent,"share via"));
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
+
         //  FirebaseUser user=mAuth.getCurrentUser();
         // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -364,7 +388,21 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
         // Dynamiclink();
-    }
+       
+           // SearchView searchView=(SearchView)item.getActionView();
+            
+
+
+           
+
+
+        private void processearch(String s) {
+            FirebaseRecyclerOptions<modelGeneral> options=new FirebaseRecyclerOptions.Builder<modelGeneral>().setQuery(FirebaseDatabase.getInstance().getReference().child("hPost").orderByChild("title").startAt(s).endAt(s+"ufaff"),modelGeneral.class).build();
+
+            recyclerView.setAdapter(adapter);
+        }
+
+    
 
     public void postN(View view) {
         Intent i = new Intent(MainActivity.this, newPost.class);
@@ -412,6 +450,7 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("Ddesc", data.getDescription());
                                 intent.putExtra("postkey", data.getPid());
                                 intent.putExtra("blogid", data.getBlogerid());
+                                intent.putExtra("rating",data.getRating());
                                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                 startActivity(intent);
                             }
@@ -438,6 +477,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
+   
 }
