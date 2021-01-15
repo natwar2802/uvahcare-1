@@ -183,7 +183,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                         reportreference.child(postkey).child(curentUserId).setValue(true);
                     }
                 });
-               
+
             }
         });
 
