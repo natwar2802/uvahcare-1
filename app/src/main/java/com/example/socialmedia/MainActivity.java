@@ -16,11 +16,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +34,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
@@ -65,9 +70,13 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btnshare;
     MainActivity obj;
     TextView displaynotifcount;
+    SearchView search_;
     CardView cardView;
+   // EditText searchbar;
     //int Natwar=0;
     int mainch=0;
+    private static final String TAG = "xyz";
+
 
     //@SuppressLint("WrongViewCast")
     @Override
@@ -76,11 +85,17 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_SocialMedia);
         setContentView(R.layout.activity_main);
         btnshare=findViewById(R.id.btnsharepost);
+        search_=findViewById(R.id.search_);
+       // searchbar=findViewById(R.id.search_bar);
         displaynotifcount=findViewById(R.id.displynotifycount);
         obj=new MainActivity();
 
+        String sharelinktext="https://healthappinnovation.page.link";
+
         bellnotify=findViewById(R.id.bellnotify);
+
         //onStart();
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         notifyreference = FirebaseDatabase.getInstance().getReference("notification");
         cardView=findViewById(R.id.pic);
@@ -157,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
         //pager.setAdapter(adapter);
         //setProfileInPost();
+
         Dynamiclink();
         // CategoryAdapter categoryAdapter=new CategoryAdapter(this,)
        /* btnmypost.setOnClickListener(new View.OnClickListener() {
@@ -173,6 +189,30 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });*/
+    search_.setOnCloseListener(new SearchView.OnCloseListener() {
+        @Override
+        public boolean onClose() {
+            Intent intent=new Intent(MainActivity.this,MainActivity.class);
+            startActivity(intent);
+            return false;
+        }
+    });
+
+        search_.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                processearch(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                processearch(s);
+                return false;
+            }
+
+
+        });
 
         bellnotify.setOnClickListener(new View.OnClickListener() {
 
@@ -186,7 +226,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        root.addValueEventListener(new ValueEventListener() {
+
+        Query myTopPostsQuery = database.getReference("hPost")
+                .orderByChild("datetime");
+        myTopPostsQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int count=0,insert=0;
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    count++;
+                   modelGeneral modelg= postSnapshot.getValue(modelGeneral.class);
+                  // if(modelg.getPrefrence().equals())
+                    arrayList.add(0,postSnapshot.getValue(modelGeneral.class));
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        });
+
+
+
+     /*   root.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -204,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
 
 /*        btnshare.setOnClickListener(new View.OnClickListener() {
@@ -329,9 +395,7 @@ public class MainActivity extends AppCompatActivity {
         shareintent.putExtra(Intent.EXTRA_TEXT,shareBody);
         startActivity(Intent.createChooser(shareintent,"share via"));
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
+
         //  FirebaseUser user=mAuth.getCurrentUser();
         // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -363,7 +427,45 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
         // Dynamiclink();
-    }
+       
+           // SearchView searchView=(SearchView)item.getActionView();
+            
+
+
+           
+
+
+        private void processearch(String s) {
+          //  FirebaseRecyclerOptions<modelGeneral> options=new FirebaseRecyclerOptions.Builder<modelGeneral>().setQuery(FirebaseDatabase.getInstance().getReference().child("hPost").orderByChild("title").startAt(s).endAt(s+"\uf8ff"),modelGeneral.class).build();
+
+
+           // recyclerView.setAdapter(adapter);
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+            Query query = reference.child("hPost").orderByChild("title").startAt(s).endAt(s+"\uf8ff");
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+
+                        for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                            // do with your result
+                            arrayList.add(0,issue.getValue(modelGeneral.class));
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+        }
+
+    
 
     public void postN(View view) {
         Intent i = new Intent(MainActivity.this, newPost.class);
@@ -371,15 +473,64 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
     private void Dynamiclink() {
+
         FirebaseDynamicLinks.getInstance().getDynamicLink(getIntent()).addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
             @Override
             public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
                 Uri deeplink=null;
+
                 if(pendingDynamicLinkData!=null){
                     deeplink=pendingDynamicLinkData.getLink();
+                   // deeplink.toString();
+
+
+                    String s= deeplink.toString();
+                    Log.e(TAG,s);
+                    Toast.makeText(getApplicationContext(),"Hello"+s,Toast.LENGTH_LONG).show();
+
+                    int i;
+                    int count=0;
+                    for(i=s.length()-1;i>=0;i--)
+                    {
+                        char c=s.charAt(i);
+                        if(c=='/'){
+                            count++;
+                            if(count==2)
+                            break;}
+                    }
+                    String id=s.substring(i+1,s.length()-1);
+                    Log.e(TAG,id);
+                   DatabaseReference postref=FirebaseDatabase.getInstance().getReference("hPost");
+                    try {
+                        postref.child(id).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                modelGeneral data = snapshot.getValue(modelGeneral.class);
+                                Intent intent = new Intent(MainActivity.this, descriptionActivity.class);
+                                intent.putExtra("title", data.getTitle().toString());
+                                intent.putExtra("Bdesc", data.getBrief().toString());
+                                intent.putExtra("im", data.getUrlimage());
+                                intent.putExtra("Ddesc", data.getDescription());
+                                intent.putExtra("postkey", data.getPid());
+                                intent.putExtra("blogid", data.getBlogerid());
+                                intent.putExtra("rating",data.getRating());
+                                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }catch (Exception e){}
+
+                    //Intent intent=new Intent(MainActivity.this,profileActivity .class);
+                    // startActivity(intent);
                 }
 
-
+                 //    Intent intent=new Intent(MainActivity.this,profileActivity.class);
+                 // startActivity(intent);
             }
         }).addOnFailureListener(this, new OnFailureListener() {
             @Override
@@ -388,8 +539,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
 
 }

@@ -77,6 +77,7 @@ public class BookMarkPost extends MainActivity{
                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
                                modelGeneral model = snapshot1.getValue(modelGeneral.class);
                                arrayList.add(model);
+                               adapter2.notifyDataSetChanged();
                            }
 
                            @Override
@@ -88,7 +89,7 @@ public class BookMarkPost extends MainActivity{
 
                }
 
-               adapter2.notifyDataSetChanged();
+
            }
            bookch=1;
            }

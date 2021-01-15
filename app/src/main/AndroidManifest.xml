@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:launchMode = "singleTop"
+        android:launchMode="singleTop"
         android:theme="@style/Theme.SocialMedia">
         <activity android:name=".Notify"></activity>
         <activity android:name=".followedBloggerActivity" />
@@ -31,19 +31,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="heathinnovation"
-                    android:scheme="http" />
-                <data
-                    android:host="heathinnovation"
-                    android:scheme="https" />
+                    android:scheme="https"
+                    android:host="healthappinnovation.page.link" />
             </intent-filter>
+
         </activity>
 
         <provider

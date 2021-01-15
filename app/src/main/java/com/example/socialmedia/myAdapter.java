@@ -39,6 +39,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -119,31 +121,40 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
        if(ch==1){
             holder.btndel.setVisibility(View.VISIBLE);
             holder.btndel.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
 
 
                     holder.mypostref.addValueEventListener(new ValueEventListener() {
+
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            try{
 
                             holder.mypostref.child(curentUserId).child(postkey).removeValue();
                             holder.postref3.child(postkey).removeValue();
                             holder.bookmarkref.child(curentUserId).child(postkey).removeValue();
                             holder.likesref.child(postkey).removeValue();
                             holder.referencerate.child(postkey).removeValue();
+                            }catch (Exception e){
+
+                            }
+
 
                             mlist.remove(position);
                             holder.followerefernce1.child(curentUserId).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot1) {
                                     for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
-                                        try{
-                                        holder.notifyreference1.child(dataSnapshot.getKey()).child(postkey).removeValue();}
-                                        catch (Exception e){}
+                                        try {
+                                            holder.notifyreference1.child(dataSnapshot.getKey()).child(postkey).removeValue();
+                                        } catch (Exception e) {
+                                        }
                                         try {
                                             holder.notifyreference2.child(dataSnapshot.getKey()).child(postkey).removeValue();
-                                        }catch (Exception e){}
+                                        } catch (Exception e) {
+                                        }
 
                                     }
 
@@ -301,11 +312,12 @@ try{
                         String blogerid=mlist.get(position).getBlogerid();
                         String prefrence="prefernce";
                         long data=System.currentTimeMillis();
-                        long rateno=0;
+                        long ratesum=0;
                         float rating=0;
                         int claps=0;
+                        double postscore=0;
 
-                        modelGeneral info = new modelGeneral(bmtitle,bmbrief,bmuri,bmdis,bmpostid,blogerid,prefrence,data,rateno,rating,claps);
+                        modelGeneral info = new modelGeneral(bmtitle,bmbrief,bmuri,bmdis,bmpostid,blogerid,prefrence,data,ratesum,rating,claps,postscore);
                         //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
 
                         if(bookmarkchecker.equals(true)){
@@ -338,20 +350,34 @@ try{
         });
 
 
+
+
        holder.hbtnsharepost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BitmapDrawable bitmapDrawable=(BitmapDrawable)holder.img.getDrawable();
+                DynamicLink link = FirebaseDynamicLinks.getInstance()
+                        .createDynamicLink()
+                        .setLink(Uri.parse("https://"+postkey+"/"))
+                        .setDomainUriPrefix("https://healthappinnovation.page.link")
+                        .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.socialmedia").build())
 
-                if(bitmapDrawable==null){
-                    //post without image
-                    shareTextOnly(holder.title,holder.descrip);
-                }
-                else{
-                    //post with the image
-                    Bitmap bitmap=bitmapDrawable.getBitmap();
-                    shareTextAndImage(holder.title,holder.descrip,bitmap);
-                }
+                        .buildDynamicLink();
+
+                Uri dynamic=link.getUri();
+
+                Log.e("link","hello"+link.getUri());
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        intent.putExtra(Intent.EXTRA_TEXT, link.getUri().toString());
+                        context.startActivity(Intent.createChooser(intent, "Share Link"));
+
+              //  Uri domain=mlist.get(position).getPid().to;
+              //  taskSnapshot.getDownloadUrl()
+
+              //  BitmapDrawable bitmapDrawable=(BitmapDrawable)holder.img.getDrawable();
+
+              //  onShareClicked();
+
             }
 
 
@@ -463,9 +489,11 @@ try{
                    holder.displayrate.setText(avr);
                     }*/
 
-                      try{  Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
+                      try{
+                          Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
                        double sum=sum1.doubleValue();
                         float avrate=((float) sum)/n;
+                        holder.postref3.child(postkey).child("rating").setValue(avrate);
                         String avr=Float.toString(avrate);
                         holder.displayrate.setText(avr);
                       }catch (Exception e){}
@@ -485,6 +513,17 @@ try{
         });
 
     }
+   /* private void onShareClicked() {
+
+
+        Uri link = DynamicLinksUtil.generateContentLink(mlist.);
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, link.toString());
+
+        context.startActivity(Intent.createChooser(intent, "Share Link"));
+    }*/
 
     private void shareTextAndImage(TextView title, TextView descrip, Bitmap bitmap) {
         String shareBody=title + "\n" + descrip;
@@ -543,7 +582,7 @@ try{
         ImageView img,img2;
         LinearLayout itemlayout;
         TextView title,title2,descrip,descrip2,likeddisplay;
-        DatabaseReference likesref,bookmarkref,profileref, referencerate,mypostref,postref3,followerefernce1,notifyreference1,notifyreference2;
+        DatabaseReference likesref,bookmarkref,profileref, referencerate,mypostref,postref3,followerefernce1,notifyreference1,notifyreference2,universal;
         FirebaseDatabase database;
         ImageButton btnbookmark,mImageButton,inc,hbtnsharepost;
         int likescount;
@@ -556,7 +595,10 @@ try{
         TextView itemusername,displayclap,report;
         Button btnrating;
         TextView displayrate;
-        Button btndel;
+
+        ImageButton btndel;
+
+       // Button btndel;
         CardView cardView_report;
 
         public myviewholder(@NonNull View itemView) {
@@ -590,6 +632,7 @@ try{
             btndel=itemView.findViewById(R.id.btndel);
             cardView_report= itemView.findViewById(R.id.cardview_report);
             displayclap=itemView.findViewById(R.id.displayclap);
+            universal = FirebaseDatabase.getInstance().getReference();
 
             mypostref = FirebaseDatabase.getInstance().getReference("mypost");
             postref3 = FirebaseDatabase.getInstance().getReference("hPost");
@@ -698,6 +741,8 @@ try{
             }
         });
     }*/
+
+
 
 
 

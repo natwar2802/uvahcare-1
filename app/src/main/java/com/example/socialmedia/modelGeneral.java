@@ -2,14 +2,14 @@ package com.example.socialmedia;
 
 public class modelGeneral {
     String title,brief,urlimage,description,pid,blogerid,prefrence;
-    long datetime,rateno;
+    long datetime,ratesum;
     float rating;
-
+    double postscore;
     private int claps=0;
     public modelGeneral() {
     }
 
-    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid, String prefrence, long datetime, long rateno, float rating, int claps) {
+    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid, String prefrence, long datetime, long ratesum, float rating, int claps,double postscore) {
         this.title = title;
         this.brief = brief;
         this.urlimage = urlimage;
@@ -18,9 +18,18 @@ public class modelGeneral {
         this.blogerid = blogerid;
         this.prefrence = prefrence;
         this.datetime = datetime;
-        this.rateno = rateno;
+        this.ratesum = ratesum;
         this.rating = rating;
         this.claps = claps;
+        this.postscore=postscore;
+    }
+
+    public double getPostscore() {
+        return postscore;
+    }
+
+    public void setPostscore(double postscore) {
+        this.postscore = postscore;
     }
 
     public String getTitle() {
@@ -87,12 +96,12 @@ public class modelGeneral {
         this.datetime = datetime;
     }
 
-    public long getRateno() {
-        return rateno;
+    public long getRatesum() {
+        return ratesum;
     }
 
-    public void setRateno(long rateno) {
-        this.rateno = rateno;
+    public void setRatesum(long ratesum) {
+        this.ratesum = ratesum;
     }
 
     public float getRating() {

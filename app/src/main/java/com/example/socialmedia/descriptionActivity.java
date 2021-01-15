@@ -126,8 +126,9 @@ public class descriptionActivity extends MainActivity {
                     // holder.displayrate.setText(0);
 
                 }
+                    ch=1;
             }
-            ch=1;
+
             }
 
             @Override

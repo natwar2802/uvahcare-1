@@ -244,9 +244,10 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
                                        precaution=etprecausion.getText().toString().trim();
                                        String description=desc+"\n"+benefit+"\n"+howtodo+"\n"+problem+"\n"+solution+"\n"+precaution;
                                     long data=System.currentTimeMillis();
-                                    long rateno=0;
+                                    long ratesum=0;
                                     float rating=0;
                                     int claps=0;
+                                    double postscore=0;
 
                                     String prefrence="preference";
 
@@ -258,7 +259,7 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
                                     Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                                     @SuppressWarnings("VisibleForTests")
 
-                                        modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida,prefrence,data,rateno,rating,claps);
+                                        modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida,prefrence,data,ratesum,rating,claps,postscore);
 
                                     //String mobno=databaseReference.Auythecation(mobno);
 

@@ -29,6 +29,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class EditProfileActivity extends  AppCompatActivity{
 
@@ -96,6 +97,7 @@ public class EditProfileActivity extends  AppCompatActivity{
                 String cityProfile1= etcityProfile.getText().toString().trim();
                 String countryProfile1=etcountryProfile.getText().toString().trim();
                 String aboutmeProfile1=aboutmeProfile.getText().toString().trim();
+
 
 
 
@@ -180,6 +182,9 @@ public class EditProfileActivity extends  AppCompatActivity{
                                     String cityProfile= etcityProfile.getText().toString().trim();
                                     String countryProfile=etcountryProfile.getText().toString().trim();
                                     String aboutme=aboutmeProfile.getText().toString().trim();
+                                    ArrayList<String> userPreference = new ArrayList<String>();
+                                    userPreference.add("userPreference");
+
                                     FirebaseUser myuserP= FirebaseAuth.getInstance().getCurrentUser();
                                     String myuseridaP=myuserP.getUid();
 
@@ -188,7 +193,7 @@ public class EditProfileActivity extends  AppCompatActivity{
                                     progressDialogProfile.dismiss();
                                     Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                                     @SuppressWarnings("VisibleForTests")
-                                    modelProfile imageUploadInfo = new modelProfile(userNameProfile,cityProfile,countryProfile,uriP,myuseridaP,aboutme);
+                                    modelProfile imageUploadInfo = new modelProfile(userNameProfile,cityProfile,countryProfile,uriP,myuseridaP,aboutme,userPreference);
                                    String ImageUploadId = databaseReferenceProfile.push().getKey();
                                  //   String ImageUploadId = databaseReferenceProfile.push();
                                     //String mobno=databaseReference.Auythecation(mobno);
