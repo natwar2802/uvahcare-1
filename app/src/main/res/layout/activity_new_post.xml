@@ -263,21 +263,32 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
+
+
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Select Your Preferences"
+            android:textSize="30sp"
+            android:layout_margin="10dp"
+            android:paddingTop="5dp"
+            android:textStyle="bold"
+            xmlns:android="http://schemas.android.com/apk/res/android" />
+
         <LinearLayout
             android:id="@+id/newdefense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="horizontal">
 
-            >
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/LooseWeight1"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="100dp"
                     cardView:cardCornerRadius="2dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -294,8 +305,9 @@
                         android:textSize="30sp"></TextView>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/BodyBuilding1"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="100dp"
                     cardView:cardCornerRadius="2dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -312,9 +324,10 @@
                         android:textSize="30sp"></TextView>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/carView21"
                     android:onClick="f"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="100dp"
                     cardView:cardCornerRadius="2dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -330,8 +343,9 @@
                         android:textSize="30sp"></TextView>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/Diabetes1"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="100dp"
                     cardView:cardCornerRadius="2dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -348,8 +362,9 @@
                         android:textSize="30sp"></TextView>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/Immunity1"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="100dp"
                     cardView:cardCornerRadius="2dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -372,8 +387,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/P11"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="100dp"
                     cardView:cardCornerRadius="2dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -389,8 +405,9 @@
                         android:textSize="30sp"></TextView>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/P21"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="100dp"
                     cardView:cardCornerRadius="2dp"
                     cardView:cardElevation="8dp"
                     android:onClick="f"
@@ -406,8 +423,9 @@
                         android:textSize="30sp"></TextView>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/P31"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="100dp"
                     cardView:cardCornerRadius="2dp"
                     cardView:cardElevation="8dp"
                     android:onClick="f"
@@ -423,8 +441,9 @@
                         android:textSize="30sp"></TextView>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/P41"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="100dp"
                     cardView:cardCornerRadius="2dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -440,8 +459,9 @@
                         android:textSize="30sp"></TextView>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/P51"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="100dp"
                     cardView:cardCornerRadius="2dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -476,6 +496,6 @@
             android:textColor="#000000"
             android:layout_margin="10dp"> </TextView>
 
-
     </LinearLayout>
+
 </ScrollView>
