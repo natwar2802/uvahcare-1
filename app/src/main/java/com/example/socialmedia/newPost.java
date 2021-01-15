@@ -63,28 +63,17 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     int Image_Request_Code = 7;
     ProgressDialog progressDialog ;
     ArrayList<String> temp=new ArrayList<String>();
+    TextView txt;
+    LinearLayout l;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // setContentView(R.layout.activity_new_post);
-        TextView txt=(TextView) findViewById(R.id.select_text);
-        LinearLayout l=(LinearLayout) findViewById(R.id.newdefense);
-        txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                l.setVisibility(View.VISIBLE);
-                for(int i=0;i<l.getChildCount();i++)
-                {
-                    LinearLayout l1=(LinearLayout)(l.getChildAt(i));
-                    for(int j=0;j<l1.getChildCount();j++)
-                    {
-                        CardView c=(CardView)(l1.getChildAt(j));
-                        TextView t = ((TextView) c.getChildAt(0));
-                        t.setTextSize(20);
-                    }
-                }
-            }
-        });
+
+         l=(LinearLayout) findViewById(R.id.newdefense);
+
+
+
 
         LinearLayout dynamicContent;
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
@@ -96,6 +85,16 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
         spinner.setOnItemSelectedListener(this);
 
         // Spinner click listener
+try{        for(int i=0;i<l.getChildCount();i++)
+        {
+            LinearLayout l1=(LinearLayout)(l.getChildAt(i));
+            for(int j=0;j<l1.getChildCount();j++)
+            {
+                CardView c=(CardView)(l1.getChildAt(j));
+                TextView t = ((TextView) c.getChildAt(0));
+                t.setTextSize(20);
+            }
+        }}catch (Exception e){}
 
         InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
         StringBuilder errMsg = new StringBuilder("Unable to save. Please fix the following errors and try again.\n");
@@ -374,21 +373,22 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
-    public void f(View view)
-    {
-        CardView c=(CardView)findViewById(view.getId());
-        TextView t = ((TextView) c.getChildAt(0));
-        String k=t.getText().toString();
+    public void f(View view) {
+        try {
+            CardView c = (CardView) findViewById(view.getId());
+            TextView t = ((TextView) c.getChildAt(0));
+            String k = t.getText().toString();
 
 
-        if(temp.contains(k)){
-            c.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
-            temp.remove(k);
+            if (temp.contains(k)) {
+                c.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+                temp.remove(k);
 
+            } else {
+                c.setCardBackgroundColor(Color.parseColor("#B388FF"));
+                temp.add(k);
+            }
+        }catch (Exception e){}
         }
-        else {
-            c.setCardBackgroundColor(Color.parseColor("#B388FF"));
-            temp.add(k);
-        }}
 
 }
