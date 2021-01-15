@@ -1,7 +1,10 @@
 package com.example.socialmedia;
 
+import java.util.ArrayList;
+
 public class modelGeneral {
-    String title,brief,urlimage,description,pid,blogerid,prefrence;
+    String title,brief,urlimage,description,pid,blogerid;
+    ArrayList<String> prefrence;
     long datetime,ratesum;
     float rating;
     double postscore;
@@ -9,7 +12,7 @@ public class modelGeneral {
     public modelGeneral() {
     }
 
-    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid, String prefrence, long datetime, long ratesum, float rating, int claps,double postscore) {
+    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid,ArrayList<String> prefrence, long datetime, long ratesum, float rating, int claps,double postscore) {
         this.title = title;
         this.brief = brief;
         this.urlimage = urlimage;
@@ -80,11 +83,11 @@ public class modelGeneral {
         this.blogerid = blogerid;
     }
 
-    public String getPrefrence() {
+    public ArrayList<String> getPrefrence() {
         return prefrence;
     }
 
-    public void setPrefrence(String prefrence) {
+    public void setPrefrence(ArrayList<String> prefrence) {
         this.prefrence = prefrence;
     }
 

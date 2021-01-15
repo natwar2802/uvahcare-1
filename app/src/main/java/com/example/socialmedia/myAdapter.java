@@ -310,7 +310,9 @@ try{
                         String bmuri=mlist.get(position).getUrlimage();
                         String bmpostid=mlist.get(position).getPid();
                         String blogerid=mlist.get(position).getBlogerid();
-                        String prefrence="prefernce";
+                       // String prefrence="prefernce";
+                        ArrayList<String> prefrence=new ArrayList<String>();
+                        prefrence.add("preference");
                         long data=System.currentTimeMillis();
                         long ratesum=0;
                         float rating=0;

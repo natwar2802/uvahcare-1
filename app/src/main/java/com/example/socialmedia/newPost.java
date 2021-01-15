@@ -2,7 +2,9 @@ package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -24,6 +26,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -59,6 +62,7 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     DatabaseReference databaseReference,mypostdatabaseReference,notifyreference,followerefernce;
     int Image_Request_Code = 7;
     ProgressDialog progressDialog ;
+    ArrayList<String> temp=new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -249,7 +253,9 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
                                     int claps=0;
                                     double postscore=0;
 
-                                    String prefrence="preference";
+                                    ArrayList<String> prefrence=new ArrayList<String>();
+                                    prefrence.add("preference");
+
 
                                     // String email=txtemail.getText().toString().trim();
                                     FirebaseUser myuser= FirebaseAuth.getInstance().getCurrentUser();
@@ -264,6 +270,7 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
                                     //String mobno=databaseReference.Auythecation(mobno);
 
                                     databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
+                                    databaseReference.child(ImageUploadId).child("preference").setValue(temp);
                                    // databaseReference.child(ImageUploadId).child("datetime").setValue(data);
                                     mypostdatabaseReference.child(myuserida).child(ImageUploadId).setValue(true);
 
@@ -349,4 +356,21 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+    public void f(View view)
+    {
+        CardView c=(CardView)findViewById(view.getId());
+        TextView t = ((TextView) c.getChildAt(0));
+        String k=t.getText().toString();
+
+
+        if(temp.contains(k)){
+            c.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+            temp.remove(k);
+
+        }
+        else {
+            c.setCardBackgroundColor(Color.parseColor("#B388FF"));
+            temp.add(k);
+        }}
+
 }
