@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +47,7 @@ public class EditProfileActivity extends  AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         /*LinearLayout dynamicContent;
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_edit_profile, null);

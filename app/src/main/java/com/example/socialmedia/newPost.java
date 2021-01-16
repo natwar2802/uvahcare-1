@@ -17,6 +17,7 @@ import android.provider.MediaStore;
 //import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -79,6 +80,7 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_new_post, null);
         dynamicContent.addView(wizard);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // Spinner Drop down elements
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -92,7 +94,7 @@ try{        for(int i=0;i<l.getChildCount();i++)
             {
                 CardView c=(CardView)(l1.getChildAt(j));
                 TextView t = ((TextView) c.getChildAt(0));
-                t.setTextSize(20);
+                t.setTextSize(15);
             }
         }}catch (Exception e){}
 
@@ -374,21 +376,18 @@ try{        for(int i=0;i<l.getChildCount();i++)
 
     }
     public void f(View view) {
-        try {
-            CardView c = (CardView) findViewById(view.getId());
-            TextView t = ((TextView) c.getChildAt(0));
-            String k = t.getText().toString();
-
-
-            if (temp.contains(k)) {
-                c.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
-                temp.remove(k);
-
-            } else {
-                c.setCardBackgroundColor(Color.parseColor("#B388FF"));
-                temp.add(k);
+        CardView c = (CardView) findViewById(view.getId());
+        TextView t = ((TextView) c.getChildAt(0));
+        String k = t.getText().toString();
+        for(int i=0;i<l.getChildCount();i++)
+        {
+            LinearLayout l1=(LinearLayout)(l.getChildAt(i));
+            for(int j=0;j<l1.getChildCount();j++)
+            {
+                CardView c1=(CardView)(l1.getChildAt(j));
+                c1.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
             }
-        }catch (Exception e){}
         }
-
+        c.setCardBackgroundColor(Color.parseColor("#B388FF"));
+    }
 }

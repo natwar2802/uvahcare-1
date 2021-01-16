@@ -11,6 +11,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class Notify extends MainActivity{
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_notify, null);
         dynamicContent.addView(wizard);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         recyclerViewnotify = (RecyclerView) findViewById(R.id.recycleViewnotify);
         arrayList = new ArrayList<modelGeneral>();
         adapter2 = new myAdapterNotify(this, arrayList);

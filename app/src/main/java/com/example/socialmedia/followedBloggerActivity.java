@@ -11,6 +11,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class followedBloggerActivity extends MainActivity {
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_followed_blogger, null);
         dynamicContent.addView(wizard);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         recyclerViewfollowed = (RecyclerView) findViewById(R.id.recycleViewfollowed);
         arrayListProfile = new ArrayList<modelProfile>();
         adapterProfile = new myProfileAdapter(this, arrayListProfile);

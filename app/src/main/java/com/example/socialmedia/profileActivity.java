@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -45,6 +46,7 @@ public class profileActivity extends MainActivity {
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_profile, null);
         dynamicContent.addView(wizard);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         editp=findViewById(R.id.editprofile);
         logout=findViewById(R.id.logout);
         btnmypostp=findViewById(R.id.btnmypostp);
@@ -53,7 +55,6 @@ public class profileActivity extends MainActivity {
         username=findViewById(R.id.userName);
         usercity=findViewById(R.id.tcity);
         usercountry=findViewById(R.id.tcountry);
-        profilepic=findViewById(R.id.profilepic);
         gotopreference=findViewById(R.id.gotopreference);
         gotofollower=findViewById(R.id.gotofollower);
         gotofollowed=findViewById(R.id.gotofollowed);
