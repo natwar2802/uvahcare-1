@@ -115,13 +115,14 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="horizontal">
-   <Button
+    <com.google.android.material.button.MaterialButton
         android:layout_margin="10dp"
         android:id="@+id/updateProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="update"
         android:onClick="update"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
          />
     <com.google.android.material.button.MaterialButton
         android:layout_margin="10dp"

@@ -3,6 +3,7 @@ package com.example.socialmedia;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,12 +14,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -85,7 +88,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_SocialMedia);
         setContentView(R.layout.activity_main);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.my_statusbar_color));
+        }
         btnshare=findViewById(R.id.btnsharepost);
         search_=findViewById(R.id.search_);
        // searchbar=findViewById(R.id.search_bar);
@@ -329,6 +344,12 @@ public class MainActivity extends AppCompatActivity {
 
                             case R.id.action_favorites:
                                 Toast.makeText(MainActivity.this, "Home Selected", Toast.LENGTH_SHORT).show();
+                                MenuItem item1=findViewById(R.id.action_favorites);
+                                MenuItem item2=findViewById(R.id.action_schedules);
+                                MenuItem item3=findViewById(R.id.action_music);
+                                item1.setChecked(true);
+                                item2.setChecked(false);
+                                item3.setChecked(false);
                                 Log.i("matching", "matching inside1 bro" +id1 );
                                 in=new Intent(getBaseContext(),MainActivity.class);
                                 startActivity(in);
@@ -337,6 +358,12 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.action_schedules:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Post Selected", Toast.LENGTH_SHORT).show();
+                                MenuItem item4=findViewById(R.id.action_favorites);
+                                MenuItem item5=findViewById(R.id.action_schedules);
+                                MenuItem item6=findViewById(R.id.action_music);
+                                item5.setChecked(true);
+                                item4.setChecked(false);
+                                item6.setChecked(false);
                                 in=new Intent(getBaseContext(),newPost.class);
                                 startActivity(in);
                                 //  finish();
@@ -344,6 +371,12 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.action_music:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Profile selected", Toast.LENGTH_SHORT).show();
+                                MenuItem item7=findViewById(R.id.action_favorites);
+                                MenuItem item8=findViewById(R.id.action_schedules);
+                                MenuItem item9=findViewById(R.id.action_music);
+                                item9.setChecked(true);
+                                item7.setChecked(false);
+                                item8.setChecked(false);
                                 in=new Intent(getBaseContext(), profileActivity.class);
                                 startActivity(in);
                                 //finish();

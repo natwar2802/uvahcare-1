@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -52,7 +53,12 @@ public class descriptionActivity extends MainActivity {
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_description, null);
         dynamicContent.addView(wizard);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         ratingBardescription=findViewById(R.id.ratingdescription);
         btnratedesc=findViewById(R.id.ratedesc);
         btnsubmitrate=findViewById(R.id.submitrating);

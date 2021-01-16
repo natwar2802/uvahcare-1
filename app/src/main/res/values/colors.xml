@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#FFBB86FC</color>
     <color name="grey">#90A4AE</color>
+    <color name="my_statusbar_color">#FF03DAC5</color>
+
 </resources>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -64,7 +65,7 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     int Image_Request_Code = 7;
     ProgressDialog progressDialog ;
     ArrayList<String> temp=new ArrayList<String>();
-    TextView txt;
+    TextView select_text;
     LinearLayout l;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,18 +75,30 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
          l=(LinearLayout) findViewById(R.id.newdefense);
 
 
-
-
         LinearLayout dynamicContent;
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_new_post, null);
         dynamicContent.addView(wizard);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         // Spinner Drop down elements
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
-
+        select_text=findViewById(R.id.select_text);
+        select_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(l.getVisibility()==View.GONE)
+                    l.setVisibility(View.VISIBLE);
+                else
+                    l.setVisibility(View.GONE);
+            }
+        });
         // Spinner click listener
 try{        for(int i=0;i<l.getChildCount();i++)
         {

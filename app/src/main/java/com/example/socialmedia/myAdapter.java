@@ -54,6 +54,7 @@ import static androidx.core.content.ContextCompat.getSystemService;
 public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
     private ArrayList<modelGeneral> mlist;
     private Context context;
+
     modelGeneral model;
     Boolean likechec,bookmarkchecker=false,followerchecker=false;
     DatabaseReference likesref,postref,profilereference,followerreference,followedreference;
@@ -187,11 +188,17 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
             @Override
             public void onClick(View view) {
                 holder.cardView_report.setVisibility(View.VISIBLE);
-                holder.report.setOnClickListener(new View.OnClickListener() {
+                holder.yes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         holder.cardView_report.setVisibility(View.GONE);
                         reportreference.child(postkey).child(curentUserId).setValue(true);
+                    }
+                });
+                holder.no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        holder.cardView_report.setVisibility(View.GONE);
                     }
                 });
 
@@ -597,7 +604,7 @@ try{
         TextView itemusername,displayclap,report;
         Button btnrating;
         TextView displayrate;
-
+        Button yes,no;
         ImageButton btndel;
 
        // Button btndel;
@@ -613,11 +620,11 @@ try{
             likesref=database.getReference("likes");
             bookmarkref=database.getReference("bookmark");
             displayrate=itemView.findViewById(R.id.displayrate);
-            report=itemView.findViewById(R.id.report);
             img=(ImageView) itemView.findViewById(R.id.img1);
             title=(TextView) itemView.findViewById(R.id.title1);
             descrip=(TextView) itemView.findViewById(R.id.desc1);
-
+            yes=itemView.findViewById(R.id.yes);
+            no=itemView.findViewById(R.id.no);
             img2=(ImageView) itemView.findViewById(R.id.img12);
             title2=(TextView) itemView.findViewById(R.id.title12);
             descrip2=(TextView) itemView.findViewById(R.id.desc12);

@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,12 @@ public class PreferenceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_preference);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
        /* LinearLayout dynamicContent;
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_preference, null);
@@ -45,7 +51,17 @@ public class PreferenceActivity extends AppCompatActivity {
         FirebaseUser userpreference1= FirebaseAuth.getInstance().getCurrentUser();
         String idpreference1=userpreference1.getUid();
         DatabaseReference prefeference1= FirebaseDatabase.getInstance().getReference("profile").child(idpreference1).child("userPreference");
+        FirebaseDatabase.getInstance().getReference("Profile").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.hasChild(idpreference1))
+                    btnNextMain.setVisibility(View.GONE);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
 
         btnNextMain.setOnClickListener(new View.OnClickListener() {
             @Override

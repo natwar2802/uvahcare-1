@@ -1,5 +1,6 @@
 package com.example.socialmedia;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -7,6 +8,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -19,11 +21,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -31,6 +37,8 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static android.view.View.GONE;
 
 public class EditProfileActivity extends  AppCompatActivity{
 
@@ -43,23 +51,32 @@ public class EditProfileActivity extends  AppCompatActivity{
     DatabaseReference databaseReferenceProfile;
     int Image_Request_Code_Profile = 7;
     ProgressDialog progressDialogProfile;
+    int ch=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         /*LinearLayout dynamicContent;
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_edit_profile, null);
         dynamicContent.addView(wizard);*/
         storageReferenceProfile = FirebaseStorage.getInstance().getReference("profile");
         databaseReferenceProfile = FirebaseDatabase.getInstance().getReference("profile");
+        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+        String id=user.getUid();
         btnbrowseProfile = (ImageButton) findViewById(R.id.btnbrowseProfile);
         btnuploadProfile= (Button)findViewById(R.id.updateProfile);
         etNameProfile=(EditText)findViewById(R.id.usernameProfile);
         etcityProfile=(EditText)findViewById(R.id.cityProfile);
         etcountryProfile=(EditText)findViewById(R.id.countryProfile);
         btnNextPreference=findViewById(R.id.nexttoPreference);
+        imgviewProfile = (ImageView)findViewById(R.id.imgviewProfile);
         aboutmeProfile=findViewById(R.id.aboutmeProfile);
         // txtname = (EditText)findViewById(R.id.txtname);
         // txtcouse=(EditText)findViewById(R.id.txtcourse);
@@ -67,17 +84,67 @@ public class EditProfileActivity extends  AppCompatActivity{
         InputValidatorHelper inputValidatorHelper = new InputValidatorHelper();
         StringBuilder errMsg = new StringBuilder("Unable to save. Please fix the following errors and try again.\n");
 
+        databaseReferenceProfile.addValueEventListener(new ValueEventListener() {
 
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(ch==0) {
+                    if (snapshot.hasChild(id)) {
+                        btnNextPreference.setVisibility(GONE);
+                        modelProfile p=snapshot.child(id).getValue(modelProfile.class);
+                        etNameProfile.setText(p.usernameP);
+                        etcityProfile.setText(p.cityP);
+                        etcountryProfile.setText(p.countryP);
+                        Glide.with(getApplicationContext()).load(p.imgUrlP).into(imgviewProfile);
 
+                    } else {
+                        btnuploadProfile.setVisibility(GONE);
+                    }
+                    ch = 1;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         btnNextPreference.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String userNameProfile1=etNameProfile.getText().toString().trim();
+                String cityProfile1= etcityProfile.getText().toString().trim();
+                String countryProfile1=etcountryProfile.getText().toString().trim();
+                String aboutmeProfile1=aboutmeProfile.getText().toString().trim();
+
+
+
+
+                if (inputValidatorHelper.isNullOrEmpty(userNameProfile1)) {
+                    errMsg.append(" UserName should not be empty.\n");
+                    //allowSave = false;
+                }
+                else if(inputValidatorHelper.isNullOrEmpty(cityProfile1)) {
+                    errMsg.append("City name should not be empty.\n");
+                    // allowSave = false;
+                }
+                else if(inputValidatorHelper.isNullOrEmpty(countryProfile1)) {
+                    errMsg.append("- Country name should not be empty.\n");
+                    //allowSave = false;
+                }
+                else if(inputValidatorHelper.isNullOrEmpty(aboutmeProfile1)) {
+                    errMsg.append("- About me should not be empty.\n");
+                    //allowSave = false;
+                }
+                else {
+                    UploadImage();
+                }
                 Intent i = new Intent(EditProfileActivity.this, PreferenceActivity.class);
                 startActivity(i);
             }
         });
 
-        imgviewProfile = (ImageView)findViewById(R.id.imgviewProfile);
+
         progressDialogProfile = new ProgressDialog(EditProfileActivity.this);// context name as per your project name
 
 
