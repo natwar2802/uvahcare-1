@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class modelGeneral {
     String title,brief,urlimage,description,pid,blogerid;
-    ArrayList<String> prefrence;
+    String preference;
     long datetime,ratesum;
     float rating;
     double postscore;
@@ -12,14 +12,14 @@ public class modelGeneral {
     public modelGeneral() {
     }
 
-    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid,ArrayList<String> prefrence, long datetime, long ratesum, float rating, int claps,double postscore) {
+    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid,String preference, long datetime, long ratesum, float rating, int claps,double postscore) {
         this.title = title;
         this.brief = brief;
         this.urlimage = urlimage;
         this.description = description;
         this.pid = pid;
         this.blogerid = blogerid;
-        this.prefrence = prefrence;
+        this.preference = preference;
         this.datetime = datetime;
         this.ratesum = ratesum;
         this.rating = rating;
@@ -83,12 +83,12 @@ public class modelGeneral {
         this.blogerid = blogerid;
     }
 
-    public ArrayList<String> getPrefrence() {
-        return prefrence;
+    public String getPreference() {
+        return preference;
     }
 
-    public void setPrefrence(ArrayList<String> prefrence) {
-        this.prefrence = prefrence;
+    public void setPreference(String preference) {
+        this.preference = preference;
     }
 
     public long getDatetime() {

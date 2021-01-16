@@ -193,11 +193,13 @@ public class EditProfileActivity extends  AppCompatActivity{
                                     progressDialogProfile.dismiss();
                                     Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                                     @SuppressWarnings("VisibleForTests")
-                                    modelProfile imageUploadInfo = new modelProfile(userNameProfile,cityProfile,countryProfile,uriP,myuseridaP,aboutme,userPreference);
+                                    String prevseenpost="";
+
+                                    modelProfile modelp=new modelProfile(userNameProfile,countryProfile,cityProfile,uriP,myuseridaP,aboutme,userPreference,prevseenpost);
                                    String ImageUploadId = databaseReferenceProfile.push().getKey();
                                  //   String ImageUploadId = databaseReferenceProfile.push();
                                     //String mobno=databaseReference.Auythecation(mobno);
-                                    databaseReferenceProfile.child(myuseridaP).setValue(imageUploadInfo);
+                                    databaseReferenceProfile.child(myuseridaP).setValue(modelp);
                                 }
                             });
 

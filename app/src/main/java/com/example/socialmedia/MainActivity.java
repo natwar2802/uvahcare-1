@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference("hPost");
     private static MainActivity instance;
     FirebaseAuth mAuth;
-    DatabaseReference likesrefernce,notifyreference;
+    DatabaseReference likesrefernce,notifyreference,profilereference;
     FirebaseDatabase database;
     Button btnmypost,btnbookmark;
     // Button btnshare;
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         notifyreference = FirebaseDatabase.getInstance().getReference("notification");
+        profilereference = FirebaseDatabase.getInstance().getReference("profile");
         cardView=findViewById(R.id.pic);
         if(user==null){
             startActivity(new Intent(MainActivity.this,loginActivity.class));
@@ -226,30 +227,68 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+   if(mainch==0) {
+       Query myTopPostsQuery = database.getReference("hPost")
+               .orderByChild("datetime");
+       myTopPostsQuery.addValueEventListener(new ValueEventListener() {
 
-        Query myTopPostsQuery = database.getReference("hPost")
-                .orderByChild("datetime");
-        myTopPostsQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                int count=0,insert=0;
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    count++;
-                   modelGeneral modelg= postSnapshot.getValue(modelGeneral.class);
-                  // if(modelg.getPrefrence().equals())
-                    arrayList.add(0,postSnapshot.getValue(modelGeneral.class));
-                    adapter.notifyDataSetChanged();
-                }
-            }
+           @Override
+           public void onDataChange(DataSnapshot dataSnapshot) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        });
+               if(mainch==0){
 
+
+               FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
+               String useid = use.getUid();
+
+               profilereference.child(useid).addValueEventListener(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot snapshot) {
+                       if(mainch==0){
+                           ArrayList<String> usepref=new ArrayList<String>();
+                       usepref = (ArrayList<String>) snapshot.child("userPreference").getValue();
+                       ArrayList<String> postpref=new ArrayList<String>();
+                       int count = 0, insert = 0;
+                       for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                           count++;
+                           modelGeneral modelg = postSnapshot.getValue(modelGeneral.class);
+                           // if(modelg.getPrefrence().equals())
+                           postpref = modelg.getPreference();
+                           for (String s : postpref) {
+                               if (usepref.contains(s)) {
+                                   arrayList.add(0, postSnapshot.getValue(modelGeneral.class));
+                                   adapter.notifyDataSetChanged();
+                                   insert++;
+
+                                   break;
+
+                               }
+                           }
+                           if (insert == 5 || count == 50) {
+                               break;
+                           }
+
+                       }
+                   }}
+
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError error) {
+
+                   }
+               });
+
+
+           }}
+
+           @Override
+           public void onCancelled(DatabaseError databaseError) {
+               // Getting Post failed, log a message
+               Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+               // ...
+           }
+       });
+       mainch=1;
+   }
 
 
      /*   root.addValueEventListener(new ValueEventListener() {

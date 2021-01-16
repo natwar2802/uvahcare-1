@@ -3,14 +3,14 @@ package com.example.socialmedia;
 import java.util.ArrayList;
 
 public class modelProfile {
-    String usernameP,cityP,countryP,imgUrlP,id,userdetail;
+    String usernameP,cityP,countryP,imgUrlP,id,userdetail,prevseenpost;
     ArrayList<String> userPreference;
 
 
     public modelProfile() {
     }
 
-    public modelProfile(String usernameP, String cityP, String countryP, String imgUrlP,String id,String userdetail,ArrayList<String> userPreference) {
+    public modelProfile(String usernameP, String cityP, String countryP, String imgUrlP,String id,String userdetail,ArrayList<String> userPreference,String prevseenpost) {
         this.usernameP = usernameP;
         this.cityP = cityP;
         this.countryP = countryP;
@@ -18,8 +18,16 @@ public class modelProfile {
         this.id=id;
         this.userdetail=userdetail;
         this.userPreference=userPreference;
+        this.prevseenpost=prevseenpost;
     }
 
+    public String getPrevseenpost() {
+        return prevseenpost;
+    }
+
+    public void setPrevseenpost(String prevseenpost) {
+        this.prevseenpost = prevseenpost;
+    }
 
     public ArrayList<String> getUserPreference() {
         return userPreference;

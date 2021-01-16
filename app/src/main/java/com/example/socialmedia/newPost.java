@@ -270,8 +270,8 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                     int claps=0;
                                     double postscore=0;
 
-                                    ArrayList<String> prefrence=new ArrayList<String>();
-                                    prefrence.add("preference");
+                                    String preference="";
+
 
 
                                     // String email=txtemail.getText().toString().trim();
@@ -282,7 +282,7 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                     Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                                     @SuppressWarnings("VisibleForTests")
 
-                                        modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida,prefrence,data,ratesum,rating,claps,postscore);
+                                        modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida,preference,data,ratesum,rating,claps,postscore);
 
                                     //String mobno=databaseReference.Auythecation(mobno);
 

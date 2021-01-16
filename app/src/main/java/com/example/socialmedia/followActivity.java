@@ -87,9 +87,10 @@ public class followActivity extends MainActivity {
                             String imgUrl=snapshot1.child("imgUrlP").getValue().toString();
                             String aboutme=snapshot1.child("userdetail").getValue().toString();
                             ArrayList<String> userPreference = new ArrayList<String>();
-                            userPreference.add("userPreference");
+                           userPreference.add("");
+                            String prevseenpost="";
 
-                            modelProfile modelp=new modelProfile(username,usercountry,usercity,imgUrl,id,aboutme,userPreference);
+                            modelProfile modelp=new modelProfile(username,usercountry,usercity,imgUrl,id,aboutme,userPreference,prevseenpost);
                              if(arrayListProfile.contains(modelp)){
                                  arrayListProfile.remove(modelp);
                              }
