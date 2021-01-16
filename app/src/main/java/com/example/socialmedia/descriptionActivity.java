@@ -37,8 +37,8 @@ import static androidx.core.content.ContextCompat.getSystemService;
 
 public class descriptionActivity extends MainActivity {
 
-    RatingBar ratingBardescription,ratingpop;
-    Button btnratedesc,btnsubmitrate;
+    RatingBar ratingBardescription,ratingpop,btnratedesc;
+    Button btnsubmitrate;
     CardView popupcard;
     float avrating;
     int ch=0,ch1=0;
@@ -61,11 +61,19 @@ public class descriptionActivity extends MainActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         ratingBardescription=findViewById(R.id.ratingdescription);
         btnratedesc=findViewById(R.id.ratedesc);
+
         btnsubmitrate=findViewById(R.id.submitrating);
         popupcard=findViewById(R.id.popupcard);
         ratingpop=findViewById(R.id.ratingpop);
 
-
+        btnratedesc.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                popupcard.setVisibility(View.VISIBLE);
+                ratingpop.setRating(btnratedesc.getRating());
+                btnratedesc.setVisibility(View.GONE);
+            }
+        });
 
         TextView txt= (TextView) findViewById(R.id.title12);
         Intent in = getIntent();

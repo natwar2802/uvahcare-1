@@ -74,12 +74,6 @@
 कपालभाति प्राणायाम के दो और क्रम (राउंड) को पूरा करें।"
             android:textColor="#000000"
             android:textSize="20sp" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="rate"
-            android:layout_gravity="center"
-            android:id="@+id/ratedesc"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,6 +81,126 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp">
         </LinearLayout>
+        <LinearLayout android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/llf"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:cardView="http://schemas.android.com/tools">
+            <androidx.cardview.widget.CardView
+
+                android:id="@+id/carView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                cardView:cardCornerRadius="20dp"
+                cardView:cardElevation="8dp"
+                android:layout_margin="15dp"
+                cardView:cardBackgroundColor="#FFFFFF"
+                >
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingRight="10dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="50dp"
+                            android:id="@+id/pic"
+                            android:layout_height="50dp"
+                            android:elevation="12dp"
+                            cardView:cardCornerRadius="25dp"
+                            android:layout_centerHorizontal="true"
+                            android:innerRadius="0dp"
+                            android:shape="ring"
+                            android:thicknessRatio="1.9"
+                            >
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_height="match_parent"
+                                android:layout_width="match_parent"
+                                android:src="@drawable/prof"
+                                android:id="@+id/itemprofilepicff"
+                                app:civ_border_width="2dp"
+                                app:civ_border_color="#FF000000"
+                                cardView:ignore="MissingClass" />
+
+                        </androidx.cardview.widget.CardView>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+
+                            <TextView
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Username"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:textSize="20sp"
+                                android:id="@+id/itemuserNff"/>
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Widget.MaterialComponents.Button.TextButton"
+                                android:id="@+id/btnfollowff"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Follow"
+                                />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:padding="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="City"
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            android:id="@+id/itemuserCff"/>
+                        <TextView
+                            android:padding="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Country"
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            android:id="@+id/itemuserCounff"/>
+                        <TextView
+                            android:padding="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="follow"
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            android:id="@+id/itemfollowff"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do u want to Rate the post?"
+            android:textSize="20sp"/>
+        <RatingBar
+            android:id="@+id/ratedesc"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="10"
+            android:layout_gravity="center_horizontal"
+            android:isIndicator="false"
+            android:scaleX=".9"
+            android:scaleY=".9"
+            android:stepSize="1" />
     </LinearLayout>
         <androidx.cardview.widget.CardView
             android:visibility="gone"
@@ -136,8 +250,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/submitrating"/>
-
-
 
 
             </LinearLayout>
