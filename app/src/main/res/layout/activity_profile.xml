@@ -28,6 +28,15 @@
                 android:backgroundTint="#FFFFFF"
                 android:src="@drawable/log"
                 android:scaleType="centerCrop"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/edit"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="275dp"
+                android:layout_marginRight="70dp"
+                android:id="@+id/editprofile"
+                android:onClick="ShowDetails"></ImageView>
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
                 android:id="@+id/pic"
@@ -56,17 +65,6 @@
                 android:orientation="horizontal"
                 android:layout_below="@id/pic"
                 android:layout_centerHorizontal="true">
-                <TextView
-                    android:id="@+id/tag"
-                    android:layout_below="@id/pic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="8dp"
-                    android:text="Yogi "
-                    android:textColor="#000000"
-                    android:typeface="normal"
-                    android:textSize="30sp" />
                 <TextView
                     android:id="@+id/userName"
                     android:layout_below="@id/pic"
@@ -149,34 +147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingBottom="10dp">
-
-
-                    <androidx.cardview.widget.CardView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        cardView:cardCornerRadius="20dp"
-                        cardView:cardElevation="8dp"
-                        android:layout_margin="10dp"
-                        cardView:cardBackgroundColor="#FFFFFF"
-                        >
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_margin="10dp"
-                            android:onClick="ShowDetails">
-                            <TextView
-                                android:id="@+id/editprofile"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="   Update My Details    >"
-                                android:textSize="20sp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    android:paddingLeft="10dp">
                     <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -216,7 +187,7 @@
                             android:id="@+id/gotofollowed"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="   Followed Bloggers     >"
+                            android:text="   Followed                     >"
                             android:textSize="20sp"/>
 
                     </LinearLayout>
@@ -239,7 +210,7 @@
                             android:id="@+id/gotofollower"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="   Followers                    >"
+                            android:text="   Following                    >"
                             android:textSize="20sp"/>
 
                     </LinearLayout>

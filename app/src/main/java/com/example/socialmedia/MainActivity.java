@@ -2,7 +2,9 @@ package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,12 +15,17 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import android.view.Window;
+import android.view.WindowManager;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -72,9 +79,12 @@ public class MainActivity extends AppCompatActivity {
     TextView displaynotifcount;
     SearchView search_;
     CardView cardView;
+    int seench=0;
    // EditText searchbar;
     //int Natwar=0;
     int mainch=0;
+    private BottomNavigationView toolbar2;
+
     private static final String TAG = "xyz";
 
 
@@ -84,6 +94,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_SocialMedia);
         setContentView(R.layout.activity_main);
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.my_statusbar_color));
+        }
+
         btnshare=findViewById(R.id.btnsharepost);
         search_=findViewById(R.id.search_);
        // searchbar=findViewById(R.id.search_bar);
@@ -93,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
         String sharelinktext="https://healthappinnovation.page.link";
 
         bellnotify=findViewById(R.id.bellnotify);
+
+
 
         //onStart();
 
@@ -171,6 +197,9 @@ public class MainActivity extends AppCompatActivity {
         itemprofilepic=(ImageView)findViewById(R.id.itemprofilepic);
         itemusername=(TextView)findViewById(R.id.itemuserN);
 
+        toolbar2 = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        //toolbar2.inflateMenu(R.menu.menu);
+
         //pager.setAdapter(adapter);
         //setProfileInPost();
 
@@ -227,14 +256,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-   if(mainch==0) {
+
        Query myTopPostsQuery = database.getReference("hPost")
-               .orderByChild("datetime");
+               .orderByChild("postscore").limitToLast(100);
        myTopPostsQuery.addValueEventListener(new ValueEventListener() {
 
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
-
+               if(mainch==0) {
 
                FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
                String useid = use.getUid();
@@ -244,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                        int count = 0;
-                       int count1 = 0;
+                       int count1 = 0,userpostch=0;
                        ArrayList<String> userp = (ArrayList<String>) snapshot.child("userPreference").getValue();
                        String preseenpost = snapshot.child("prevseenpost").getValue().toString();
 
@@ -260,7 +289,16 @@ public class MainActivity extends AppCompatActivity {
                                arrayList.add(count1, model);
                                adapter.notifyDataSetChanged();
                                count++;
-                           } else {
+                           }
+
+                           else if(userpostch==0&&model.getBlogerid().equals(useid)){
+
+                               arrayList.add(count1,model);
+                               adapter.notifyDataSetChanged();
+                               count1++;
+                               userpostch=1;
+                           }
+                           else {
                                arrayList.add(count, model);
                                adapter.notifyDataSetChanged();
                            }
@@ -275,6 +313,8 @@ public class MainActivity extends AppCompatActivity {
                    }
                });
 
+                   mainch=1;
+           }
 
            }
 
@@ -285,8 +325,7 @@ public class MainActivity extends AppCompatActivity {
                // ...
            }
        });
-mainch=1;
-   }
+
 
 
      /*   root.addValueEventListener(new ValueEventListener() {
@@ -340,20 +379,6 @@ mainch=1;
         adapter.setOnItemClickListener(new ClickListener<modelGeneral>() {
             @Override
             public void onItemClick(modelGeneral data) {
-                profileref1.setValue(data.getPreference());
-               postref.child(data.getPid()).addValueEventListener(new ValueEventListener() {
-                   @Override
-                   public void onDataChange(@NonNull DataSnapshot snapshot) {
-                       int count= (int) snapshot.child("seencount").getValue();
-                       count+=1;
-                       postref.child(data.getPid()).child("seencount").setValue(count);
-                   }
-
-                   @Override
-                   public void onCancelled(@NonNull DatabaseError error) {
-
-                   }
-               });
                 Intent intent = new Intent(MainActivity.this, descriptionActivity.class);
                 // intent.putExtra("Arraylist",arrayList);
                 intent.putExtra("title", data.getTitle().toString());
@@ -364,6 +389,30 @@ mainch=1;
                 intent.putExtra("blogid",data.getBlogerid());
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
+
+                final int[] seenpostch = {0};
+                profileref1.setValue(data.getPreference());
+               postref.child(data.getPid()).addValueEventListener(new ValueEventListener() {
+
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot snapshot) {
+                       if(seenpostch[0] ==0){
+                       Long count= (Long) snapshot.child("seencount").getValue();
+                       count+=1;
+                       postref.child(data.getPid()).child("seencount").setValue(count);
+                           seenpostch[0]=1;
+
+                       }
+
+                   }
+
+
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError error) {
+
+                   }
+               });
+
                 // finish();
             }
 
@@ -383,6 +432,18 @@ mainch=1;
 
                             case R.id.action_favorites:
                                 Toast.makeText(MainActivity.this, "Home Selected", Toast.LENGTH_SHORT).show();
+                               // MenuItem item1=findViewById(R.id.action_favorites);
+                              //  MenuItem item2=findViewById(R.id.action_schedules);
+                              //  MenuItem item3=findViewById(R.id.action_music);
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setVisible(true);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setVisible(false);
+                                toolbar2.getMenu().findItem(R.id.action_music).setVisible(false);
+
+
+
+                              //  item1.setChecked(true);
+                               // item2.setChecked(false);
+                                //item3.setChecked(false);
                                 Log.i("matching", "matching inside1 bro" +id1 );
                                 in=new Intent(getBaseContext(),MainActivity.class);
                                 startActivity(in);
@@ -391,6 +452,16 @@ mainch=1;
                             case R.id.action_schedules:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Post Selected", Toast.LENGTH_SHORT).show();
+                               /* MenuItem item4=findViewById(R.id.action_favorites);
+                                MenuItem item5=findViewById(R.id.action_schedules);
+                                MenuItem item6=findViewById(R.id.action_music);
+                                item5.setChecked(true);
+                                item4.setChecked(false);
+                                item6.setChecked(false);*/
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setVisible(true);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setVisible(false);
+                                toolbar2.getMenu().findItem(R.id.action_music).setVisible(false);
+
                                 in=new Intent(getBaseContext(),newPost.class);
                                 startActivity(in);
                                 //  finish();
@@ -398,6 +469,16 @@ mainch=1;
                             case R.id.action_music:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Profile selected", Toast.LENGTH_SHORT).show();
+                               /* MenuItem item7=findViewById(R.id.action_favorites);
+                                MenuItem item8=findViewById(R.id.action_schedules);
+                                MenuItem item9=findViewById(R.id.action_music);
+                                item9.setChecked(true);
+                                item7.setChecked(false);
+                                item8.setChecked(false);*/
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setVisible(true);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setVisible(false);
+                                toolbar2.getMenu().findItem(R.id.action_music).setVisible(false);
+
                                 in=new Intent(getBaseContext(), profileActivity.class);
                                 startActivity(in);
                                 //finish();

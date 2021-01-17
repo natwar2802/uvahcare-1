@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@color/teal_200"
         xmlns:cardView="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -34,7 +34,7 @@
             android:id="@+id/search_"
             android:layout_width="250dp"
             android:layout_height="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="70dp"
             android:scaleType="fitXY"
             android:src="@drawable/search"

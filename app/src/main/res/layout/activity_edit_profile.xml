@@ -122,13 +122,15 @@
         android:layout_height="wrap_content"
         android:text="update"
         android:onClick="update"
-        style="@style/Widget.MaterialComponents.Button.TextButton" />
-    <Button
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+         />
+    <com.google.android.material.button.MaterialButton
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="next"
-        android:id="@+id/nexttoPreference"/>
+        android:id="@+id/nexttoPreference"
+        style="@style/Widget.MaterialComponents.Button.TextButton"/>
 </LinearLayout>
 </LinearLayout>
 </ScrollView>

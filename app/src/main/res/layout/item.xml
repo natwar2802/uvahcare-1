@@ -238,7 +238,7 @@
         </LinearLayout>
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview_report"
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="50dp"
@@ -246,13 +246,37 @@
                 android:layout_marginRight="10dp"
                 android:visibility="gone"
                 >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
                 <TextView
-                    android:id="@+id/report"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="Report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Do you want to report this post?"
                     android:textSize="20sp"></TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="yes"
+                    android:layout_margin="10dp"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:id="@+id/yes"/>
+                    <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="NO"
+                    android:id="@+id/no"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+                </LinearLayout>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

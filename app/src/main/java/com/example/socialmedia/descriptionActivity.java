@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -36,8 +37,8 @@ import static androidx.core.content.ContextCompat.getSystemService;
 
 public class descriptionActivity extends MainActivity {
 
-    RatingBar ratingBardescription,ratingpop;
-    Button btnratedesc,btnsubmitrate;
+    RatingBar ratingBardescription,ratingpop,btnratedesc;
+    Button btnsubmitrate;
     CardView popupcard;
     float avrating;
     int ch=0,ch1=0;
@@ -52,14 +53,27 @@ public class descriptionActivity extends MainActivity {
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_description, null);
         dynamicContent.addView(wizard);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         ratingBardescription=findViewById(R.id.ratingdescription);
         btnratedesc=findViewById(R.id.ratedesc);
+
         btnsubmitrate=findViewById(R.id.submitrating);
         popupcard=findViewById(R.id.popupcard);
         ratingpop=findViewById(R.id.ratingpop);
 
-
+        btnratedesc.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                popupcard.setVisibility(View.VISIBLE);
+                ratingpop.setRating(btnratedesc.getRating());
+                btnratedesc.setVisibility(View.GONE);
+            }
+        });
 
         TextView txt= (TextView) findViewById(R.id.title12);
         Intent in = getIntent();
@@ -106,11 +120,34 @@ public class descriptionActivity extends MainActivity {
                           hpost.child(postkey).child("ratesum").setValue(sum);
                         // double d = sum.doubleValue();
                         float avrate =((float) sum)/ n;
+                          ratingBardescription.setRating(avrate);
                           hpost.child(postkey).child("rating").setValue(avrate);
+                         // hpost.child(postkey).child("postscore").setValue(10);
+                          hpost.addValueEventListener(new ValueEventListener() {
+                              @Override
+                              public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                  long totalno=snapshot.getChildrenCount();
+                                  Long claps= (Long) snapshot.child(postkey).child("claps").getValue();
+                                  Long seencount= (Long) snapshot.child(postkey).child("seencount").getValue();
+                                  Long datetime= (Long) snapshot.child(postkey).child("datetime").getValue();
+                                  Long postno= (Long) snapshot.child(postkey).child("postno").getValue();
+                                  double score;
+                                  String sumstr=sum.toString();
+                                  score=((double) claps)/(seencount+1)+(avrate/10)+((double) sumstr.length())/10+((double)postno)/totalno;
+                                  hpost.child(postkey).child("postscore").setValue(score);
+
+                              }
+
+                              @Override
+                              public void onCancelled(@NonNull DatabaseError error) {
+
+                              }
+                          });
+
 
 
                           // float avr = avrate.floatValue();
-                        ratingBardescription.setRating(avrate);
+
                       }catch (Exception e){}
 
 
@@ -149,6 +186,7 @@ public class descriptionActivity extends MainActivity {
             Log.e(TAG,e.getMessage());
 
         }
+
         ratingBardescription.setEnabled(false);
         //  rateuser.child(postkey).child(cid).setValue(fratindesc);
         refrate.addValueEventListener(new ValueEventListener() {
@@ -206,7 +244,7 @@ public class descriptionActivity extends MainActivity {
                          refrate.child(postkey).child(cid).setValue(frate);
                          refrate.child(postkey).child("sum").setValue(fsum);
                          }*/
-          try{
+       //   try{
                              Long sum1 = (Long) snapshot.child(postkey).child("sum").getValue();
                              // float sum = (float) snapshot.child(postkey).child("sum").getValue();
                              double sum=sum1.doubleValue();
@@ -218,25 +256,10 @@ public class descriptionActivity extends MainActivity {
                              refrate.child(postkey).child(cid).setValue(frate);
                              refrate.child(postkey).child("sum").setValue(fsum);
 
-              hpost.child(postkey).addValueEventListener(new ValueEventListener() {
-                  @Override
-                  public void onDataChange(@NonNull DataSnapshot snapshot) {
-                      int claps= (int) snapshot.child("claps").getValue();
-                      int seencount= (int) snapshot.child("seencount").getValue();
-                      Long datetime= (Long) snapshot.child("datetime").getValue();
-                      double score;
-                      String sumstr=sum1.toString();
-                      score=((double) claps)/(seencount+1)+(avrate/10)+((double) sumstr.length())/10;
-                      hpost.child(postkey).child("postscore").setValue(score);
 
-                  }
 
-                  @Override
-                  public void onCancelled(@NonNull DatabaseError error) {
 
-                  }
-              });
-          }catch (Exception e){}
+        //  }catch (Exception e){}
 
 
                      }

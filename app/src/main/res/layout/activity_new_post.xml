@@ -8,13 +8,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text="POST DETAILS"
-            android:textColor="#000000"
-            android:layout_margin="10dp"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -267,8 +261,9 @@
 
         <TextView android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Select Your Preferences"
-            android:textSize="30sp"
+            android:id="@+id/select_text"
+            android:text="Select Post Tag "
+            android:textSize="20sp"
             android:layout_margin="10dp"
             android:paddingTop="5dp"
             android:textStyle="bold"
@@ -278,6 +273,7 @@
             android:id="@+id/newdefense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -288,8 +284,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/LooseWeight1"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
@@ -307,8 +303,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/BodyBuilding1"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
@@ -327,8 +323,8 @@
                     android:id="@+id/carView21"
                     android:onClick="f"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
@@ -345,8 +341,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Diabetes1"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
@@ -364,8 +360,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Immunity1"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
@@ -389,8 +385,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/P11"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     android:onClick="f"
@@ -407,8 +403,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/P21"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:onClick="f"
                     android:layout_margin="10dp"
@@ -425,8 +421,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/P31"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:onClick="f"
                     android:layout_margin="10dp"
@@ -443,8 +439,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/P41"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
@@ -461,8 +457,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/P51"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"

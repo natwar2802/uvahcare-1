@@ -6,14 +6,15 @@ public class modelGeneral {
     String title,brief,urlimage,description,pid,blogerid;
     String preference;
     long datetime,ratesum;
+    long postno;
     float rating;
     double postscore;
-    int seencount=0;
-    private int claps=0;
+    long seencount=0;
+     long claps=0;
     public modelGeneral() {
     }
 
-    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid,String preference, long datetime, long ratesum, float rating, int claps,double postscore,int seencount) {
+    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid,String preference, long datetime, long ratesum, float rating, long claps,double postscore,long seencount,long postno) {
         this.title = title;
         this.brief = brief;
         this.urlimage = urlimage;
@@ -27,13 +28,22 @@ public class modelGeneral {
         this.claps = claps;
         this.postscore=postscore;
         this.seencount=seencount;
+        this.postno=postno;
     }
 
-    public int getSeencount() {
+    public long getPostno() {
+        return postno;
+    }
+
+    public void setPostno(long postno) {
+        this.postno = postno;
+    }
+
+    public long getSeencount() {
         return seencount;
     }
 
-    public void setSeencount(int seencount) {
+    public void setSeencount(long seencount) {
         this.seencount = seencount;
     }
 
@@ -125,16 +135,11 @@ public class modelGeneral {
         this.rating = rating;
     }
 
-    public int getClaps() {
+    public long getClaps() {
         return claps;
     }
 
-    public void setClaps(int claps) {
+    public void setClaps(long claps) {
         this.claps = claps;
-    }
-
-    public int incclaps(){
-        this.claps=this.claps+1;
-        return this.claps;
     }
 }

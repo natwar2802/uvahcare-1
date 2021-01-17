@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,11 +31,11 @@ import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 public class profileActivity extends MainActivity {
 
     Button btninfollow;
-    TextView btnmypostp,editp,following;
+    TextView btnmypostp,following;
     TextView btnbookmarkp,gotopreference,gotofollower,gotofollowed;
     DatabaseReference profileref,followreference;
     TextView username,usercountry,usercity;
-    ImageView profilepic;
+    ImageView profilepic,editp;
     int followcount;
     ImageButton logout;
 
@@ -46,7 +47,12 @@ public class profileActivity extends MainActivity {
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_profile, null);
         dynamicContent.addView(wizard);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         editp=findViewById(R.id.editprofile);
         logout=findViewById(R.id.logout);
         btnmypostp=findViewById(R.id.btnmypostp);
