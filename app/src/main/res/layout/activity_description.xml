@@ -62,12 +62,13 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             >
 
                             <TextView
+                                android:layout_weight="1"
                                 android:textStyle="bold"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:text="Username"
                                 android:layout_marginLeft="10dp"
@@ -77,7 +78,8 @@
                             <com.google.android.material.button.MaterialButton
                                 style="@style/Widget.MaterialComponents.Button.TextButton"
                                 android:id="@+id/btnfollowff"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
                                 android:text="Follow"
                                 />
