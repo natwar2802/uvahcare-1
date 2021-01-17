@@ -58,13 +58,12 @@ public class PreferenceActivity extends AppCompatActivity {
         updatePreference.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                prefeference1.setValue(temp);
             }
         });
         btnNextMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(PreferenceActivity.this, MainActivity.class);
                 startActivity(i);
             }
