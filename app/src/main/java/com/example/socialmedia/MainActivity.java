@@ -269,14 +269,13 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
                if(mainch==0) {
-
                FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
                String useid = use.getUid();
 
                profilereference.child(useid).addValueEventListener(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                       arrayList.clear();
                        int count = 0;
                        int count1 = 0,userpostch=0;
                        ArrayList<String> userp = (ArrayList<String>) snapshot.child("userPreference").getValue();
@@ -440,9 +439,9 @@ public class MainActivity extends AppCompatActivity {
                                // MenuItem item1=findViewById(R.id.action_favorites);
                               //  MenuItem item2=findViewById(R.id.action_schedules);
                               //  MenuItem item3=findViewById(R.id.action_music);
-                                toolbar2.getMenu().findItem(R.id.action_favorites).setVisible(true);
-                                toolbar2.getMenu().findItem(R.id.action_schedules).setVisible(false);
-                                toolbar2.getMenu().findItem(R.id.action_music).setVisible(false);
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setChecked(true);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setChecked(false);
+                                toolbar2.getMenu().findItem(R.id.action_music).setChecked(false);
 
 
 
@@ -463,9 +462,9 @@ public class MainActivity extends AppCompatActivity {
                                 item5.setChecked(true);
                                 item4.setChecked(false);
                                 item6.setChecked(false);*/
-                                toolbar2.getMenu().findItem(R.id.action_favorites).setVisible(true);
-                                toolbar2.getMenu().findItem(R.id.action_schedules).setVisible(false);
-                                toolbar2.getMenu().findItem(R.id.action_music).setVisible(false);
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setChecked(false);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setChecked(true);
+                                toolbar2.getMenu().findItem(R.id.action_music).setChecked(false);
 
                                 in=new Intent(getBaseContext(),newPost.class);
                                 startActivity(in);
@@ -480,9 +479,9 @@ public class MainActivity extends AppCompatActivity {
                                 item9.setChecked(true);
                                 item7.setChecked(false);
                                 item8.setChecked(false);*/
-                                toolbar2.getMenu().findItem(R.id.action_favorites).setVisible(true);
-                                toolbar2.getMenu().findItem(R.id.action_schedules).setVisible(false);
-                                toolbar2.getMenu().findItem(R.id.action_music).setVisible(false);
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setChecked(false);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setChecked(false);
+                                toolbar2.getMenu().findItem(R.id.action_music).setChecked(true);
 
                                 in=new Intent(getBaseContext(), profileActivity.class);
                                 startActivity(in);
@@ -582,6 +581,7 @@ public class MainActivity extends AppCompatActivity {
 
 
            // recyclerView.setAdapter(adapter);
+            arrayList.clear();
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
             Query query = reference.child("hPost").orderByChild("title").startAt(s).endAt(s+"\uf8ff");
