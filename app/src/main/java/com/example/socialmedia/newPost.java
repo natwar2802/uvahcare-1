@@ -80,8 +80,6 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_new_post, null);
         dynamicContent.addView(wizard);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         l=(LinearLayout) findViewById(R.id.newdefense);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

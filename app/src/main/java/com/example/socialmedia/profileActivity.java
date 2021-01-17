@@ -53,6 +53,7 @@ public class profileActivity extends MainActivity {
         }
         SearchView search_=findViewById(R.id.search_);
         search_.setVisibility(View.GONE);
+        appname.setVisibility(View.VISIBLE);
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         editp=findViewById(R.id.editprofile);

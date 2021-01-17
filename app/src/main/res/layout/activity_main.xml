@@ -17,6 +17,7 @@
             android:layout_width="40dp"
             android:layout_marginTop="5dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/logo"
             android:layout_alignParentLeft="true"
             android:scaleType="fitXY"
@@ -50,9 +51,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="UVAH"
+            android:layout_marginTop="2dp"
             android:textSize="30sp"
             android:layout_marginLeft="80dp"
-            android:textStyle="bold"
             android:textColor="#FFFFFF"></TextView>
        <!-- <EditText
             android:id="@+id/search_bar"
@@ -70,6 +71,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/bell"
+            android:layout_marginRight="10dp"
             android:layout_alignParentRight="true"
             android:id="@+id/bellnotify"
             android:scaleType="fitXY"></ImageView>
