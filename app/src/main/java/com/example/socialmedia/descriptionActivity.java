@@ -59,6 +59,8 @@ public class descriptionActivity extends MainActivity {
 
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        appname.setVisibility(View.VISIBLE);
+        search_.setVisibility(View.GONE);
         ratingBardescription=findViewById(R.id.ratingdescription);
         btnratedesc=findViewById(R.id.ratedesc);
 

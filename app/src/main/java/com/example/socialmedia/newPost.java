@@ -85,7 +85,8 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
 
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
+        appname.setVisibility(View.VISIBLE);
+        search_.setVisibility(View.GONE);
         // Spinner Drop down elements
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);

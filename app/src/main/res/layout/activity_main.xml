@@ -8,6 +8,7 @@
 
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/top_nav"
         android:background="@color/teal_200"
         xmlns:cardView="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -38,11 +39,21 @@
             android:layout_marginLeft="70dp"
             android:scaleType="fitXY"
             android:src="@drawable/search"
+            android:visibility="gone"
             android:title="search data"
             app:showAsAction="always"
             android:background="#FFFFFF"
             app:actionViewClass="android.widget.SearchView"
             />
+        <TextView
+            android:id="@+id/appname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UVAH"
+            android:textSize="30sp"
+            android:layout_marginLeft="80dp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"></TextView>
        <!-- <EditText
             android:id="@+id/search_bar"
             android:hint="Search"

@@ -60,6 +60,8 @@ public class followActivity extends MainActivity {
 
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        appname.setVisibility(View.VISIBLE);
+        search_.setVisibility(View.GONE);
         recyclerViewfollow = (RecyclerView) findViewById(R.id.recycleViewfollow);
         arrayListProfile = new ArrayList<modelProfile>();
         adapterProfile = new myProfileAdapter(this, arrayListProfile);

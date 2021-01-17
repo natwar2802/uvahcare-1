@@ -54,6 +54,8 @@ public class MyPost extends MainActivity {
 
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        appname.setVisibility(View.VISIBLE);
+        search_.setVisibility(View.GONE);
         recyclerView2 = (RecyclerView) findViewById(R.id.recycleView2);
         arrayList = new ArrayList<modelGeneral>();
         adapter2 = new myAdapter(this, arrayList);
