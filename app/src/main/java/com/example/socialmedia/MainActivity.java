@@ -386,7 +386,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("im", data.getUrlimage());
                 intent.putExtra("Ddesc",data.getDescription());
                 intent.putExtra("postkey",data.getPid());
-                intent.putExtra("blogid",data.getBlogerid());
+                intent.putExtra("blogerid",data.getBlogerid());
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
 

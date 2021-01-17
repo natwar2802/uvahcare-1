@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -30,6 +32,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static android.widget.Toast.LENGTH_SHORT;
@@ -43,8 +47,12 @@ public class descriptionActivity extends MainActivity {
     float avrating;
     int ch=0,ch1=0;
     private String TAG;
-
-
+    ImageView profileimg;
+    TextView userNff;
+    Button btnfollowff;
+    Boolean followerchecker=false,likechec=false;
+    ImageButton inc2,btnshare2;
+    TextView displayclap2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +73,17 @@ public class descriptionActivity extends MainActivity {
         btnsubmitrate=findViewById(R.id.submitrating);
         popupcard=findViewById(R.id.popupcard);
         ratingpop=findViewById(R.id.ratingpop);
+        userNff=findViewById(R.id.itemuserNff);
+        btnfollowff=findViewById(R.id.btnfollowff);
+        inc2=findViewById(R.id.inc2);
+        btnshare2=findViewById(R.id.btnsharepost2);
+        displayclap2=findViewById(R.id.displayclap2);
+
+        DatabaseReference followerreference=database.getReference("follower");
+        DatabaseReference followedreference=database.getReference("followed");
+
+
+
 
         btnratedesc.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -83,13 +102,39 @@ public class descriptionActivity extends MainActivity {
         TextView txt11= (TextView) findViewById(R.id.desc12);
         txt11.setText(in.getStringExtra("Ddesc"));
         String postkey=in.getStringExtra("postkey");
+        profileimg=findViewById(R.id.itemprofilepicff);
         FirebaseUser cuser= FirebaseAuth.getInstance().getCurrentUser();
         String cid=cuser.getUid();
        // CardView cardforpopup=findViewById(R.id.cardforpopup);
         Glide.with(imj.getContext()).load(url).into(imj);
       //  float fratindesc=ratingBardescription.getRating();
+        String blogerid=in.getStringExtra("blogerid");
+
         DatabaseReference refrate= FirebaseDatabase.getInstance().getReference("rating");
         DatabaseReference hpost= FirebaseDatabase.getInstance().getReference("hPost");
+        DatabaseReference profileref= FirebaseDatabase.getInstance().getReference("profile");
+        DatabaseReference notifyreference1 =  FirebaseDatabase.getInstance().getReference("notification").child("old");
+        DatabaseReference notifyreference2 =  FirebaseDatabase.getInstance().getReference("notification").child("new");
+        profileref.child(blogerid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String purl= (String) snapshot.child("imgUrlP").getValue();
+                String name= (String) snapshot.child("usernameP").getValue();
+
+               userNff.setText(name);
+                Glide.with(profileimg.getContext()).load(url).into(profileimg);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
 
 
         try{
@@ -186,6 +231,105 @@ public class descriptionActivity extends MainActivity {
             Log.e(TAG,e.getMessage());
 
         }
+
+
+
+        try{
+            followerreference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                    //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
+                    if(cid.equals(blogerid)){
+                        btnfollowff.setVisibility(View.GONE);
+                    }
+                    else{
+                        // if(followerchecker.equals(true)){
+                        if(snapshot.child(blogerid).hasChild(cid)){
+                            // followreference.child(idbloger).child(curentUserId).removeValue();
+                            btnfollowff.setText("unfollow");
+                            //holder.btnfollow.setImageResource(R.drawable.unfollowicon);
+                            // followchecker=false;
+                        }
+                        else{
+                            // followreference.child(idbloger).child(curentUserId).setValue(true);
+                            btnfollowff.setText("follow");
+                            //  holder.btnfollow.setImageResource(R.drawable.followicon);
+                            // followchecker=false;
+                        }
+                    }
+                }
+                //String mobno=databaseReference.Auythecation(mobno);
+
+                // databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });}catch (Exception e){}
+
+try {
+    btnfollowff.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            followerchecker = true;
+
+            followerreference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                    //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
+                    if (followerchecker.equals(true)) {
+                        if (snapshot.child(blogerid).hasChild(cid)) {
+                            notifyreference1.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                    if (snapshot1.child(cid).hasChild(blogerid)) {
+                                        notifyreference1.child(cid).child(blogerid).removeValue();
+                                        notifyreference2.child(cid).child(blogerid).removeValue();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+
+                            followerreference.child(blogerid).child(cid).removeValue();
+                            followedreference.child(cid).child(blogerid).removeValue();
+                            btnfollowff.setText("follow");
+                            //holder.btnfollow.setImageResource(R.drawable.followicon);
+                            followerchecker = false;
+                        } else {
+                            followerreference.child(blogerid).child(cid).setValue(true);
+                            followedreference.child(cid).child(blogerid).setValue(true);
+
+                            btnfollowff.setText("Unfollow");
+                            // holder.btnfollow.setImageResource(R.drawable.unfollowicon);
+                            followerchecker = false;
+                        }
+                    }
+                    //String mobno=databaseReference.Auythecation(mobno);
+
+                    // databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    });
+}catch (Exception e){}
+
 
         ratingBardescription.setEnabled(false);
         //  rateuser.child(postkey).child(cid).setValue(fratindesc);
@@ -291,8 +435,153 @@ public class descriptionActivity extends MainActivity {
 
              );
 
+       // inc=itemView.findViewById(R.id.inc);
+        DatabaseReference likesref= FirebaseDatabase.getInstance().getReference("likes");
+        DatabaseReference postref3= FirebaseDatabase.getInstance().getReference("hPost");
+        FirebaseUser usera=FirebaseAuth.getInstance().getCurrentUser();
+        String userida=usera.getUid();
+
+        likesref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int likescount=(int)snapshot.child(postkey).getChildrenCount();
+                postref3.child(postkey).child("claps").setValue(likescount);
+                displayclap2.setText(Integer.toString(likescount));
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+
+            }
+        });
+
+        inc2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_LONG).show();
+                likechec =true;
+                likesref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        if(likechec.equals(true)){
+                            if(snapshot.child(postkey).hasChild(cid)){
+                                likesref.child(postkey).child(cid).removeValue();
+                                likechec=false;
+                            }
+                            else{
+                                likesref.child(postkey).child(cid).setValue(true);
+                                likechec=false;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+            }
+        });
+
+
+        btnshare2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DynamicLink link = FirebaseDynamicLinks.getInstance()
+                        .createDynamicLink()
+                        .setLink(Uri.parse("https://"+postkey+"/"))
+                        .setDomainUriPrefix("https://healthappinnovation.page.link")
+                        .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.socialmedia").build())
+
+                        .buildDynamicLink();
+
+                Uri dynamic=link.getUri();
+
+                Log.e("link","hello"+link.getUri());
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, link.getUri().toString());
+                startActivity(Intent.createChooser(intent, "Share Link"));
+
+                //  Uri domain=mlist.get(position).getPid().to;
+                //  taskSnapshot.getDownloadUrl()
+
+                //  BitmapDrawable bitmapDrawable=(BitmapDrawable)holder.img.getDrawable();
+
+                //  onShareClicked();
+
+            }
+
+
+        });
+
+        btnfollowff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                followerchecker=true;
+
+                followerreference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                        //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
+                        if(followerchecker.equals(true)){
+                            if(snapshot.child(blogerid).hasChild(cid)){
+                                notifyreference1.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                        if(snapshot1.child(cid).hasChild(blogerid)){
+                                            notifyreference1.child(cid).child(blogerid).removeValue();
+                                            notifyreference2.child(cid).child(blogerid).removeValue();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+
+                                followerreference.child(blogerid).child(cid).removeValue();
+                                followedreference.child(cid).child(blogerid).removeValue();
+                                btnfollowff.setText("follow");
+                                //holder.btnfollow.setImageResource(R.drawable.followicon);
+                                followerchecker=false;
+                            }
+                            else{
+                                followerreference.child(blogerid).child(cid).setValue(true);
+                                followedreference.child(cid).child(blogerid).setValue(true);
+
+                                btnfollowff.setText("Unfollow");
+                                // holder.btnfollow.setImageResource(R.drawable.unfollowicon);
+                                followerchecker=false;
+                            }
+                        }
+                        //String mobno=databaseReference.Auythecation(mobno);
+
+                        // databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
+
 
     }
+
 
 
 
