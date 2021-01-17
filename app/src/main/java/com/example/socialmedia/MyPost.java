@@ -82,7 +82,7 @@ public class MyPost extends MainActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot1) {
                             modelGeneral model = snapshot1.getValue(modelGeneral.class);
-                            arrayList.add(model);
+                            arrayList.add(0,model);
                             adapter2.notifyDataSetChanged();
 
                         }

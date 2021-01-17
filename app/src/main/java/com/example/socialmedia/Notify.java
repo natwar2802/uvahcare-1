@@ -53,7 +53,7 @@ public class Notify extends MainActivity{
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         appname.setVisibility(View.VISIBLE);
         search_.setVisibility(View.GONE);
@@ -149,7 +149,7 @@ public class Notify extends MainActivity{
                                                             public void onDataChange(@NonNull DataSnapshot snapshot1) {
                                                                 Boolean chek = arrayList.contains(snapshot1.getValue(modelGeneral.class));
                                                                 if (chek == false) {
-                                                                    arrayList.add(snapshot1.getValue(modelGeneral.class));
+                                                                    arrayList.add(0,snapshot1.getValue(modelGeneral.class));
 
                                                                     // adapter2.notifyDataSetChanged();
                                                                 }
@@ -188,6 +188,9 @@ public class Notify extends MainActivity{
             public void onItemClick(modelGeneral data) {
                 Intent intent = new Intent(Notify.this, descriptionActivity.class);
                 // intent.putExtra("Arraylist",arrayList);
+
+                root2.child(data.blogerid).child(data.pid).setValue(false);
+
                 intent.putExtra("title", data.getTitle().toString());
                 intent.putExtra("Bdesc", data.getBrief().toString());
                 intent.putExtra("im", data.getUrlimage());
