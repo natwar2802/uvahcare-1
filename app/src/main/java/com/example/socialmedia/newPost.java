@@ -65,7 +65,7 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     int Image_Request_Code = 7;
     ProgressDialog progressDialog ;
     ArrayList<String> temp=new ArrayList<String>();
-    TextView select_text;
+    Button select_text;
     LinearLayout l;
 
     String preference;
@@ -90,13 +90,10 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
 
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-<<<<<<< HEAD
         appname.setVisibility(View.VISIBLE);
         search_.setVisibility(View.GONE);
-=======
 
 
->>>>>>> 5e224745aee0193f4d1c31a6c0692f39bd9a7da5
         // Spinner Drop down elements
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);

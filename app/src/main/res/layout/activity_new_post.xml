@@ -60,6 +60,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/heading"
                 android:layout_width="match_parent"
+                android:backgroundTint="#FFFFFF"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:minLines="1" />
@@ -77,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="top|left"
                 android:inputType="textMultiLine"
+                android:backgroundTint="#FFFFFF"
                 android:lines="2"
                 android:maxLines="10"
                 android:minLines="2" />
@@ -101,6 +103,7 @@
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:lines="25"
+                    android:backgroundTint="#FFFFFF"
                     android:maxLines="10"
                     android:minLines="5"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -124,6 +127,7 @@
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:lines="25"
+                    android:backgroundTint="#FFFFFF"
                     android:maxLines="10"
                     android:minLines="5"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -145,13 +149,14 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/howtodo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:lines="25"
-                    android:minLines="5"
-                    android:gravity="top|left"
                     android:maxLines="10"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"/>
+                    android:backgroundTint="#FFFFFF"
+                    android:minLines="5" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
         <LinearLayout
@@ -172,6 +177,7 @@
                     android:minLines="5"
                     android:gravity="top|left"
                     android:maxLines="10"
+                    android:backgroundTint="#FFFFFF"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -194,6 +200,7 @@
                     android:minLines="5"
                     android:gravity="top|left"
                     android:maxLines="10"
+                    android:backgroundTint="#FFFFFF"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -215,6 +222,7 @@
                     android:lines="25"
                     android:minLines="5"
                     android:gravity="top|left"
+                    android:backgroundTint="#FFFFFF"
                     android:maxLines="10"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
@@ -257,17 +265,15 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-
-
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/select_text"
+        <com.google.android.material.button.MaterialButton
             android:text="Select Post Tag "
-            android:textSize="20sp"
+            android:id="@+id/select_text"
             android:layout_margin="10dp"
             android:paddingTop="5dp"
-            android:textStyle="bold"
-            xmlns:android="http://schemas.android.com/apk/res/android" />
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             />
 
         <LinearLayout
             android:id="@+id/newdefense"
