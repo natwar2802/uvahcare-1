@@ -111,10 +111,11 @@ public class MainActivity extends AppCompatActivity {
 
         appname=(TextView)findViewById(R.id.appname);
         appname.setVisibility(View.GONE);
-        search_.setVisibility(View.VISIBLE);
+
 
         btnshare=findViewById(R.id.btnsharepost);
         search_=findViewById(R.id.search_);
+        search_.setVisibility(View.VISIBLE);
        // searchbar=findViewById(R.id.search_bar);
         displaynotifcount=findViewById(R.id.displynotifycount);
         obj=new MainActivity();

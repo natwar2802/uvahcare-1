@@ -188,14 +188,13 @@ public class Notify extends MainActivity{
             public void onItemClick(modelGeneral data) {
                 Intent intent = new Intent(Notify.this, descriptionActivity.class);
                 // intent.putExtra("Arraylist",arrayList);
-                //  root2.child(data.blogerid).child(data.pid).setValue(false);
                 intent.putExtra("title", data.getTitle().toString());
                 intent.putExtra("Bdesc", data.getBrief().toString());
                 intent.putExtra("im", data.getUrlimage());
                 intent.putExtra("Ddesc",data.getDescription());
                 intent.putExtra("postkey",data.getPid());
-                intent.putExtra("blogid",data.getBlogerid());
-
+                intent.putExtra("blogerid",data.getBlogerid());
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
 
