@@ -75,6 +75,8 @@ public class descriptionActivity extends MainActivity {
         Glide.with(imj.getContext()).load(url).into(imj);
       //  float fratindesc=ratingBardescription.getRating();
         DatabaseReference refrate= FirebaseDatabase.getInstance().getReference("rating");
+        DatabaseReference hpost= FirebaseDatabase.getInstance().getReference("hPost");
+
 
         try{
         refrate.addValueEventListener(new ValueEventListener() {
@@ -85,6 +87,7 @@ public class descriptionActivity extends MainActivity {
                 if(snapshot.hasChild(postkey)) {
 
                         int n = (int) snapshot.child(postkey).getChildrenCount() - 1;
+
                         // if(snapshot.child(postkey).child("sum").get)
                         //try{
                         // Double sum = (Double) snapshot.child(postkey).child("sum").getValue();
@@ -100,10 +103,13 @@ public class descriptionActivity extends MainActivity {
                     }*/
 
                       try{  Long sum = (Long) snapshot.child(postkey).child("sum").getValue();
+                          hpost.child(postkey).child("ratesum").setValue(sum);
                         // double d = sum.doubleValue();
                         float avrate =((float) sum)/ n;
+                          hpost.child(postkey).child("rating").setValue(avrate);
 
-                       // float avr = avrate.floatValue();
+
+                          // float avr = avrate.floatValue();
                         ratingBardescription.setRating(avrate);
                       }catch (Exception e){}
 
@@ -211,6 +217,25 @@ public class descriptionActivity extends MainActivity {
                              ratingBardescription.setRating(avrate);
                              refrate.child(postkey).child(cid).setValue(frate);
                              refrate.child(postkey).child("sum").setValue(fsum);
+
+              hpost.child(postkey).addValueEventListener(new ValueEventListener() {
+                  @Override
+                  public void onDataChange(@NonNull DataSnapshot snapshot) {
+                      int claps= (int) snapshot.child("claps").getValue();
+                      int seencount= (int) snapshot.child("seencount").getValue();
+                      Long datetime= (Long) snapshot.child("datetime").getValue();
+                      double score;
+                      String sumstr=sum1.toString();
+                      score=((double) claps)/(seencount+1)+(avrate/10)+((double) sumstr.length())/10;
+                      hpost.child(postkey).child("postscore").setValue(score);
+
+                  }
+
+                  @Override
+                  public void onCancelled(@NonNull DatabaseError error) {
+
+                  }
+              });
           }catch (Exception e){}
 
 

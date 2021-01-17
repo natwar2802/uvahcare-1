@@ -8,11 +8,12 @@ public class modelGeneral {
     long datetime,ratesum;
     float rating;
     double postscore;
+    int seencount=0;
     private int claps=0;
     public modelGeneral() {
     }
 
-    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid,String preference, long datetime, long ratesum, float rating, int claps,double postscore) {
+    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid,String preference, long datetime, long ratesum, float rating, int claps,double postscore,int seencount) {
         this.title = title;
         this.brief = brief;
         this.urlimage = urlimage;
@@ -25,6 +26,15 @@ public class modelGeneral {
         this.rating = rating;
         this.claps = claps;
         this.postscore=postscore;
+        this.seencount=seencount;
+    }
+
+    public int getSeencount() {
+        return seencount;
+    }
+
+    public void setSeencount(int seencount) {
+        this.seencount = seencount;
     }
 
     public double getPostscore() {

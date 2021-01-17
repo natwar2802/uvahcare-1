@@ -185,7 +185,7 @@ public class EditProfileActivity extends  AppCompatActivity{
                                     String countryProfile=etcountryProfile.getText().toString().trim();
                                     String aboutme=aboutmeProfile.getText().toString().trim();
                                     ArrayList<String> userPreference = new ArrayList<String>();
-                                    userPreference.add("userPreference");
+                                    userPreference.add("");
 
                                     FirebaseUser myuserP= FirebaseAuth.getInstance().getCurrentUser();
                                     String myuseridaP=myuserP.getUid();

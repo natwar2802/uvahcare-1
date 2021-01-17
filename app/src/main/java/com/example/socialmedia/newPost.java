@@ -66,12 +66,13 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     ArrayList<String> temp=new ArrayList<String>();
     TextView txt;
     LinearLayout l;
+
+    String preference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // setContentView(R.layout.activity_new_post);
 
-         l=(LinearLayout) findViewById(R.id.newdefense);
 
 
 
@@ -81,6 +82,7 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
         View wizard = getLayoutInflater().inflate(R.layout.activity_new_post, null);
         dynamicContent.addView(wizard);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        l=(LinearLayout) findViewById(R.id.newdefense);
 
         // Spinner Drop down elements
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -271,8 +273,9 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                     float rating=0;
                                     int claps=0;
                                     double postscore=0;
+                                    int seencount=0;
 
-                                    String preference="";
+
 
 
 
@@ -284,12 +287,12 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                     Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                                     @SuppressWarnings("VisibleForTests")
 
-                                        modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida,preference,data,ratesum,rating,claps,postscore);
+                                        modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida,preference,data,ratesum,rating,claps,postscore,seencount);
 
                                     //String mobno=databaseReference.Auythecation(mobno);
 
                                     databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
-                                    databaseReference.child(ImageUploadId).child("preference").setValue(temp);
+                                    databaseReference.child(ImageUploadId).child("preference").setValue(preference);
                                    // databaseReference.child(ImageUploadId).child("datetime").setValue(data);
                                     mypostdatabaseReference.child(myuserida).child(ImageUploadId).setValue(true);
 
@@ -376,9 +379,15 @@ try{        for(int i=0;i<l.getChildCount();i++)
 
     }
     public void f(View view) {
+
+        l=(LinearLayout) findViewById(R.id.newdefense);
+
+
         CardView c = (CardView) findViewById(view.getId());
         TextView t = ((TextView) c.getChildAt(0));
         String k = t.getText().toString();
+        preference=k;
+
         for(int i=0;i<l.getChildCount();i++)
         {
             LinearLayout l1=(LinearLayout)(l.getChildAt(i));

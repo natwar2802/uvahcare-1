@@ -19,7 +19,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -85,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_SocialMedia);
         setContentView(R.layout.activity_main);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         btnshare=findViewById(R.id.btnsharepost);
         search_=findViewById(R.id.search_);
        // searchbar=findViewById(R.id.search_bar);
@@ -237,8 +235,6 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
 
-               if(mainch==0){
-
 
                FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
                String useid = use.getUid();
@@ -246,32 +242,32 @@ public class MainActivity extends AppCompatActivity {
                profilereference.child(useid).addValueEventListener(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                       if(mainch==0){
-                           ArrayList<String> usepref=new ArrayList<String>();
-                       usepref = (ArrayList<String>) snapshot.child("userPreference").getValue();
-                       ArrayList<String> postpref=new ArrayList<String>();
-                       int count = 0, insert = 0;
-                       for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                           count++;
-                           modelGeneral modelg = postSnapshot.getValue(modelGeneral.class);
-                           // if(modelg.getPrefrence().equals())
-                           postpref = modelg.getPreference();
-                           for (String s : postpref) {
-                               if (usepref.contains(s)) {
-                                   arrayList.add(0, postSnapshot.getValue(modelGeneral.class));
-                                   adapter.notifyDataSetChanged();
-                                   insert++;
 
-                                   break;
+                       int count = 0;
+                       int count1 = 0;
+                       ArrayList<String> userp = (ArrayList<String>) snapshot.child("userPreference").getValue();
+                       String preseenpost = snapshot.child("prevseenpost").getValue().toString();
 
-                               }
+                       for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                           modelGeneral model = dataSnapshot1.getValue(modelGeneral.class);
+                           String postprefe = model.getPreference();
+                           if (postprefe.equals(preseenpost)) {
+                               arrayList.add(0, model);
+                               adapter.notifyDataSetChanged();
+                               count1++;
+                               count++;
+                           } else if (userp.contains(postprefe)) {
+                               arrayList.add(count1, model);
+                               adapter.notifyDataSetChanged();
+                               count++;
+                           } else {
+                               arrayList.add(count, model);
+                               adapter.notifyDataSetChanged();
                            }
-                           if (insert == 5 || count == 50) {
-                               break;
-                           }
-
                        }
-                   }}
+
+
+                   }
 
                    @Override
                    public void onCancelled(@NonNull DatabaseError error) {
@@ -280,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
                });
 
 
-           }}
+           }
 
            @Override
            public void onCancelled(DatabaseError databaseError) {
@@ -289,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
                // ...
            }
        });
-       mainch=1;
+mainch=1;
    }
 
 
@@ -335,10 +331,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });*/
+        DatabaseReference profileref1=FirebaseDatabase.getInstance().getReference("profile").child(user.getUid()).child("prevseenpost");
+      //  DatabaseReference seencount=FirebaseDatabase.getInstance().getReference("seencount");
+        DatabaseReference postref=FirebaseDatabase.getInstance().getReference("hPost");
+
+
 
         adapter.setOnItemClickListener(new ClickListener<modelGeneral>() {
             @Override
             public void onItemClick(modelGeneral data) {
+                profileref1.setValue(data.getPreference());
+               postref.child(data.getPid()).addValueEventListener(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot snapshot) {
+                       int count= (int) snapshot.child("seencount").getValue();
+                       count+=1;
+                       postref.child(data.getPid()).child("seencount").setValue(count);
+                   }
+
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError error) {
+
+                   }
+               });
                 Intent intent = new Intent(MainActivity.this, descriptionActivity.class);
                 // intent.putExtra("Arraylist",arrayList);
                 intent.putExtra("title", data.getTitle().toString());
@@ -542,6 +557,7 @@ public class MainActivity extends AppCompatActivity {
                     String id=s.substring(i+1,s.length()-1);
                     Log.e(TAG,id);
                    DatabaseReference postref=FirebaseDatabase.getInstance().getReference("hPost");
+
                     try {
                         postref.child(id).addValueEventListener(new ValueEventListener() {
                             @Override
