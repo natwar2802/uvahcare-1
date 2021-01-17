@@ -1,3 +1,6 @@
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 <ScrollView android:layout_height="match_parent" android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <RelativeLayout
@@ -9,82 +12,11 @@
                 />
     <LinearLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView
-            android:id="@+id/title12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp"
-            android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
-            android:textColor="#000000"
-            android:typeface="normal"
-            android:textSize="30sp" />
-
-        <ImageView
-            android:id="@+id/img12"
-            android:src="@drawable/prof"
-            android:layout_width="match_parent"
-            android:layout_height="250sp"
-            android:scaleType="centerCrop"
-            />
-        <!--<RatingBar
-
-            android:isIndicator="false"
-            android:stepSize="1"
-            android:id="@+id/ratingdescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content
-            android:numStars="10" />-->
-        <RatingBar
-            android:id="@+id/ratingdescription"
-            style="@style/Widget.AppCompat.RatingBar.Indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="10"
-            android:layout_gravity="center_horizontal"
-            android:isIndicator="false"
-            android:scaleX=".9"
-            android:scaleY=".9"
-            android:stepSize="0.1" />
-
-        <Button
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/submitrate"
-            android:visibility="gone"
-            android:text="submit"/>
-        <TextView
-            android:id="@+id/desc12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:typeface="monospace"
-            android:text="कपालभाति प्राणायाम करने की विधि । \nHow To Do Kapalbhati Pranayama
-1. अपनी रीढ़ की हड्डी को सीधा रखते हुए, आराम से बैठ जाएँ। \n2. अपने हाथों को आकाश की तरफ, आराम से घुटनों पर रखें।
-एक लंबी गहरी साँस अंदर लें।
-\n3. साँस छोड़ते हुए अपने पेट को अंदर की ओर खींचे। \n4. अपने पेट को इस प्रकार से अंदर खींचे की वह रीढ़ की हड्डी को छू ले। जितना हो सके उतना ही करें। \n5. पेट की मासपेशियों के सिकुड़ने को आप अपने पेट पर हाथ रख कर महसूस कर सकते हैं। नाभि को अंदर की ओर खींचे।
-\n6. जैसे ही आप पेट की मासपेशियों को ढीला छोड़ते हो, साँस अपने आप ही आपके फेफड़ों में पहुँच जाती है।
-कपालभाति प्राणायाम के एक क्रम (राउंड) को पूरा करने के लिए २० साँस छोड़े।
-\n7. एक राउंड खत्म होने के पश्चात, विश्राम करें और अपनी आँखों को बंद कर लें। अपने शरीर में प्राणायाम से प्रकट हुई उत्तेजना को महसूस करें।
-कपालभाति प्राणायाम के दो और क्रम (राउंड) को पूरा करें।"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
-        </LinearLayout>
+        android:orientation="vertical">
         <LinearLayout android:layout_height="wrap_content"
             android:layout_width="match_parent"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/llf"
+            android:id="@+id/llff"
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:cardView="http://schemas.android.com/tools">
             <androidx.cardview.widget.CardView
@@ -152,43 +84,84 @@
                         </LinearLayout>
 
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:padding="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="City"
-                            android:layout_weight="1"
-                            android:textSize="20sp"
-                            android:id="@+id/itemuserCff"/>
-                        <TextView
-                            android:padding="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Country"
-                            android:layout_weight="1"
-                            android:textSize="20sp"
-                            android:id="@+id/itemuserCounff"/>
-                        <TextView
-                            android:padding="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="follow"
-                            android:layout_weight="1"
-                            android:textSize="20sp"
-                            android:id="@+id/itemfollowff"/>
-
-                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
         <TextView
+            android:id="@+id/title12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Do u want to Rate the post?"
+            android:paddingLeft="16dp"
+            android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
+            android:textColor="#000000"
+            android:typeface="normal"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/img12"
+            android:src="@drawable/prof"
+            android:layout_width="match_parent"
+            android:layout_height="250sp"
+            android:scaleType="centerCrop"
+            />
+        <!--<RatingBar
+
+            android:isIndicator="false"
+            android:stepSize="1"
+            android:id="@+id/ratingdescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content
+            android:numStars="10" />-->
+        <RatingBar
+            android:id="@+id/ratingdescription"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="10"
+            android:layout_gravity="center_horizontal"
+            android:isIndicator="false"
+            android:scaleX=".9"
+            android:scaleY=".9"
+            android:stepSize="0.1" />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/submitrate"
+            android:visibility="gone"
+            android:text="submit"/>
+
+        <TextView
+            android:id="@+id/desc12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="कपालभाति प्राणायाम करने की विधि । \nHow To Do Kapalbhati Pranayama
+1. अपनी रीढ़ की हड्डी को सीधा रखते हुए, आराम से बैठ जाएँ। \n2. अपने हाथों को आकाश की तरफ, आराम से घुटनों पर रखें।
+एक लंबी गहरी साँस अंदर लें।
+\n3. साँस छोड़ते हुए अपने पेट को अंदर की ओर खींचे। \n4. अपने पेट को इस प्रकार से अंदर खींचे की वह रीढ़ की हड्डी को छू ले। जितना हो सके उतना ही करें। \n5. पेट की मासपेशियों के सिकुड़ने को आप अपने पेट पर हाथ रख कर महसूस कर सकते हैं। नाभि को अंदर की ओर खींचे।
+\n6. जैसे ही आप पेट की मासपेशियों को ढीला छोड़ते हो, साँस अपने आप ही आपके फेफड़ों में पहुँच जाती है।
+कपालभाति प्राणायाम के एक क्रम (राउंड) को पूरा करने के लिए २० साँस छोड़े।
+\n7. एक राउंड खत्म होने के पश्चात, विश्राम करें और अपनी आँखों को बंद कर लें। अपने शरीर में प्राणायाम से प्रकट हुई उत्तेजना को महसूस करें।
+कपालभाति प्राणायाम के दो और क्रम (राउंड) को पूरा करें।"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:typeface="monospace" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate the post"
             android:textSize="20sp"/>
         <RatingBar
             android:id="@+id/ratedesc"
@@ -254,34 +227,38 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <LinearLayout
+
+    </RelativeLayout>
+
+</ScrollView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:background="#FFFFFF"
+        android:gravity="left"
+        android:orientation="horizontal">
+        <ImageButton
+            android:src="@drawable/clapping"
+            android:id="@+id/inc2"
+            android:backgroundTint="#FFFFFF"
+            android:scaleType="centerCrop"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="0 Claps"
+
+            />
+        <TextView
+            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="550dp"
-            android:background="#FFFFFF"
-            android:gravity="left"
-            android:orientation="horizontal">
-            <ImageButton
-                android:src="@drawable/clapping"
-                android:id="@+id/inc2"
-                android:backgroundTint="#FFFFFF"
-                android:scaleType="centerCrop"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="0 Claps"
-
-                />
-            <TextView
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="20sp"
-                android:id="@+id/displayclap2"/>
-        </LinearLayout>
-        <ImageButton
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="550dp"
+            android:text="0"
+            android:textSize="20sp"
+            android:id="@+id/displayclap2"/>
+    </LinearLayout>
+    <ImageButton
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="550dp"
         android:src="@drawable/share"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -291,5 +268,4 @@
         android:layout_marginRight="10dp"
         android:text="share"
         />
-    </RelativeLayout>
-</ScrollView>
+</RelativeLayout>

@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     MainActivity obj;
     TextView displaynotifcount;
     SearchView search_;
+    TextView appname;
     CardView cardView;
     int seench=0;
    // EditText searchbar;
@@ -107,7 +108,13 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.my_statusbar_color));
         }
+<<<<<<< HEAD
+        appname=(TextView)findViewById(R.id.appname);
+        appname.setVisibility(View.GONE);
+        search_.setVisibility(View.VISIBLE);
+=======
 
+>>>>>>> 5e224745aee0193f4d1c31a6c0692f39bd9a7da5
         btnshare=findViewById(R.id.btnsharepost);
         search_=findViewById(R.id.search_);
        // searchbar=findViewById(R.id.search_bar);

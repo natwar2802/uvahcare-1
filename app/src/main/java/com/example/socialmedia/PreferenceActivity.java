@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,7 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PreferenceActivity extends AppCompatActivity {
-    Button btnNextMain;
+    ImageView btnNextMain;
+    Button updatePreference;
     ArrayList<String> temp=new ArrayList<String>();
 
 
@@ -42,32 +44,26 @@ public class PreferenceActivity extends AppCompatActivity {
 
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
        /* LinearLayout dynamicContent;
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_preference, null);
         dynamicContent.addView(wizard);*/
-        btnNextMain=findViewById(R.id.nexttoMain);
+        btnNextMain=findViewById(R.id.nexttomain);
+        updatePreference=findViewById(R.id.updatePreference);
         LinearLayout l=findViewById(R.id.defense);
         FirebaseUser userpreference1= FirebaseAuth.getInstance().getCurrentUser();
         String idpreference1=userpreference1.getUid();
         DatabaseReference prefeference1= FirebaseDatabase.getInstance().getReference("profile").child(idpreference1).child("userPreference");
-        FirebaseDatabase.getInstance().getReference("Profile").addValueEventListener(new ValueEventListener() {
+        updatePreference.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChild(idpreference1))
-                    btnNextMain.setVisibility(View.GONE);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onClick(View v) {
+                prefeference1.setValue(temp);
             }
         });
-
         btnNextMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-           prefeference1.setValue(temp);
-
                 Intent i = new Intent(PreferenceActivity.this, MainActivity.class);
                 startActivity(i);
             }

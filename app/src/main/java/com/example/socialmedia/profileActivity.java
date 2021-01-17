@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -50,7 +51,8 @@ public class profileActivity extends MainActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-
+        SearchView search_=findViewById(R.id.search_);
+        search_.setVisibility(View.GONE);
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         editp=findViewById(R.id.editprofile);
