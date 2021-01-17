@@ -4,27 +4,47 @@ import java.util.ArrayList;
 
 public class modelGeneral {
     String title,brief,urlimage,description,pid,blogerid;
-    ArrayList<String> prefrence;
+    String preference;
     long datetime,ratesum;
+    long postno;
     float rating;
     double postscore;
-    private int claps=0;
+    long seencount=0;
+     long claps=0;
     public modelGeneral() {
     }
 
-    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid,ArrayList<String> prefrence, long datetime, long ratesum, float rating, int claps,double postscore) {
+    public modelGeneral(String title, String brief, String urlimage, String description, String pid, String blogerid,String preference, long datetime, long ratesum, float rating, long claps,double postscore,long seencount,long postno) {
         this.title = title;
         this.brief = brief;
         this.urlimage = urlimage;
         this.description = description;
         this.pid = pid;
         this.blogerid = blogerid;
-        this.prefrence = prefrence;
+        this.preference = preference;
         this.datetime = datetime;
         this.ratesum = ratesum;
         this.rating = rating;
         this.claps = claps;
         this.postscore=postscore;
+        this.seencount=seencount;
+        this.postno=postno;
+    }
+
+    public long getPostno() {
+        return postno;
+    }
+
+    public void setPostno(long postno) {
+        this.postno = postno;
+    }
+
+    public long getSeencount() {
+        return seencount;
+    }
+
+    public void setSeencount(long seencount) {
+        this.seencount = seencount;
     }
 
     public double getPostscore() {
@@ -83,12 +103,12 @@ public class modelGeneral {
         this.blogerid = blogerid;
     }
 
-    public ArrayList<String> getPrefrence() {
-        return prefrence;
+    public String getPreference() {
+        return preference;
     }
 
-    public void setPrefrence(ArrayList<String> prefrence) {
-        this.prefrence = prefrence;
+    public void setPreference(String preference) {
+        this.preference = preference;
     }
 
     public long getDatetime() {
@@ -115,16 +135,11 @@ public class modelGeneral {
         this.rating = rating;
     }
 
-    public int getClaps() {
+    public long getClaps() {
         return claps;
     }
 
-    public void setClaps(int claps) {
+    public void setClaps(long claps) {
         this.claps = claps;
-    }
-
-    public int incclaps(){
-        this.claps=this.claps+1;
-        return this.claps;
     }
 }

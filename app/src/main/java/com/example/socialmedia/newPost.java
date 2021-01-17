@@ -67,26 +67,36 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
     ArrayList<String> temp=new ArrayList<String>();
     TextView select_text;
     LinearLayout l;
+
+    String preference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // setContentView(R.layout.activity_new_post);
 
-         l=(LinearLayout) findViewById(R.id.newdefense);
 
 
         LinearLayout dynamicContent;
         dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
         View wizard = getLayoutInflater().inflate(R.layout.activity_new_post, null);
         dynamicContent.addView(wizard);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        l=(LinearLayout) findViewById(R.id.newdefense);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+<<<<<<< HEAD
         appname.setVisibility(View.VISIBLE);
         search_.setVisibility(View.GONE);
+=======
+
+
+>>>>>>> 5e224745aee0193f4d1c31a6c0692f39bd9a7da5
         // Spinner Drop down elements
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
@@ -283,29 +293,47 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                     long data=System.currentTimeMillis();
                                     long ratesum=0;
                                     float rating=0;
-                                    int claps=0;
+                                    long claps=0;
                                     double postscore=0;
+                                    long seencount=0;
+                                    long postno=1;
 
-                                    ArrayList<String> prefrence=new ArrayList<String>();
-                                    prefrence.add("preference");
+
+
+
+
 
 
                                     // String email=txtemail.getText().toString().trim();
                                     FirebaseUser myuser= FirebaseAuth.getInstance().getCurrentUser();
                                     String myuserida=myuser.getUid();
                                     String ImageUploadId = databaseReference.push().getKey();
+
                                     progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                                     @SuppressWarnings("VisibleForTests")
 
-                                        modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida,prefrence,data,ratesum,rating,claps,postscore);
+                                        modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida,preference,data,ratesum,rating,claps,postscore,seencount,postno);
 
                                     //String mobno=databaseReference.Auythecation(mobno);
 
                                     databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
-                                    databaseReference.child(ImageUploadId).child("preference").setValue(temp);
+                                    databaseReference.child(ImageUploadId).child("preference").setValue(preference);
                                    // databaseReference.child(ImageUploadId).child("datetime").setValue(data);
                                     mypostdatabaseReference.child(myuserida).child(ImageUploadId).setValue(true);
+
+                                    databaseReference.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            long postno=snapshot.getChildrenCount();
+                                            databaseReference.child(ImageUploadId).child("postno").setValue(postno);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
 
                                     followerefernce.child(myuserida).addValueEventListener(new ValueEventListener() {
                                         @Override
@@ -390,9 +418,15 @@ try{        for(int i=0;i<l.getChildCount();i++)
 
     }
     public void f(View view) {
+
+        l=(LinearLayout) findViewById(R.id.newdefense);
+
+
         CardView c = (CardView) findViewById(view.getId());
         TextView t = ((TextView) c.getChildAt(0));
         String k = t.getText().toString();
+        preference=k;
+
         for(int i=0;i<l.getChildCount();i++)
         {
             LinearLayout l1=(LinearLayout)(l.getChildAt(i));

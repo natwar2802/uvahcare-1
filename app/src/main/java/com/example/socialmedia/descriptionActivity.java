@@ -91,6 +91,8 @@ public class descriptionActivity extends MainActivity {
         Glide.with(imj.getContext()).load(url).into(imj);
       //  float fratindesc=ratingBardescription.getRating();
         DatabaseReference refrate= FirebaseDatabase.getInstance().getReference("rating");
+        DatabaseReference hpost= FirebaseDatabase.getInstance().getReference("hPost");
+
 
         try{
         refrate.addValueEventListener(new ValueEventListener() {
@@ -101,6 +103,7 @@ public class descriptionActivity extends MainActivity {
                 if(snapshot.hasChild(postkey)) {
 
                         int n = (int) snapshot.child(postkey).getChildrenCount() - 1;
+
                         // if(snapshot.child(postkey).child("sum").get)
                         //try{
                         // Double sum = (Double) snapshot.child(postkey).child("sum").getValue();
@@ -116,11 +119,37 @@ public class descriptionActivity extends MainActivity {
                     }*/
 
                       try{  Long sum = (Long) snapshot.child(postkey).child("sum").getValue();
+                          hpost.child(postkey).child("ratesum").setValue(sum);
                         // double d = sum.doubleValue();
                         float avrate =((float) sum)/ n;
+                          ratingBardescription.setRating(avrate);
+                          hpost.child(postkey).child("rating").setValue(avrate);
+                         // hpost.child(postkey).child("postscore").setValue(10);
+                          hpost.addValueEventListener(new ValueEventListener() {
+                              @Override
+                              public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                  long totalno=snapshot.getChildrenCount();
+                                  Long claps= (Long) snapshot.child(postkey).child("claps").getValue();
+                                  Long seencount= (Long) snapshot.child(postkey).child("seencount").getValue();
+                                  Long datetime= (Long) snapshot.child(postkey).child("datetime").getValue();
+                                  Long postno= (Long) snapshot.child(postkey).child("postno").getValue();
+                                  double score;
+                                  String sumstr=sum.toString();
+                                  score=((double) claps)/(seencount+1)+(avrate/10)+((double) sumstr.length())/10+((double)postno)/totalno;
+                                  hpost.child(postkey).child("postscore").setValue(score);
 
-                       // float avr = avrate.floatValue();
-                        ratingBardescription.setRating(avrate);
+                              }
+
+                              @Override
+                              public void onCancelled(@NonNull DatabaseError error) {
+
+                              }
+                          });
+
+
+
+                          // float avr = avrate.floatValue();
+
                       }catch (Exception e){}
 
 
@@ -159,6 +188,7 @@ public class descriptionActivity extends MainActivity {
             Log.e(TAG,e.getMessage());
 
         }
+
         ratingBardescription.setEnabled(false);
         //  rateuser.child(postkey).child(cid).setValue(fratindesc);
         refrate.addValueEventListener(new ValueEventListener() {
@@ -216,7 +246,7 @@ public class descriptionActivity extends MainActivity {
                          refrate.child(postkey).child(cid).setValue(frate);
                          refrate.child(postkey).child("sum").setValue(fsum);
                          }*/
-          try{
+       //   try{
                              Long sum1 = (Long) snapshot.child(postkey).child("sum").getValue();
                              // float sum = (float) snapshot.child(postkey).child("sum").getValue();
                              double sum=sum1.doubleValue();
@@ -227,7 +257,11 @@ public class descriptionActivity extends MainActivity {
                              ratingBardescription.setRating(avrate);
                              refrate.child(postkey).child(cid).setValue(frate);
                              refrate.child(postkey).child("sum").setValue(fsum);
-          }catch (Exception e){}
+
+
+
+
+        //  }catch (Exception e){}
 
 
                      }

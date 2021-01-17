@@ -2,6 +2,7 @@ package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -21,8 +22,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import android.view.Window;
 import android.view.WindowManager;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference("hPost");
     private static MainActivity instance;
     FirebaseAuth mAuth;
-    DatabaseReference likesrefernce,notifyreference;
+    DatabaseReference likesrefernce,notifyreference,profilereference;
     FirebaseDatabase database;
     Button btnmypost,btnbookmark;
     // Button btnshare;
@@ -77,9 +80,12 @@ public class MainActivity extends AppCompatActivity {
     SearchView search_;
     TextView appname;
     CardView cardView;
+    int seench=0;
    // EditText searchbar;
     //int Natwar=0;
     int mainch=0;
+    private BottomNavigationView toolbar2;
+
     private static final String TAG = "xyz";
 
 
@@ -102,9 +108,13 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.my_statusbar_color));
         }
+<<<<<<< HEAD
         appname=(TextView)findViewById(R.id.appname);
         appname.setVisibility(View.GONE);
         search_.setVisibility(View.VISIBLE);
+=======
+
+>>>>>>> 5e224745aee0193f4d1c31a6c0692f39bd9a7da5
         btnshare=findViewById(R.id.btnsharepost);
         search_=findViewById(R.id.search_);
        // searchbar=findViewById(R.id.search_bar);
@@ -115,10 +125,13 @@ public class MainActivity extends AppCompatActivity {
 
         bellnotify=findViewById(R.id.bellnotify);
 
+
+
         //onStart();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         notifyreference = FirebaseDatabase.getInstance().getReference("notification");
+        profilereference = FirebaseDatabase.getInstance().getReference("profile");
         cardView=findViewById(R.id.pic);
         if(user==null){
             startActivity(new Intent(MainActivity.this,loginActivity.class));
@@ -191,6 +204,9 @@ public class MainActivity extends AppCompatActivity {
         itemprofilepic=(ImageView)findViewById(R.id.itemprofilepic);
         itemusername=(TextView)findViewById(R.id.itemuserN);
 
+        toolbar2 = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        //toolbar2.inflateMenu(R.menu.menu);
+
         //pager.setAdapter(adapter);
         //setProfileInPost();
 
@@ -248,28 +264,74 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Query myTopPostsQuery = database.getReference("hPost")
-                .orderByChild("datetime");
-        myTopPostsQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                int count=0,insert=0;
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    count++;
-                   modelGeneral modelg= postSnapshot.getValue(modelGeneral.class);
-                  // if(modelg.getPrefrence().equals())
-                    arrayList.add(0,postSnapshot.getValue(modelGeneral.class));
-                    adapter.notifyDataSetChanged();
-                }
-            }
+       Query myTopPostsQuery = database.getReference("hPost")
+               .orderByChild("postscore").limitToLast(100);
+       myTopPostsQuery.addValueEventListener(new ValueEventListener() {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        });
+           @Override
+           public void onDataChange(DataSnapshot dataSnapshot) {
+               if(mainch==0) {
+
+               FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
+               String useid = use.getUid();
+
+               profilereference.child(useid).addValueEventListener(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                       int count = 0;
+                       int count1 = 0,userpostch=0;
+                       ArrayList<String> userp = (ArrayList<String>) snapshot.child("userPreference").getValue();
+                       String preseenpost = snapshot.child("prevseenpost").getValue().toString();
+
+                       for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                           modelGeneral model = dataSnapshot1.getValue(modelGeneral.class);
+                           String postprefe = model.getPreference();
+                           if (postprefe.equals(preseenpost)) {
+                               arrayList.add(0, model);
+                               adapter.notifyDataSetChanged();
+                               count1++;
+                               count++;
+                           } else if (userp.contains(postprefe)) {
+                               arrayList.add(count1, model);
+                               adapter.notifyDataSetChanged();
+                               count++;
+                           }
+
+                           else if(userpostch==0&&model.getBlogerid().equals(useid)){
+
+                               arrayList.add(count1,model);
+                               adapter.notifyDataSetChanged();
+                               count1++;
+                               userpostch=1;
+                           }
+                           else {
+                               arrayList.add(count, model);
+                               adapter.notifyDataSetChanged();
+                           }
+                       }
+
+
+                   }
+
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError error) {
+
+                   }
+               });
+
+                   mainch=1;
+           }
+
+           }
+
+           @Override
+           public void onCancelled(DatabaseError databaseError) {
+               // Getting Post failed, log a message
+               Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+               // ...
+           }
+       });
 
 
 
@@ -315,6 +377,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });*/
+        DatabaseReference profileref1=FirebaseDatabase.getInstance().getReference("profile").child(user.getUid()).child("prevseenpost");
+      //  DatabaseReference seencount=FirebaseDatabase.getInstance().getReference("seencount");
+        DatabaseReference postref=FirebaseDatabase.getInstance().getReference("hPost");
+
+
 
         adapter.setOnItemClickListener(new ClickListener<modelGeneral>() {
             @Override
@@ -329,6 +396,30 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("blogid",data.getBlogerid());
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
+
+                final int[] seenpostch = {0};
+                profileref1.setValue(data.getPreference());
+               postref.child(data.getPid()).addValueEventListener(new ValueEventListener() {
+
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot snapshot) {
+                       if(seenpostch[0] ==0){
+                       Long count= (Long) snapshot.child("seencount").getValue();
+                       count+=1;
+                       postref.child(data.getPid()).child("seencount").setValue(count);
+                           seenpostch[0]=1;
+
+                       }
+
+                   }
+
+
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError error) {
+
+                   }
+               });
+
                 // finish();
             }
 
@@ -348,12 +439,18 @@ public class MainActivity extends AppCompatActivity {
 
                             case R.id.action_favorites:
                                 Toast.makeText(MainActivity.this, "Home Selected", Toast.LENGTH_SHORT).show();
-                                MenuItem item1=findViewById(R.id.action_favorites);
-                                MenuItem item2=findViewById(R.id.action_schedules);
-                                MenuItem item3=findViewById(R.id.action_music);
-                                item1.setChecked(true);
-                                item2.setChecked(false);
-                                item3.setChecked(false);
+                               // MenuItem item1=findViewById(R.id.action_favorites);
+                              //  MenuItem item2=findViewById(R.id.action_schedules);
+                              //  MenuItem item3=findViewById(R.id.action_music);
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setVisible(true);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setVisible(false);
+                                toolbar2.getMenu().findItem(R.id.action_music).setVisible(false);
+
+
+
+                              //  item1.setChecked(true);
+                               // item2.setChecked(false);
+                                //item3.setChecked(false);
                                 Log.i("matching", "matching inside1 bro" +id1 );
                                 in=new Intent(getBaseContext(),MainActivity.class);
                                 startActivity(in);
@@ -362,12 +459,16 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.action_schedules:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Post Selected", Toast.LENGTH_SHORT).show();
-                                MenuItem item4=findViewById(R.id.action_favorites);
+                               /* MenuItem item4=findViewById(R.id.action_favorites);
                                 MenuItem item5=findViewById(R.id.action_schedules);
                                 MenuItem item6=findViewById(R.id.action_music);
                                 item5.setChecked(true);
                                 item4.setChecked(false);
-                                item6.setChecked(false);
+                                item6.setChecked(false);*/
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setVisible(true);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setVisible(false);
+                                toolbar2.getMenu().findItem(R.id.action_music).setVisible(false);
+
                                 in=new Intent(getBaseContext(),newPost.class);
                                 startActivity(in);
                                 //  finish();
@@ -375,12 +476,16 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.action_music:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Profile selected", Toast.LENGTH_SHORT).show();
-                                MenuItem item7=findViewById(R.id.action_favorites);
+                               /* MenuItem item7=findViewById(R.id.action_favorites);
                                 MenuItem item8=findViewById(R.id.action_schedules);
                                 MenuItem item9=findViewById(R.id.action_music);
                                 item9.setChecked(true);
                                 item7.setChecked(false);
-                                item8.setChecked(false);
+                                item8.setChecked(false);*/
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setVisible(true);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setVisible(false);
+                                toolbar2.getMenu().findItem(R.id.action_music).setVisible(false);
+
                                 in=new Intent(getBaseContext(), profileActivity.class);
                                 startActivity(in);
                                 //finish();
@@ -540,6 +645,7 @@ public class MainActivity extends AppCompatActivity {
                     String id=s.substring(i+1,s.length()-1);
                     Log.e(TAG,id);
                    DatabaseReference postref=FirebaseDatabase.getInstance().getReference("hPost");
+
                     try {
                         postref.child(id).addValueEventListener(new ValueEventListener() {
                             @Override

@@ -318,15 +318,16 @@ try{
                         String bmpostid=mlist.get(position).getPid();
                         String blogerid=mlist.get(position).getBlogerid();
                        // String prefrence="prefernce";
-                        ArrayList<String> prefrence=new ArrayList<String>();
-                        prefrence.add("preference");
+                        String preference=mlist.get(position).getPreference();
+
                         long data=System.currentTimeMillis();
                         long ratesum=0;
                         float rating=0;
                         int claps=0;
                         double postscore=0;
+                        int seencount=0;
 
-                        modelGeneral info = new modelGeneral(bmtitle,bmbrief,bmuri,bmdis,bmpostid,blogerid,prefrence,data,ratesum,rating,claps,postscore);
+                       // modelGeneral info = new modelGeneral(bmtitle,bmbrief,bmuri,bmdis,bmpostid,blogerid,preference,data,ratesum,rating,claps,postscore,seencount);
                         //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
 
                         if(bookmarkchecker.equals(true)){
@@ -496,15 +497,20 @@ try{
                     String avr=Double.toString(avrate);
 
                    holder.displayrate.setText(avr);
-                    }*/
+                   }*/
+
 
                       try{
                           Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
+
                        double sum=sum1.doubleValue();
+                          holder.postref3.child(postkey).child("ratesum").setValue(sum);
                         float avrate=((float) sum)/n;
-                        holder.postref3.child(postkey).child("rating").setValue(avrate);
-                        String avr=Float.toString(avrate);
-                        holder.displayrate.setText(avr);
+                          holder.postref3.child(postkey).child("rating").setValue(avrate);
+                          String avr=Float.toString(avrate);
+                          holder.displayrate.setText(avr);
+
+
                       }catch (Exception e){}
 
 
