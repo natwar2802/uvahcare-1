@@ -12,26 +12,13 @@
         android:background="@color/teal_200"
         xmlns:cardView="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android">
-
         <ImageView
-            android:layout_width="40dp"
-            android:layout_marginTop="5dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/logo"
             android:layout_alignParentLeft="true"
             android:scaleType="fitXY"
             />
-        <!--<ImageView
-
-            android:id="@+id/search_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="50dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/search" />-->
         <SearchView
             android:id="@+id/search_"
             android:layout_width="250dp"

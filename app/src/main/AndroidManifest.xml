@@ -8,11 +8,17 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:launchMode="singleTop"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:launchMode="singleTop"
         android:theme="@style/Theme.SocialMedia">
-        <activity android:name=".Notify"></activity>
+        <activity android:name=".splashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Notify" />
         <activity android:name=".followedBloggerActivity" />
         <activity android:name=".followDetail" />
         <activity android:name=".followActivity" />
@@ -26,12 +32,12 @@
         <activity android:name=".profileActivity" />
         <activity android:name=".newPost" />
         <activity android:name=".MainActivity">
-            <intent-filter>
+
+           <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
+            </intent-filter>  -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -39,10 +45,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="https"
-                    android:host="healthappinnovation.page.link" />
+                    android:host="healthappinnovation.page.link"
+                    android:scheme="https" />
             </intent-filter>
-
         </activity>
 
         <provider
