@@ -39,6 +39,7 @@ public class profileActivity extends MainActivity {
     ImageView profilepic,editp;
     int followcount;
     ImageButton logout;
+    TextView userdetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class profileActivity extends MainActivity {
         username=findViewById(R.id.userName);
         usercity=findViewById(R.id.tcity);
         usercountry=findViewById(R.id.tcountry);
+        userdetail=findViewById(R.id.userdetail);
         gotopreference=findViewById(R.id.gotopreference);
         gotofollower=findViewById(R.id.gotofollower);
         gotofollowed=findViewById(R.id.gotofollowed);
@@ -144,7 +146,10 @@ public class profileActivity extends MainActivity {
                 usercity.setText(userc);
                 String usercoun=snapshot.child(puserida).child("countryP").getValue().toString();
                 usercountry.setText(usercoun);
+                String detail=snapshot.child(puserida).child("userdetail").getValue().toString();
+             userdetail.setText(detail);
                 String url=snapshot.child(puserida).child("imgUrlP").getValue().toString();
+
                 Glide.with(getApplicationContext()).load(url).into(profilepic);
                 // likescount=(int)snapshot.child(postkey).getChildrenCount();
                 //  likeddisplay.setText(Integer.toString(likescount)+likes);
