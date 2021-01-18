@@ -124,7 +124,7 @@ public class descriptionActivity extends MainActivity {
                 String name= (String) snapshot.child("usernameP").getValue();
 
                userNff.setText(name);
-                Glide.with(profileimg.getContext()).load(url).into(profileimg);
+                Glide.with(profileimg.getContext()).load(purl).into(profileimg);
 
             }
 

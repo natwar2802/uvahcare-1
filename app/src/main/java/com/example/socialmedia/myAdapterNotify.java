@@ -85,7 +85,7 @@ public class myAdapterNotify extends RecyclerView.Adapter<myAdapterNotify.myview
 
            }catch (Exception e){}
 
-try{
+//try{
     String postkey = mlist.get(position).getPid();
     String idbloger = mlist.get(position).getBlogerid();
 
@@ -120,21 +120,28 @@ try{
         holder.notififyreferece.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                try{
+              //  try{
                 Boolean check= (Boolean) snapshot.child(mlist.get(position).getBlogerid()).child(postkey).getValue();
                 Log.e(TAG, String.valueOf(check));
 
-                if(check==false){
-                   holder.cardViewNotify.setCardBackgroundColor(Color.WHITE);
+                if(check==Boolean.FALSE){
+                   holder.cardViewNotify.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+                   // cardViewNotify.setCardBackgroundColor();
+                }
+                else {
 
-                }}catch (Exception e){}
+                    holder.cardViewNotify.setCardBackgroundColor(Color.parseColor("#87CEEB"));
+
+                }
+                //}catch (Exception e){}
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });}catch (Exception e){}
+        });
+    //}catch (Exception e){}
     }
 
     @Override

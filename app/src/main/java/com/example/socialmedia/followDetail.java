@@ -83,6 +83,7 @@ public class followDetail extends MainActivity {
       //  FirebaseUser myuser= FirebaseAuth.getInstance().getCurrentUser();
        // String myuserida=myuser.getUid();
         root1 = FirebaseDatabase.getInstance().getReference("mypost").child(blogerid);
+        DatabaseReference rootref = FirebaseDatabase.getInstance().getReference("hPost");
         //databaseReference=database.getReference("healthPost");
         // likesrefernce = database.getReference("likes");
 
@@ -92,10 +93,24 @@ public class followDetail extends MainActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     try {
 
+                     rootref.child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                         @Override
+                         public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                             modelGeneral model = snapshot1.getValue(modelGeneral.class);
+                             arrayList.add(0,model);
+                             adapter2.notifyDataSetChanged();
 
-                    modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
-                    arrayList.add(model);
-                    adapter2.notifyDataSetChanged();}catch (Exception e){}
+
+                         }
+
+                         @Override
+                         public void onCancelled(@NonNull DatabaseError error) {
+
+                         }
+                     });
+
+
+                    }catch (Exception e){}
                 }
 
             }
