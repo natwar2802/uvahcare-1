@@ -112,6 +112,15 @@
                     android:typeface="normal"
                     android:textSize="20sp" />
                 <TextView
+                    android:layout_below="@id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:text=", "
+                    android:textColor="#000000"
+                    android:typeface="normal"
+                    android:textSize="20sp" />
+                <TextView
                     android:id="@+id/following"
                     android:layout_below="@id/tcountry"
                     android:layout_width="wrap_content"
@@ -129,10 +138,10 @@
                 android:layout_below="@id/place"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
+                android:paddingBottom="4dp"
                 android:textColor="#000000"
                 android:typeface="normal"
-                android:textSize="20sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -158,6 +167,55 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingLeft="10dp">
+
+                    <androidx.cardview.widget.CardView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        cardView:cardCornerRadius="20dp"
+                        cardView:cardElevation="8dp"
+                        android:layout_margin="10dp"
+                        cardView:cardBackgroundColor="#FFFFFF"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="10dp"
+                            android:onClick="postS">
+                            <TextView
+                                android:id="@+id/btnmybookmarkp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="   My Bookmarked Post >"
+                                android:textSize="20sp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        cardView:cardCornerRadius="20dp"
+                        cardView:cardElevation="8dp"
+                        android:layout_margin="10dp"
+                        cardView:cardBackgroundColor="#FFFFFF"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="10dp"
+                            android:onClick="YourPosts">
+                            <TextView
+                                android:id="@+id/btnmypostp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="   My Posts                      >"
+                                android:textSize="20sp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -225,52 +283,7 @@
 
                     </LinearLayout>
                     </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
 
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        cardView:cardCornerRadius="20dp"
-                        cardView:cardElevation="8dp"
-                        android:layout_margin="10dp"
-                        cardView:cardBackgroundColor="#FFFFFF"
-                        >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:onClick="YourPosts">
-                        <TextView
-                            android:id="@+id/btnmypostp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="   My Posts                      >"
-                            android:textSize="20sp"/>
-                    </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        cardView:cardCornerRadius="20dp"
-                        cardView:cardElevation="8dp"
-                        android:layout_margin="10dp"
-                        cardView:cardBackgroundColor="#FFFFFF"
-                        >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:onClick="postS">
-                        <TextView
-                            android:id="@+id/btnmybookmarkp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="   My Bookmarked Post >"
-                            android:textSize="20sp"/>
-                    </LinearLayout>
-                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

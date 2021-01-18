@@ -84,6 +84,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
         holder.descrip.setText(mlist.get(position).getBrief());
         holder.title.setText(mlist.get(position).getTitle());
+        holder.itemdatetime.setText((int) mlist.get(position).getDatetime());
+
         Glide.with(context).load(mlist.get(position).getUrlimage()).into(holder.img);
         //String id=mlist.get(position).getPid();
 
@@ -609,7 +611,7 @@ try{
         ImageView itemprofilepic;
         TextView itemusername,displayclap,report;
         Button btnrating;
-        TextView displayrate;
+        TextView displayrate,itemdatetime;
         Button yes,no;
         ImageButton btndel;
 
@@ -647,7 +649,9 @@ try{
             btndel=itemView.findViewById(R.id.btndel);
             cardView_report= itemView.findViewById(R.id.cardview_report);
             displayclap=itemView.findViewById(R.id.displayclap);
+            itemdatetime=itemView.findViewById(R.id.itemdatetime);
             universal = FirebaseDatabase.getInstance().getReference();
+
 
             mypostref = FirebaseDatabase.getInstance().getReference("mypost");
             postref3 = FirebaseDatabase.getInstance().getReference("hPost");

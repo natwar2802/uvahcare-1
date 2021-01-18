@@ -264,7 +264,7 @@ public class EditProfileActivity extends  AppCompatActivity{
                                     @SuppressWarnings("VisibleForTests")
                                     String prevseenpost="";
 
-                                    modelProfile modelp=new modelProfile(userNameProfile,countryProfile,cityProfile,uriP,myuseridaP,aboutme,userPreference,prevseenpost);
+                                    modelProfile modelp=new modelProfile(userNameProfile,cityProfile,countryProfile,uriP,myuseridaP,aboutme,userPreference,prevseenpost);
                                    String ImageUploadId = databaseReferenceProfile.push().getKey();
                                  //   String ImageUploadId = databaseReferenceProfile.push();
                                     //String mobno=databaseReference.Auythecation(mobno);
