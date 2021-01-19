@@ -111,8 +111,9 @@
                     android:textColor="#000000"
                     android:typeface="normal"
                     android:textSize="20sp" />
+            </LinearLayout>
                 <TextView
-                    android:layout_below="@id/userName"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="8dp"
@@ -122,7 +123,7 @@
                     android:textSize="20sp" />
                 <TextView
                     android:id="@+id/following"
-                    android:layout_below="@id/tcountry"
+                    android:layout_below="@+id/place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="8dp"
@@ -132,7 +133,8 @@
                     android:typeface="normal"
                     android:textSize="15sp" />
 
-            </LinearLayout>
+
+
             <TextView
                 android:id="@+id/userdetail"
                 android:layout_below="@id/place"
@@ -142,6 +144,7 @@
                 android:textColor="#000000"
                 android:typeface="normal"
                 android:textSize="10sp" />
+
 
             <TextView
                 android:layout_width="wrap_content"

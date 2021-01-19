@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class followDetail extends MainActivity {
     ImageView imgprofiledetail;
-    TextView usenamedetail,countrydetail,citydetail,followerdetail;
+    TextView usenamedetail,countrydetail,citydetail,followerdetail,aboutbloger;
     RecyclerView recycledetail;
     myAdapter adapter2;
     ArrayList<modelGeneral> arrayList;
@@ -57,6 +57,7 @@ public class followDetail extends MainActivity {
         countrydetail=findViewById(R.id.itemuserCounfdetail);
         citydetail=findViewById(R.id.itemuserCfdetail);
         imgprofiledetail=findViewById(R.id.itemprofilepicdetail);
+        aboutbloger=findViewById(R.id.aboutbloger);
 
 
         Intent in = getIntent();
@@ -80,12 +81,26 @@ public class followDetail extends MainActivity {
 
 
         // database = FirebaseDatabase.getInstance();
-      //  FirebaseUser myuser= FirebaseAuth.getInstance().getCurrentUser();
-       // String myuserida=myuser.getUid();
+       FirebaseUser myuser= FirebaseAuth.getInstance().getCurrentUser();
+        String myuserida=myuser.getUid();
+
         root1 = FirebaseDatabase.getInstance().getReference("mypost").child(blogerid);
         DatabaseReference rootref = FirebaseDatabase.getInstance().getReference("hPost");
+        DatabaseReference profref = FirebaseDatabase.getInstance().getReference("profile").child(blogerid);
+
         //databaseReference=database.getReference("healthPost");
         // likesrefernce = database.getReference("likes");
+        profref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                aboutbloger.setText(snapshot.child("userdetail").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         root1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -130,7 +145,11 @@ public class followDetail extends MainActivity {
                 intent.putExtra("title", data.getTitle().toString());
                 intent.putExtra("Bdesc", data.getBrief().toString());
                 intent.putExtra("im", data.getUrlimage());
-                intent.putExtra("Ddesc", data.getDescription());
+                intent.putExtra("Ddesc",data.getDescription());
+                intent.putExtra("postkey",data.getPid());
+                intent.putExtra("blogerid",data.getBlogerid());
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
 
                 startActivity(intent);
             }

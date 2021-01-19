@@ -88,6 +88,13 @@
                     android:id="@+id/itemfollowfdetail"/>
 
             </LinearLayout>
+            <TextView
+                android:autoLink="all"
+                android:id="@+id/aboutbloger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="detail"
+                android:textSize="15sp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
     <TextView

@@ -44,7 +44,9 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static android.content.ContentValues.TAG;
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
@@ -84,7 +86,13 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
         holder.descrip.setText(mlist.get(position).getBrief());
         holder.title.setText(mlist.get(position).getTitle());
-        holder.itemdatetime.setText((int) mlist.get(position).getDatetime());
+//         holder.itemdatetime.setText((int));
+        long datetime=mlist.get(position).getDatetime();
+        String date=holder.getDate(datetime, "dd/MM/yyyy hh:mm:ss.SSS");
+
+        String[] vals = date.split(" ");
+        String date1 = vals[0];
+        holder.itemdatetime.setText(date1);
 
         Glide.with(context).load(mlist.get(position).getUrlimage()).into(holder.img);
         //String id=mlist.get(position).getPid();
@@ -121,8 +129,9 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
             }
         });*/
 
-       if(ch==1){
-            holder.btndel.setVisibility(View.VISIBLE);
+       if(ch==1) {
+           holder.btndel.setVisibility(View.VISIBLE);
+       }
             holder.btndel.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -133,12 +142,14 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
 
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            try{
+
 
                             holder.mypostref.child(curentUserId).child(postkey).removeValue();
                             holder.postref3.child(postkey).removeValue();
-                            holder.bookmarkref.child(curentUserId).child(postkey).removeValue();
-                            holder.likesref.child(postkey).removeValue();
+                          //  holder.bookmarkref.child(curentUserId).child(postkey).removeValue();
+                            try{
+                            holder.likesref.child(postkey).removeValue();}catch (Exception e){}
+                            try{
                             holder.referencerate.child(postkey).removeValue();
                             }catch (Exception e){
 
@@ -182,7 +193,6 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
                 }
             });
 
-        }
 
         DatabaseReference reportreference=FirebaseDatabase.getInstance().getReference("report");
 
@@ -334,7 +344,7 @@ try{
 
                         if(bookmarkchecker.equals(true)){
                             if(snapshot.child(curentUserId).hasChild(postkey)){
-                                
+                                Toast.makeText(context.getApplicationContext(),"This post will removed when you visit next time yo Bookmark",Toast.LENGTH_SHORT).show();
                                 holder.bookmarkref.child(curentUserId).child(postkey).removeValue();
                                 holder.btnbookmark.setImageResource(R.drawable.imagesb);
                                 bookmarkchecker=false;
@@ -732,6 +742,20 @@ try{
             });
 
         }
+
+        public String getDate(long milliSeconds, String dateFormat)
+        {
+            // Create a DateFormatter object for displaying date in specified format.
+            SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+
+            // Create a calendar object that will convert the date and time value in milliseconds to date.
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(milliSeconds);
+            return formatter.format(calendar.getTime());
+        }
+
+
+
 
 
     }

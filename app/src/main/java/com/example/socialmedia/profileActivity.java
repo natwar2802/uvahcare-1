@@ -65,7 +65,6 @@ public class profileActivity extends MainActivity {
         username=findViewById(R.id.userName);
         usercity=findViewById(R.id.tcity);
         usercountry=findViewById(R.id.tcountry);
-        userdetail=findViewById(R.id.userdetail);
         gotopreference=findViewById(R.id.gotopreference);
         gotofollower=findViewById(R.id.gotofollower);
         gotofollowed=findViewById(R.id.gotofollowed);
@@ -147,7 +146,7 @@ public class profileActivity extends MainActivity {
                 String usercoun=snapshot.child(puserida).child("countryP").getValue().toString();
                 usercountry.setText(usercoun);
                 String detail=snapshot.child(puserida).child("userdetail").getValue().toString();
-             userdetail.setText(detail);
+//             userdetail.setText(detail);
                 String url=snapshot.child(puserida).child("imgUrlP").getValue().toString();
 
                 Glide.with(getApplicationContext()).load(url).into(profilepic);

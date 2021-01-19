@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,8 +43,9 @@ import static androidx.core.content.ContextCompat.getSystemService;
 
 public class descriptionActivity extends MainActivity {
 
-    RatingBar ratingBardescription,ratingpop,btnratedesc;
-    Button btnsubmitrate;
+    RatingBar ratingpop,btnratedesc;
+    TextView ratingBardescription;
+    Button btnsubmitrate,cancel_rate;
     CardView popupcard;
     float avrating;
     int ch=0,ch1=0;
@@ -53,6 +56,9 @@ public class descriptionActivity extends MainActivity {
     Boolean followerchecker=false,likechec=false;
     ImageButton inc2,btnshare2;
     TextView displayclap2;
+    TextView rate_text;
+    LinearLayout user_feedback;
+    ScrollView scrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +76,10 @@ public class descriptionActivity extends MainActivity {
         appname.setVisibility(View.VISIBLE);
         search_.setVisibility(View.GONE);
         ratingBardescription=findViewById(R.id.ratingdescription);
+        rate_text=findViewById(R.id.rate_text);
+        user_feedback=findViewById(R.id.user_feedback);
         btnratedesc=findViewById(R.id.ratedesc);
-
+        scrollView=findViewById(R.id.scrollView);
         btnsubmitrate=findViewById(R.id.submitrating);
         popupcard=findViewById(R.id.popupcard);
         ratingpop=findViewById(R.id.ratingpop);
@@ -85,7 +93,7 @@ public class descriptionActivity extends MainActivity {
         DatabaseReference followedreference=database.getReference("followed");
 
 
-
+        cancel_rate=findViewById(R.id.cancel_rate);
 
         btnratedesc.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -93,6 +101,7 @@ public class descriptionActivity extends MainActivity {
                 popupcard.setVisibility(View.VISIBLE);
                 ratingpop.setRating(btnratedesc.getRating());
                 btnratedesc.setVisibility(View.GONE);
+                rate_text.setVisibility(View.GONE);
             }
         });
 
@@ -110,6 +119,19 @@ public class descriptionActivity extends MainActivity {
        // CardView cardforpopup=findViewById(R.id.cardforpopup);
         Glide.with(imj.getContext()).load(url).into(imj);
       //  float fratindesc=ratingBardescription.getRating();
+        scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                if (scrollView != null) {
+                    if (scrollView.getChildAt(0).getBottom() <= (scrollView.getHeight() + scrollView.getScrollY())) {
+                        user_feedback.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        user_feedback.setVisibility(View.INVISIBLE);
+                    }
+                }
+            }
+        });
         String blogerid=in.getStringExtra("blogerid");
 
         DatabaseReference refrate= FirebaseDatabase.getInstance().getReference("rating");
@@ -117,6 +139,7 @@ public class descriptionActivity extends MainActivity {
         DatabaseReference profileref= FirebaseDatabase.getInstance().getReference("profile");
         DatabaseReference notifyreference1 =  FirebaseDatabase.getInstance().getReference("notification").child("old");
         DatabaseReference notifyreference2 =  FirebaseDatabase.getInstance().getReference("notification").child("new");
+
         profileref.child(blogerid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -167,7 +190,7 @@ public class descriptionActivity extends MainActivity {
                           hpost.child(postkey).child("ratesum").setValue(sum);
                         // double d = sum.doubleValue();
                         float avrate =((float) sum)/ n;
-                          ratingBardescription.setRating(avrate);
+                          ratingBardescription.setText(Float.toString(avrate));
                           hpost.child(postkey).child("rating").setValue(avrate);
                          // hpost.child(postkey).child("postscore").setValue(10);
                           hpost.addValueEventListener(new ValueEventListener() {
@@ -333,13 +356,13 @@ try {
 }catch (Exception e){}
 
 
-        ratingBardescription.setEnabled(false);
         //  rateuser.child(postkey).child(cid).setValue(fratindesc);
         refrate.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child(postkey).hasChild(cid)){
                     btnratedesc.setVisibility(View.GONE);
+                    rate_text.setVisibility(View.GONE);
                 }
             }
 
@@ -358,7 +381,12 @@ try {
             }
         });
 
-
+        cancel_rate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupcard.setVisibility(View.GONE);
+            }
+        });
         btnsubmitrate.setOnClickListener(new View.OnClickListener() {
 
           //   try {
@@ -398,7 +426,7 @@ try {
 
                              fsum = fsum + frate;
                              float avrate =((float) fsum )/ n;
-                             ratingBardescription.setRating(avrate);
+                           //  ratingBardescription.setText(Float.toString(avrate));
                              refrate.child(postkey).child(cid).setValue(frate);
                              refrate.child(postkey).child("sum").setValue(fsum);
 
@@ -413,7 +441,7 @@ try {
                        //  float sum = frate;
                          //float avrate = frate;
                          try {
-                             ratingBardescription.setRating(frate);
+                             ratingBardescription.setText(Float.toString(frate));
                              refrate.child(postkey).child(cid).setValue(frate);
                              refrate.child(postkey).child("sum").setValue(frate);
                          }catch (Exception e){}

@@ -84,11 +84,11 @@ public class PreferenceActivity extends AppCompatActivity {
                         CardView c=(CardView)(l1.getChildAt(j));
                         TextView t = ((TextView) c.getChildAt(0));
                         String k=t.getText().toString();
-
+                        try{
                         if(temp.contains(k)){
                             c.setCardBackgroundColor(Color.parseColor("#B388FF"));
 
-                        }
+                        }}catch (Exception e){}
                     }
                 }
 

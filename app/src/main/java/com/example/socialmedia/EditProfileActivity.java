@@ -88,6 +88,7 @@ public class EditProfileActivity extends  AppCompatActivity{
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try{
                 if(ch==0) {
                     if (snapshot.hasChild(id)) {
                         btnNextPreference.setVisibility(GONE);
@@ -95,6 +96,7 @@ public class EditProfileActivity extends  AppCompatActivity{
                         etNameProfile.setText(p.usernameP);
                         etcityProfile.setText(p.cityP);
                         etcountryProfile.setText(p.countryP);
+                        aboutmeProfile.setText(p.getUserdetail());
                         Glide.with(getApplicationContext()).load(p.imgUrlP).into(imgviewProfile);
 
                     } else {
@@ -102,6 +104,8 @@ public class EditProfileActivity extends  AppCompatActivity{
                     }
                     ch = 1;
                 }
+            }catch (Exception e){}
+
             }
 
             @Override
@@ -121,26 +125,33 @@ public class EditProfileActivity extends  AppCompatActivity{
 
 
                 if (inputValidatorHelper.isNullOrEmpty(userNameProfile1)) {
-                    errMsg.append(" UserName should not be empty.\n");
+
+                    Toast.makeText(getApplicationContext(),"UserName should not be empty.\n",Toast.LENGTH_SHORT).show();
+
                     //allowSave = false;
                 }
                 else if(inputValidatorHelper.isNullOrEmpty(cityProfile1)) {
-                    errMsg.append("City name should not be empty.\n");
+                    Toast.makeText(getApplicationContext(),"City name should not be empty.\n",Toast.LENGTH_SHORT).show();
+
                     // allowSave = false;
                 }
                 else if(inputValidatorHelper.isNullOrEmpty(countryProfile1)) {
-                    errMsg.append("- Country name should not be empty.\n");
+                    Toast.makeText(getApplicationContext(),"Country name should not be empty.\n",Toast.LENGTH_SHORT).show();
+
                     //allowSave = false;
                 }
                 else if(inputValidatorHelper.isNullOrEmpty(aboutmeProfile1)) {
-                    errMsg.append("- About me should not be empty.\n");
+                    Toast.makeText(getApplicationContext(),"About me should not be empty.\n",Toast.LENGTH_SHORT).show();
+
                     //allowSave = false;
                 }
                 else {
                     UploadImage();
+                    Intent i = new Intent(EditProfileActivity.this, PreferenceActivity.class);
+                    startActivity(i);
+
                 }
-                Intent i = new Intent(EditProfileActivity.this, PreferenceActivity.class);
-                startActivity(i);
+
             }
         });
 
@@ -171,19 +182,24 @@ public class EditProfileActivity extends  AppCompatActivity{
 
 
                 if (inputValidatorHelper.isNullOrEmpty(userNameProfile1)) {
-                    errMsg.append(" UserName should not be empty.\n");
+
+                    Toast.makeText(getApplicationContext(),"UserName should not be empty.\n",Toast.LENGTH_SHORT).show();
+
                     //allowSave = false;
                 }
-                 else if(inputValidatorHelper.isNullOrEmpty(cityProfile1)) {
-                    errMsg.append("City name should not be empty.\n");
-                   // allowSave = false;
+                else if(inputValidatorHelper.isNullOrEmpty(cityProfile1)) {
+                    Toast.makeText(getApplicationContext(),"City name should not be empty.\n",Toast.LENGTH_SHORT).show();
+
+                    // allowSave = false;
                 }
                 else if(inputValidatorHelper.isNullOrEmpty(countryProfile1)) {
-                    errMsg.append("- Country name should not be empty.\n");
+                    Toast.makeText(getApplicationContext(),"Country name should not be empty.\n",Toast.LENGTH_SHORT).show();
+
                     //allowSave = false;
                 }
                 else if(inputValidatorHelper.isNullOrEmpty(aboutmeProfile1)) {
-                    errMsg.append("- About me should not be empty.\n");
+                    Toast.makeText(getApplicationContext(),"About me should not be empty.\n",Toast.LENGTH_SHORT).show();
+
                     //allowSave = false;
                 }
                 else {
@@ -252,7 +268,7 @@ public class EditProfileActivity extends  AppCompatActivity{
                                     String countryProfile=etcountryProfile.getText().toString().trim();
                                     String aboutme=aboutmeProfile.getText().toString().trim();
                                     ArrayList<String> userPreference = new ArrayList<String>();
-                                    userPreference.add("");
+                                    userPreference.add("userPreference");
 
                                     FirebaseUser myuserP= FirebaseAuth.getInstance().getCurrentUser();
                                     String myuseridaP=myuserP.getUid();
@@ -262,7 +278,8 @@ public class EditProfileActivity extends  AppCompatActivity{
                                     progressDialogProfile.dismiss();
                                     Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
                                     @SuppressWarnings("VisibleForTests")
-                                    String prevseenpost="";
+                                    String prevseenpost="Prevseen";
+
 
                                     modelProfile modelp=new modelProfile(userNameProfile,cityProfile,countryProfile,uriP,myuseridaP,aboutme,userPreference,prevseenpost);
                                    String ImageUploadId = databaseReferenceProfile.push().getKey();

@@ -85,7 +85,7 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-
+   preference="";
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         appname.setVisibility(View.VISIBLE);
@@ -190,8 +190,11 @@ try{        for(int i=0;i<l.getChildCount();i++)
                 String solution1=etsolution.getText().toString().trim();
                 String precaution1=etprecausion.getText().toString().trim();
                 String description1=desc1+"\n"+benefit1+"\n"+howtodo1+"\n"+problem1+"\n"+solution1+"\n"+precaution1;
+                 if(preference.equals("")){
+                     Toast.makeText(getApplicationContext(),"Please Select Tag",Toast.LENGTH_SHORT).show();
 
-                if (inputValidatorHelper.isNullOrEmpty(title1)) {
+                 }
+                 else if(inputValidatorHelper.isNullOrEmpty(title1)) {
                     errMsg.append(" Title should not be empty.\n");
                     Toast.makeText(getApplicationContext(),"Title should not be empty",Toast.LENGTH_SHORT).show();
                     //allowSave = false;
@@ -284,6 +287,7 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                         problem=etproblem.getText().toString().trim();
                                        solution=etsolution.getText().toString().trim();
                                        precaution=etprecausion.getText().toString().trim();
+
                                        String description=desc+"\n"+benefit+"\n"+howtodo+"\n"+problem+"\n"+solution+"\n"+precaution;
                                     long data=System.currentTimeMillis();
                                     long ratesum=0;

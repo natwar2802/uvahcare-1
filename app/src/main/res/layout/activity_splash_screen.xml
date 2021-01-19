@@ -13,7 +13,7 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         app:lottie_rawRes="@raw/spash"
         app:lottie_autoPlay="true"
         android:id="@+id/splash"/>
