@@ -2,9 +2,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<ScrollView android:layout_height="match_parent" android:layout_width="match_parent"
-    android:id="@+id/scrollView"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -12,12 +10,15 @@
             android:layout_width="match_parent"
             android:layout_height="700dp"
                 />
+        <ScrollView android:layout_height="match_parent" android:layout_width="match_parent"
+            android:id="@+id/scrollView"
+            xmlns:android="http://schemas.android.com/apk/res/android" >
     <LinearLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical">
         <TextView
             android:id="@+id/title12"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -39,7 +40,7 @@
                 android:layout_height="wrap_content"
                 cardView:cardCornerRadius="20dp"
                 cardView:cardElevation="8dp"
-                android:layout_margin="15dp"
+               android:layout_marginLeft="10dp"
                 cardView:cardBackgroundColor="#FFFFFF"
                 >
                 <LinearLayout
@@ -120,12 +121,13 @@
                     android:layout_height="wrap_content"
                     android:background="#FFFFFF"
                     android:gravity="left"
+                    android:layout_marginLeft="5dp"
                     android:orientation="horizontal">
                     <ImageButton
-                        android:src="@drawable/clapping"
+                        android:src="@mipmap/clapping_round"
                         android:id="@+id/inc2"
                         android:backgroundTint="#FFFFFF"
-                        android:scaleType="centerCrop"
+                        android:scaleType="center"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:text="0 Claps"
@@ -310,6 +312,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/submitrating"
+                        android:layout_gravity="center_horizontal"
                         style="@style/Widget.MaterialComponents.Button.TextButton"/>
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
@@ -322,10 +325,10 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
+        </ScrollView>
     </RelativeLayout>
 
-</ScrollView>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
