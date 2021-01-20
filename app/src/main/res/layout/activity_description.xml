@@ -1,3 +1,8 @@
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android" />
 <RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -10,9 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="700dp"
                 />
-        <ScrollView android:layout_height="match_parent" android:layout_width="match_parent"
-            android:id="@+id/scrollView"
-            xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
     <LinearLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical">
@@ -248,6 +252,7 @@
             android:textStyle="bold"
             android:textSize="20sp"/>
         <RatingBar
+            android:layout_marginBottom="20dp"
             android:id="@+id/ratedesc"
             style="@style/Widget.AppCompat.RatingBar.Indicator"
             android:layout_width="wrap_content"
@@ -325,7 +330,7 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        </ScrollView>
+
     </RelativeLayout>
 
 
@@ -350,3 +355,4 @@
 
 
 </RelativeLayout>
+</ScrollView>

@@ -162,13 +162,7 @@ public class descriptionActivity extends MainActivity {
 
         });
       //  float fratindesc=ratingBardescription.getRating();
-        Rect scrollBounds = new Rect();
-        scrollView.getHitRect(scrollBounds);
-        if (btnshare2.getLocalVisibleRect(scrollBounds)) {
-            btnshared.setVisibility(View.INVISIBLE);
-        } else {
-            btnshared.setVisibility(View.VISIBLE);
-        }
+
 
         String blogerid=in.getStringExtra("blogerid");
 
