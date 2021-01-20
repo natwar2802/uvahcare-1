@@ -61,7 +61,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
     Boolean likechec,bookmarkchecker=false,followerchecker=false;
     DatabaseReference likesref,postref,profilereference,followerreference,followedreference;
     FirebaseDatabase database;
-    public int ch=0;
+    public int ch=0,ch1;
     public int bookmarkch=0;
 
 
@@ -132,65 +132,88 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
        if(ch==1) {
            holder.btndel.setVisibility(View.VISIBLE);
        }
+
             holder.btndel.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
 
+                   MyPost.checkerdel=1;
+                    holder.postref3.child(postkey).removeValue();
+                    holder.mypostref.child(curentUserId).child(postkey).removeValue();
+                    mlist.remove(position);
+                    notifyDataSetChanged();
 
-                    holder.mypostref.addValueEventListener(new ValueEventListener() {
-
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
-                            holder.mypostref.child(curentUserId).child(postkey).removeValue();
-                            holder.postref3.child(postkey).removeValue();
-                          //  holder.bookmarkref.child(curentUserId).child(postkey).removeValue();
-                            try{
-                            holder.likesref.child(postkey).removeValue();}catch (Exception e){}
-                            try{
-                            holder.referencerate.child(postkey).removeValue();
-                            }catch (Exception e){
-
-                            }
+                   try {
+                        holder.likesref.child(postkey).removeValue();
+                    }catch (Exception e){}
 
 
-                            mlist.remove(position);
-                            holder.followerefernce1.child(curentUserId).addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                                    for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
-                                        try {
-                                            holder.notifyreference1.child(dataSnapshot.getKey()).child(postkey).removeValue();
-                                        } catch (Exception e) {
-                                        }
-                                        try {
-                                            holder.notifyreference2.child(dataSnapshot.getKey()).child(postkey).removeValue();
-                                        } catch (Exception e) {
-                                        }
+                    try {
+                        holder.referencerate.child(postkey).removeValue();
+                    } catch (Exception e) {
 
-                                    }
-
-                                    // adapter2.notifyDataSetChanged();
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
+                    }
 
 
-                    // notifyDataSetChanged();
+                                  holder.followerefernce1.child(curentUserId).addValueEventListener(new ValueEventListener() {
+                                       @Override
+                                       public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                           for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
+                                              // try {
+                                             //  child(dataSnapshot.getKey()).child(curentUserId).child(postkey).removeValue();
+                                                 //  holder.notifyreference
+                                              // } catch (Exception e) {
+                                              // }
+                                              // try {
+                                                 //  holder.notifyreference2.child(dataSnapshot.getKey()).child(curentUserId).child(postkey).removeValue();
+                                              // } catch (Exception e) {
+                                              // }
+                                               holder.notifyreference.addValueEventListener(new ValueEventListener() {
+                                                   @Override
+                                                   public void onDataChange(@NonNull DataSnapshot snapshot2) {
+                                                       if(snapshot2.child("old").hasChild(dataSnapshot.getKey())){
+                                                           if(snapshot2.child("old").child(dataSnapshot.getKey()).hasChild(curentUserId)){
+                                                               if(snapshot2.child("old").child(dataSnapshot.getKey()).child(curentUserId).hasChild(postkey)){
+
+                                                                    holder.notifyreference1.child(dataSnapshot.getKey()).child(curentUserId).child(postkey).removeValue();
+
+                                                               }
+                                                           }
+                                                       }
+                                                       if(snapshot2.child("new").hasChild(dataSnapshot.getKey())){
+                                                           if(snapshot2.child("new").child(dataSnapshot.getKey()).hasChild(curentUserId)){
+                                                               if(snapshot2.child("new").child(dataSnapshot.getKey()).child(curentUserId).hasChild(postkey)){
+
+                                                                   holder.notifyreference2.child(dataSnapshot.getKey()).child(curentUserId).child(postkey).removeValue();
+
+                                                               }
+                                                           }
+                                                       }
+
+                                                   }
+
+                                                   @Override
+                                                   public void onCancelled(@NonNull DatabaseError error) {
+
+                                                   }
+                                               });
+
+                                           }
+
+                                           // adapter2.notifyDataSetChanged();
+                                       }
+
+                                       @Override
+                                       public void onCancelled(@NonNull DatabaseError error) {
+
+                                       }
+                                   });
+
                         }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
-                    });
-                }
+
             });
 
 
@@ -322,31 +345,14 @@ try{
                 holder.bookmarkref.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String bmkey= holder.bookmarkref.child(postkey).push().getKey();
-                        String bmtitle=mlist.get(position).getTitle();
-                        String bmbrief=mlist.get(position).getBrief();
-                        String bmdis=mlist.get(position).getDescription();
-                        String bmuri=mlist.get(position).getUrlimage();
-                        String bmpostid=mlist.get(position).getPid();
-                        String blogerid=mlist.get(position).getBlogerid();
-                       // String prefrence="prefernce";
-                        String preference=mlist.get(position).getPreference();
-
-                        long data=System.currentTimeMillis();
-                        long ratesum=0;
-                        float rating=0;
-                        int claps=0;
-                        double postscore=0;
-                        int seencount=0;
-
-                       // modelGeneral info = new modelGeneral(bmtitle,bmbrief,bmuri,bmdis,bmpostid,blogerid,preference,data,ratesum,rating,claps,postscore,seencount);
-                        //bookmarkchecker=(Boolean)snapshot.child(curentUserId).hasChild(postkey);
 
                         if(bookmarkchecker.equals(true)){
                             if(snapshot.child(curentUserId).hasChild(postkey)){
                                 Toast.makeText(context.getApplicationContext(),"This post will removed when you visit next time yo Bookmark",Toast.LENGTH_SHORT).show();
                                 holder.bookmarkref.child(curentUserId).child(postkey).removeValue();
                                 holder.btnbookmark.setImageResource(R.drawable.imagesb);
+                                mlist.remove(position);
+                                notifyDataSetChanged();
                                 bookmarkchecker=false;
                             }
                             else{
@@ -357,9 +363,7 @@ try{
                             }
                         }
 
-                        //String mobno=databaseReference.Auythecation(mobno);
 
-                        // databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
                     }
 
                     @Override
@@ -609,7 +613,7 @@ try{
         ImageView img,img2;
         LinearLayout itemlayout;
         TextView title,title2,descrip,descrip2,likeddisplay;
-        DatabaseReference likesref,bookmarkref,profileref, referencerate,mypostref,postref3,followerefernce1,notifyreference1,notifyreference2,universal;
+        DatabaseReference likesref,bookmarkref,profileref, referencerate,mypostref,postref3,followerefernce1,notifyreference1,notifyreference2,universal, notifyreference;
         FirebaseDatabase database;
         ImageButton btnbookmark,mImageButton,inc,hbtnsharepost;
         int likescount;
@@ -666,6 +670,8 @@ try{
             mypostref = FirebaseDatabase.getInstance().getReference("mypost");
             postref3 = FirebaseDatabase.getInstance().getReference("hPost");
             notifyreference1 =  FirebaseDatabase.getInstance().getReference("notification").child("old");
+             notifyreference = FirebaseDatabase.getInstance().getReference("notification");
+
             notifyreference2 =  FirebaseDatabase.getInstance().getReference("notification").child("new");
 
             followerefernce1 = FirebaseDatabase.getInstance().getReference("follower");

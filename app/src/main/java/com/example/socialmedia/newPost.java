@@ -321,11 +321,16 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                    // databaseReference.child(ImageUploadId).child("datetime").setValue(data);
                                     mypostdatabaseReference.child(myuserida).child(ImageUploadId).setValue(true);
 
+
+                                    final int[] cheker = {0};
                                     databaseReference.addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            long postno=snapshot.getChildrenCount();
-                                            databaseReference.child(ImageUploadId).child("postno").setValue(postno);
+                                            if(cheker[0] ==0) {
+                                                long postno = snapshot.getChildrenCount();
+                                                databaseReference.child(ImageUploadId).child("postno").setValue(postno);
+                                                cheker[0] =1;
+                                            }
                                         }
 
                                         @Override

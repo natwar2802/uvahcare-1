@@ -6,7 +6,7 @@ public class modelGeneral {
     String title,brief,urlimage,description,pid,blogerid;
     String preference;
     long datetime,ratesum;
-    long postno;
+    long postno=1;
     float rating;
     double postscore;
     long seencount=0;

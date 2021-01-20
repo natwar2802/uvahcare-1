@@ -230,37 +230,35 @@ public class MainActivity<user> extends AppCompatActivity {
                             }
 
 
-                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                 modelGeneral model = dataSnapshot1.getValue(modelGeneral.class);
-                                String postprefe = model.getPreference().toString();
-                              if (postprefe.equals(preseenpost)) {
-                                    arrayList.add(0, model);
-                                    adapter.notifyDataSetChanged();
-                                    count1++;
-                                    count++;
-                                } else if (userp.contains(postprefe)) {
-                                    arrayList.add(count1, model);
-                                    adapter.notifyDataSetChanged();
-                                    count++;
-                                }
+                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                    try{
+                                    modelGeneral model = dataSnapshot1.getValue(modelGeneral.class);
+                                    String postprefe = model.getPreference().toString();
+                                    if (postprefe.equals(preseenpost)) {
+                                        arrayList.add(0, model);
+                                        adapter.notifyDataSetChanged();
+                                        count1++;
+                                        count++;
+                                    } else if (userp.contains(postprefe)) {
+                                        arrayList.add(count1, model);
+                                        adapter.notifyDataSetChanged();
+                                        count++;
+                                    } else if (userpostch == 0 && model.getBlogerid().equals(useid)) {
 
-                                else if(userpostch==0&&model.getBlogerid().equals(useid)){
-
-                                    arrayList.add(count1,model);
-                                    adapter.notifyDataSetChanged();
-                                    count1++;
-                                    userpostch=1;
-                                }
-                                else {
-                                    arrayList.add(count, model);
-                                    adapter.notifyDataSetChanged();
-                                }
-                                progressBarmain.setVisibility(View.GONE);
+                                        arrayList.add(count1, model);
+                                        adapter.notifyDataSetChanged();
+                                        count1++;
+                                        userpostch = 1;
+                                    } else {
+                                        arrayList.add(count, model);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                    progressBarmain.setVisibility(View.GONE);
 
 
-
-
-                        }}
+                                }catch (Exception e){}}
+                         //   }catch (Exception e){}
+                        }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
@@ -411,16 +409,40 @@ public class MainActivity<user> extends AppCompatActivity {
         adapter.setOnItemClickListener(new ClickListener<modelGeneral>() {
             @Override
             public void onItemClick(modelGeneral data) {
-                Intent intent = new Intent(MainActivity.this, descriptionActivity.class);
-                // intent.putExtra("Arraylist",arrayList);
-                intent.putExtra("title", data.getTitle().toString());
-                intent.putExtra("Bdesc", data.getBrief().toString());
-                intent.putExtra("im", data.getUrlimage());
-                intent.putExtra("Ddesc",data.getDescription());
-                intent.putExtra("postkey",data.getPid());
-                intent.putExtra("blogerid",data.getBlogerid());
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
+                final int[] checkerdes = {0};
+                 postref.addValueEventListener(new ValueEventListener() {
+                     @Override
+                     public void onDataChange(@NonNull DataSnapshot snapshot2) {
+                         if(checkerdes[0] ==0){
+                         if(snapshot2.hasChild(data.getPid())){
+                             Intent intent = new Intent(MainActivity.this, descriptionActivity.class);
+                             // intent.putExtra("Arraylist",arrayList);
+                             intent.putExtra("title", data.getTitle().toString());
+                             intent.putExtra("Bdesc", data.getBrief().toString());
+                             intent.putExtra("im", data.getUrlimage());
+                             intent.putExtra("Ddesc", data.getDescription());
+                             intent.putExtra("postkey", data.getPid());
+                             intent.putExtra("blogerid", data.getBlogerid());
+                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                             startActivity(intent);
+
+                         }
+                         else{
+                             arrayList.remove(data);
+                             adapter.notifyDataSetChanged();
+                             Toast.makeText(getApplicationContext(),"This Post is Deleted by blogger",Toast.LENGTH_SHORT).show();
+
+                         }
+                     }
+                     checkerdes[0] =1;
+                     }
+
+                     @Override
+                     public void onCancelled(@NonNull DatabaseError error) {
+
+                     }
+                 });
+
 
                 final int[] seenpostch = {0};
                 profileref1.setValue(data.getPreference());

@@ -39,6 +39,8 @@ public class MyPost extends MainActivity {
     FirebaseAuth mAuth;
     DatabaseReference likesrefernce;
     FirebaseDatabase database;
+    public  static int checkerdel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,8 @@ public class MyPost extends MainActivity {
         adapter2.ch=1;
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
-        //recyclerView2.setAdapter(adapter2);
+        recyclerView2.setAdapter(adapter2);
+        checkerdel=0;
        // instance = this;
 
        // database = FirebaseDatabase.getInstance();
@@ -74,41 +77,52 @@ public class MyPost extends MainActivity {
         //databaseReference=database.getReference("healthPost");
        // likesrefernce = database.getReference("likes");
 
-        root1.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    root2.child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                            modelGeneral model = snapshot1.getValue(modelGeneral.class);
-                            arrayList.add(0,model);
-                            adapter2.notifyDataSetChanged();
+    root1.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            if(checkerdel==0){
 
+            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                root2.child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                        if(checkerdel==0){
+                        modelGeneral model = snapshot1.getValue(modelGeneral.class);
+                        arrayList.add(0, model);
+                        adapter2.notifyDataSetChanged();
                         }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                    }
 
-                        }
-                    });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                   // recyclerView2.setAdapter(adapter2);
+                    }
+                });
 
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                // recyclerView2.setAdapter(adapter2);
 
             }
-        });
-        recyclerView2.setAdapter(adapter2);
+           // checkerdel=1;
+
+
+        }
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    });
+
+       // recyclerView2.setAdapter(adapter2);
 
         adapter2.setOnItemClickListener(new ClickListener<modelGeneral>() {
             @Override
             public void onItemClick(modelGeneral data) {
+
                 Intent intent = new Intent(MyPost.this, descriptionActivity.class);
                 // intent.putExtra("Arraylist",arrayList);
                 intent.putExtra("title", data.getTitle().toString());
@@ -116,8 +130,10 @@ public class MyPost extends MainActivity {
                 intent.putExtra("im", data.getUrlimage());
                 intent.putExtra("Ddesc",data.getDescription());
                 intent.putExtra("postkey",data.getPid());
-                intent.putExtra("blogid",data.getBlogerid());
+                intent.putExtra("blogerid",data.getBlogerid());
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
+
             }
 
         });

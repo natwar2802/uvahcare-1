@@ -224,7 +224,9 @@ public class descriptionActivity extends MainActivity {
 
                     }*/
 
-                      try{  Long sum = (Long) snapshot.child(postkey).child("sum").getValue();
+                      try{
+                          final int[] chekscore = {0};
+                          Long sum = (Long) snapshot.child(postkey).child("sum").getValue();
                           hpost.child(postkey).child("ratesum").setValue(sum);
                         // double d = sum.doubleValue();
                         float avrate =((float) sum)/ n;
@@ -234,6 +236,7 @@ public class descriptionActivity extends MainActivity {
                           hpost.addValueEventListener(new ValueEventListener() {
                               @Override
                               public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                  if(chekscore[0] ==0){
                                   long totalno=snapshot.getChildrenCount();
                                   Long claps= (Long) snapshot.child(postkey).child("claps").getValue();
                                   Long seencount= (Long) snapshot.child(postkey).child("seencount").getValue();
@@ -245,6 +248,7 @@ public class descriptionActivity extends MainActivity {
                                   hpost.child(postkey).child("postscore").setValue(score);
 
                               }
+                              chekscore[0] =1;}
 
                               @Override
                               public void onCancelled(@NonNull DatabaseError error) {
@@ -510,8 +514,22 @@ try {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int likescount=(int)snapshot.child(postkey).getChildrenCount();
-                postref3.child(postkey).child("claps").setValue(likescount);
-                displayclap2.setText(Integer.toString(likescount));
+                postref3.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                        if(snapshot1.hasChild(postkey)){
+                            postref3.child(postkey).child("claps").setValue(likescount);
+                            displayclap2.setText(Integer.toString(likescount));
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
 
             }
 
