@@ -55,7 +55,7 @@ public class descriptionActivity extends MainActivity {
     TextView userNff;
     Button btnfollowff;
     Boolean followerchecker=false,likechec=false;
-    ImageButton inc2,btnshare2,inc22,bmd;
+    ImageButton inc2,btnshare2,btnshared,bmd;
     TextView displayclap2;
     TextView rate_text;
     LinearLayout user_feedback;
@@ -84,6 +84,7 @@ public class descriptionActivity extends MainActivity {
         scrollView=findViewById(R.id.scrollView);
         btnsubmitrate=findViewById(R.id.submitrating);
         popupcard=findViewById(R.id.popupcard);
+        btnshared= findViewById(R.id.btnsharepostd);
         ratingpop=findViewById(R.id.ratingpop);
         userNff=findViewById(R.id.itemuserNff);
         btnfollowff=findViewById(R.id.btnfollowff);
@@ -163,10 +164,10 @@ public class descriptionActivity extends MainActivity {
       //  float fratindesc=ratingBardescription.getRating();
         Rect scrollBounds = new Rect();
         scrollView.getHitRect(scrollBounds);
-        if (inc2.getLocalVisibleRect(scrollBounds)) {
-            inc22.setVisibility(View.INVISIBLE);
+        if (btnshare2.getLocalVisibleRect(scrollBounds)) {
+            btnshared.setVisibility(View.INVISIBLE);
         } else {
-            inc22.setVisibility(View.VISIBLE);
+            btnshared.setVisibility(View.VISIBLE);
         }
 
         String blogerid=in.getStringExtra("blogerid");
@@ -551,36 +552,6 @@ try {
 
             }
         });
-        inc22.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"your Applause Recorded",Toast.LENGTH_LONG).show();
-                likechec =true;
-                likesref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        if(likechec.equals(true)){
-                            if(snapshot.child(postkey).hasChild(cid)){
-                                likesref.child(postkey).child(cid).removeValue();
-                                likechec=false;
-                            }
-                            else{
-                                likesref.child(postkey).child(cid).setValue(true);
-                                likechec=false;
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-            }
-        });
 
 
         btnshare2.setOnClickListener(new View.OnClickListener() {
@@ -608,6 +579,29 @@ try {
                 //  BitmapDrawable bitmapDrawable=(BitmapDrawable)holder.img.getDrawable();
 
                 //  onShareClicked();
+
+            }
+
+
+        });
+        btnshared.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DynamicLink link = FirebaseDynamicLinks.getInstance()
+                        .createDynamicLink()
+                        .setLink(Uri.parse("https://"+postkey+"/"))
+                        .setDomainUriPrefix("https://healthappinnovation.page.link")
+                        .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.socialmedia").build())
+
+                        .buildDynamicLink();
+
+                Uri dynamic=link.getUri();
+
+                Log.e("link","hello"+link.getUri());
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, link.getUri().toString());
+                startActivity(Intent.createChooser(intent, "Share Link"));
 
             }
 

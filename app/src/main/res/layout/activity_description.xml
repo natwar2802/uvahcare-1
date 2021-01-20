@@ -333,14 +333,15 @@
         android:layout_alignParentRight="true"
         >
         <ImageButton
-            android:src="@drawable/clapping"
-            android:id="@+id/inc22"
-            android:backgroundTint="#FFFFFF"
-            android:scaleType="centerCrop"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/share"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:text="0 Claps"
-
+            android:scaleType="fitXY"
+            android:backgroundTint="#FFFFFF"
+            android:id="@+id/btnsharepostd"
+            android:layout_marginRight="10dp"
+            android:text="share"
             />
     </LinearLayout>
 
