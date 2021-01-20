@@ -41,15 +41,7 @@ public class PreferenceActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-       /* LinearLayout dynamicContent;
-        dynamicContent = (LinearLayout)  findViewById(R.id.dynamicContent);
-        View wizard = getLayoutInflater().inflate(R.layout.activity_preference, null);
-        dynamicContent.addView(wizard);*/
-        btnNextMain=findViewById(R.id.nexttomain);
         updatePreference=findViewById(R.id.updatePreference);
         LinearLayout l=findViewById(R.id.defense);
         FirebaseUser userpreference1= FirebaseAuth.getInstance().getCurrentUser();
@@ -59,11 +51,6 @@ public class PreferenceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 prefeference1.setValue(temp);
-            }
-        });
-        btnNextMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 Intent i = new Intent(PreferenceActivity.this, MainActivity.class);
                 startActivity(i);
             }
@@ -127,33 +114,4 @@ public class PreferenceActivity extends AppCompatActivity {
             c.setCardBackgroundColor(Color.parseColor("#B388FF"));
             temp.add(k);
         }}
-
-
-        //List<String> l2=MainActivity.getInstance().pref;
-
-        //DatabaseReference prefeference= FirebaseDatabase.getInstance().getReference("preference");
-       /* FirebaseUser userpreference= FirebaseAuth.getInstance().getCurrentUser();
-        String idpreference=userpreference.getUid();
-        DatabaseReference prefeference= FirebaseDatabase.getInstance().getReference("profile").child(idpreference).child("userPreference");
-
-        prefeference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.child(k).hasChild(idpreference)){
-                    c.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
-                    prefeference.child(k).removeValue();
-                }
-                else{
-                    c.setCardBackgroundColor(Color.parseColor("#B388FF"));
-                    prefeference.child(k).setValue(true);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
-
     }
