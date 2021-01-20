@@ -127,6 +127,7 @@ public class descriptionActivity extends MainActivity {
                         user_feedback.setVisibility(View.VISIBLE);
                     }
                     else {
+
                         user_feedback.setVisibility(View.INVISIBLE);
                     }
                 }
