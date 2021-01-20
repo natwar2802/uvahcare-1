@@ -15,12 +15,23 @@
     <LinearLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical">
+        <TextView
+            android:id="@+id/title12"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
+            android:textColor="#000000"
+            android:typeface="normal"
+            android:textSize="30sp" />
         <LinearLayout android:layout_height="wrap_content"
             android:layout_width="match_parent"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/llff"
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:cardView="http://schemas.android.com/tools">
+
             <androidx.cardview.widget.CardView
 
                 android:id="@+id/carView2"
@@ -35,37 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-        <TextView
-            android:id="@+id/title12"
-            android:layout_weight="5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
-            android:textColor="#000000"
-            android:typeface="normal"
-            android:textSize="30sp" />
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/star"></ImageView>
-                        <TextView
-                            android:id="@+id/ratingdescription"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textSize="20sp"
-                            />
-                    </LinearLayout>
-                </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -123,13 +104,92 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#FFFFFF"
+                android:id="@+id/user_feedback"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+                    <ImageButton
+                        android:src="@drawable/clapping"
+                        android:id="@+id/inc2"
+                        android:backgroundTint="#FFFFFF"
+                        android:scaleType="centerCrop"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:text="0 Claps"
 
+                        />
+
+                    <TextView
+                        android:layout_margin="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="20sp"
+                        android:id="@+id/displayclap2"/>
+
+                    <ImageButton
+                        android:id="@+id/bmd"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="#FFFFFF"
+                        android:src="@drawable/imagesb" />
+                    <ImageButton
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/share"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:scaleType="fitXY"
+                        android:backgroundTint="#FFFFFF"
+                        android:id="@+id/btnsharepost2"
+                        android:layout_marginRight="10dp"
+                        android:text="share"
+                        />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/star"></ImageView>
+                    <TextView
+                        android:id="@+id/ratingdescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="20sp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
         <ImageView
             android:id="@+id/img12"
             android:src="@drawable/prof"
             android:layout_width="match_parent"
             android:layout_height="250sp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             />
         <!--<RatingBar
 
@@ -180,13 +240,16 @@
             android:id="@+id/rate_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             android:text="Rate the post"
+            android:textColor="#000000"
+            android:textStyle="bold"
             android:textSize="20sp"/>
         <RatingBar
             android:id="@+id/ratedesc"
             style="@style/Widget.AppCompat.RatingBar.Indicator"
             android:layout_width="wrap_content"
+            android:background="#FFFFFF"
             android:layout_height="wrap_content"
             android:numStars="10"
             android:layout_gravity="center_horizontal"
@@ -264,60 +327,21 @@
 
 </ScrollView>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#FFFFFF"
-        android:id="@+id/user_feedback"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:gravity="left"
-            android:orientation="horizontal">
-            <ImageButton
-                android:src="@drawable/clapping"
-                android:id="@+id/inc2"
-                android:backgroundTint="#FFFFFF"
-                android:scaleType="centerCrop"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="0 Claps"
+        android:layout_marginTop="550dp"
+        android:layout_alignParentRight="true"
+        >
+        <ImageButton
+            android:src="@drawable/clapping"
+            android:id="@+id/inc22"
+            android:backgroundTint="#FFFFFF"
+            android:scaleType="centerCrop"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="0 Claps"
 
-                />
-
-            <TextView
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="20sp"
-                android:id="@+id/displayclap2"/>
-
-            <ImageButton
-                android:id="@+id/bmd"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:scaleType="centerCrop"
-                android:backgroundTint="#FFFFFF"
-                android:src="@drawable/imagesb" />
-            <ImageButton
-                android:layout_alignParentRight="true"
-                android:src="@drawable/share"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:scaleType="fitXY"
-                android:backgroundTint="#FFFFFF"
-                android:id="@+id/btnsharepost2"
-                android:layout_marginRight="10dp"
-                android:text="share"
-                />
-
-
-        </LinearLayout>
+            />
     </LinearLayout>
 
 
