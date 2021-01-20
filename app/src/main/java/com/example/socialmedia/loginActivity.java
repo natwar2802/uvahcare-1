@@ -73,8 +73,6 @@ public class loginActivity extends AppCompatActivity {
                     return;
                 }
                 else {
-                    Intent intentO=new Intent(loginActivity.this,OtpVerification.class);
-                    startActivity(intentO);
 
                     loadingimage.setVisibility(View.VISIBLE);
 
@@ -86,6 +84,9 @@ public class loginActivity extends AppCompatActivity {
                                     .setCallbacks(mcallback)          // OnVerificationStateChangedCallbacks
                                     .build();
                     PhoneAuthProvider.verifyPhoneNumber(options);
+                    Intent intentO=new Intent(loginActivity.this,OtpVerification.class);
+                    startActivity(intentO);
+                    finish();
 
 
                 }
@@ -115,10 +116,10 @@ public class loginActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intentOtp=new Intent(loginActivity.this,OtpVerification.class);
+                      //  Intent intentOtp=new Intent(loginActivity.this,OtpVerification.class);
 
-                        intentOtp.putExtra("otp",s);
-                        startActivity(intentOtp);
+                       // intentOtp.putExtra("otp",s);
+                       // startActivity(intentOtp);
                     }
                 },10000);
 

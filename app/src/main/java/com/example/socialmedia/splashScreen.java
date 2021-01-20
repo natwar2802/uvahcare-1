@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.View;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class splashScreen extends AppCompatActivity {
     private static int TIME_OUT = 4000;
@@ -24,23 +26,31 @@ public class splashScreen extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         //MainActivity call=new MainActivity();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         MainActivity.callMain();
 
 
 
 
-        lottieAnimationView.animate().translationY(1400).setDuration(3000).setStartDelay(2000);
 
+        lottieAnimationView.animate().translationY(1400).setDuration(1000).setStartDelay(2000);
 
-        new Handler().postDelayed(new Runnable() {
+        final Handler handler = new Handler();
+
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(splashScreen.this, MainActivity.class);
-                startActivity(i);
-                finish();
+                Intent mainIntent = new Intent(splashScreen.this,
+                        MainActivity.class);
+                splashScreen.this.startActivity(mainIntent);
+                splashScreen.this.finish();
+                handler.removeCallbacks(this);
             }
         }, TIME_OUT);
+
     }
+
 
 
 

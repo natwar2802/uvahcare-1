@@ -147,8 +147,7 @@ public class EditProfileActivity extends  AppCompatActivity{
                 }
                 else {
                     UploadImage();
-                    Intent i = new Intent(EditProfileActivity.this, PreferenceActivity.class);
-                    startActivity(i);
+
 
                 }
 
@@ -280,7 +279,8 @@ public class EditProfileActivity extends  AppCompatActivity{
                                     @SuppressWarnings("VisibleForTests")
                                     String prevseenpost="Prevseen";
 
-
+                                    Intent i = new Intent(EditProfileActivity.this, PreferenceActivity.class);
+                                    startActivity(i);
                                     modelProfile modelp=new modelProfile(userNameProfile,cityProfile,countryProfile,uriP,myuseridaP,aboutme,userPreference,prevseenpost);
                                    String ImageUploadId = databaseReferenceProfile.push().getKey();
                                  //   String ImageUploadId = databaseReferenceProfile.push();

@@ -59,7 +59,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<user> extends AppCompatActivity {
     RecyclerView recyclerView;
     myAdapter adapter;
     ArrayList<modelGeneral> arrayList;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     TextView itemusername;
     ImageView bellnotify;
     ImageButton btnshare;
-    MainActivity obj;
+   // MainActivity obj;
     TextView displaynotifcount;
     SearchView search_;
     TextView appname;
@@ -85,10 +85,12 @@ public class MainActivity extends AppCompatActivity {
    // EditText searchbar;
     //int Natwar=0;
     int mainch=0;
+    //FirebaseUser user;
     private BottomNavigationView toolbar2;
     ProgressBar progressBarmain;
 
     private static final String TAG = "xyz";
+
 
 
     //@SuppressLint("WrongViewCast")
@@ -99,45 +101,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         instance=this;
 
-// clear FLAG_TRANSLUCENT_STATUS flag:
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
-
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-// finally change the color
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.my_statusbar_color));
-        }
-
-        appname=(TextView)findViewById(R.id.appname);
-        appname.setVisibility(View.GONE);
-
-
-        btnshare=findViewById(R.id.btnsharepost);
-        search_=findViewById(R.id.search_);
-        search_.setVisibility(View.VISIBLE);
-       // searchbar=findViewById(R.id.search_bar);
-        displaynotifcount=findViewById(R.id.displynotifycount);
-        obj=new MainActivity();
-        progressBarmain=findViewById(R.id.progressbarmain);
-
-        String sharelinktext="https://healthappinnovation.page.link";
-
-        bellnotify=findViewById(R.id.bellnotify);
-
-         if(splashScreen.chsplash==0){
-        progressBarmain.setVisibility(View.VISIBLE);}
-
-        splashScreen.chsplash=1;
-        //onStart();
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        notifyreference = FirebaseDatabase.getInstance().getReference("notification");
-        profilereference = FirebaseDatabase.getInstance().getReference("profile");
-        cardView=findViewById(R.id.pic);
+
+
+
         if(user==null){
             startActivity(new Intent(MainActivity.this,loginActivity.class));
             finish();
@@ -152,11 +119,11 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     else{
-                        if(OtpVerification.otpch==0) {
-                            Intent intentet = new Intent(MainActivity.this, EditProfileActivity.class);
-                            startActivity(intentet);
-                            finish();
-                        }
+
+                        Intent intentet = new Intent(MainActivity.this, EditProfileActivity.class);
+                        startActivity(intentet);
+                        finish();
+
                     }
                 }
 
@@ -166,6 +133,36 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+
+// clear FLAG_TRANSLUCENT_STATUS flag:
+
+        appname=(TextView)findViewById(R.id.appname);
+        appname.setVisibility(View.GONE);
+
+        cardView=findViewById(R.id.pic);
+        btnshare=findViewById(R.id.btnsharepost);
+        search_=findViewById(R.id.search_);
+        search_.setVisibility(View.VISIBLE);
+       // searchbar=findViewById(R.id.search_bar);
+        displaynotifcount=findViewById(R.id.displynotifycount);
+        //obj=new MainActivity();
+        progressBarmain=findViewById(R.id.progressbarmain);
+
+        String sharelinktext="https://healthappinnovation.page.link";
+
+        bellnotify=findViewById(R.id.bellnotify);
+
+         if(splashScreen.chsplash==0){
+        progressBarmain.setVisibility(View.VISIBLE);}
+
+        splashScreen.chsplash=1;
+        //onStart();
+
+
+        notifyreference = FirebaseDatabase.getInstance().getReference("notification");
+        profilereference = FirebaseDatabase.getInstance().getReference("profile");
+
 
 
 
@@ -192,6 +189,17 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar2 = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         //toolbar2.inflateMenu(R.menu.menu);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+// finally change the color
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.my_statusbar_color));
+        }
 
         //pager.setAdapter(adapter);
         //setProfileInPost();

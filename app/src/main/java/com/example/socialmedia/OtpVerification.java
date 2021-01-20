@@ -23,6 +23,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -74,8 +75,9 @@ public class OtpVerification extends AppCompatActivity {
                             //verification successful we will start the profile activity
                             // FirebaseUser user = task.getResult().getUser();
                             // check=true;
-                            otpch=1;
-                            String userid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                           // otpch=1;
+                          /*  FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+                            String userid=user.getUid();
 
                             FirebaseDatabase.getInstance().getReference("profile").addValueEventListener(new ValueEventListener() {
                                 @Override
@@ -101,7 +103,7 @@ public class OtpVerification extends AppCompatActivity {
                                 public void onCancelled(@NonNull DatabaseError error) {
 
                                 }
-                            });
+                            });*/
                         }
 
 
@@ -129,6 +131,37 @@ public class OtpVerification extends AppCompatActivity {
                 });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        /*
+        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+        String userid=user.getUid();
 
+        FirebaseDatabase.getInstance().getReference("profile").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                if(snapshot.hasChild(userid)){
+
+                    Intent intent=new Intent(OtpVerification.this,MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    Intent intent = new Intent(OtpVerification.this, EditProfileActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+    }
 }
