@@ -82,12 +82,20 @@ public class BookMarkPost extends MainActivity{
            public void onDataChange(@NonNull DataSnapshot snapshot) {
                if (bookch == 0) {
                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                       root3.child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
+
+                       root3.addValueEventListener(new ValueEventListener() {
                            @Override
                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                               modelGeneral model = snapshot1.getValue(modelGeneral.class);
+
+                               if(snapshot1.hasChild(dataSnapshot.getKey())){
+                               modelGeneral model = snapshot1.child(dataSnapshot.getKey()).getValue(modelGeneral.class);
                                arrayList.add(0,model);
                                adapter2.notifyDataSetChanged();
+                           }
+                           else{
+                               bookch=1;
+                               root2.child(dataSnapshot.getKey()).removeValue();
+                               }
                            }
 
                            @Override
@@ -108,7 +116,8 @@ public class BookMarkPost extends MainActivity{
            public void onCancelled(@NonNull DatabaseError error) {
 
            }
-       });}catch (Exception e){}
+       });
+  }catch (Exception e){}
 
 
 

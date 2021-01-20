@@ -30,6 +30,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     myAdapter adapter;
     ArrayList<modelGeneral> arrayList;
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference("hPost");
-    private static MainActivity instance;
+    public static MainActivity instance;
     FirebaseAuth mAuth;
     DatabaseReference likesrefernce,notifyreference,profilereference;
     FirebaseDatabase database;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     //int Natwar=0;
     int mainch=0;
     private BottomNavigationView toolbar2;
+    ProgressBar progressBarmain;
 
     private static final String TAG = "xyz";
 
@@ -95,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_SocialMedia);
         setContentView(R.layout.activity_main);
+        instance=this;
 
 // clear FLAG_TRANSLUCENT_STATUS flag:
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -119,13 +122,16 @@ public class MainActivity extends AppCompatActivity {
        // searchbar=findViewById(R.id.search_bar);
         displaynotifcount=findViewById(R.id.displynotifycount);
         obj=new MainActivity();
+        progressBarmain=findViewById(R.id.progressbarmain);
 
         String sharelinktext="https://healthappinnovation.page.link";
 
         bellnotify=findViewById(R.id.bellnotify);
 
+         if(splashScreen.chsplash==0){
+        progressBarmain.setVisibility(View.VISIBLE);}
 
-
+        splashScreen.chsplash=1;
         //onStart();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -146,9 +152,11 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     else{
-                        Intent intentet=new Intent(MainActivity.this,EditProfileActivity.class);
-                        startActivity(intentet);
-                        finish();
+                        if(OtpVerification.otpch==0) {
+                            Intent intentet = new Intent(MainActivity.this, EditProfileActivity.class);
+                            startActivity(intentet);
+                            finish();
+                        }
                     }
                 }
 
@@ -160,27 +168,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        try{
-            notifyreference.child("new").child(user.getUid()).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    int sum=0;
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren())
-                        sum=sum+(int)dataSnapshot.getChildrenCount();
-                    int notifcount = sum;
-                    if (notifcount > 0) {
-                        cardView.setVisibility(View.VISIBLE);
-                        String count = String.valueOf(notifcount);
-                        displaynotifcount.setText(count);
-                    }
-
-
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });}catch (Exception e){}
 
 
 
@@ -210,6 +197,104 @@ public class MainActivity extends AppCompatActivity {
         //setProfileInPost();
 
         Dynamiclink();
+        Query myTopPostsQuery = database.getReference("hPost")
+                .orderByChild("postscore").limitToLast(100);
+        myTopPostsQuery.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(mainch==0) {
+                    FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
+                    String useid = use.getUid();
+
+                    profilereference.child(useid).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            arrayList.clear();
+                            int count = 0;
+                            String preseenpost;
+                            int count1 = 0,userpostch=0;
+                            ArrayList<String> userp = (ArrayList<String>) snapshot.child("userPreference").getValue();
+
+                            try{ preseenpost = snapshot.child("prevseenpost").getValue().toString();}
+                            catch (Exception e){
+                                preseenpost="xyz";
+                            }
+
+
+                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                 modelGeneral model = dataSnapshot1.getValue(modelGeneral.class);
+                                String postprefe = model.getPreference().toString();
+                              if (postprefe.equals(preseenpost)) {
+                                    arrayList.add(0, model);
+                                    adapter.notifyDataSetChanged();
+                                    count1++;
+                                    count++;
+                                } else if (userp.contains(postprefe)) {
+                                    arrayList.add(count1, model);
+                                    adapter.notifyDataSetChanged();
+                                    count++;
+                                }
+
+                                else if(userpostch==0&&model.getBlogerid().equals(useid)){
+
+                                    arrayList.add(count1,model);
+                                    adapter.notifyDataSetChanged();
+                                    count1++;
+                                    userpostch=1;
+                                }
+                                else {
+                                    arrayList.add(count, model);
+                                    adapter.notifyDataSetChanged();
+                                }
+                                progressBarmain.setVisibility(View.GONE);
+
+
+
+
+                        }}
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                    mainch=1;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        });
+
+        try{
+            notifyreference.child("new").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    int sum=0;
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren())
+                        sum=sum+(int)dataSnapshot.getChildrenCount();
+                    int notifcount = sum;
+                    if (notifcount > 0) {
+                        cardView.setVisibility(View.VISIBLE);
+                        String count = String.valueOf(notifcount);
+                        displaynotifcount.setText(count);
+                    }
+
+
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });}catch (Exception e){}
+
         // CategoryAdapter categoryAdapter=new CategoryAdapter(this,)
        /* btnmypost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -263,73 +348,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-       Query myTopPostsQuery = database.getReference("hPost")
-               .orderByChild("postscore").limitToLast(100);
-       myTopPostsQuery.addValueEventListener(new ValueEventListener() {
 
-           @Override
-           public void onDataChange(DataSnapshot dataSnapshot) {
-               if(mainch==0) {
-               FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
-               String useid = use.getUid();
-
-               profilereference.child(useid).addValueEventListener(new ValueEventListener() {
-                   @Override
-                   public void onDataChange(@NonNull DataSnapshot snapshot) {
-                       arrayList.clear();
-                       int count = 0;
-                       int count1 = 0,userpostch=0;
-                       ArrayList<String> userp = (ArrayList<String>) snapshot.child("userPreference").getValue();
-                       String preseenpost = snapshot.child("prevseenpost").getValue().toString();
-
-                       for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                           modelGeneral model = dataSnapshot1.getValue(modelGeneral.class);
-                           String postprefe = model.getPreference();
-                           if (postprefe.equals(preseenpost)) {
-                               arrayList.add(0, model);
-                               adapter.notifyDataSetChanged();
-                               count1++;
-                               count++;
-                           } else if (userp.contains(postprefe)) {
-                               arrayList.add(count1, model);
-                               adapter.notifyDataSetChanged();
-                               count++;
-                           }
-
-                           else if(userpostch==0&&model.getBlogerid().equals(useid)){
-
-                               arrayList.add(count1,model);
-                               adapter.notifyDataSetChanged();
-                               count1++;
-                               userpostch=1;
-                           }
-                           else {
-                               arrayList.add(count, model);
-                               adapter.notifyDataSetChanged();
-                           }
-                       }
-
-
-                   }
-
-                   @Override
-                   public void onCancelled(@NonNull DatabaseError error) {
-
-                   }
-               });
-
-                   mainch=1;
-           }
-
-           }
-
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
-               // Getting Post failed, log a message
-               Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-               // ...
-           }
-       });
 
 
 
@@ -494,7 +513,9 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-
+  public static MainActivity callMain(){
+        return instance;
+  }
 
     private void shareTextAndImage(String title, String descrip, Bitmap bitmap) {
         String shareBody=title + "\n" + descrip;
@@ -651,15 +672,16 @@ public class MainActivity extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 modelGeneral data = snapshot.getValue(modelGeneral.class);
                                 Intent intent = new Intent(MainActivity.this, descriptionActivity.class);
+                                // intent.putExtra("Arraylist",arrayList);
                                 intent.putExtra("title", data.getTitle().toString());
                                 intent.putExtra("Bdesc", data.getBrief().toString());
                                 intent.putExtra("im", data.getUrlimage());
-                                intent.putExtra("Ddesc", data.getDescription());
-                                intent.putExtra("postkey", data.getPid());
-                                intent.putExtra("blogid", data.getBlogerid());
-                                intent.putExtra("rating",data.getRating());
+                                intent.putExtra("Ddesc",data.getDescription());
+                                intent.putExtra("postkey",data.getPid());
+                                intent.putExtra("blogerid",data.getBlogerid());
                                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                 startActivity(intent);
+
                             }
 
                             @Override

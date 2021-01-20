@@ -151,6 +151,7 @@
             android:text="submit"/>
 
         <TextView
+            android:autoLink="all"
             android:id="@+id/desc12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

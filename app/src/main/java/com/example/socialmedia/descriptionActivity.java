@@ -140,6 +140,7 @@ public class descriptionActivity extends MainActivity {
         DatabaseReference profileref= FirebaseDatabase.getInstance().getReference("profile");
         DatabaseReference notifyreference1 =  FirebaseDatabase.getInstance().getReference("notification").child("old");
         DatabaseReference notifyreference2 =  FirebaseDatabase.getInstance().getReference("notification").child("new");
+
         profileref.child(blogerid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -426,7 +427,7 @@ try {
 
                              fsum = fsum + frate;
                              float avrate =((float) fsum )/ n;
-                             ratingBardescription.setText(Float.toString(avrate));
+                           //  ratingBardescription.setText(Float.toString(avrate));
                              refrate.child(postkey).child(cid).setValue(frate);
                              refrate.child(postkey).child("sum").setValue(fsum);
 
