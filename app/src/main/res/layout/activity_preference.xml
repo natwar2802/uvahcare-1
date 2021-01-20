@@ -237,12 +237,6 @@
             android:layout_marginRight="10dp"
             android:layout_gravity="center"
             android:id="@+id/updatePreference"/>
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:id="@+id/nexttomain"
-            android:src="@drawable/home"></ImageView>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

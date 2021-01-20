@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -54,11 +55,12 @@ public class descriptionActivity extends MainActivity {
     TextView userNff;
     Button btnfollowff;
     Boolean followerchecker=false,likechec=false;
-    ImageButton inc2,btnshare2;
+    ImageButton inc2,btnshare2,btnshared,bmd;
     TextView displayclap2;
     TextView rate_text;
     LinearLayout user_feedback;
     ScrollView scrollView;
+    boolean bookmarkcheckerd=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,15 +84,17 @@ public class descriptionActivity extends MainActivity {
         scrollView=findViewById(R.id.scrollView);
         btnsubmitrate=findViewById(R.id.submitrating);
         popupcard=findViewById(R.id.popupcard);
+        btnshared= findViewById(R.id.btnsharepostd);
         ratingpop=findViewById(R.id.ratingpop);
         userNff=findViewById(R.id.itemuserNff);
         btnfollowff=findViewById(R.id.btnfollowff);
         inc2=findViewById(R.id.inc2);
         btnshare2=findViewById(R.id.btnsharepost2);
         displayclap2=findViewById(R.id.displayclap2);
-
+        bmd = findViewById(R.id.bmd);
         DatabaseReference followerreference=database.getReference("follower");
         DatabaseReference followedreference=database.getReference("followed");
+        DatabaseReference bookmarkref = database.getReference("bookmark");
 
 
         cancel_rate=findViewById(R.id.cancel_rate);
@@ -105,6 +109,9 @@ public class descriptionActivity extends MainActivity {
             }
         });
 
+
+
+
         TextView txt= (TextView) findViewById(R.id.title12);
         Intent in = getIntent();
         txt.setText(in.getStringExtra("title"));
@@ -113,25 +120,56 @@ public class descriptionActivity extends MainActivity {
         TextView txt11= (TextView) findViewById(R.id.desc12);
         txt11.setText(in.getStringExtra("Ddesc"));
         String postkey=in.getStringExtra("postkey");
+        DatabaseReference likesref= FirebaseDatabase.getInstance().getReference("likes");
+        DatabaseReference postref3= FirebaseDatabase.getInstance().getReference("hPost");
+        FirebaseUser usera=FirebaseAuth.getInstance().getCurrentUser();
+        String userida=usera.getUid();
         profileimg=findViewById(R.id.itemprofilepicff);
         FirebaseUser cuser= FirebaseAuth.getInstance().getCurrentUser();
         String cid=cuser.getUid();
        // CardView cardforpopup=findViewById(R.id.cardforpopup);
         Glide.with(imj.getContext()).load(url).into(imj);
-      //  float fratindesc=ratingBardescription.getRating();
-        scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+        bmd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onScrollChanged() {
-                if (scrollView != null) {
-                    if (scrollView.getChildAt(0).getBottom() <= (scrollView.getHeight() + scrollView.getScrollY())) {
-                        user_feedback.setVisibility(View.VISIBLE);
+            public void onClick(View v) {
+
+                bookmarkcheckerd=true;
+
+                bookmarkref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        if(bookmarkcheckerd==true){
+                            if(snapshot.child(userida).hasChild(postkey)){
+                                bookmarkref.child(userida).child(postkey).removeValue();
+                                bmd.setImageResource(R.drawable.imagesb);
+                                bookmarkcheckerd=false;
+                            }
+                            else{
+                                bookmarkref.child(userida).child(postkey).setValue(true);
+                                bmd.setImageResource(R.drawable.images);
+                                bookmarkcheckerd=false;
+                            }
+                        }
                     }
-                    else {
-                        user_feedback.setVisibility(View.INVISIBLE);
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
-                }
+                });
             }
+
         });
+      //  float fratindesc=ratingBardescription.getRating();
+        Rect scrollBounds = new Rect();
+        scrollView.getHitRect(scrollBounds);
+        if (btnshare2.getLocalVisibleRect(scrollBounds)) {
+            btnshared.setVisibility(View.INVISIBLE);
+        } else {
+            btnshared.setVisibility(View.VISIBLE);
+        }
+
         String blogerid=in.getStringExtra("blogerid");
 
         DatabaseReference refrate= FirebaseDatabase.getInstance().getReference("rating");
@@ -466,10 +504,7 @@ try {
              );
 
        // inc=itemView.findViewById(R.id.inc);
-        DatabaseReference likesref= FirebaseDatabase.getInstance().getReference("likes");
-        DatabaseReference postref3= FirebaseDatabase.getInstance().getReference("hPost");
-        FirebaseUser usera=FirebaseAuth.getInstance().getCurrentUser();
-        String userida=usera.getUid();
+
 
         likesref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -544,6 +579,29 @@ try {
                 //  BitmapDrawable bitmapDrawable=(BitmapDrawable)holder.img.getDrawable();
 
                 //  onShareClicked();
+
+            }
+
+
+        });
+        btnshared.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DynamicLink link = FirebaseDynamicLinks.getInstance()
+                        .createDynamicLink()
+                        .setLink(Uri.parse("https://"+postkey+"/"))
+                        .setDomainUriPrefix("https://healthappinnovation.page.link")
+                        .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.socialmedia").build())
+
+                        .buildDynamicLink();
+
+                Uri dynamic=link.getUri();
+
+                Log.e("link","hello"+link.getUri());
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, link.getUri().toString());
+                startActivity(Intent.createChooser(intent, "Share Link"));
 
             }
 

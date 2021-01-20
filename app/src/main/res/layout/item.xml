@@ -174,10 +174,10 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
                     <ImageButton
-                        android:src="@drawable/clapping"
+                        android:src="@mipmap/clapping_round"
                         android:id="@+id/inc"
                         android:backgroundTint="#FFFFFF"
-                        android:scaleType="centerCrop"
+                        android:scaleType="center"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:text="0 Claps"
