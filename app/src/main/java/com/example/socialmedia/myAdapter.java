@@ -307,7 +307,7 @@ try{
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(context.getApplicationContext(),"hello",Toast.LENGTH_LONG).show();
+                Toast.makeText(context.getApplicationContext(),"clap",Toast.LENGTH_SHORT).show();
                 likechec =true;
                 holder.likesref.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -685,13 +685,16 @@ try{
             likesref= FirebaseDatabase.getInstance().getReference("likes");
             FirebaseUser usera=FirebaseAuth.getInstance().getCurrentUser();
             String userida=usera.getUid();
-
+            final int[] checkerlike = {0};
             likesref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    likescount=(int)snapshot.child(postkey).getChildrenCount();
-                    postref3.child(postkey).child("claps").setValue(likescount);
-                    displayclap.setText(Integer.toString(likescount));
+                    if(checkerlike[0] ==0) {
+                        likescount = (int) snapshot.child(postkey).getChildrenCount();
+                        postref3.child(postkey).child("claps").setValue(likescount);
+                        displayclap.setText(Integer.toString(likescount));
+                        checkerlike[0] =1;
+                    }
 
                 }
 

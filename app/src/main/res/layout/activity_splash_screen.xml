@@ -6,22 +6,27 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     tools:context=".splashScreen">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        >
+        <com.airbnb.lottie.LottieAnimationView
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        app:lottie_rawRes="@raw/spash"
-        app:lottie_autoPlay="true"
-        android:id="@+id/splash"/>
-        <ImageView
+            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="350dp"
+            app:lottie_rawRes="@raw/spash"
+            app:lottie_autoPlay="true"
+            android:id="@+id/splash"/>
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
             android:src="@drawable/logo"/>
 
-    </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

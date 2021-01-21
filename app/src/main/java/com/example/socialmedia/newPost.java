@@ -338,15 +338,18 @@ try{        for(int i=0;i<l.getChildCount();i++)
 
                                         }
                                     });
-
+                                    final int[] noyifychecker = {0};
                                     followerefernce.child(myuserida).addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                         //   if(noyifychecker[0] ==0){
                                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                             //  notifyreference.child("old").child(dataSnapshot.getKey()).child(ImageUploadId).setValue(true);
                                                 notifyreference.child("new").child(dataSnapshot.getKey()).child(myuserida).child(ImageUploadId).setValue(true);
 
                                             }
+                                           // noyifychecker[0] =1;
+                                           // }
 
                                            // adapter2.notifyDataSetChanged();
                                         }

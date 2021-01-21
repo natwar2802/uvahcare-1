@@ -1,5 +1,10 @@
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android" />
 <LinearLayout android:layout_height="wrap_content"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/llf"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -36,14 +41,18 @@
                     android:thicknessRatio="1.9"
                     >
 
-                    <ImageView
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:src="@drawable/prof"
                         android:layout_centerHorizontal="true"
                         android:id="@+id/itemprofilepicdetail"
-                        android:scaleType="fitXY">
-                    </ImageView>
+
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"
+                        cardView:ignore="MissingClass" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -107,4 +116,4 @@
         android:layout_height="match_parent"
         android:id="@+id/recycleviewprofiledetail"/>
 </LinearLayout>
-
+</ScrollView>

@@ -62,6 +62,7 @@ public class Notify extends MainActivity{
         adapter2 = new myAdapterNotify(this, arrayList);
         recyclerViewnotify.setHasFixedSize(true);
         recyclerViewnotify.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewnotify.setAdapter(adapter2);
         checknotify=0;
         // instance = this;
 
@@ -143,17 +144,22 @@ public class Notify extends MainActivity{
 
                                                         // modelGeneral model = dataSnapshot.getValue(modelGeneral.class);
                                                         //arrayList.add(model);
+                                                        final int[] checknotify1 = {0};
                                                         String postid = dataSnapshot1.getKey();
                                                         root1.child(postid).addValueEventListener(new ValueEventListener() {
                                                             @Override
                                                             public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                                               if(checknotify1[0] ==0){
                                                                 Boolean chek = arrayList.contains(snapshot1.getValue(modelGeneral.class));
-                                                                if (chek == false) {
+                                                               /// if (chek == false) {
                                                                     arrayList.add(0,snapshot1.getValue(modelGeneral.class));
 
                                                                     // adapter2.notifyDataSetChanged();
-                                                                }
+                                                               // }
                                                                 adapter2.notifyDataSetChanged();
+                                                       //  }
+                                                            checknotify1[0] =1;
+                                                            }
 
                                                             }
 
@@ -177,9 +183,9 @@ public class Notify extends MainActivity{
                                     }
 
         );
-        adapter2.notifyDataSetChanged();
+      //  adapter2.notifyDataSetChanged();
 
-        recyclerViewnotify.setAdapter(adapter2);
+
 
 
 

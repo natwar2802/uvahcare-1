@@ -36,6 +36,7 @@ public class followDetail extends MainActivity {
     FirebaseAuth mAuth;
     DatabaseReference likesrefernce;
     FirebaseDatabase database;
+    TextView itemfollowfdetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class followDetail extends MainActivity {
         citydetail=findViewById(R.id.itemuserCfdetail);
         imgprofiledetail=findViewById(R.id.itemprofilepicdetail);
         aboutbloger=findViewById(R.id.aboutbloger);
+        itemfollowfdetail=findViewById(R.id.itemfollowfdetail);
 
 
         Intent in = getIntent();
@@ -87,6 +89,21 @@ public class followDetail extends MainActivity {
         root1 = FirebaseDatabase.getInstance().getReference("mypost").child(blogerid);
         DatabaseReference rootref = FirebaseDatabase.getInstance().getReference("hPost");
         DatabaseReference profref = FirebaseDatabase.getInstance().getReference("profile").child(blogerid);
+        DatabaseReference followerref = FirebaseDatabase.getInstance().getReference("follower");
+
+followerref.child(blogerid).addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull DataSnapshot snapshot) {
+        int followcount= (int) snapshot.getChildrenCount();
+        itemfollowfdetail.setText(followcount+" following");
+
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
+
+    }
+});
 
         //databaseReference=database.getReference("healthPost");
         // likesrefernce = database.getReference("likes");

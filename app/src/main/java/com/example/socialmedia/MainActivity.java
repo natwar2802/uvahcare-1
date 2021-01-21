@@ -26,6 +26,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -322,6 +323,14 @@ public class MainActivity<user> extends AppCompatActivity {
             Intent intent=new Intent(MainActivity.this,MainActivity.class);
             startActivity(intent);
             return false;
+        }
+    });
+    search_.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+
+            search_.onActionViewExpanded();
         }
     });
 

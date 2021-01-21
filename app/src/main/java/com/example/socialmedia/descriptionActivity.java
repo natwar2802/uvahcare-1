@@ -508,23 +508,7 @@ try {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int likescount=(int)snapshot.child(postkey).getChildrenCount();
-                postref3.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                        if(snapshot1.hasChild(postkey)){
-                            postref3.child(postkey).child("claps").setValue(likescount);
-                            displayclap2.setText(Integer.toString(likescount));
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-
+                displayclap2.setText(Integer.toString(likescount));
             }
 
             @Override

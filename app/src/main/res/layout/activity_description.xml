@@ -1,228 +1,230 @@
-
-<ScrollView android:layout_width="match_parent"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    xmlns:android="http://schemas.android.com/apk/res/android" />
-<RelativeLayout android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:android="http://schemas.android.com/apk/res/android" />
+        <RelativeLayout android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="700dp"
-                />
-
-
-    <LinearLayout android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/title12"
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
-            android:textColor="#000000"
-            android:typeface="normal"
-            android:textSize="30sp" />
-        <LinearLayout android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/llff"
             xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:cardView="http://schemas.android.com/tools">
+            xmlns:app="http://schemas.android.com/apk/res-auto">
 
-            <androidx.cardview.widget.CardView
-
-                android:id="@+id/carView2"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                cardView:cardCornerRadius="20dp"
-                cardView:cardElevation="8dp"
-               android:layout_marginLeft="10dp"
-                cardView:cardBackgroundColor="#FFFFFF"
-                >
+                android:layout_height="match_parent">
                 <LinearLayout
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="700dp"
+                    />
+
+
+                <LinearLayout android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/title12"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
+                        android:textColor="#000000"
+                        android:typeface="normal"
+                        android:textSize="30sp" />
+                    <LinearLayout android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/llff"
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:cardView="http://schemas.android.com/tools">
+
+                        <androidx.cardview.widget.CardView
+
+                            android:id="@+id/carView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            cardView:cardCornerRadius="20dp"
+                            cardView:cardElevation="8dp"
+                            android:layout_marginLeft="10dp"
+                            cardView:cardBackgroundColor="#FFFFFF"
+                            >
+                            <LinearLayout
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:paddingRight="10dp">
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_width="50dp"
+                                        android:id="@+id/pic"
+                                        android:layout_height="50dp"
+                                        android:elevation="12dp"
+                                        cardView:cardCornerRadius="25dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:innerRadius="0dp"
+                                        android:shape="ring"
+                                        android:thicknessRatio="1.9"
+                                        >
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:layout_height="match_parent"
+                                            android:layout_width="match_parent"
+                                            android:src="@drawable/prof"
+                                            android:id="@+id/itemprofilepicff"
+                                            app:civ_border_width="2dp"
+                                            app:civ_border_color="#FF000000"
+                                            cardView:ignore="MissingClass" />
+
+                                    </androidx.cardview.widget.CardView>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        >
+
+                                        <TextView
+                                            android:layout_weight="1"
+                                            android:textStyle="bold"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:text="Username "
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:textSize="20sp"
+                                            android:id="@+id/itemuserNff"/>
+                                        <com.google.android.material.button.MaterialButton
+                                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                                            android:id="@+id/btnfollowff"
+                                            android:layout_width="0dp"
+                                            android:layout_weight="1"
+                                            android:layout_height="wrap_content"
+                                            android:text="Follow"
+                                            />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingRight="10dp">
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="50dp"
-                            android:id="@+id/pic"
-                            android:layout_height="50dp"
-                            android:elevation="12dp"
-                            cardView:cardCornerRadius="25dp"
-                            android:layout_centerHorizontal="true"
-                            android:innerRadius="0dp"
-                            android:shape="ring"
-                            android:thicknessRatio="1.9"
-                            >
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_height="match_parent"
-                                android:layout_width="match_parent"
-                                android:src="@drawable/prof"
-                                android:id="@+id/itemprofilepicff"
-                                app:civ_border_width="2dp"
-                                app:civ_border_color="#FF000000"
-                                cardView:ignore="MissingClass" />
-
-                        </androidx.cardview.widget.CardView>
+                        android:orientation="horizontal">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            >
+                            android:layout_alignParentBottom="true"
+                            android:background="#FFFFFF"
+                            android:id="@+id/user_feedback"
+                            android:orientation="horizontal">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#FFFFFF"
+                                android:gravity="left"
+                                android:layout_marginLeft="5dp"
+                                android:orientation="horizontal">
+                                <ImageButton
+                                    android:src="@mipmap/clapping_round"
+                                    android:id="@+id/inc2"
+                                    android:backgroundTint="#FFFFFF"
+                                    android:scaleType="center"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:text="0 Claps"
 
-                            <TextView
-                                android:layout_weight="1"
-                                android:textStyle="bold"
-                                android:layout_width="0dp"
+                                    />
+
+                                <TextView
+                                    android:layout_margin="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="20sp"
+                                    android:id="@+id/displayclap2"/>
+
+                                <ImageButton
+                                    android:id="@+id/bmd"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_alignParentRight="true"
+                                    android:scaleType="centerCrop"
+                                    android:backgroundTint="#FFFFFF"
+                                    android:src="@drawable/imagesb" />
+                                <ImageButton
+                                    android:layout_alignParentRight="true"
+                                    android:src="@drawable/share"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:scaleType="fitXY"
+                                    android:backgroundTint="#FFFFFF"
+                                    android:id="@+id/btnsharepost2"
+                                    android:layout_marginRight="10dp"
+                                    android:text="share"
+                                    />
+
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Username "
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="5dp"
-                                android:textSize="20sp"
-                                android:id="@+id/itemuserNff"/>
-                            <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.MaterialComponents.Button.TextButton"
-                                android:id="@+id/btnfollowff"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:text="Follow"
-                                />
+                                android:layout_marginLeft="100dp"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:src="@drawable/star"></ImageView>
+                                <TextView
+                                    android:id="@+id/ratingdescription"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="20sp"
+                                    />
+                            </LinearLayout>
                         </LinearLayout>
 
+
                     </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:background="#FFFFFF"
-                android:id="@+id/user_feedback"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:gravity="left"
-                    android:layout_marginLeft="5dp"
-                    android:orientation="horizontal">
-                    <ImageButton
-                        android:src="@mipmap/clapping_round"
-                        android:id="@+id/inc2"
-                        android:backgroundTint="#FFFFFF"
-                        android:scaleType="center"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:text="0 Claps"
-
-                        />
-
-                    <TextView
-                        android:layout_margin="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="20sp"
-                        android:id="@+id/displayclap2"/>
-
-                    <ImageButton
-                        android:id="@+id/bmd"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentRight="true"
-                        android:scaleType="centerCrop"
-                        android:backgroundTint="#FFFFFF"
-                        android:src="@drawable/imagesb" />
-                    <ImageButton
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/share"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:scaleType="fitXY"
-                        android:backgroundTint="#FFFFFF"
-                        android:id="@+id/btnsharepost2"
-                        android:layout_marginRight="10dp"
-                        android:text="share"
-                        />
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="100dp"
-                    android:orientation="horizontal">
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/star"></ImageView>
-                    <TextView
+                        android:id="@+id/img12"
+                        android:src="@drawable/prof"
+                        android:layout_width="match_parent"
+                        android:layout_height="250sp"
+                        android:scaleType="fitXY"
+                        />
+                    <!--<RatingBar
+
+                        android:isIndicator="false"
+                        android:stepSize="1"
                         android:id="@+id/ratingdescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content
+                        android:numStars="10" />-->
+
+
+                    <Button
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="20sp"
-                        />
-                </LinearLayout>
-            </LinearLayout>
+                        android:id="@+id/submitrate"
+                        android:visibility="gone"
+                        android:text="submit"/>
 
-
-        </LinearLayout>
-        <ImageView
-            android:id="@+id/img12"
-            android:src="@drawable/prof"
-            android:layout_width="match_parent"
-            android:layout_height="250sp"
-            android:scaleType="fitXY"
-            />
-        <!--<RatingBar
-
-            android:isIndicator="false"
-            android:stepSize="1"
-            android:id="@+id/ratingdescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content
-            android:numStars="10" />-->
-
-
-        <Button
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/submitrate"
-            android:visibility="gone"
-            android:text="submit"/>
-
-        <TextView
-            android:autoLink="all"
-            android:id="@+id/desc12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="कपालभाति प्राणायाम करने की विधि । \nHow To Do Kapalbhati Pranayama
+                    <TextView
+                        android:autoLink="all"
+                        android:id="@+id/desc12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="कपालभाति प्राणायाम करने की विधि । \nHow To Do Kapalbhati Pranayama
 1. अपनी रीढ़ की हड्डी को सीधा रखते हुए, आराम से बैठ जाएँ। \n2. अपने हाथों को आकाश की तरफ, आराम से घुटनों पर रखें।
 एक लंबी गहरी साँस अंदर लें।
 \n3. साँस छोड़ते हुए अपने पेट को अंदर की ओर खींचे। \n4. अपने पेट को इस प्रकार से अंदर खींचे की वह रीढ़ की हड्डी को छू ले। जितना हो सके उतना ही करें। \n5. पेट की मासपेशियों के सिकुड़ने को आप अपने पेट पर हाथ रख कर महसूस कर सकते हैं। नाभि को अंदर की ओर खींचे।
@@ -230,110 +232,119 @@
 कपालभाति प्राणायाम के एक क्रम (राउंड) को पूरा करने के लिए २० साँस छोड़े।
 \n7. एक राउंड खत्म होने के पश्चात, विश्राम करें और अपनी आँखों को बंद कर लें। अपने शरीर में प्राणायाम से प्रकट हुई उत्तेजना को महसूस करें।
 कपालभाति प्राणायाम के दो और क्रम (राउंड) को पूरा करें।"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:typeface="monospace" />
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:typeface="monospace" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/rate_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Rate the post"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
-        <RatingBar
-            android:layout_marginBottom="20dp"
-            android:id="@+id/ratedesc"
-            style="@style/Widget.AppCompat.RatingBar.Indicator"
-            android:layout_width="wrap_content"
-            android:background="#FFFFFF"
-            android:layout_height="wrap_content"
-            android:numStars="10"
-            android:layout_gravity="center_horizontal"
-            android:isIndicator="false"
-            android:scaleX=".9"
-            android:scaleY=".9"
-            android:stepSize="1" />
-    </LinearLayout>
-        <androidx.cardview.widget.CardView
-            android:visibility="gone"
-            android:id="@+id/popupcard"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:elevation="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            cardBackgroundColor="@color/white">
-            <LinearLayout
-                android:layout_margin="20dp"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
-
-
-               <!-- <RatingBar
-                    android:id="@+id/ratingpop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:numStars="5"
-
-                    android:stepSize="0.5" />-->
-                <RatingBar
-                    android:id="@+id/ratingpop"
-                    style="@style/Widget.AppCompat.RatingBar.Indicator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:numStars="10"
-                    android:layout_gravity="center_horizontal"
-                    android:isIndicator="false"
-                    android:scaleX=".9"
-                    android:scaleY=".9"
-                    android:stepSize="1" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-                    <com.google.android.material.button.MaterialButton
-                    android:layout_marginTop="5dp"
-                    android:text="submit"
-                    android:layout_marginRight="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/submitrating"
-                        android:layout_gravity="center_horizontal"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"/>
-                    <com.google.android.material.button.MaterialButton
-                        android:layout_width="wrap_content"
-                        android:layout_marginLeft="15dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/cancel_rate"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+                        android:orientation="horizontal"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp">
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/rate_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Rate the post"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+                    <RatingBar
+                        android:layout_marginBottom="20dp"
+                        android:id="@+id/ratedesc"
+                        style="@style/Widget.AppCompat.RatingBar.Indicator"
+                        android:layout_width="wrap_content"
+                        android:background="#FFFFFF"
+                        android:layout_height="wrap_content"
+                        android:numStars="10"
+                        android:layout_gravity="center_horizontal"
+                        android:isIndicator="false"
+                        android:scaleX=".9"
+                        android:scaleY=".9"
+                        android:stepSize="1" />
                 </LinearLayout>
+                <androidx.cardview.widget.CardView
+                    android:visibility="gone"
+                    android:id="@+id/popupcard"
+                    android:layout_marginTop="200dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:elevation="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    cardBackgroundColor="@color/white">
+                    <LinearLayout
+                        android:layout_margin="20dp"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
 
 
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                        <!-- <RatingBar
+                             android:id="@+id/ratingpop"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
 
-    </RelativeLayout>
+                             android:layout_marginLeft="20dp"
+                             android:layout_marginTop="10dp"
+                             android:layout_marginRight="20dp"
+                             android:numStars="5"
+
+                             android:stepSize="0.5" />-->
+                        <RatingBar
+                            android:id="@+id/ratingpop"
+                            style="@style/Widget.AppCompat.RatingBar.Indicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:numStars="10"
+                            android:layout_gravity="center_horizontal"
+                            android:isIndicator="false"
+                            android:scaleX=".9"
+                            android:scaleY=".9"
+                            android:stepSize="1" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+                            <com.google.android.material.button.MaterialButton
+                                android:layout_marginTop="5dp"
+                                android:text="submit"
+                                android:layout_marginRight="15dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/submitrating"
+
+                                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+                            <com.google.android.material.button.MaterialButton
+                                android:layout_marginTop="5dp"
+
+                                android:layout_width="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:text="cancel"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/cancel_rate"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+                        </LinearLayout>
 
 
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+            </RelativeLayout>
+
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -352,7 +363,4 @@
             android:text="share"
             />
     </LinearLayout>
-
-
 </RelativeLayout>
-</ScrollView>
