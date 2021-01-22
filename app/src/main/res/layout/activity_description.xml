@@ -180,17 +180,6 @@
                                     android:scaleType="centerCrop"
                                     android:backgroundTint="#FFFFFF"
                                     android:src="@drawable/imagesb" />
-                                <ImageButton
-                                    android:layout_alignParentRight="true"
-                                    android:src="@drawable/share"
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
-                                    android:scaleType="fitXY"
-                                    android:backgroundTint="#FFFFFF"
-                                    android:id="@+id/btnsharepost2"
-                                    android:layout_marginRight="10dp"
-                                    android:text="share"
-                                    />
 
 
                             </LinearLayout>
