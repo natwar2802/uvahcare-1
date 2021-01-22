@@ -52,7 +52,8 @@
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
-                </>
+                </com.google.android.material.card.MaterialCardView>
+
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/BodyBuilding"
                     android:layout_width="match_parent"
