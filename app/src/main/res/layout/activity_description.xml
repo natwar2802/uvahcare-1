@@ -91,7 +91,7 @@
                         android:id="@+id/img12"
                         android:src="@drawable/prof"
                         android:layout_width="match_parent"
-                        android:layout_height="250sp"
+                        android:layout_height="300sp"
                         android:scaleType="fitXY"
                         android:layout_marginBottom="20dp"
                         />
