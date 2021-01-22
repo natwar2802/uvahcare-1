@@ -12,7 +12,7 @@
         cardView:cardCornerRadius="20dp"
         cardView:cardElevation="8dp"
         android:layout_margin="10dp"
-        cardView:cardBackgroundColor="#FFFFFF"
+        android:background="#FFFFFF"
         >
         <RelativeLayout
             android:layout_width="match_parent"
@@ -21,129 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-                <androidx.cardview.widget.CardView
-                    android:layout_width="50dp"
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/pic"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="10dp"
-                    android:elevation="12dp"
-                    cardView:cardCornerRadius="25dp"
-                    android:innerRadius="0dp"
-                    android:shape="ring"
-                    android:thicknessRatio="1.9"
-                    >
 
-                    <!--<ImageView
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
-                        android:src="@drawable/prof"
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/itemprofilepic"
-                        android:scaleType="fitXY">
-                    </ImageView>-->
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:src="@drawable/prof"
-                        android:id="@+id/itemprofilepic"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="#FF000000"
-                        cardView:ignore="MissingClass" />
-                </androidx.cardview.widget.CardView>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Username"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:id="@+id/itemuserN"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:id="@+id/itemdatetime"
-                                android:layout_weight="1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="16dp"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:text="Date Time"
-                                android:textColor="#000000"
-                                android:typeface="normal"
-                                android:textSize="15sp" />
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnfollow"
-                            style="@style/Widget.MaterialComponents.Button.TextButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="follow" />
-                        </LinearLayout>
-                    </LinearLayout>
-                <ImageButton
-                    android:scaleType="fitXY"
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/imageButton"
-                    android:layout_marginRight="20dp"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/overflow"
-                    android:backgroundTint="#FFFFFF"
-
-                    android:layout_below="@+id/item_detail"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:background="@null"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/title1"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
-                    android:textColor="#000000"
-                    android:typeface="normal"
-                    android:textSize="20sp" />
-                <ImageButton
-                    android:id="@+id/bm"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:scaleType="centerCrop"
-                    android:backgroundTint="#FFFFFF"
-                    android:src="@drawable/imagesb" />
-
-            </LinearLayout>
 
             <ImageView
                 android:id="@+id/img1"
@@ -152,11 +32,30 @@
                 android:layout_height="200sp"
                 android:scaleType="fitXY"
                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
             <TextView
                 android:id="@+id/desc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
+                android:paddingLeft="8dp"
                 android:typeface="monospace"
                 android:text="फायदे जानकर रह जाएंगे हैरान..........\n जिससे कोविड-19 जैसी स्थिति के खतरे को कम किया जा सकता है"
                 android:textColor="#000000"
@@ -165,102 +64,123 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp">
+                >
+                <!--<ImageView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:src="@drawable/prof"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/itemprofilepic"
+                    android:scaleType="fitXY">
+                </ImageView>-->
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/prof"
+                    android:id="@+id/itemprofilepic"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#FF000000"
+                    cardView:ignore="MissingClass" />
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
                     android:orientation="horizontal">
-                    <ImageButton
-                        android:src="@mipmap/clapping_round"
-                        android:id="@+id/inc"
-                        android:backgroundTint="#FFFFFF"
-                        android:scaleType="center"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:text="0 Claps"
-
-                        />
-                    <TextView
-                        android:layout_margin="10dp"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="0.8"
+                            android:layout_height="wrap_content"
+                            android:text="Username"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:id="@+id/itemuserN"/>
+                            <TextView
+                                android:layout_weight="1"
+                                android:id="@+id/itemdatetime"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="16dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:text="Date Time"
+                                android:textColor="#000000"
+                                android:typeface="normal"
+                                android:textSize="15sp" />
+                    <LinearLayout
+                        android:layout_weight="1.5"
+                        android:layout_width="0dp"
+                        android:gravity="center"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="20sp"
-                        android:id="@+id/displayclap"/>
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:layout_marginTop="5dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/star"
+                                android:scaleType="fitXY"
+                                android:id="@+id/star"/>
+                            <TextView
+                                android:layout_margin="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="15sp"
+                                android:id="@+id/displayrate"/>
+                        </LinearLayout>
+                            <ImageButton
+                                android:id="@+id/bm"
+                                android:layout_width="30dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentRight="true"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/imagesb" />
+
+
+                            <ImageButton
+                                android:src="@drawable/delete"
+                                android:id="@+id/btndel"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:visibility="gone"
+                                android:scaleType="fitXY"
+                                android:text="delete"
+                                />
+                            <ImageButton
+                                android:scaleType="fitXY"
+                                android:id="@+id/imageButton"
+                                android:layout_marginRight="20dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/overflow"
+                                android:layout_below="@+id/item_detail"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentEnd="true"
+                                android:background="@null"/>
+                    </LinearLayout>
                 </LinearLayout>
 
-
-                <!--   <Button
-                       android:id="@+id/cmnt"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_marginLeft="10dp"
-                       android:text="comments"
-                       android:layout_weight="1"
-                       /> -->
-                <LinearLayout
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/star"
-                        android:scaleType="fitXY"
-                        android:id="@+id/star"/>
-                    <TextView
-                        android:layout_margin="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="20sp"
-                        android:id="@+id/displayrate"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="right"
-                    android:layout_weight="1">
-
-                <ImageButton
-                    android:src="@drawable/share"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:scaleType="fitXY"
-                    android:backgroundTint="#FFFFFF"
-                    android:id="@+id/btnsharepost"
-                    android:layout_marginRight="10dp"
-                    android:text="share"
-                    />
-
-
-                    <ImageButton
-                        android:src="@drawable/delete"
-                        android:id="@+id/btndel"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:visibility="gone"
-                        android:backgroundTint="#FFFFFF"
-                        android:scaleType="fitXY"
-                        android:text="delete"
-                        />
-                </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview_report"
-                android:layout_width="320dp"
+                android:layout_width="wrap_content"
+                app:cardCornerRadius="12dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+               android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:layout_marginTop="50dp"
-                android:elevation="12dp"
+                android:elevation="15dp"
                 android:layout_marginRight="10dp"
                 android:visibility="gone"
                 >
@@ -291,8 +211,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:text="NO"
-                    android:id="@+id/no"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+                        app:cornerRadius="20dp"
+                    android:id="@+id/no" />
                 </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
