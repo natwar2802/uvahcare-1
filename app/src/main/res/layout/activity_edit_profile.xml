@@ -6,14 +6,18 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" >
-    <TextView
+    <com.google.android.material.button.MaterialButton
+        cardView:strokeColor="@color/teal_200"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:clickable="false"
+        cardView:strokeWidth="2dp"
+        cardView:cornerRadius="20dp"
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Details"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
+        android:text="                     My Details                          "
+        style="@style/Widget.MaterialComponents.Button.TextButton"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,14 +123,17 @@
     android:orientation="horizontal">
     <com.google.android.material.button.MaterialButton
         android:layout_margin="10dp"
+        cardView:cornerRadius="20dp"
         android:id="@+id/updateProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="update"
         android:onClick="update"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
          />
     <com.google.android.material.button.MaterialButton
+        cardView:strokeColor="@color/teal_200"
+        cardView:strokeWidth="2dp"
+        cardView:cornerRadius="20dp"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
