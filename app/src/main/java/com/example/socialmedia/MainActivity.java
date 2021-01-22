@@ -689,7 +689,7 @@ public class MainActivity<user> extends AppCompatActivity {
 
                     String s= deeplink.toString();
                     Log.e(TAG,s);
-                    Toast.makeText(getApplicationContext(),"Hello"+s,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Welcome in UVAH Care",Toast.LENGTH_SHORT).show();
 
                     int i;
                     int count=0;

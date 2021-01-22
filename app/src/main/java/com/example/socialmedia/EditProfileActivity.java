@@ -275,7 +275,7 @@ public class EditProfileActivity extends  AppCompatActivity{
 
                                     // String email=txtemail.getText().toString().trim();
                                     progressDialogProfile.dismiss();
-                                    Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Your Profile Updated Successfully ", Toast.LENGTH_LONG).show();
                                     @SuppressWarnings("VisibleForTests")
                                     String prevseenpost="Prevseen";
 

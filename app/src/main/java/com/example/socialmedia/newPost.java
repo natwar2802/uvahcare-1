@@ -309,7 +309,7 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                     String ImageUploadId = databaseReference.push().getKey();
 
                                     progressDialog.dismiss();
-                                    Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Your Post Uploaded Successfully ", LENGTH_SHORT).show();
                                     @SuppressWarnings("VisibleForTests")
 
                                         modelGeneral imageUploadInfo = new modelGeneral(title,overview,uri,description,ImageUploadId,myuserida,preference,data,ratesum,rating,claps,postscore,seencount,postno);
@@ -367,7 +367,7 @@ try{        for(int i=0;i<l.getChildCount();i++)
         }
         else {
 
-            Toast.makeText(newPost.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
+            Toast.makeText(newPost.this, "Please Select Image or Add Image Name", LENGTH_SHORT).show();
 
         }
     }

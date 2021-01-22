@@ -348,7 +348,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
 
                         if(bookmarkchecker.equals(true)){
                             if(snapshot.child(curentUserId).hasChild(postkey)){
-                                Toast.makeText(context.getApplicationContext(),"This post will removed when you visit next time yo Bookmark",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context.getApplicationContext()," Alert You UnBookmark this post",Toast.LENGTH_SHORT).show();
                                 holder.bookmarkref.child(curentUserId).child(postkey).removeValue();
                                 holder.btnbookmark.setImageResource(R.drawable.imagesb);
                                 mlist.remove(position);

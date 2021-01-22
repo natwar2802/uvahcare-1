@@ -15,7 +15,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
                 android:id="@+id/profilepic"
-                android:background="@color/teal_200"
+                android:background="@color/teal_700"
                ></View>
 
             <ImageButton

@@ -18,63 +18,90 @@
         android:layout_height="wrap_content"
         android:text="                     My Details                          "
         style="@style/Widget.MaterialComponents.Button.TextButton"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="UserName"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
-    <EditText
-        android:id="@+id/usernameProfile"
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="City"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
-    <EditText
-        android:id="@+id/cityProfile"
+        android:layout_margin="10dp"
+        android:hint="UserName"
+       >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/usernameProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#FFFFFF"
+            android:lines="1"
+            android:maxLines="2"
+            android:minLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Country"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
-    <EditText
-        android:id="@+id/countryProfile"
+        android:layout_margin="10dp"
+        android:hint="City"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cityProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#FFFFFF"
+            android:lines="1"
+            android:maxLines="2"
+            android:minLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="About me "
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
-    <EditText
-        android:id="@+id/aboutmeProfile"
+        android:layout_margin="10dp"
+        android:hint="Country"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/countryProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#FFFFFF"
+            android:lines="1"
+            android:maxLines="2"
+            android:minLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:minLines="2"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_margin="10dp"
+        android:hint="About Me"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/aboutmeProfile"
+            android:layout_width="match_parent"
+            android:minLines="2"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#FFFFFF"
+
+            android:maxLines="2"
+             />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -84,6 +111,7 @@
         android:textStyle="bold"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>
+
     <androidx.cardview.widget.CardView
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"

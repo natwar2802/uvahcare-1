@@ -523,7 +523,7 @@ try {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"clap", LENGTH_SHORT).show();
                 likechec =true;
                 likesref.addValueEventListener(new ValueEventListener() {
                     @Override
