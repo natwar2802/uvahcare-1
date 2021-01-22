@@ -40,8 +40,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:paddingLeft="8dp"
+                    android:paddingLeft="10dp"
                     android:paddingTop="8dp"
+                    android:paddingRight="10dp"
                     android:paddingBottom="8dp"
                     android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
                     android:textColor="#000000"
@@ -53,7 +54,8 @@
                 android:id="@+id/desc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:typeface="monospace"
                 android:text="फायदे जानकर रह जाएंगे हैरान..........\n जिससे कोविड-19 जैसी स्थिति के खतरे को कम किया जा सकता है"
                 android:textColor="#000000"
@@ -75,6 +77,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_height="30dp"
                     android:layout_width="30dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:src="@drawable/prof"
                     android:id="@+id/itemprofilepic"
@@ -84,7 +87,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:orientation="horizontal">
                         <TextView
                             android:layout_width="0dp"
@@ -92,7 +95,6 @@
                             android:layout_height="wrap_content"
                             android:text="Username"
                             android:textColor="#000000"
-                            android:textStyle="bold"
                             android:textSize="15sp"
                             android:id="@+id/itemuserN"/>
                             <TextView
