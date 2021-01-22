@@ -6,12 +6,12 @@
     android:layout_marginRight="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardView="http://schemas.android.com/tools">
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
 
         android:id="@+id/carView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        cardView:cardCornerRadius="20dp"
+        cardView:cardCornerRadius="30dp"
         cardView:cardElevation="8dp"
         android:layout_margin="10dp"
         android:background="#FFFFFF"
@@ -56,7 +56,6 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:typeface="monospace"
                 android:text="फायदे जानकर रह जाएंगे हैरान..........\n जिससे कोविड-19 जैसी स्थिति के खतरे को कम किया जा सकता है"
                 android:textColor="#000000"
                 android:textSize="15sp" />
@@ -90,6 +89,7 @@
                     android:layout_marginLeft="10dp"
                     android:orientation="horizontal">
                         <TextView
+                            android:paddingTop="10dp"
                             android:layout_width="0dp"
                             android:layout_weight="0.8"
                             android:layout_height="wrap_content"
@@ -98,21 +98,17 @@
                             android:textSize="15sp"
                             android:id="@+id/itemuserN"/>
                             <TextView
-                                android:layout_weight="1"
+                                android:layout_weight="0.5"
                                 android:id="@+id/itemdatetime"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="16dp"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
                                 android:text="Date Time"
                                 android:textColor="#000000"
                                 android:typeface="normal"
-                                android:textSize="15sp" />
+                                android:textSize="10sp" />
                     <LinearLayout
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
-                        android:gravity="right"
                         android:layout_marginRight="10dp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -120,28 +116,31 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
                             android:orientation="horizontal">
                             <ImageView
-                                android:layout_marginTop="5dp"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:src="@drawable/star"
                                 android:scaleType="fitXY"
                                 android:id="@+id/star"/>
                             <TextView
-                                android:layout_margin="10dp"
+                                android:layout_margin="15dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
-                                android:textSize="15sp"
+                                android:textSize="10sp"
                                 android:id="@+id/displayrate"/>
                         </LinearLayout>
                             <ImageButton
                                 android:id="@+id/bm"
-                                android:layout_width="30dp"
-                                android:layout_height="40dp"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="#FFFFFF"
+                                android:layout_marginTop="10dp"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/imagesb" />
 
@@ -149,15 +148,19 @@
                             <ImageButton
                                 android:src="@drawable/delete"
                                 android:id="@+id/btndel"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:visibility="gone"
+                                android:background="#FFFFFF"
                                 android:scaleType="fitXY"
                                 android:text="delete"
                                 />
                             <ImageButton
                                 android:scaleType="fitXY"
                                 android:layout_marginTop="10dp"
+                                android:layout_marginLeft="10dp"
                                 android:id="@+id/imageButton"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
@@ -165,7 +168,7 @@
                                 android:layout_below="@+id/item_detail"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentEnd="true"
-                                android:background="@null"/>
+                                android:background="#FFFFFF"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -173,10 +176,12 @@
             </LinearLayout>
 
         </LinearLayout>
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardview_report"
                 android:layout_width="wrap_content"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="20dp"
+                app:strokeColor="@color/teal_200"
+                app:strokeWidth="2dp"
                 android:layout_height="wrap_content"
                android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
@@ -216,9 +221,9 @@
                     android:id="@+id/no" />
                 </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
 

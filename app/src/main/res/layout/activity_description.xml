@@ -227,8 +227,75 @@
                         android:scaleY=".9"
                         android:stepSize="1" />
                 </LinearLayout>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/popupcard"
+                    android:layout_marginTop="200dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    app:cardCornerRadius="20dp"
+                    app:strokeColor="@color/teal_200"
+                    app:strokeWidth="2dp"
+                    android:elevation="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
 
 
+                        <!-- <RatingBar
+                             android:id="@+id/ratingpop"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_marginLeft="20dp"
+                             android:layout_marginTop="10dp"
+                             android:layout_marginRight="20dp"
+                             android:numStars="5"
+                             android:stepSize="0.5" />-->
+                        <RatingBar
+                            android:layout_marginTop="20dp"
+                            android:id="@+id/ratingpop"
+                            style="@style/Widget.AppCompat.RatingBar.Indicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:numStars="10"
+                            android:layout_gravity="center_horizontal"
+                            android:isIndicator="false"
+                            android:scaleX=".9"
+                            android:scaleY=".9"
+                            android:stepSize="1" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+                            <com.google.android.material.button.MaterialButton
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="20dp"
+                                android:text="submit"
+                                android:layout_marginRight="15dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/submitrating"
+                                app:cornerRadius="20dp"/>
+                            <com.google.android.material.button.MaterialButton
+                                android:layout_marginTop="10dp"
+
+                                android:layout_width="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:text="cancel"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/cancel_rate"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
             </RelativeLayout>
 
 
