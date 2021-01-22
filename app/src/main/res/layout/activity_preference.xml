@@ -9,14 +9,18 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Select Your Preferences"
-            android:textSize="30sp"
-            android:layout_margin="10dp"
-            android:paddingTop="5dp"
-            android:textStyle="bold"
-            xmlns:android="http://schemas.android.com/apk/res/android" />
+        <com.google.android.material.button.MaterialButton
+        cardView:strokeColor="@color/teal_200"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:clickable="false"
+        cardView:strokeWidth="2dp"
+        cardView:cornerRadius="20dp"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="                    Select Your Preferences                          "
+        style="@style/Widget.MaterialComponents.Button.TextButton"/>
         <LinearLayout
             android:id="@+id/defense"
             android:layout_width="match_parent"
@@ -28,11 +32,13 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/LooseWeight"
                     android:layout_width="match_parent"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
                     android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
@@ -45,13 +51,15 @@
                         android:text="Loose Weight"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:textSize="30sp"></TextView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                        android:textSize="20sp"></TextView>
+                </>
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/BodyBuilding"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    cardView:cardCornerRadius="50dp"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
@@ -64,15 +72,17 @@
                         android:text="Gain Weight"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:textSize="30sp"></TextView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/carView2"
                     android:onClick="f"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
                     >
@@ -83,15 +93,17 @@
                         android:text="Gas Problem"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:textSize="30sp"></TextView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/Diabetes"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
                     cardView:cardBackgroundColor="#FFFFFF"
                     android:onClick="f"
                     >
@@ -102,16 +114,18 @@
                         android:text="Diabetes"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:textSize="30sp"></TextView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/Immunity"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
                     android:onClick="f"
                     >
                     <TextView
@@ -121,19 +135,21 @@
                         android:text="Immunity"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:textSize="30sp"></TextView>
-                </androidx.cardview.widget.CardView>
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/P1"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     android:onClick="f"
@@ -145,14 +161,16 @@
                         android:text="P1"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:textSize="30sp"></TextView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/P2"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
                     android:onClick="f"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
@@ -163,16 +181,18 @@
                         android:text="P2"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:textSize="30sp"></TextView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/P3"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:onClick="f"
                     android:layout_margin="10dp"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
                     cardView:cardBackgroundColor="#FFFFFF"
                     >
                     <TextView
@@ -181,15 +201,17 @@
                         android:text="P3"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:textSize="30sp"></TextView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/P4"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
                     cardView:cardBackgroundColor="#FFFFFF"
                     android:onClick="f"
                     >
@@ -199,16 +221,18 @@
                         android:text="P4"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:textSize="30sp"></TextView>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/P5"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    cardView:cardCornerRadius="2dp"
+                    cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
                     cardView:cardBackgroundColor="#FFFFFF"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
                     android:onClick="f"
                     >
                     <TextView
@@ -217,8 +241,8 @@
                         android:text="P5"
                         android:layout_gravity="center"
                         android:textStyle="bold"
-                        android:textSize="30sp"></TextView>
-                </androidx.cardview.widget.CardView>
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
 
 
             </LinearLayout>
@@ -230,8 +254,9 @@
             android:orientation="horizontal"
             android:gravity="center"
             >
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
+            cardView:cornerRadius="20dp"
             android:layout_height="wrap_content"
             android:text="Update"
             android:layout_marginRight="10dp"
