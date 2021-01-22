@@ -23,10 +23,6 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="vertical">
-
-
-
-
             <ImageView
                 android:id="@+id/img1"
                 android:src="@drawable/ic_launcher_background"
@@ -114,7 +110,8 @@
                     <LinearLayout
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
-                        android:gravity="center"
+                        android:gravity="right"
+                        android:layout_marginRight="10dp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
@@ -158,8 +155,8 @@
                                 />
                             <ImageButton
                                 android:scaleType="fitXY"
+                                android:layout_marginTop="10dp"
                                 android:id="@+id/imageButton"
-                                android:layout_marginRight="20dp"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:src="@drawable/overflow"
