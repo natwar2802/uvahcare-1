@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,6 +38,8 @@ public class followDetail extends MainActivity {
     DatabaseReference likesrefernce;
     FirebaseDatabase database;
     TextView itemfollowfdetail;
+    Button showuserdetail;
+    int mchk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ public class followDetail extends MainActivity {
 
 // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        mchk=0;
         appname.setVisibility(View.VISIBLE);
         search_.setVisibility(View.GONE);
         usenamedetail=findViewById(R.id.itemuserNfdetail);
@@ -60,8 +64,7 @@ public class followDetail extends MainActivity {
         imgprofiledetail=findViewById(R.id.itemprofilepicdetail);
         aboutbloger=findViewById(R.id.aboutbloger);
         itemfollowfdetail=findViewById(R.id.itemfollowfdetail);
-
-
+        showuserdetail=findViewById(R.id.showuserdetail);
         Intent in = getIntent();
         String blogerid=in.getStringExtra("blogerid");
         String usernamed=in.getStringExtra("usernamed");
@@ -116,6 +119,19 @@ followerref.child(blogerid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        showuserdetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mchk==0){
+                    showuserdetail.setText("Hide user detail");
+                    aboutbloger.setVisibility(View.VISIBLE);
+                }
+                else{
+                    showuserdetail.setText("show user detail");
+                    aboutbloger.setVisibility(View.GONE);
+                }
             }
         });
 
