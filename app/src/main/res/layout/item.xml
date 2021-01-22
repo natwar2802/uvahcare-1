@@ -4,11 +4,13 @@
     android:id="@+id/ll"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardView="http://schemas.android.com/tools">
     <com.google.android.material.card.MaterialCardView
-
         android:id="@+id/carView2"
+        app:cardPreventCornerOverlap="false"
+        card_view:cardUseCompatPadding="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         cardView:cardCornerRadius="30dp"
@@ -225,5 +227,5 @@
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
 
+</LinearLayout>
