@@ -89,7 +89,7 @@ public class descriptionActivity extends MainActivity {
         userNff=findViewById(R.id.itemuserNff);
         btnfollowff=findViewById(R.id.btnfollowff);
         inc2=findViewById(R.id.inc2);
-        btnshare2=findViewById(R.id.btnsharepost2);
+//        btnshare2=findViewById(R.id.btnsharepost2);
         displayclap2=findViewById(R.id.displayclap2);
         bmd = findViewById(R.id.bmd);
         DatabaseReference followerreference=database.getReference("follower");
