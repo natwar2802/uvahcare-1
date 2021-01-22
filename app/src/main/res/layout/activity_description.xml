@@ -38,52 +38,52 @@
                         xmlns:android="http://schemas.android.com/apk/res/android"
                         xmlns:cardView="http://schemas.android.com/tools">
 
-                            <LinearLayout
-                                android:layout_height="wrap_content"
-                                android:layout_width="match_parent"
-                                android:layout_margin="20dp"
-                                android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_margin="20dp"
+                            android:orientation="vertical">
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:layout_height="40dp"
+                                    android:layout_width="40dp"
+                                    android:src="@drawable/prof"
+                                    android:id="@+id/itemprofilepicff"
+                                    app:civ_border_width="2dp"
+                                    app:civ_border_color="#FF000000"
+                                    cardView:ignore="MissingClass" />
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-                                        <de.hdodenhof.circleimageview.CircleImageView
-                                            android:layout_height="40dp"
-                                            android:layout_width="40dp"
-                                            android:src="@drawable/prof"
-                                            android:id="@+id/itemprofilepicff"
-                                            app:civ_border_width="2dp"
-                                            app:civ_border_color="#FF000000"
-                                            cardView:ignore="MissingClass" />
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
+                                    android:orientation="horizontal"
+                                    android:layout_marginRight="10dp"
+                                    >
+
+                                    <TextView
+                                        android:layout_weight="4"
+                                        android:textColor="#000000"
+                                        android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_marginRight="10dp"
-                                        >
-
-                                        <TextView
-                                            android:layout_weight="4"
-                                            android:textColor="#000000"
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:text="Username "
-                                            android:layout_marginLeft="10dp"
-                                            android:textSize="20sp"
-                                            android:id="@+id/itemuserNff"/>
-                                        <com.google.android.material.button.MaterialButton
-                                            android:id="@+id/btnfollowff"
-                                            app:cornerRadius="50dp"
-                                            android:layout_width="wrap_content"
-                                            android:layout_weight="1"
-                                            android:layout_height="wrap_content"
-                                            android:text="Follow"
-                                            />
-                                    </LinearLayout>
-
+                                        android:text="Username "
+                                        android:layout_marginLeft="10dp"
+                                        android:textSize="20sp"
+                                        android:id="@+id/itemuserNff"/>
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnfollowff"
+                                        app:cornerRadius="50dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_weight="1"
+                                        android:layout_height="wrap_content"
+                                        android:text="Follow"
+                                        />
                                 </LinearLayout>
+
                             </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
 
 
@@ -131,22 +131,13 @@
 \n7. एक राउंड खत्म होने के पश्चात, विश्राम करें और अपनी आँखों को बंद कर लें। अपने शरीर में प्राणायाम से प्रकट हुई उत्तेजना को महसूस करें।
 कपालभाति प्राणायाम के दो और क्रम (राउंड) को पूरा करें।"
                         android:textColor="#000000"
-                        android:textSize="20sp"
-                        android:typeface="monospace" />
-
+                        android:textSize="20sp" />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp">
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:layout_marginBottom="20dp"
-                        android:layout_marginLeft="10dp"
                         android:orientation="horizontal">
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -159,7 +150,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="#FFFFFF"
-                                android:gravity="left"
                                 android:orientation="horizontal">
                                 <ImageButton
                                     android:src="@drawable/clapping"
@@ -168,22 +158,23 @@
                                     android:scaleType="fitXY"
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
-                                    android:text="0 Claps"
+
 
                                     />
-
                                 <TextView
                                     android:layout_margin="10dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="0"
                                     android:textSize="15sp"
+                                    android:layout_marginRight="20dp"
                                     android:id="@+id/displayclap2"/>
 
                                 <ImageButton
                                     android:id="@+id/bmd"
                                     android:layout_width="30dp"
                                     android:layout_height="40dp"
+                                    android:layout_marginRight="20dp"
                                     android:layout_alignParentTop="true"
                                     android:layout_alignParentRight="true"
                                     android:scaleType="centerCrop"
@@ -206,7 +197,6 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="right"
                                 android:orientation="horizontal">
                                 <ImageView
                                     android:layout_width="30dp"
@@ -241,7 +231,8 @@
                         android:background="#FFFFFF"
                         android:layout_height="wrap_content"
                         android:numStars="10"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="20dp"
                         android:isIndicator="false"
                         android:scaleX=".9"
                         android:scaleY=".9"
