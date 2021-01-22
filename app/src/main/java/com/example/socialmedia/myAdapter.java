@@ -256,7 +256,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
         });
         //final String postkey=postref.push().getKey();
 
-try{
+/*try{
         followerreference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -291,7 +291,7 @@ try{
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });}catch (Exception e){}
+        });}catch (Exception e){}*/
 
         holder.itemlayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -301,9 +301,9 @@ try{
         });
         //  Glide.with(holder.img2.getContext()).load(model.getUrlimage()).into(holder.img2);
 
-        holder.setLikesbuttonStatus(postkey);
+       // holder.setLikesbuttonStatus(postkey);
 
-        holder.inc.setOnClickListener(new View.OnClickListener() {
+/*        holder.inc.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -332,7 +332,7 @@ try{
                 });
 
             }
-        });
+        });*/
 
 
 
@@ -378,7 +378,7 @@ try{
 
 
 
-       holder.hbtnsharepost.setOnClickListener(new View.OnClickListener() {
+/*       holder.hbtnsharepost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DynamicLink link = FirebaseDynamicLinks.getInstance()
@@ -408,10 +408,10 @@ try{
 
 
         });
+*/
 
 
-
-        holder.btnfollow.setOnClickListener(new View.OnClickListener() {
+       /* holder.btnfollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -467,7 +467,7 @@ try{
                     }
                 });
             }
-        });
+        });*/
         try{
         profilereference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -650,19 +650,19 @@ try{
             img2=(ImageView) itemView.findViewById(R.id.img12);
             title2=(TextView) itemView.findViewById(R.id.title12);
             descrip2=(TextView) itemView.findViewById(R.id.desc12);
-            inc=(ImageButton) itemView.findViewById(R.id.inc);
-           hbtnsharepost=(ImageButton) itemView.findViewById(R.id.btnsharepost);
-            likeddisplay=(TextView) itemView.findViewById(R.id.displayclap);
+          //  inc=(ImageButton) itemView.findViewById(R.id.inc);
+         //  hbtnsharepost=(ImageButton) itemView.findViewById(R.id.btnsharepost);
+          //  likeddisplay=(TextView) itemView.findViewById(R.id.displayclap);
             itemlayout=(LinearLayout)itemView.findViewById(R.id.ll);
             btnbookmark=(ImageButton) itemView.findViewById(R.id.bm);
             btnupdateProfile= (Button)itemView.findViewById(R.id.updateProfile);
             itemprofilepic=(ImageView)itemView.findViewById(R.id.itemprofilepic);
             itemusername=(TextView)itemView.findViewById(R.id.itemuserN);
-            btnfollow=itemView.findViewById(R.id.btnfollow);
+          //  btnfollow=itemView.findViewById(R.id.btnfollow);
             referencerate= FirebaseDatabase.getInstance().getReference("rating");
             btndel=itemView.findViewById(R.id.btndel);
             cardView_report= itemView.findViewById(R.id.cardview_report);
-            displayclap=itemView.findViewById(R.id.displayclap);
+          //  displayclap=itemView.findViewById(R.id.displayclap);
             itemdatetime=itemView.findViewById(R.id.itemdatetime);
             universal = FirebaseDatabase.getInstance().getReference();
 
@@ -681,7 +681,7 @@ try{
         }
 
         public void setLikesbuttonStatus(String postkey){
-            inc=itemView.findViewById(R.id.inc);
+           // inc=itemView.findViewById(R.id.inc);
             likesref= FirebaseDatabase.getInstance().getReference("likes");
             FirebaseUser usera=FirebaseAuth.getInstance().getCurrentUser();
             String userida=usera.getUid();

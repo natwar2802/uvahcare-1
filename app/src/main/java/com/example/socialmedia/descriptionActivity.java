@@ -82,8 +82,8 @@ public class descriptionActivity extends MainActivity {
         user_feedback=findViewById(R.id.user_feedback);
         btnratedesc=findViewById(R.id.ratedesc);
         scrollView=findViewById(R.id.scrollView);
-        btnsubmitrate=findViewById(R.id.submitrating);
-        popupcard=findViewById(R.id.popupcard);
+      //  btnsubmitrate=findViewById(R.id.submitrating);
+      //  popupcard=findViewById(R.id.popupcard);
         btnshared= findViewById(R.id.btnsharepostd);
         ratingpop=findViewById(R.id.ratingpop);
         userNff=findViewById(R.id.itemuserNff);
@@ -97,7 +97,7 @@ public class descriptionActivity extends MainActivity {
         DatabaseReference bookmarkref = database.getReference("bookmark");
 
 
-        cancel_rate=findViewById(R.id.cancel_rate);
+        //cancel_rate=findViewById(R.id.cancel_rate);
 
         btnratedesc.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override

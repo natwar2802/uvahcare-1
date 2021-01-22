@@ -142,7 +142,7 @@ public class MainActivity<user> extends AppCompatActivity {
         appname.setVisibility(View.GONE);
 
         cardView=findViewById(R.id.pic);
-        btnshare=findViewById(R.id.btnsharepost);
+       // btnshare=findViewById(R.id.btnsharepost);
         search_=findViewById(R.id.search_);
         search_.setVisibility(View.VISIBLE);
        // searchbar=findViewById(R.id.search_bar);
