@@ -12,7 +12,7 @@
         >
         <com.airbnb.lottie.LottieAnimationView
 
-            android:layout_alignParentBottom="true"
+
             android:layout_width="match_parent"
             android:layout_height="350dp"
             app:lottie_rawRes="@raw/spash"
@@ -24,7 +24,7 @@
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/uvahcarelogo"/>
 
 
     </RelativeLayout>

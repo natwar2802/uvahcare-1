@@ -442,8 +442,9 @@ public class MainActivity<user> extends AppCompatActivity {
                              Toast.makeText(getApplicationContext(),"This Post is Deleted by blogger",Toast.LENGTH_SHORT).show();
 
                          }
+                             checkerdes[0] =1;
                      }
-                     checkerdes[0] =1;
+
                      }
 
                      @Override
@@ -453,7 +454,7 @@ public class MainActivity<user> extends AppCompatActivity {
                  });
 
 
-                final int[] seenpostch = {0};
+         /*       final int[] seenpostch = {0};
                 profileref1.setValue(data.getPreference());
                postref.child(data.getPid()).addValueEventListener(new ValueEventListener() {
 
@@ -474,7 +475,7 @@ public class MainActivity<user> extends AppCompatActivity {
                    public void onCancelled(@NonNull DatabaseError error) {
 
                    }
-               });
+               });*/
 
                 // finish();
             }

@@ -510,6 +510,8 @@ try {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int likescount=(int)snapshot.child(postkey).getChildrenCount();
                 displayclap2.setText(Integer.toString(likescount));
+                if(snapshot.hasChild(postkey)&&snapshot.child(postkey).hasChild(cid))
+                    inc2.setImageResource(R.drawable.clap);
             }
 
             @Override
@@ -532,10 +534,12 @@ try {
                         if(likechec.equals(true)){
                             if(snapshot.child(postkey).hasChild(cid)){
                                 likesref.child(postkey).child(cid).removeValue();
+                                inc2.setImageResource(R.drawable.clapping);
                                 likechec=false;
                             }
                             else{
                                 likesref.child(postkey).child(cid).setValue(true);
+                                inc2.setImageResource(R.drawable.clap);
                                 likechec=false;
                             }
                         }
@@ -662,7 +666,30 @@ try {
                 });
             }
         });
+        final int[] seenpostch = {0};
+        hpost.child(postkey).addValueEventListener(new ValueEventListener() {
 
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String pref= (String) snapshot.child("prefrence").getValue();
+                profileref.child(cid).child("prevseenpost").setValue(pref);
+
+                if(seenpostch[0] ==0){
+                    Long count= (Long) snapshot.child("seencount").getValue();
+                    count+=1;
+                    hpost.child(postkey).child("seencount").setValue(count);
+                    seenpostch[0]=1;
+
+                }
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
     }

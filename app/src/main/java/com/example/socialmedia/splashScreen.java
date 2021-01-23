@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class splashScreen extends AppCompatActivity {
-    private static int TIME_OUT = 2000;
+    private static int TIME_OUT = 1000;
     public static int chsplash=0;
     LottieAnimationView lottieAnimationView;
 
@@ -34,7 +34,7 @@ public class splashScreen extends AppCompatActivity {
 
 
 
-        lottieAnimationView.animate().translationY(-800).setDuration(1000).setStartDelay(0000);
+        lottieAnimationView.animate().translationY(000).setDuration(500).setStartDelay(0000);
 
         final Handler handler = new Handler();
 

@@ -222,12 +222,47 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
         holder.mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final int[] sch = {0};
                 holder.cardView_report.setVisibility(View.VISIBLE);
                 holder.yes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(sch[0] ==0){
+                        mlist.remove(position);
+                        notifyDataSetChanged();
+
                         holder.cardView_report.setVisibility(View.GONE);
-                        reportreference.child(postkey).child(curentUserId).setValue(true);
+
+                        holder.postref3.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(sch[0] ==0){
+                                    sch[0] =1;
+
+                                if(snapshot.hasChild(postkey)){
+                                    reportreference.child(postkey).child(curentUserId).setValue(true);
+
+
+                                String scostr=snapshot.child(postkey).child("postscore").getValue().toString();
+                                double scor=Double.parseDouble(scostr);
+                                scor=scor-0.5;
+                                holder.postref3.child(postkey).child("postscore").setValue(scor);
+
+
+
+                            }
+
+
+
+                            }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });}
                     }
                 });
                 holder.no.setOnClickListener(new View.OnClickListener() {

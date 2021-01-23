@@ -240,7 +240,7 @@
             android:layout_margin="10dp"></TextView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             cardView2:cardCornerRadius="4dp"
             cardView2:cardElevation="12dp"
             android:layout_margin="10dp"
@@ -256,7 +256,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 />
                 <ImageButton
                     android:layout_width="50dp"
