@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     xmlns:cardView="http://schemas.android.com/apk/res-auto"
-    xmlns:cardView="http://schemas.android.com/tools">
+    >
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/carView2"
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
 
                         app:civ_border_width="2dp"
                         app:civ_border_color="#FF000000"
-                        cardView:ignore="MissingClass" />
+                        />
 
                 <TextView
                     android:textColor="#000000"
