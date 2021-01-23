@@ -5,6 +5,7 @@
     android:id="@+id/llf"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
     xmlns:cardView="http://schemas.android.com/tools">
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/carView2"
@@ -112,6 +113,7 @@
         android:textColor="#000000"
         android:text="Blogger Post"/>
     <androidx.recyclerview.widget.RecyclerView
+        xmlns:cardView="http://schemas.android.com/apk/res-auto"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

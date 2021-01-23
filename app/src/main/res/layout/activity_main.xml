@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:backgroundTint="#D7DDDD"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout android:layout_width="match_parent"
@@ -89,6 +90,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:cardView="http://schemas.android.com/apk/res-auto"
         >
 
         <androidx.viewpager.widget.ViewPager
@@ -117,6 +119,7 @@
             android:layout_height="660dp"
             android:padding="0dp"
             android:layout_marginBottom="40dp"
+            xmlns:cardView="http://schemas.android.com/apk/res-auto"
             xmlns:android="http://schemas.android.com/apk/res/android" />
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_gravity="bottom"

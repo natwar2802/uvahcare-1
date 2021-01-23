@@ -19,9 +19,11 @@
         app:cardBackgroundColor="#FFFFFF"
         >
         <RelativeLayout
+            xmlns:cardView="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <LinearLayout
+            xmlns:cardView="http://schemas.android.com/apk/res-auto"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="vertical">
@@ -34,6 +36,7 @@
                 />
 
             <LinearLayout
+                xmlns:cardView="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -65,6 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                xmlns:cardView="http://schemas.android.com/apk/res-auto"
                 >
                 <!--<ImageView
                     android:layout_height="match_parent"
@@ -88,6 +92,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    xmlns:cardView="http://schemas.android.com/apk/res-auto"
                     android:layout_marginLeft="10dp"
                     android:orientation="horizontal">
                         <TextView
@@ -113,6 +118,7 @@
                         android:layout_width="0dp"
                         android:layout_marginRight="10dp"
                         android:layout_height="wrap_content"
+                        xmlns:cardView="http://schemas.android.com/apk/res-auto"
                         android:orientation="horizontal">
 
                         <LinearLayout
