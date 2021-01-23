@@ -10,11 +10,11 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/carView2"
         app:cardPreventCornerOverlap="false"
-        card_view:cardUseCompatPadding="true"
+       app:cardUseCompatPadding="true"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        cardView:cardCornerRadius="30dp"
-        cardView:cardElevation="8dp"
         android:layout_margin="10dp"
         app:cardBackgroundColor="#FFFFFF"
         >
@@ -130,7 +130,7 @@
                             <ImageView
                                 android:layout_marginTop="10dp"
                                 android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_height="23dp"
                                 android:src="@drawable/star"
                                 android:scaleType="fitXY"
                                 android:id="@+id/star"/>
@@ -145,10 +145,10 @@
                             <ImageButton
                                 android:id="@+id/bm"
                                 android:layout_marginRight="10dp"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="15dp"
+                                android:layout_height="17dp"
                                 android:background="#FFFFFF"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="13dp"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/imagesb" />
 
@@ -167,11 +167,10 @@
                                 />
                             <ImageButton
                                 android:scaleType="fitXY"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="13dp"
                                 android:id="@+id/imageButton"
                                 android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_height="17dp"
                                 android:src="@drawable/overflow"
                                 android:layout_below="@+id/item_detail"
                                 android:layout_alignParentRight="true"

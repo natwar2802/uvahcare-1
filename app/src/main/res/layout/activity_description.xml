@@ -156,8 +156,8 @@
                                     android:id="@+id/inc2"
                                     android:backgroundTint="#FFFFFF"
                                     android:scaleType="fitXY"
-                                    android:layout_width="40dp"
-                                    android:layout_height="40dp"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
 
 
                                     />
@@ -166,14 +166,15 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="0"
-                                    android:textSize="15sp"
+                                    android:textColor="#000000"
+                                    android:textSize="20sp"
                                     android:layout_marginRight="20dp"
                                     android:id="@+id/displayclap2"/>
 
                                 <ImageButton
                                     android:id="@+id/bmd"
-                                    android:layout_width="30dp"
-                                    android:layout_height="40dp"
+                                    android:layout_width="40dp"
+                                    android:layout_height="50dp"
                                     android:layout_marginRight="20dp"
                                     android:layout_alignParentTop="true"
                                     android:layout_alignParentRight="true"
@@ -188,14 +189,17 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
                                 <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
                                     android:src="@drawable/star"></ImageView>
                                 <TextView
                                     android:id="@+id/ratingdescription"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:textColor="#000000"
                                     android:text="0"
+                                    android:layout_marginTop="10dp"
                                     android:textSize="20sp"
                                     />
                             </LinearLayout>
@@ -221,7 +225,6 @@
                         android:layout_height="wrap_content"
                         android:numStars="10"
                         android:layout_gravity="left"
-                        android:layout_marginLeft="20dp"
                         android:isIndicator="false"
                         android:scaleX=".9"
                         android:scaleY=".9"
@@ -313,8 +316,9 @@
         <ImageButton
             android:layout_alignParentRight="true"
             android:src="@drawable/share"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
             android:scaleType="fitXY"
             android:backgroundTint="#FFFFFF"
             android:id="@+id/btnsharepostd"

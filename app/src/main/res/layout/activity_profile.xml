@@ -25,7 +25,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:backgroundTint="#FFFFFF"
+                android:backgroundTint="@color/teal_200"
                 android:src="@drawable/log"
                 android:scaleType="centerCrop"/>
             <ImageView
@@ -34,7 +34,7 @@
                 android:src="@drawable/edit"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="250dp"
-                android:layout_marginRight="70dp"
+                android:layout_marginRight="30dp"
                 android:id="@+id/editprofile"
                 android:onClick="ShowDetails"></ImageView>
             <androidx.cardview.widget.CardView
@@ -148,6 +148,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:text="My Profile Details"
                 android:paddingLeft="20dp"
@@ -184,14 +185,62 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
+                            android:gravity="center"
                             android:layout_margin="10dp"
                             android:onClick="postS">
                             <TextView
                                 android:id="@+id/btnmybookmarkp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="   My Bookmarked Post >"
+                                android:text="My Bookmarked Posts"
                                 android:textSize="20sp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        cardView:cardCornerRadius="20dp"
+                        cardView:cardElevation="8dp"
+                        android:layout_margin="10dp"
+                        cardView:cardBackgroundColor="#FFFFFF"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/gotopreference"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:text="My Preference"
+                                android:textSize="20sp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        cardView:cardCornerRadius="20dp"
+                        cardView:cardElevation="8dp"
+                        android:layout_margin="10dp"
+                        cardView:cardBackgroundColor="#FFFFFF"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:layout_margin="10dp">
+                            <TextView
+                                android:id="@+id/gotofollower"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Following"
+                                android:textSize="20sp"/>
+
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -209,38 +258,18 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:layout_margin="10dp"
+                            android:gravity="center"
                             android:onClick="YourPosts">
                             <TextView
                                 android:id="@+id/btnmypostp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="   My Posts                      >"
+                                android:text="My Posts"
                                 android:textSize="20sp"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    cardView:cardCornerRadius="20dp"
-                    cardView:cardElevation="8dp"
-                    android:layout_margin="10dp"
-                    cardView:cardBackgroundColor="#FFFFFF"
-                    >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:id="@+id/gotopreference"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:text="   My Preference          >"
-                            android:textSize="20sp"/>
-                    </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -252,40 +281,19 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:layout_margin="10dp">
                         <TextView
                             android:id="@+id/gotofollowed"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="   Followed                     >"
+                            android:text="Followed"
                             android:textSize="20sp"/>
 
                     </LinearLayout>
                     </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
 
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        cardView:cardCornerRadius="20dp"
-                        cardView:cardElevation="8dp"
-                        android:layout_margin="10dp"
-                        cardView:cardBackgroundColor="#FFFFFF"
-                        >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp">
-                        <TextView
-                            android:id="@+id/gotofollower"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="   Following                    >"
-                            android:textSize="20sp"/>
-
-                    </LinearLayout>
-                    </androidx.cardview.widget.CardView>
 
 
                 </LinearLayout>

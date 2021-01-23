@@ -127,6 +127,7 @@ followerref.child(blogerid).addValueEventListener(new ValueEventListener() {
                 if(mchk==0){
                     showuserdetail.setText("Hide user detail");
                     aboutbloger.setVisibility(View.VISIBLE);
+                    mchk=1;
                 }
                 else{
                     showuserdetail.setText("show user detail");

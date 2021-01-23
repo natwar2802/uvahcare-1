@@ -52,18 +52,20 @@
             android:hint="enter verification code"
             android:inputType="phone"
             android:maxLength="10" />
-
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonSignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextCode"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-
-            android:text="Sign In"
-            android:textAllCaps="false"
-            android:textColor="#cdd8f1" />
+            app:strokeColor="@color/teal_200"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp"
+            app:cornerRadius="20dp"
+            app:strokeWidth="2dp"
+            android:text="SIGN IN"
+            android:textAllCaps="false" />
 
     </RelativeLayout>
 

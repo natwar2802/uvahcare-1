@@ -5,14 +5,15 @@
     android:id="@+id/llf"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    xmlns:cardView="http://schemas.android.com/apk/res-auto"
-    xmlns:cardView="http://schemas.android.com/tools">
+    xmlns:cardView="http://schemas.android.com/apk/res-auto">
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/carView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        cardView:cardCornerRadius="20dp"
-        cardView:cardElevation="12dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="20dp"
         android:layout_margin="15dp"
         >
         <LinearLayout

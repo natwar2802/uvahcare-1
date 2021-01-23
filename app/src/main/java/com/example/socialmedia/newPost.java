@@ -359,6 +359,8 @@ try{        for(int i=0;i<l.getChildCount();i++)
 
                                         }
                                     });
+                                    Intent i=new Intent(newPost.this,MainActivity.class);
+                                    startActivity(i);
                                 }
                             });
 

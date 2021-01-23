@@ -86,18 +86,19 @@
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:layout_height="wrap_content" />
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:strokeColor="@color/teal_200"
+        android:textSize="15dp"
+        app:cornerRadius="20dp"
+        app:strokeWidth="2dp"
         android:layout_below="@id/editTextMobile"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:text="Continue"
+        android:text="CONTINUE"
         android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:textColor="#cdd8f1" />
-
-
-
+        android:textColor="#FFFFFF" />
+    
 </LinearLayout>
