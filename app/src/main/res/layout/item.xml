@@ -189,11 +189,11 @@
                 app:cardCornerRadius="20dp"
                 app:strokeColor="@color/teal_200"
                 app:strokeWidth="2dp"
+                android:elevation="8dp"
                 android:layout_height="wrap_content"
                android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="50dp"
-                android:elevation="15dp"
                 android:layout_marginRight="10dp"
                 android:visibility="gone"
                 >

@@ -235,6 +235,7 @@
                     android:layout_marginTop="200dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
+                    app:cardElevation="20dp"
                     app:cardCornerRadius="20dp"
                     app:strokeColor="@color/teal_200"
                     app:strokeWidth="2dp"
