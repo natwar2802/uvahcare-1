@@ -25,7 +25,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:backgroundTint="@color/teal_200"
+                android:backgroundTint="@color/teal_700"
                 android:src="@drawable/log"
                 android:scaleType="centerCrop"/>
             <ImageView

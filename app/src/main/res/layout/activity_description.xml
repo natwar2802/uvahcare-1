@@ -91,6 +91,8 @@
                         android:id="@+id/img12"
                         android:src="@drawable/prof"
                         android:layout_width="match_parent"
+                        android:adjustViewBounds="true"
+                        android:layout_centerInParent="true"
                         android:layout_height="250dp"
                         android:scaleType="fitXY"
                         android:layout_marginBottom="20dp"
