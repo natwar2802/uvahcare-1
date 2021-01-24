@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_height="match_parent"
+<androidx.core.widget.NestedScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:cardView="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="700dp"
-        />
-    <LinearLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:cardView="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
-
+        >
         <androidx.recyclerview.widget.RecyclerView
             xmlns:cardView="http://schemas.android.com/apk/res-auto"
             android:id="@+id/recycleView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="false"
+            android:layout_height="660dp"
             android:padding="0dp"
             android:layout_marginBottom="40dp"
             xmlns:android="http://schemas.android.com/apk/res/android" />
+    </RelativeLayout>
 
-
-
-    </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>
