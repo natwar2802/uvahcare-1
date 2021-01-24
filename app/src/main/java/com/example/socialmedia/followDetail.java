@@ -132,24 +132,29 @@ followerref.child(blogerid).addValueEventListener(new ValueEventListener() {
                 else{
                     showuserdetail.setText("show user detail");
                     aboutbloger.setVisibility(View.GONE);
+                    mchk=0;
                 }
             }
         });
 
         root1.addValueEventListener(new ValueEventListener() {
+            int fdch=0;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    if(fdch==0){
                     try {
 
                      rootref.child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
                          @Override
                          public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                             if(fdch==0){
                              modelGeneral model = snapshot1.getValue(modelGeneral.class);
                              arrayList.add(0,model);
                              adapter2.notifyDataSetChanged();
 
 
+                         }
                          }
 
                          @Override
@@ -160,9 +165,11 @@ followerref.child(blogerid).addValueEventListener(new ValueEventListener() {
 
 
                     }catch (Exception e){}
+
+                    fdch=1;
                 }
 
-            }
+            }}
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

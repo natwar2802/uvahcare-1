@@ -78,8 +78,10 @@ public class MyPost extends MainActivity {
        // likesrefernce = database.getReference("likes");
 
     root1.addValueEventListener(new ValueEventListener() {
+        int mpch=0;
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
+           // if(mpch==0){
             if(checkerdel==0){
 
             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -87,13 +89,15 @@ public class MyPost extends MainActivity {
                 root2.child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                      //  if(mpch==0){
                         if(checkerdel==0){
                         modelGeneral model = snapshot1.getValue(modelGeneral.class);
                         arrayList.add(0, model);
                         adapter2.notifyDataSetChanged();
                         }
 
-                    }
+                    //}
+                }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -110,6 +114,8 @@ public class MyPost extends MainActivity {
         }
 
         }
+       // mpch=1;
+      //  }
 
         @Override
         public void onCancelled(@NonNull DatabaseError error) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     tools:context=".splashScreen">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             -->
 
         <ImageView
-            android:scaleType="centerCrop"
+            android:scaleType="center"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
