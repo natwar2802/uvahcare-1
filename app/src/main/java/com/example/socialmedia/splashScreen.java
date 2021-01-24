@@ -20,7 +20,7 @@ public class splashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        lottieAnimationView=findViewById(R.id.splash);
+      //  lottieAnimationView=findViewById(R.id.splash);
         View decorView = getWindow().getDecorView();
 // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
@@ -34,7 +34,7 @@ public class splashScreen extends AppCompatActivity {
 
 
 
-        lottieAnimationView.animate().translationY(000).setDuration(500).setStartDelay(0000);
+      //  lottieAnimationView.animate().translationY(000).setDuration(500).setStartDelay(0000);
 
         final Handler handler = new Handler();
 

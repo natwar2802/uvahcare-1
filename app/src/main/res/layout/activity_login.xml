@@ -92,6 +92,10 @@
         android:layout_height="wrap_content"
         app:strokeColor="@color/teal_200"
         android:textSize="15dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="20dp"
+        app:cardCornerRadius="30dp"
         app:cornerRadius="20dp"
         app:strokeWidth="2dp"
         android:layout_below="@id/editTextMobile"
@@ -100,5 +104,5 @@
         android:text="CONTINUE"
         android:layout_gravity="center"
         android:textColor="#FFFFFF" />
-    
+
 </LinearLayout>
