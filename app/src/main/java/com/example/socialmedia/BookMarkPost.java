@@ -125,12 +125,14 @@ public class BookMarkPost extends MainActivity{
             @Override
             public void onItemClick(modelGeneral data) {
                 Intent intent = new Intent(BookMarkPost.this, descriptionActivity.class);
-                // intent.putExtra("Arraylist",arrayList);
+              
                 intent.putExtra("title", data.getTitle().toString());
                 intent.putExtra("Bdesc", data.getBrief().toString());
                 intent.putExtra("im", data.getUrlimage());
-                intent.putExtra("Ddesc", data.getDescription());
-
+                intent.putExtra("Ddesc",data.getDescription());
+                intent.putExtra("postkey",data.getPid());
+                intent.putExtra("blogerid",data.getBlogerid());
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
 

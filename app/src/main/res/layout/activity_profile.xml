@@ -1,7 +1,4 @@
-<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -24,7 +21,7 @@
             <com.google.android.material.card.MaterialCardView
                 cardView:cardCornerRadius="25dp"
                 cardView:cardElevation="10dp"
-                android:backgroundTint="@color/teal_700"
+                android:backgroundTint="@color/white"
                 android:layout_marginTop="25dp"
                 android:layout_width="50dp"
                 android:layout_alignParentRight="true"
@@ -35,7 +32,7 @@
                 android:id="@+id/logout"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:backgroundTint="@color/teal_700"
+                android:backgroundTint="@color/white"
                 android:src="@drawable/log"
                 android:scaleType="centerCrop"/>
             </com.google.android.material.card.MaterialCardView>
@@ -325,4 +322,3 @@
             android:orientation="vertical"/>
     </LinearLayout>
 </ScrollView>
-</RelativeLayout>

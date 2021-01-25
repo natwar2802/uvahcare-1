@@ -42,6 +42,7 @@ public class MyPost extends MainActivity {
     public  static int checkerdel;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +66,8 @@ public class MyPost extends MainActivity {
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
         recyclerView2.setAdapter(adapter2);
-        checkerdel=0;
+
+
        // instance = this;
 
        // database = FirebaseDatabase.getInstance();
@@ -78,25 +80,31 @@ public class MyPost extends MainActivity {
        // likesrefernce = database.getReference("likes");
 
     root1.addValueEventListener(new ValueEventListener() {
-        int mpch=0;
+
+
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
            // if(mpch==0){
             if(checkerdel==0){
 
             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+             //   checkerdel=0;
+                final int[] mpch = {0};
+
 
                 root2.child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                      //  if(mpch==0){
+                       if(mpch[0] ==0){
                         if(checkerdel==0){
                         modelGeneral model = snapshot1.getValue(modelGeneral.class);
                         arrayList.add(0, model);
                         adapter2.notifyDataSetChanged();
+                        mpch[0] =1;
+                        //checkerdel=1;
                         }
 
-                    //}
+                    }
                 }
 
                     @Override
@@ -108,7 +116,7 @@ public class MyPost extends MainActivity {
                 // recyclerView2.setAdapter(adapter2);
 
             }
-           // checkerdel=1;
+          //  checkerdel=1;
 
 
         }

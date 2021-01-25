@@ -138,22 +138,23 @@ followerref.child(blogerid).addValueEventListener(new ValueEventListener() {
         });
 
         root1.addValueEventListener(new ValueEventListener() {
-            int fdch=0;
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    if(fdch==0){
+                    final int[] fdch = {0};
+                    if(fdch[0] ==0){
                     try {
 
                      rootref.child(dataSnapshot.getKey()).addValueEventListener(new ValueEventListener() {
                          @Override
                          public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                             if(fdch==0){
+                             if(fdch[0] ==0){
                              modelGeneral model = snapshot1.getValue(modelGeneral.class);
                              arrayList.add(0,model);
                              adapter2.notifyDataSetChanged();
-
-
+                             fdch[0]=1;
                          }
                          }
 
@@ -166,16 +167,21 @@ followerref.child(blogerid).addValueEventListener(new ValueEventListener() {
 
                     }catch (Exception e){}
 
-                    fdch=1;
                 }
 
             }}
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+          //  fdch=1;
+
+
         });
+
 
 
         adapter2.setOnItemClickListener(new ClickListener<modelGeneral>() {
@@ -192,7 +198,6 @@ followerref.child(blogerid).addValueEventListener(new ValueEventListener() {
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
 
-                startActivity(intent);
             }
 
         });

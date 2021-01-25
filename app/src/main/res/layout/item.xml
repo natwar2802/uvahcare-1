@@ -138,7 +138,10 @@
                                 android:scaleType="fitXY"
                                 android:id="@+id/star"/>
                             <TextView
-                                android:layout_margin="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="8dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
@@ -163,7 +166,8 @@
                                 android:layout_marginTop="10dp"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
-                                android:visibility="gone"
+                                android:visibility="invisible"
+
                                 android:background="#FFFFFF"
                                 android:scaleType="fitXY"
                                 android:text="delete"

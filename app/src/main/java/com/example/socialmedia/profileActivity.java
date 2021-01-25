@@ -83,8 +83,9 @@ public class profileActivity extends MainActivity {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent =new Intent(profileActivity.this,loginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -92,7 +93,9 @@ public class profileActivity extends MainActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(profileActivity.this, MyPost.class);
+
                 startActivity(i);
+
             }
         });
         btnbookmarkp.setOnClickListener(new View.OnClickListener() {
