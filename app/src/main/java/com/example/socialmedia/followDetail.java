@@ -195,6 +195,7 @@ followerref.child(blogerid).addValueEventListener(new ValueEventListener() {
                 intent.putExtra("Ddesc",data.getDescription());
                 intent.putExtra("postkey",data.getPid());
                 intent.putExtra("blogerid",data.getBlogerid());
+                intent.putExtra("overview",data.getBrief().toString());
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
 

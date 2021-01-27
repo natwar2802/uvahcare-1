@@ -60,6 +60,7 @@ public class descriptionActivity extends MainActivity {
     TextView rate_text;
     LinearLayout user_feedback;
     ScrollView scrollView;
+    TextView overview;
     boolean bookmarkcheckerd=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +91,7 @@ public class descriptionActivity extends MainActivity {
         btnfollowff=findViewById(R.id.btnfollowff);
         inc2=findViewById(R.id.inc2);
         cancel_rate=findViewById(R.id.cancel_rate);
+        overview=findViewById(R.id.overview12);
      btnshare2=findViewById(R.id.btnsharepostd);
         displayclap2=findViewById(R.id.displayclap2);
         bmd = findViewById(R.id.bmd);
@@ -116,6 +118,7 @@ public class descriptionActivity extends MainActivity {
         TextView txt= (TextView) findViewById(R.id.title12);
         Intent in = getIntent();
         txt.setText(in.getStringExtra("title"));
+        overview.setText(in.getStringExtra("overview"));
         ImageView imj=(ImageView) findViewById(R.id.img12);
         String url=in.getStringExtra("im");
         TextView txt11= (TextView) findViewById(R.id.desc12);
