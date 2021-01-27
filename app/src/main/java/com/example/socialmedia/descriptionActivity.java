@@ -116,13 +116,13 @@ public class descriptionActivity extends MainActivity {
         });
 
         LayerDrawable stars = (LayerDrawable) ratingpop.getProgressDrawable();
-        stars.getDrawable(2).setColorFilter(Color.parseColor("#05C8E6"), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#31E9EF"), PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(0).setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
-        stars.getDrawable(1).setColorFilter(Color.parseColor("#05C8E6"), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(1).setColorFilter(Color.parseColor("#31E9EF"), PorterDuff.Mode.SRC_ATOP);
         LayerDrawable stars1 = (LayerDrawable) btnratedesc.getProgressDrawable();
-        stars1.getDrawable(2).setColorFilter(Color.parseColor("#05C8E6"), PorterDuff.Mode.SRC_ATOP);
+        stars1.getDrawable(2).setColorFilter(Color.parseColor("#31E9EF"), PorterDuff.Mode.SRC_ATOP);
         stars1.getDrawable(0).setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
-        stars1.getDrawable(1).setColorFilter(Color.parseColor("#05C8E6"), PorterDuff.Mode.SRC_ATOP);
+        stars1.getDrawable(1).setColorFilter(Color.parseColor("#31E9EF"), PorterDuff.Mode.SRC_ATOP);
         TextView txt= (TextView) findViewById(R.id.title12);
         Intent in = getIntent();
         txt.setText(in.getStringExtra("title"));
