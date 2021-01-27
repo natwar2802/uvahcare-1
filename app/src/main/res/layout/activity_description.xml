@@ -59,6 +59,7 @@
                                 <de.hdodenhof.circleimageview.CircleImageView
                                     android:layout_height="40dp"
                                     android:layout_width="40dp"
+                                    android:layout_marginTop="5dp"
                                     android:src="@drawable/prof"
                                     android:id="@+id/itemprofilepicff"
                                     cardView:ignore="MissingClass" />
