@@ -6,7 +6,10 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -112,9 +115,14 @@ public class descriptionActivity extends MainActivity {
             }
         });
 
-
-
-
+        LayerDrawable stars = (LayerDrawable) ratingpop.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#05C8E6"), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(0).setColorFilter(Color.parseColor("#05C8E6"), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(1).setColorFilter(Color.parseColor("#05C8E6"), PorterDuff.Mode.SRC_ATOP);
+        LayerDrawable stars1 = (LayerDrawable) btnratedesc.getProgressDrawable();
+        stars1.getDrawable(2).setColorFilter(Color.parseColor("#05C8E6"), PorterDuff.Mode.SRC_ATOP);
+        stars1.getDrawable(0).setColorFilter(Color.parseColor("#05C8E6"), PorterDuff.Mode.SRC_ATOP);
+        stars1.getDrawable(1).setColorFilter(Color.parseColor("#05C8E6"), PorterDuff.Mode.SRC_ATOP);
         TextView txt= (TextView) findViewById(R.id.title12);
         Intent in = getIntent();
         txt.setText(in.getStringExtra("title"));
