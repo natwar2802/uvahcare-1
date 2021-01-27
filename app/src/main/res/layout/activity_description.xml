@@ -53,8 +53,6 @@
                                     android:layout_width="40dp"
                                     android:src="@drawable/prof"
                                     android:id="@+id/itemprofilepicff"
-                                    app:civ_border_width="2dp"
-                                    app:civ_border_color="#FF000000"
                                     cardView:ignore="MissingClass" />
                                 <LinearLayout
                                     android:layout_width="match_parent"
