@@ -125,7 +125,7 @@ public class BookMarkPost extends MainActivity{
             @Override
             public void onItemClick(modelGeneral data) {
                 Intent intent = new Intent(BookMarkPost.this, descriptionActivity.class);
-              
+
                 intent.putExtra("title", data.getTitle().toString());
                 intent.putExtra("Bdesc", data.getBrief().toString());
                 intent.putExtra("im", data.getUrlimage());
