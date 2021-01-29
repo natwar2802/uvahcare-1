@@ -8,11 +8,13 @@
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true"
         app:cardElevation="8dp"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="10dp"
         android:id="@+id/carView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
        app:cardBackgroundColor="#FFFFFF"
         >
         <LinearLayout
@@ -30,8 +32,6 @@
                     android:layout_width="50dp"
                     android:src="@drawable/prof"
                     android:id="@+id/itemprofilepicf"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"
                     cardView:ignore="MissingClass" />
                 <LinearLayout
                     android:layout_width="wrap_content"

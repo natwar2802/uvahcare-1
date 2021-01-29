@@ -6,7 +6,10 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -60,6 +63,7 @@ public class descriptionActivity extends MainActivity {
     TextView rate_text;
     LinearLayout user_feedback;
     ScrollView scrollView;
+    TextView overview;
     boolean bookmarkcheckerd=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +94,7 @@ public class descriptionActivity extends MainActivity {
         btnfollowff=findViewById(R.id.btnfollowff);
         inc2=findViewById(R.id.inc2);
         cancel_rate=findViewById(R.id.cancel_rate);
+        overview=findViewById(R.id.overview12);
      btnshare2=findViewById(R.id.btnsharepostd);
         displayclap2=findViewById(R.id.displayclap2);
         bmd = findViewById(R.id.bmd);
@@ -110,12 +115,18 @@ public class descriptionActivity extends MainActivity {
             }
         });
 
-
-
-
+        LayerDrawable stars = (LayerDrawable) ratingpop.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#31E9EF"), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(0).setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(1).setColorFilter(Color.parseColor("#31E9EF"), PorterDuff.Mode.SRC_ATOP);
+        LayerDrawable stars1 = (LayerDrawable) btnratedesc.getProgressDrawable();
+        stars1.getDrawable(2).setColorFilter(Color.parseColor("#31E9EF"), PorterDuff.Mode.SRC_ATOP);
+        stars1.getDrawable(0).setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+        stars1.getDrawable(1).setColorFilter(Color.parseColor("#31E9EF"), PorterDuff.Mode.SRC_ATOP);
         TextView txt= (TextView) findViewById(R.id.title12);
         Intent in = getIntent();
         txt.setText(in.getStringExtra("title"));
+        overview.setText(in.getStringExtra("overview"));
         ImageView imj=(ImageView) findViewById(R.id.img12);
         String url=in.getStringExtra("im");
         TextView txt11= (TextView) findViewById(R.id.desc12);

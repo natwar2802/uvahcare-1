@@ -26,7 +26,7 @@
             android:layout_width="250dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="58dp"
             android:scaleType="fitXY"
             android:src="@drawable/search"
             android:visibility="gone"
@@ -65,7 +65,7 @@
             android:layout_width="40dp"
             android:layout_marginTop="2dp"
             android:layout_height="40dp"
-            android:src="@drawable/bell"
+            android:src="@drawable/bell2"
             android:layout_alignParentRight="true"
             android:id="@+id/bellnotify"
             android:scaleType="fitXY"></ImageView>

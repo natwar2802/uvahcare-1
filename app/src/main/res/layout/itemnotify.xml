@@ -8,11 +8,13 @@
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true"
         app:cardElevation="8dp"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="10dp"
         android:id="@+id/carViewnotify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
 
         >
         <LinearLayout
@@ -28,15 +30,12 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:id="@+id/blogerpicnotify"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#FF000000"
                 cardView:ignore="MissingClass" />
             <TextView
                 android:id="@+id/titlenotify"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="3"
-                android:textColor="#000000"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"

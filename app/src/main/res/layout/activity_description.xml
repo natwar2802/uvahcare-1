@@ -29,8 +29,16 @@
                         android:layout_marginTop="20dp"
                         android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
                         android:textColor="#000000"
-                        android:textStyle="bold"
                         android:textSize="30sp" />
+                    <TextView
+                        android:id="@+id/overview12"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="कोरोना से बचाएगा कपालभाति प्राणायाम "
+                        android:textSize="20sp" />
                     <LinearLayout android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -51,10 +59,9 @@
                                 <de.hdodenhof.circleimageview.CircleImageView
                                     android:layout_height="40dp"
                                     android:layout_width="40dp"
+                                    android:layout_marginTop="5dp"
                                     android:src="@drawable/prof"
                                     android:id="@+id/itemprofilepicff"
-                                    app:civ_border_width="2dp"
-                                    app:civ_border_color="#FF000000"
                                     cardView:ignore="MissingClass" />
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -123,14 +130,6 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="20dp"
                         android:autoLink="all"
-                        android:text="कपालभाति प्राणायाम करने की विधि । \nHow To Do Kapalbhati Pranayama
-1. अपनी रीढ़ की हड्डी को सीधा रखते हुए, आराम से बैठ जाएँ। \n2. अपने हाथों को आकाश की तरफ, आराम से घुटनों पर रखें।
-एक लंबी गहरी साँस अंदर लें।
-\n3. साँस छोड़ते हुए अपने पेट को अंदर की ओर खींचे। \n4. अपने पेट को इस प्रकार से अंदर खींचे की वह रीढ़ की हड्डी को छू ले। जितना हो सके उतना ही करें। \n5. पेट की मासपेशियों के सिकुड़ने को आप अपने पेट पर हाथ रख कर महसूस कर सकते हैं। नाभि को अंदर की ओर खींचे।
-\n6. जैसे ही आप पेट की मासपेशियों को ढीला छोड़ते हो, साँस अपने आप ही आपके फेफड़ों में पहुँच जाती है।
-कपालभाति प्राणायाम के एक क्रम (राउंड) को पूरा करने के लिए २० साँस छोड़े।
-\n7. एक राउंड खत्म होने के पश्चात, विश्राम करें और अपनी आँखों को बंद कर लें। अपने शरीर में प्राणायाम से प्रकट हुई उत्तेजना को महसूस करें।
-कपालभाति प्राणायाम के दो और क्रम (राउंड) को पूरा करें।"
                         android:textColor="#000000"
                         android:textSize="20sp" />
                     <LinearLayout
@@ -235,6 +234,7 @@
                         android:layout_height="wrap_content"
                         android:numStars="10"
                         android:layout_gravity="left"
+                        android:progressTint="#05C8E6"
                         android:isIndicator="false"
                         android:scaleX=".9"
                         android:scaleY=".9"
@@ -311,6 +311,7 @@
                 style="@style/Widget.AppCompat.RatingBar.Indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:progressTint="#05C8E6"
                 android:numStars="10"
                 android:layout_gravity="center_horizontal"
                 android:isIndicator="false"

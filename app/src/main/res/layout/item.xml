@@ -2,8 +2,6 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardView="http://schemas.android.com/tools">
@@ -12,15 +10,18 @@
         app:cardPreventCornerOverlap="false"
        app:cardUseCompatPadding="true"
         app:cardElevation="8dp"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         app:cardBackgroundColor="#FFFFFF"
         >
         <RelativeLayout
             xmlns:cardView="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
+            android:animateLayoutChanges="true"
             android:layout_height="match_parent">
         <LinearLayout
             xmlns:cardView="http://schemas.android.com/apk/res-auto"
@@ -47,7 +48,6 @@
                     android:id="@+id/title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:paddingLeft="10dp"
                     android:paddingTop="8dp"
                     android:paddingRight="10dp"
@@ -65,7 +65,6 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="फायदे जानकर रह जाएंगे हैरान..........\n जिससे कोविड-19 जैसी स्थिति के खतरे को कम किया जा सकता है"
-                android:textColor="#000000"
                 android:textSize="15sp" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,14 +82,12 @@
                 </ImageView>-->
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_height="30dp"
-                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="12dp"
                     android:src="@drawable/prof"
                     android:id="@+id/itemprofilepic"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"
                      />
                 <LinearLayout
                     android:layout_width="match_parent"
