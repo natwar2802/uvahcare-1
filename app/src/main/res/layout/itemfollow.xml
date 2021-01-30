@@ -12,9 +12,8 @@
         android:id="@+id/carView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
        app:cardBackgroundColor="#FFFFFF"
         >
         <LinearLayout
@@ -64,7 +63,7 @@
                 android:orientation="horizontal">
                 <TextView
                     android:padding="8dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="City"
                     android:layout_weight="1"
@@ -74,7 +73,7 @@
                 <TextView
                     android:padding="8dp"
                     android:textColor="#000000"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Country"
                     android:layout_weight="1"
@@ -83,9 +82,9 @@
                 <TextView
                     android:textColor="#000000"
                     android:padding="8dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="follow"
+                    android:text="1 following"
                     android:layout_weight="1"
                     android:textSize="20sp"
                     android:id="@+id/itemfollowf"/>
