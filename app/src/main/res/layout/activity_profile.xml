@@ -198,6 +198,7 @@
                         cardView:cardCornerRadius="20dp"
                         cardView:cardElevation="8dp"
                         android:layout_margin="10dp"
+                        android:id="@+id/btnmybookmarkpcard"
                         cardView:cardBackgroundColor="#FFFFFF"
                         >
                         <LinearLayout
@@ -221,6 +222,7 @@
                         cardView:cardCornerRadius="20dp"
                         cardView:cardElevation="8dp"
                         android:layout_margin="10dp"
+                        android:id="@+id/gotopreferencecard"
                         cardView:cardBackgroundColor="#FFFFFF"
                         >
                         <LinearLayout
@@ -245,6 +247,7 @@
                         cardView:cardCornerRadius="20dp"
                         cardView:cardElevation="8dp"
                         android:layout_margin="10dp"
+                        android:id="@+id/gotofollowercard"
                         cardView:cardBackgroundColor="#FFFFFF"
                         >
                         <LinearLayout
@@ -271,6 +274,7 @@
                         cardView:cardElevation="8dp"
                         android:layout_margin="10dp"
                         cardView:cardBackgroundColor="#FFFFFF"
+                        android:id="@+id/btnmypostpcard"
                         >
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -295,6 +299,7 @@
                         cardView:cardCornerRadius="20dp"
                         cardView:cardElevation="8dp"
                         android:layout_margin="10dp"
+                        android:id="@+id/gotofollowedcard"
                         cardView:cardBackgroundColor="#FFFFFF"
                         >
                     <LinearLayout

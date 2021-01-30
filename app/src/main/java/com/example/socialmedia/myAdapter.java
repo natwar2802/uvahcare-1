@@ -84,7 +84,11 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
 
     @Override
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
-        holder.descrip.setText(mlist.get(position).getBrief());
+        String brief;
+        brief=mlist.get(position).getBrief();
+        if(brief.length()>60)
+                brief=brief.substring(0,60)+"....";
+        holder.descrip.setText(brief);
         holder.title.setText(mlist.get(position).getTitle());
 //         holder.itemdatetime.setText((int));
         long datetime=mlist.get(position).getDatetime();

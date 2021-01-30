@@ -2,6 +2,7 @@ package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -34,6 +35,7 @@ public class profileActivity extends MainActivity {
     Button btninfollow;
     TextView btnmypostp,following;
     TextView btnbookmarkp,gotopreference,gotofollower,gotofollowed;
+    CardView btnbookmarkpcard,gotopreferencecard,gotofollowercard,gotofollowedcard,btnmypostpcard;
     DatabaseReference profileref,followreference;
     TextView username,usercountry,usercity;
     ImageView profilepic,editp;
@@ -60,13 +62,18 @@ public class profileActivity extends MainActivity {
         editp=findViewById(R.id.editprofile);
         logout=findViewById(R.id.logout);
         btnmypostp=findViewById(R.id.btnmypostp);
+        btnmypostpcard=findViewById(R.id.btnmypostpcard);
         btnbookmarkp=findViewById(R.id.btnmybookmarkp);
+        btnbookmarkpcard=findViewById(R.id.btnmybookmarkpcard);
        // btninfollow=findViewById(R.id.btninfollow);
         username=findViewById(R.id.userName);
         usercity=findViewById(R.id.tcity);
         usercountry=findViewById(R.id.tcountry);
+        gotopreferencecard=findViewById(R.id.gotopreferencecard);
         gotopreference=findViewById(R.id.gotopreference);
+        gotofollowedcard=findViewById(R.id.gotofollowercard);
         gotofollower=findViewById(R.id.gotofollower);
+        gotofollowedcard=findViewById(R.id.gotofollowedcard);
         gotofollowed=findViewById(R.id.gotofollowed);
         setProfile();
         setfollowStatus();
@@ -89,7 +96,7 @@ public class profileActivity extends MainActivity {
             }
         });
 
-        btnmypostp.setOnClickListener(new View.OnClickListener() {
+        btnmypostpcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(profileActivity.this, MyPost.class);
@@ -98,28 +105,28 @@ public class profileActivity extends MainActivity {
 
             }
         });
-        btnbookmarkp.setOnClickListener(new View.OnClickListener() {
+        btnbookmarkpcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(profileActivity.this, BookMarkPost.class);
                 startActivity(i);
             }
         });
-        gotopreference.setOnClickListener(new View.OnClickListener() {
+        gotopreferencecard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(profileActivity.this, PreferenceActivity.class);
                 startActivity(i);
             }
         });
-        gotofollower.setOnClickListener(new View.OnClickListener() {
+        gotofollowercard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(profileActivity.this, followActivity.class);
                 startActivity(i);
             }
         });
-        gotofollowed.setOnClickListener(new View.OnClickListener() {
+        gotofollowedcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(profileActivity.this, followedBloggerActivity.class);
