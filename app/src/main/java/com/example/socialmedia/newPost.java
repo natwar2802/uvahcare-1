@@ -223,6 +223,9 @@ try{        for(int i=0;i<l.getChildCount();i++)
                         Toast.makeText(getApplicationContext(),"Dicription should not be empty",Toast.LENGTH_SHORT).show();
                         //allowSave = false;
                     }
+                    else{
+                        UploadImage();
+                    }
                 }
                 else if(position==1){
                     if(inputValidatorHelper.isNullOrEmpty(benefit1)) {
@@ -239,6 +242,9 @@ try{        for(int i=0;i<l.getChildCount();i++)
                         errMsg.append("Precation should not be empty.\n");
                         Toast.makeText(getApplicationContext(),"Precaution should not be empty",Toast.LENGTH_SHORT).show();
                         //allowSave = false;
+                    }
+                    else{
+                        UploadImage();
                     }
                 }
                 else if(position==2){
@@ -258,12 +264,13 @@ try{        for(int i=0;i<l.getChildCount();i++)
                         Toast.makeText(getApplicationContext(),"Precaution should not be empty",Toast.LENGTH_SHORT).show();
                         //allowSave = false;
                     }
+                    else{
+                        UploadImage();
+                    }
                 }
 
 
-                else {
-                    UploadImage();
-                }
+
 
 
 
