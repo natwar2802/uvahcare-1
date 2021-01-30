@@ -515,22 +515,47 @@ try {
 
        // inc=itemView.findViewById(R.id.inc);
 
-
+        final int[] chl = {0};
         likesref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(chl[0] ==0){
+
                 int likescount=(int)snapshot.child(postkey).getChildrenCount();
                 displayclap2.setText(Integer.toString(likescount));
+                    final int[] prevch = {0};
+                hpost.child(postkey).addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(prevch[0] ==0){
+                        String pref= (String) snapshot.child("prefrence").getValue();
+                        profileref.child(cid).child("prevseenpost").setValue(pref);
+
+
+                            prevch[0] =1;
+                    }
+
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 if(snapshot.hasChild(postkey)&&snapshot.child(postkey).hasChild(cid))
                     inc2.setImageResource(R.drawable.clap);
+
+
                 else {
                     final int[] seenpostch = {0};
                     hpost.child(postkey).addValueEventListener(new ValueEventListener() {
 
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            String pref= (String) snapshot.child("prefrence").getValue();
-                            profileref.child(cid).child("prevseenpost").setValue(pref);
+
 
                             if(seenpostch[0] ==0){
                                 Long count= (Long) snapshot.child("seencount").getValue();
@@ -548,7 +573,11 @@ try {
 
                         }
                     });
+
                 }
+                    chl[0] =1;
+            }
+
             }
 
             @Override

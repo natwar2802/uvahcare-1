@@ -213,8 +213,11 @@ public class MainActivity<user> extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(mainch==0) {
+
                     FirebaseUser use = FirebaseAuth.getInstance().getCurrentUser();
-                    String useid = use.getUid();
+                    if(use!=null) {
+                        String useid = use.getUid();
+
 
                     profilereference.child(useid).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -270,7 +273,7 @@ public class MainActivity<user> extends AppCompatActivity {
                     mainch=1;
                 }
 
-            }
+            }}
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -356,6 +359,8 @@ public class MainActivity<user> extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                displaynotifcount.setText("");
+
                 cardView.setVisibility(View.GONE);
                 Intent intent=new Intent(MainActivity.this,Notify.class);
                 startActivity(intent);
@@ -409,7 +414,7 @@ public class MainActivity<user> extends AppCompatActivity {
                 }
             }
         });*/
-        DatabaseReference profileref1=FirebaseDatabase.getInstance().getReference("profile").child(user.getUid()).child("prevseenpost");
+      //  DatabaseReference profileref1=FirebaseDatabase.getInstance().getReference("profile").child(user.getUid()).child("prevseenpost");
       //  DatabaseReference seencount=FirebaseDatabase.getInstance().getReference("seencount");
         DatabaseReference postref=FirebaseDatabase.getInstance().getReference("hPost");
 

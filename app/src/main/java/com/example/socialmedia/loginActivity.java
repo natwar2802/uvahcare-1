@@ -126,6 +126,8 @@ public class loginActivity extends AppCompatActivity {
                 //   mVerificationId = s;
             }
         };
+
+
     }
 
    // @Override
@@ -173,5 +175,10 @@ public class loginActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+
     }
+    @Override
+    public void onBackPressed() { }
+
 }
