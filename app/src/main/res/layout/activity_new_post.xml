@@ -83,7 +83,7 @@
                 android:gravity="top|left"
                 android:inputType="textMultiLine"
                 android:backgroundTint="#FFFFFF"
-                android:maxLength="60"
+                android:maxLength="120"
                 android:lines="2"
                 android:maxLines="10"
                 android:minLines="2" />
