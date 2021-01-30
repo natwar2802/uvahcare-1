@@ -63,14 +63,19 @@ public class myProfileAdapter extends RecyclerView.Adapter<myProfileAdapter.myvi
     @Override
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
         holder.usernamef.setText(mlistProfile.get(position).getUsernameP());
-        holder.cityf.setText(mlistProfile.get(position).getCityP());
-        holder.countryf.setText(mlistProfile.get(position).getCountryP());
+        String city=mlistProfile.get(position).getCityP();
+        if(city.length()>8)
+            city=city.substring(0,5)+"...";
+        holder.cityf.setText(city);
+        String country=mlistProfile.get(position).getCountryP();
+        if(country.length()>8)
+            country=country.substring(0,5)+"...";
+        holder.countryf.setText(country);
         Glide.with(context).load(mlistProfile.get(position).getImgUrlP()).into(holder.imgProfilef);
         //String id=mlist.get(position).getPid();
-
        // String postkey = mlistProfile.get(position).getPid();
 
-         String blogerid=mlistProfile.get(position).getId();
+        String blogerid=mlistProfile.get(position).getId();
         FirebaseUser userfollow= FirebaseAuth.getInstance().getCurrentUser();
         String curentUserIdfollow = userfollow.getUid();
         database = FirebaseDatabase.getInstance();

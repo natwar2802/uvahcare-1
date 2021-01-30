@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="700dp"
         />
-<LinearLayout android:layout_height="660dp"
+<LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/llf"
@@ -70,7 +70,7 @@
                 <TextView
                     android:textColor="#000000"
                     android:padding="8dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="City"
                     android:layout_weight="1"
@@ -79,7 +79,7 @@
                 <TextView
                     android:textColor="#000000"
                     android:padding="8dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Country"
                     android:layout_weight="1"
@@ -88,7 +88,7 @@
                 <TextView
                     android:textColor="#000000"
                     android:padding="8dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="follow"
                     android:layout_weight="1"
@@ -126,7 +126,6 @@
         android:text="Blogger Post"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        xmlns:cardView="http://schemas.android.com/apk/res-auto"
         android:nestedScrollingEnabled="false"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
