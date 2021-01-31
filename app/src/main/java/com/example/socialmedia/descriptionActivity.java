@@ -515,14 +515,15 @@ try {
 
        // inc=itemView.findViewById(R.id.inc);
 
-        final int[] chl = {0};
+       // final int[] chl = {0};
         likesref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if(chl[0] ==0){
+              //  if(chl[0] ==0){
 
                 int likescount=(int)snapshot.child(postkey).getChildrenCount();
+               // String likescounts=Integer.toString(likescount);
                 displayclap2.setText(Integer.toString(likescount));
                     final int[] prevch = {0};
                 hpost.child(postkey).addValueEventListener(new ValueEventListener() {
@@ -575,8 +576,8 @@ try {
                     });
 
                 }
-                    chl[0] =1;
-            }
+                 //   chl[0] =1;
+          //  }
 
             }
 

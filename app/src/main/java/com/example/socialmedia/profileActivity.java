@@ -71,7 +71,7 @@ public class profileActivity extends MainActivity {
         usercountry=findViewById(R.id.tcountry);
         gotopreferencecard=findViewById(R.id.gotopreferencecard);
         gotopreference=findViewById(R.id.gotopreference);
-        gotofollowedcard=findViewById(R.id.gotofollowercard);
+        gotofollowercard=findViewById(R.id.gotofollowercard1);
         gotofollower=findViewById(R.id.gotofollower);
         gotofollowedcard=findViewById(R.id.gotofollowedcard);
         gotofollowed=findViewById(R.id.gotofollowed);
