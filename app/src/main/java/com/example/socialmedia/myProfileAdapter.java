@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+//import com.firebase.ui.database.FirebaseRecyclerAdapter;
+//import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -183,7 +183,15 @@ try{
                             followreference.child(blogerid).child(userida).removeValue();
                            followedreference.child(userida).child(blogerid).removeValue();
                            if(ch==0) {
-                               mlistProfile.remove(position);
+                               for(modelProfile model:mlistProfile)
+                               {
+                                   if(model.getId().equals(blogerid))
+                                   {
+                                       mlistProfile.remove(model);
+                                       notifyDataSetChanged();
+                                       break;
+                                   }
+                               }
                            }
                           //  holder.btnfollowf.setText("follow");
                             //holder.btnbookmark.setImageResource(R.drawable.imagesb);

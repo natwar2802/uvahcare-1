@@ -600,7 +600,7 @@ try {
                 DynamicLink link = FirebaseDynamicLinks.getInstance()
                         .createDynamicLink()
                         .setLink(Uri.parse("https://"+postkey+"/"))
-                        .setDomainUriPrefix("https://healthappinnovation.page.link")
+                        .setDomainUriPrefix("https://uvahcare.page.link")
                         .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.socialmedia").build())
 
                         .buildDynamicLink();
@@ -630,7 +630,7 @@ try {
                 DynamicLink link = FirebaseDynamicLinks.getInstance()
                         .createDynamicLink()
                         .setLink(Uri.parse("https://"+postkey+"/"))
-                        .setDomainUriPrefix("https://healthappinnovation.page.link")
+                        .setDomainUriPrefix("https://uvahcare.page.link")
                         .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.socialmedia").build())
 
                         .buildDynamicLink();
