@@ -207,7 +207,7 @@
                             android:orientation="horizontal"
                             android:gravity="center"
                             android:layout_margin="10dp"
-                            android:onClick="postS">
+                            >
                             <TextView
                                 android:id="@+id/btnmybookmarkp"
                                 android:layout_width="wrap_content"
@@ -247,7 +247,7 @@
                         cardView:cardCornerRadius="20dp"
                         cardView:cardElevation="8dp"
                         android:layout_margin="10dp"
-                        android:id="@+id/gotofollowercard"
+                        android:id="@+id/gotofollowercard1"
                         cardView:cardBackgroundColor="#FFFFFF"
                         >
                         <LinearLayout
@@ -282,7 +282,7 @@
                             android:orientation="horizontal"
                             android:layout_margin="10dp"
                             android:gravity="center"
-                            android:onClick="YourPosts">
+                            >
                             <TextView
                                 android:id="@+id/btnmypostp"
                                 android:layout_width="wrap_content"

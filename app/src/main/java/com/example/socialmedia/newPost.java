@@ -189,8 +189,13 @@ try{        for(int i=0;i<l.getChildCount();i++)
                 String problem1=etproblem.getText().toString().trim();
                 String solution1=etsolution.getText().toString().trim();
                 String precaution1=etprecausion.getText().toString().trim();
+                int position=spinner.getSelectedItemPosition();
+
+
+                        // your code here
+
                 String description1=desc1+"\n"+benefit1+"\n"+howtodo1+"\n"+problem1+"\n"+solution1+"\n"+precaution1;
-                 if(preference.equals("")){
+                  if(preference.equals("")){
                      Toast.makeText(getApplicationContext(),"Please Select Tag",Toast.LENGTH_SHORT).show();
 
                  }
@@ -211,9 +216,61 @@ try{        for(int i=0;i<l.getChildCount();i++)
 
                     //allowSave = false;
                 }
-                else {
-                    UploadImage();
+
+                else if(position==0){
+                    if(inputValidatorHelper.isNullOrEmpty(desc1)) {
+                        errMsg.append(" Discription should not be empty.\n");
+                        Toast.makeText(getApplicationContext(),"Dicription should not be empty",Toast.LENGTH_SHORT).show();
+                        //allowSave = false;
+                    }
+                    else{
+                        UploadImage();
+                    }
                 }
+                else if(position==1){
+                    if(inputValidatorHelper.isNullOrEmpty(benefit1)) {
+                        errMsg.append(" Benefit should not be empty.\n");
+                        Toast.makeText(getApplicationContext(),"Benefit should not be empty",Toast.LENGTH_SHORT).show();
+                        //allowSave = false;
+                    }
+                   else if(inputValidatorHelper.isNullOrEmpty(howtodo1)) {
+                        errMsg.append("How to do should not be empty.\n");
+                        Toast.makeText(getApplicationContext(),"How to do should not be empty",Toast.LENGTH_SHORT).show();
+                        //allowSave = false;
+                    }
+                   else if(inputValidatorHelper.isNullOrEmpty(precaution1)) {
+                        errMsg.append("Precation should not be empty.\n");
+                        Toast.makeText(getApplicationContext(),"Precaution should not be empty",Toast.LENGTH_SHORT).show();
+                        //allowSave = false;
+                    }
+                    else{
+                        UploadImage();
+                    }
+                }
+                else if(position==2){
+                    if(inputValidatorHelper.isNullOrEmpty(problem1)) {
+                        errMsg.append("Problem or Disease description should not be empty.\n");
+                        Toast.makeText(getApplicationContext(),"Problem or Disease description should not be empty",Toast.LENGTH_SHORT).show();
+                        //allowSave = false;
+                    }
+                   else if(inputValidatorHelper.isNullOrEmpty(solution1)) {
+                        errMsg.append("Solution Description should not be empty.\n");
+                        Toast.makeText(getApplicationContext(),"Solution Description  should not be empty",Toast.LENGTH_SHORT).show();
+                        //allowSave = false;
+                    }
+
+                   else if(inputValidatorHelper.isNullOrEmpty(precaution1)) {
+                        errMsg.append("Precation should not be empty.\n");
+                        Toast.makeText(getApplicationContext(),"Precaution should not be empty",Toast.LENGTH_SHORT).show();
+                        //allowSave = false;
+                    }
+                    else{
+                        UploadImage();
+                    }
+                }
+
+
+
 
 
 

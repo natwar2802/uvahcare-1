@@ -556,13 +556,15 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myviewholder>{
 
 
                       try{
-                          Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
+                         /* Long sum1= (Long) snapshot.child(postkey).child("sum").getValue();
 
                        double sum=sum1.doubleValue();
                           holder.postref3.child(postkey).child("ratesum").setValue(sum);
                         float avrate=((float) sum)/n;
                           holder.postref3.child(postkey).child("rating").setValue(avrate);
-                          String avr=Float.toString(avrate);
+                          String avr=Float.toString(avrate);*/
+                          double avrate=mlist.get(position).getRating();
+                          String avr=Double.toString(avrate);
                           holder.displayrate.setText(avr);
 
 
