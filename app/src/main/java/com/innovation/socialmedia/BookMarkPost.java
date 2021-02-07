@@ -1,23 +1,18 @@
-package com.example.socialmedia;
+package com.innovation.socialmedia;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 //import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.socialmedia.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -82,15 +77,18 @@ public class BookMarkPost extends MainActivity{
            public void onDataChange(@NonNull DataSnapshot snapshot) {
                if (bookch == 0) {
                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
+                       final int[] bchkd = {0};
                        root3.addValueEventListener(new ValueEventListener() {
                            @Override
                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                if(bchkd[0] ==0){
+                               if(snapshot1.hasChild(dataSnapshot.getKey())) {
+                                   modelGeneral model = snapshot1.child(dataSnapshot.getKey()).getValue(modelGeneral.class);
+                                   arrayList.add(0, model);
+                                   adapter2.notifyDataSetChanged();
 
-                               if(snapshot1.hasChild(dataSnapshot.getKey())){
-                               modelGeneral model = snapshot1.child(dataSnapshot.getKey()).getValue(modelGeneral.class);
-                               arrayList.add(0,model);
-                               adapter2.notifyDataSetChanged();
+                               }
+                                    bchkd[0] =1;
                            }
                            else{
                                bookch=1;

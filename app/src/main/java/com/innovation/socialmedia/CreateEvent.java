@@ -1,7 +1,4 @@
-package com.innovadev.remindercopy;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+package com.innovation.socialmedia;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -19,8 +16,12 @@ import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.innovadev.remindercopy.Database.DatabaseClass;
-import com.innovadev.remindercopy.Database.EntityClass;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.socialmedia.R;
+import com.innovation.socialmedia.Database.DatabaseClass;
+import com.innovation.socialmedia.Database.EntityClass;
 
 import java.text.DateFormat;
 import java.text.ParseException;

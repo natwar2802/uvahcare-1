@@ -1,4 +1,4 @@
-package com.innovadev.remindercopy;
+package com.innovation.socialmedia;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.widget.RemoteViews;
 
 import androidx.core.app.NotificationCompat;
+
+import com.example.socialmedia.R;
 
 public class AlarmBrodcast extends BroadcastReceiver {
     @Override
@@ -35,7 +37,7 @@ public class AlarmBrodcast extends BroadcastReceiver {
         contentView.setOnClickPendingIntent(R.id.flashButton, pendingSwitchIntent);
         contentView.setTextViewText(R.id.message, text);
         contentView.setTextViewText(R.id.date, date);
-        mBuilder.setSmallIcon(R.drawable.ic_alarm_white_24dp);
+        mBuilder.setSmallIcon(R.drawable.ic_backspace_black_24dp);
         mBuilder.setAutoCancel(true);
         mBuilder.setOngoing(true);
         mBuilder.setPriority(Notification.PRIORITY_HIGH);

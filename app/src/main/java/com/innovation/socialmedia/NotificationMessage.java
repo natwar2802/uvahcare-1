@@ -1,9 +1,11 @@
-package com.innovadev.remindercopy;
+package com.innovation.socialmedia;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.socialmedia.R;
 
 public class NotificationMessage extends AppCompatActivity {
     TextView textView;

@@ -1,4 +1,4 @@
-package com.example.socialmedia;
+package com.innovation.socialmedia;
 
 import android.text.TextUtils;
 

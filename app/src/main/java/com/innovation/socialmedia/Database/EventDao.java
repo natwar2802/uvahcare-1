@@ -1,4 +1,5 @@
-package com.innovadev.remindercopy.Database;
+package com.innovation.socialmedia.Database;
+
 
 import androidx.room.Dao;
 import androidx.room.Insert;

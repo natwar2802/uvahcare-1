@@ -1,4 +1,4 @@
-package com.innovadev.remindercopy.Adapter;
+package com.innovation.socialmedia.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,12 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.innovadev.remindercopy.Database.EntityClass;
-import com.innovadev.remindercopy.R;
+
+import com.example.socialmedia.R;
+import com.innovation.socialmedia.Database.EntityClass;
 
 import java.util.List;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
+public class EventAdapter extends RecyclerView.Adapter<com.innovation.socialmedia.Adapter.EventAdapter.ViewHolder> {
     Context context;
     List<EntityClass> entityClasses;
 

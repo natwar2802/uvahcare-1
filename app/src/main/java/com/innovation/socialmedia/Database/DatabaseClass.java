@@ -1,6 +1,7 @@
-package com.innovadev.remindercopy.Database;
+package com.innovation.socialmedia.Database;
 
 import android.content.Context;
+
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;

@@ -1,6 +1,5 @@
-package com.innovadev.remindercopy;
+package com.innovation.socialmedia;
 
-import android.content.BroadcastReceiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

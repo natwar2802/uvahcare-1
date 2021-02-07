@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     cardView:strokeColor="@color/teal_200"
                     cardView:strokeWidth="2dp"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -48,7 +48,28 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Loose Weight"
+                        android:text="Healthy Mind"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/HealthNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    cardView:cardCornerRadius="50dp"
+                    cardView:cardElevation="8dp"
+                    android:layout_margin="10dp"
+                    cardView:cardBackgroundColor="#FFFFFF"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
+                    android:onClick="f"
+                    >
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Health News"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
@@ -57,7 +78,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/BodyBuilding"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     cardView:cardCornerRadius="50dp"
                     cardView:strokeColor="@color/teal_200"
                     cardView:strokeWidth="2dp"
@@ -70,7 +91,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gain Weight"
+                        android:text="Food Nutrition \n        info"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
@@ -79,7 +100,7 @@
                     android:id="@+id/carView2"
                     android:onClick="f"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     cardView:strokeColor="@color/teal_200"
@@ -91,7 +112,7 @@
                         android:id="@+id/GasProblem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gas Problem"
+                        android:text="Stomach \n Problem"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
@@ -99,7 +120,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/Diabetes"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -112,7 +133,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diabetes"
+                        android:text="Hair Problem"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
@@ -120,7 +141,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/Immunity"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -133,11 +154,12 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Immunity"
+                        android:text="Intoxication \n   Problem"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
                 </com.google.android.material.card.MaterialCardView>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
@@ -147,7 +169,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/P1"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     cardView:strokeColor="@color/teal_200"
                     cardView:strokeWidth="2dp"
                     cardView:cardCornerRadius="50dp"
@@ -159,7 +181,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="P1"
+                        android:text="Yoga/Exercise"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
@@ -167,7 +189,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/P2"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     cardView:strokeColor="@color/teal_200"
@@ -179,7 +201,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="P2"
+                        android:text="Immunity"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
@@ -187,7 +209,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/P3"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:onClick="f"
@@ -199,7 +221,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="P3"
+                        android:text="Diabetes"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
@@ -207,7 +229,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/P4"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -219,7 +241,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="P4"
+                        android:text="    Sense Organ \n       Problem"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
@@ -227,7 +249,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/P5"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     cardView:cardCornerRadius="50dp"
                     cardView:cardElevation="8dp"
                     android:layout_margin="10dp"
@@ -239,15 +261,32 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="P5"
+                        android:text="Heart Health"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="20sp"></TextView>
                 </com.google.android.material.card.MaterialCardView>
-
-
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/other"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    cardView:cardCornerRadius="50dp"
+                    cardView:cardElevation="8dp"
+                    android:layout_margin="10dp"
+                    cardView:cardBackgroundColor="#FFFFFF"
+                    cardView:strokeColor="@color/teal_200"
+                    cardView:strokeWidth="2dp"
+                    android:onClick="f"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="General/Other"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="20sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

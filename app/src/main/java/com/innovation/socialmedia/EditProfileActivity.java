@@ -1,4 +1,4 @@
-package com.example.socialmedia;
+package com.innovation.socialmedia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +18,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.socialmedia.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,10 +47,12 @@ public class EditProfileActivity extends  AppCompatActivity{
     ImageView imgviewProfile;
     ImageButton btnbrowseProfile;
     Uri FilePathUri;
+    int imgvald=0;
     StorageReference storageReferenceProfile;
     DatabaseReference databaseReferenceProfile;
     int Image_Request_Code_Profile = 7;
     ProgressDialog progressDialogProfile;
+    ArrayList<String> temp_edit;
     int ch=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,8 @@ public class EditProfileActivity extends  AppCompatActivity{
         etNameProfile=(EditText)findViewById(R.id.usernameProfile);
         etcityProfile=(EditText)findViewById(R.id.cityProfile);
         etcountryProfile=(EditText)findViewById(R.id.countryProfile);
+        temp_edit=new ArrayList<String>();
+        temp_edit.add("userPreference");
         btnNextPreference=findViewById(R.id.nexttoPreference);
         imgviewProfile = (ImageView)findViewById(R.id.imgviewProfile);
         aboutmeProfile=findViewById(R.id.aboutmeProfile);
@@ -91,16 +95,16 @@ public class EditProfileActivity extends  AppCompatActivity{
                 try{
                 if(ch==0) {
                     if (snapshot.hasChild(id)) {
-                        btnNextPreference.setVisibility(GONE);
                         modelProfile p=snapshot.child(id).getValue(modelProfile.class);
                         etNameProfile.setText(p.usernameP);
                         etcityProfile.setText(p.cityP);
                         etcountryProfile.setText(p.countryP);
                         aboutmeProfile.setText(p.getUserdetail());
                         Glide.with(getApplicationContext()).load(p.imgUrlP).into(imgviewProfile);
+                        Toast.makeText(getApplicationContext(),"If You have updated the profile you can move to next page....\n",Toast.LENGTH_LONG).show();
 
                     } else {
-                        btnuploadProfile.setVisibility(GONE);
+                        Toast.makeText(getApplicationContext(),"Update Your Profile before moving to the next Page.....\n",Toast.LENGTH_LONG).show();
                     }
                     ch = 1;
                 }
@@ -116,41 +120,30 @@ public class EditProfileActivity extends  AppCompatActivity{
         btnNextPreference.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userNameProfile1=etNameProfile.getText().toString().trim();
-                String cityProfile1= etcityProfile.getText().toString().trim();
-                String countryProfile1=etcountryProfile.getText().toString().trim();
-                String aboutmeProfile1=aboutmeProfile.getText().toString().trim();
+                final int[] ch1 = {0};
+                databaseReferenceProfile.addValueEventListener(new ValueEventListener() {
 
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        try{
+                            if(ch1[0] ==0) {
+                                if (snapshot.hasChild(id)) {
+                                   Intent i =new Intent(EditProfileActivity.this,PreferenceActivity.class);
+                                   startActivity(i);
+                                } else {
+                                    Toast.makeText(getApplicationContext(),"Update Your Profile before moving to the next Page.....\n",Toast.LENGTH_SHORT).show();
+                                }
+                                ch1[0] = 1;
+                            }
+                        }catch (Exception e){}
 
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                if (inputValidatorHelper.isNullOrEmpty(userNameProfile1)) {
-
-                    Toast.makeText(getApplicationContext(),"UserName should not be empty.\n",Toast.LENGTH_SHORT).show();
-
-                    //allowSave = false;
-                }
-                else if(inputValidatorHelper.isNullOrEmpty(cityProfile1)) {
-                    Toast.makeText(getApplicationContext(),"City name should not be empty.\n",Toast.LENGTH_SHORT).show();
-
-                    // allowSave = false;
-                }
-                else if(inputValidatorHelper.isNullOrEmpty(countryProfile1)) {
-                    Toast.makeText(getApplicationContext(),"Country name should not be empty.\n",Toast.LENGTH_SHORT).show();
-
-                    //allowSave = false;
-                }
-                else if(inputValidatorHelper.isNullOrEmpty(aboutmeProfile1)) {
-                    Toast.makeText(getApplicationContext(),"About me should not be empty.\n",Toast.LENGTH_SHORT).show();
-
-                    //allowSave = false;
-                }
-                else {
-                    UploadImage();
-
-
-                }
-
+                    }
+                });
             }
         });
 
@@ -201,6 +194,10 @@ public class EditProfileActivity extends  AppCompatActivity{
 
                     //allowSave = false;
                 }
+                else if(imgviewProfile.getDrawable()==null)
+                {
+                    Toast.makeText(EditProfileActivity.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
+                }
                 else {
                     UploadImage();
                 }
@@ -246,11 +243,42 @@ public class EditProfileActivity extends  AppCompatActivity{
 
 
     public void UploadImage() {
+        progressDialogProfile.setTitle("Profile is Updating...");
+        progressDialogProfile.show();
+        FirebaseUser myuserP= FirebaseAuth.getInstance().getCurrentUser();
+        String myuseridaP=myuserP.getUid();
+        String userNameProfile=etNameProfile.getText().toString().trim();
+        String cityProfile= etcityProfile.getText().toString().trim();
+        String countryProfile=etcountryProfile.getText().toString().trim();
+        String aboutme=aboutmeProfile.getText().toString().trim();
+        databaseReferenceProfile.child(myuseridaP).child("usernameP").setValue(userNameProfile);
+        databaseReferenceProfile.child(myuseridaP).child("prevseenpost").setValue("prevseenpost");
+        databaseReferenceProfile.child(myuseridaP).child("cityP").setValue(cityProfile);
+        databaseReferenceProfile.child(myuseridaP).child("countryP").setValue(countryProfile);
+        databaseReferenceProfile.child(myuseridaP).child("userdetail").setValue(aboutme);
+        final int[] ch2 = {0};
+        databaseReferenceProfile.addValueEventListener(new ValueEventListener() {
 
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try{
+                    if(ch2[0] ==0) {
+                        if (!snapshot.child(myuseridaP).hasChild("userPreference")) {
+                            databaseReferenceProfile.child(myuseridaP).child("userPreference").setValue(temp_edit);
+                        }
+                        ch2[0] = 1;
+                        }
+
+                }catch (Exception e){}
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         if (FilePathUri != null) {
-
-            progressDialogProfile.setTitle("Image is Uploading...");
-            progressDialogProfile.show();
             StorageReference storageReference2Profile = storageReferenceProfile.child(System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
             storageReference2Profile.putFile(FilePathUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -260,42 +288,15 @@ public class EditProfileActivity extends  AppCompatActivity{
                             storageReference2Profile.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri Uri) {
-                                 //   String postkey = taskSnapshot.getKey();
                                     String uriP=Uri.toString();
-                                    String userNameProfile=etNameProfile.getText().toString().trim();
-                                    String cityProfile= etcityProfile.getText().toString().trim();
-                                    String countryProfile=etcountryProfile.getText().toString().trim();
-                                    String aboutme=aboutmeProfile.getText().toString().trim();
-                                    ArrayList<String> userPreference = new ArrayList<String>();
-                                    userPreference.add("userPreference");
-
-                                    FirebaseUser myuserP= FirebaseAuth.getInstance().getCurrentUser();
-                                    String myuseridaP=myuserP.getUid();
-
-
-                                    // String email=txtemail.getText().toString().trim();
-                                    progressDialogProfile.dismiss();
-                                    Toast.makeText(getApplicationContext(), "Your Profile Updated Successfully ", Toast.LENGTH_LONG).show();
-                                    @SuppressWarnings("VisibleForTests")
-                                    String prevseenpost="Prevseen";
-
-                                    Intent i = new Intent(EditProfileActivity.this, PreferenceActivity.class);
-                                    startActivity(i);
-                                    modelProfile modelp=new modelProfile(userNameProfile,cityProfile,countryProfile,uriP,myuseridaP,aboutme,userPreference,prevseenpost);
-                                   String ImageUploadId = databaseReferenceProfile.push().getKey();
-                                 //   String ImageUploadId = databaseReferenceProfile.push();
-                                    //String mobno=databaseReference.Auythecation(mobno);
-                                    databaseReferenceProfile.child(myuseridaP).setValue(modelp);
+                                    databaseReferenceProfile.child(myuseridaP).child("imgUrlP").setValue(uriP);
                                 }
                             });
 
                         }
                     });
         }
-        else {
-
-            Toast.makeText(EditProfileActivity.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
-
-        }
+        progressDialogProfile.dismiss();
+        Toast.makeText(getApplicationContext(), "Your Profile Updated Successfully ", Toast.LENGTH_LONG).show();
     }
     }

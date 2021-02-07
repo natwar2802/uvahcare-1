@@ -1,4 +1,4 @@
-package com.innovadev.remindercopy.Database;
+package com.innovation.socialmedia.Database;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

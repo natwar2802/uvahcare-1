@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="UserName"
+        android:hint="UserName (max 15 letters)"
        >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:maxLength="10"
+            android:maxLength="15"
             android:backgroundTint="#FFFFFF"
             android:lines="1"
             android:maxLines="2"
@@ -89,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="About Me"
+        android:hint="About Me (max 1000 letters)"
         >
 
         <com.google.android.material.textfield.TextInputEditText
