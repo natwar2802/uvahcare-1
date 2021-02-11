@@ -10,8 +10,6 @@
         xmlns:cardView="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent">
 
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint=" Add the title">
+            android:hint="Title (max 50 letters allowed)">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/heading"
@@ -74,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="ADD THE BRIEF OVERVIEW">
+            android:hint="BRIEF OVERVIEW (max 120 letters allowed)">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/overview"
@@ -99,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="ADD IN DETAIL DESCRIPTION">
+                android:hint="DETAIL DESCRIPTION (max 1000 letters allowed)">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/description"
@@ -107,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
-                    android:maxLength="1000"
+                    android:maxLength="2000"
                     android:lines="25"
                     android:backgroundTint="#FFFFFF"
                     android:maxLines="10"
@@ -124,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="ADD BENEFITS">
+                android:hint="BENEFITS (max 1000 letters allowed)">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/benefits"
@@ -132,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
-                    android:maxLength="2000"
+                    android:maxLength="1000"
                     android:lines="25"
                     android:backgroundTint="#FFFFFF"
                     android:maxLines="10"
@@ -152,7 +150,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="HOW TO DO?">
+                android:hint="HOW TO DO? (max 1000 letters allowed)">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/howtodo"
@@ -176,14 +174,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="PROBLEM OR DISEASE DESCRIPTION">
+                android:hint="PROBLEM OR DISEASE DESCRIPTION (max 1000 letters)">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/problem"
                     android:inputType="textMultiLine"
                     android:lines="25"
                     android:minLines="5"
-                    android:maxLength="500"
+                    android:maxLength="1000"
                     android:gravity="top|left"
                     android:maxLines="10"
                     android:backgroundTint="#FFFFFF"
@@ -200,7 +198,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="SOLUTION DESCRIPTION">
+                android:hint="SOLUTION DESCRIPTION (max 1000 letters)">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/solution"
@@ -224,7 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="ADD PRECAUTIONS">
+                android:hint="ADD PRECAUTIONS (max 1000 letters)">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/precautions"
@@ -324,7 +322,28 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Loose Weight"
+                        android:text="Healthy Mind"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="15sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/HealthNewsp"
+                    android:layout_width="match_parent"
+                    cardView2:strokeColor="@color/teal_200"
+                    cardView2:strokeWidth="2dp"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
+                    cardView:cardElevation="8dp"
+                    android:layout_margin="10dp"
+                    cardView:cardBackgroundColor="#FFFFFF"
+                    android:onClick="f"
+                    >
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Healthy News"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -345,7 +364,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gain Weight"
+                        android:text="Food Nutrition \n        info"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -366,7 +385,7 @@
                         android:id="@+id/GasProblem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gas Problem"
+                        android:text="Stomach \n Problem"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -387,7 +406,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diabetes"
+                        android:text="Hair Problem"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -408,7 +427,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Immunity"
+                        android:text="Intoxication \n   Problem"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -434,7 +453,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="P1"
+                        android:text="Yoga/Exercise"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -454,7 +473,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="P2"
+                        android:text="Immunity"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -474,7 +493,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="P3"
+                        android:text="Diabetes"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -494,7 +513,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="P4"
+                        android:text="    Sense Organ \n       Problem"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -514,15 +533,123 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="P5"
+                        android:text="Heart Health"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="15sp"></TextView>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/otherp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    cardView:cardCornerRadius="50dp"
+                    cardView:cardElevation="8dp"
+                    android:layout_margin="10dp"
+                    cardView2:strokeColor="@color/teal_200"
+                    cardView2:strokeWidth="2dp"
+                    cardView:cardBackgroundColor="#FFFFFF"
+                    android:onClick="f"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="General/Other"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
                 </com.google.android.material.card.MaterialCardView>
 
-
             </LinearLayout>
 
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:text="  Suggest Reminder (Optional)  "
+            android:id="@+id/suggestReminder"
+            cardView2:cornerRadius="20dp"
+            cardView2:strokeColor="@color/teal_200"
+            cardView2:strokeWidth="1dp"
+            android:layout_margin="10dp"
+            android:paddingTop="5dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/reminderLayout"
+            android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="Reminder Title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/titleReminder"
+                android:layout_width="match_parent"
+                android:backgroundTint="#FFFFFF"
+                android:maxLength="50"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="Reminder Notes">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/noteReminder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:backgroundTint="#FFFFFF"
+                android:maxLength="120"
+                android:lines="2"
+                android:maxLines="10"
+                android:minLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
+            <!--
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Reminder Image"
+            android:layout_margin="10dp"></TextView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            cardView2:cardCornerRadius="15dp"
+            cardView2:cardElevation="12dp"
+            android:layout_margin="10dp"
+            cardView2:cardBackgroundColor="#FFFFFF"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgviewReminder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    />
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:backgroundTint="#FFFFFF"
+                    android:id="@+id/imgviewReminderBrowse"
+                    android:src="@drawable/plus"></ImageButton>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>-->
         </LinearLayout>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnPost"
@@ -533,7 +660,6 @@
             android:layout_gravity="center"
             android:text = "upload post"
             android:onClick="display"/>
-
     </LinearLayout>
 
 </ScrollView>

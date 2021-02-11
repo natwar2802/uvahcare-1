@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardView="http://schemas.android.com/tools">
     <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -67,7 +68,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
-                                    android:layout_marginRight="10dp"
                                     >
 
                                     <TextView
@@ -129,10 +129,53 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="10dp"
                         android:autoLink="all"
                         android:textColor="#000000"
                         android:textSize="20sp" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        app:strokeColor="@color/teal_200"
+                        android:clickable="true"
+                        android:id="@+id/descReminder"
+                        app:strokeWidth="2dp"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        app:cardBackgroundColor="@color/white"
+                        android:visibility="gone"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Suggested Reminder"
+                                android:textColor="#000000"
+                                android:textSize="20sp"/>
+                            <TextView
+                                android:id="@+id/DescReminderTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Here is the Reminder Title"
+                                android:textColor="#000000"
+                                android:textSize="15sp"/>
+                            <TextView
+                                android:id="@+id/DescReminderNotes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Here is the Reminder Notes"
+                                android:visibility="gone"
+                                android:textSize="15sp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                     <LinearLayout
                         android:id="@+id/crb"
                         android:layout_width="match_parent"

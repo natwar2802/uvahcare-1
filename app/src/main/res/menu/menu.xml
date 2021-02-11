@@ -20,4 +20,10 @@
         android:icon="@drawable/profileblue"
         android:title="Profile"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_reminder"
+        android:enabled="true"
+        android:icon="@drawable/reminders"
+        android:title="Reminder"
+        app:showAsAction="ifRoom"/>
 </menu>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/btn_record"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/tv_record"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/mic" />
+
+        <TextView
+            android:id="@+id/tv_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Record Reminder Title"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Reminder Title">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edittext_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:backgroundTint="#FFFFFF"
+        android:maxLength="120"
+        android:lines="2"
+        android:maxLines="10"
+        android:minLines="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Reminder Notes (Optional)">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edittext_Notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            android:backgroundTint="#FFFFFF"
+            android:maxLength="120"
+            android:lines="2"
+            android:maxLines="10"
+            android:minLines="2" />
+    </com.google.android.material.textfield.TextInputLayout>
+   <com.google.android.material.button.MaterialButton
+        cardView:strokeColor="@color/teal_200"
+        cardView:strokeWidth="2dp"
+        cardView:cornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_time1"
+        android:text="Select Time"
+       style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="25dp" />
+    <!-- <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_time2"
+        android:text="Select Time"
+        android:textAllCaps="false"
+        android:background="@color/teal_700"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="25dp" />-->
+    <com.google.android.material.button.MaterialButton
+        cardView:strokeColor="@color/teal_200"
+        cardView:strokeWidth="2dp"
+        cardView:cornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:text="Select Date"
+        android:textAllCaps="false"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_datestart"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="25dp" />
+   <!-- <Button
+        android:layout_width="match_parent"
+        android:text="Select End date"
+        android:textAllCaps="false"
+
+        android:background="@color/teal_700"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_dateend"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="25dp" />-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:text="Reminder Image (Optional)"
+        ></TextView>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        cardView:cardCornerRadius="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        cardView:cardElevation="12dp"
+        cardView:cardBackgroundColor="#FFFFFF"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgviewReminder"
+                android:layout_width="match_parent"
+                android:src="@drawable/uvahcarelogo2"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                />
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:backgroundTint="#FFFFFF"
+                android:id="@+id/imgviewReminderBrowse"
+                android:src="@drawable/plus"></ImageButton>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.button.MaterialButton
+        cardView:strokeColor="@color/teal_200"
+        cardView:strokeWidth="2dp"
+        cardView:cornerRadius="20dp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:id="@+id/btn_done"
+        android:textColor="@color/white"
+        android:text="Done"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
