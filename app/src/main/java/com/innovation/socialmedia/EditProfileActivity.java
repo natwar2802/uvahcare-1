@@ -104,7 +104,10 @@ public class EditProfileActivity extends  AppCompatActivity{
                         Toast.makeText(getApplicationContext(),"If You have updated the profile you can move to next page....\n",Toast.LENGTH_LONG).show();
 
                     } else {
+<<<<<<< HEAD:app/src/main/java/com/innovation/socialmedia/EditProfileActivity.java
                         FirebaseDatabase.getInstance().getReference("NotifCount").child(user.getUid()).setValue(0);
+=======
+>>>>>>> 9f2ecbdfaf86dd8df4fe9b5465e94d6a441a2f28:app/src/main/java/com/example/socialmedia/EditProfileActivity.java
                         Toast.makeText(getApplicationContext(),"Update Your Profile before moving to the next Page.....\n",Toast.LENGTH_LONG).show();
                     }
                     ch = 1;

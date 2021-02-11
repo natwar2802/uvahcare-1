@@ -9,6 +9,7 @@ public class EntityClass {
     int id;
     @ColumnInfo(name = "eventname")
     String eventname;
+<<<<<<< HEAD
     @ColumnInfo(name = "eventStartdate")
     String eventStartdate;
    // @ColumnInfo(name = "eventEnddate")
@@ -19,6 +20,13 @@ public class EntityClass {
    // @ColumnInfo(name = "eventtime2")
 
     //String eventtime2;
+=======
+    @ColumnInfo(name = "eventdate")
+    String eventdate;
+    @ColumnInfo(name = "eventtime")
+
+    String eventtime;
+>>>>>>> 9f2ecbdfaf86dd8df4fe9b5465e94d6a441a2f28
 
 
     public String getEventname() {
@@ -29,6 +37,7 @@ public class EntityClass {
         this.eventname = eventname;
     }
 
+<<<<<<< HEAD
    /* public String getEventEnddate() {
         return eventEnddate;
     }
@@ -59,5 +68,21 @@ public class EntityClass {
 
     public void setEventtime1(String eventtime1) {
         this.eventtime1 = eventtime1;
+=======
+    public String getEventdate() {
+        return eventdate;
+    }
+
+    public void setEventdate(String eventdate) {
+        this.eventdate = eventdate;
+    }
+
+    public String getEventtime() {
+        return eventtime;
+    }
+
+    public void setEventtime(String eventtime) {
+        this.eventtime = eventtime;
+>>>>>>> 9f2ecbdfaf86dd8df4fe9b5465e94d6a441a2f28
     }
 }
