@@ -1,30 +1,36 @@
-package com.innovation.socialmedia;
+package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.socialmedia.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -35,9 +41,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.dynamiclinks.DynamicLink;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
-import java.io.ByteArrayOutputStream;
-
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static android.widget.Toast.LENGTH_SHORT;
+import static androidx.core.content.ContextCompat.getSystemService;
 
 public class descriptionActivity extends MainActivity {
 
@@ -50,7 +56,6 @@ public class descriptionActivity extends MainActivity {
     private String TAG;
     ImageView profileimg;
     TextView userNff;
-    String RemTitle="",RemNotes="";
     Button btnfollowff;
     Boolean followerchecker=false,likechec=false;
     ImageButton inc2,btnshare2,btnshared,bmd;
@@ -61,8 +66,6 @@ public class descriptionActivity extends MainActivity {
     ScrollView scrollView;
     TextView overview;
     boolean bookmarkcheckerd=false;
-    CardView descReminder;
-    TextView descReminderTitle,descReminderNotes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,9 +84,6 @@ public class descriptionActivity extends MainActivity {
         search_.setVisibility(View.GONE);
         ratingBardescription=findViewById(R.id.ratingdescription);
         rate_text=findViewById(R.id.rate_text);
-        descReminder = findViewById(R.id.descReminder);
-        descReminderTitle = findViewById(R.id.DescReminderTitle);
-        descReminderNotes = findViewById(R.id.DescReminderNotes);
         user_feedback=findViewById(R.id.user_feedback);
         btnratedesc=findViewById(R.id.ratedesc);
         scrollView=findViewById(R.id.scrollView);
@@ -97,7 +97,7 @@ public class descriptionActivity extends MainActivity {
         inc2=findViewById(R.id.inc2);
         cancel_rate=findViewById(R.id.cancel_rate);
         overview=findViewById(R.id.overview12);
-        btnshare2=findViewById(R.id.btnsharepostd);
+     btnshare2=findViewById(R.id.btnsharepostd);
         displayclap2=findViewById(R.id.displayclap2);
         bmd = findViewById(R.id.bmd);
         DatabaseReference followerreference=database.getReference("follower");
@@ -106,7 +106,6 @@ public class descriptionActivity extends MainActivity {
 
 
         //cancel_rate=findViewById(R.id.cancel_rate);
-
 
         btnratedesc.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -144,25 +143,6 @@ public class descriptionActivity extends MainActivity {
         String cid=cuser.getUid();
        // CardView cardforpopup=findViewById(R.id.cardforpopup);
         Glide.with(imj.getContext()).load(url).into(imj);
-        final boolean[] bookmarkcheckerd2 = {true};
-        bookmarkref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                if(bookmarkcheckerd2[0] ==true){
-                    if(snapshot.child(userida).hasChild(postkey)){
-                        bmd.setImageResource(R.drawable.images);
-
-                    }
-                    bookmarkcheckerd2[0] =false;
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         bmd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -223,27 +203,9 @@ public class descriptionActivity extends MainActivity {
             }
         });
 
-        DatabaseReference reminderref=FirebaseDatabase.getInstance().getReference("Reminder");
-        reminderref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChild(postkey))
-                {
-                    descReminder.setVisibility(View.VISIBLE);
-                    RemTitle= snapshot.child(postkey).child("Title").getValue().toString();
-                    descReminderTitle.setText(RemTitle);
-                    if(snapshot.child(postkey).hasChild("Notes"))
-                    {
-                        descReminderNotes.setVisibility(View.VISIBLE);
-                        RemNotes= snapshot.child(postkey).child("Notes").getValue().toString();
-                        descReminderNotes.setText(RemNotes);
-                    }
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
+<<<<<<< HEAD:app/src/main/java/com/innovation/socialmedia/descriptionActivity.java
             }
         });
         addReminder.setOnClickListener(new View.OnClickListener() {
@@ -263,6 +225,10 @@ public class descriptionActivity extends MainActivity {
                 startActivity(i);
             }
         });
+=======
+
+
+>>>>>>> parent of bcfbd8f (changes):app/src/main/java/com/example/socialmedia/descriptionActivity.java
 
         try{
         refrate.addValueEventListener(new ValueEventListener() {
@@ -592,6 +558,7 @@ try {
                         String pref= (String) snapshot.child("prefrence").getValue();
                         profileref.child(cid).child("prevseenpost").setValue(pref);
 
+
                             prevch[0] =1;
                     }
 
@@ -688,7 +655,7 @@ try {
                         .createDynamicLink()
                         .setLink(Uri.parse("https://"+postkey+"/"))
                         .setDomainUriPrefix("https://uvahcare.page.link")
-                        .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.innovation.socialmedia").build())
+                        .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.socialmedia").build())
 
                         .buildDynamicLink();
 
@@ -718,7 +685,7 @@ try {
                         .createDynamicLink()
                         .setLink(Uri.parse("https://"+postkey+"/"))
                         .setDomainUriPrefix("https://uvahcare.page.link")
-                        .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.innovation.socialmedia").build())
+                        .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.example.socialmedia").build())
 
                         .buildDynamicLink();
 

@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:cardView="http://schemas.android.com/tools">
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -68,6 +67,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
+                                    android:layout_marginRight="10dp"
                                     >
 
                                     <TextView
@@ -129,10 +129,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="20dp"
                         android:autoLink="all"
                         android:textColor="#000000"
                         android:textSize="20sp" />
+<<<<<<< HEAD
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
                         app:strokeColor="@color/teal_200"
@@ -184,6 +185,8 @@
                                 />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
+=======
+>>>>>>> parent of bcfbd8f (changes)
                     <LinearLayout
                         android:id="@+id/crb"
                         android:layout_width="match_parent"

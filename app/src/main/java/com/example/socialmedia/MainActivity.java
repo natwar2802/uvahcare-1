@@ -1,7 +1,8 @@
-package com.innovation.socialmedia;
+package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -9,18 +10,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.view.Window;
 import android.view.WindowManager;
 
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -28,13 +36,14 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 //import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.example.socialmedia.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +56,9 @@ import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class MainActivity<user> extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -490,6 +502,18 @@ public class MainActivity<user> extends AppCompatActivity {
 
                             case R.id.action_favorites:
                                 Toast.makeText(MainActivity.this, "Home Selected", Toast.LENGTH_SHORT).show();
+                               // MenuItem item1=findViewById(R.id.action_favorites);
+                              //  MenuItem item2=findViewById(R.id.action_schedules);
+                              //  MenuItem item3=findViewById(R.id.action_music);
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setChecked(true);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setChecked(false);
+                                toolbar2.getMenu().findItem(R.id.action_music).setChecked(false);
+
+
+
+                              //  item1.setChecked(true);
+                               // item2.setChecked(false);
+                                //item3.setChecked(false);
                                 Log.i("matching", "matching inside1 bro" +id1 );
                                 in=new Intent(getBaseContext(),MainActivity.class);
                                 startActivity(in);
@@ -498,6 +522,16 @@ public class MainActivity<user> extends AppCompatActivity {
                             case R.id.action_schedules:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Post Selected", Toast.LENGTH_SHORT).show();
+                               /* MenuItem item4=findViewById(R.id.action_favorites);
+                                MenuItem item5=findViewById(R.id.action_schedules);
+                                MenuItem item6=findViewById(R.id.action_music);
+                                item5.setChecked(true);
+                                item4.setChecked(false);
+                                item6.setChecked(false);*/
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setChecked(false);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setChecked(true);
+                                toolbar2.getMenu().findItem(R.id.action_music).setChecked(false);
+
                                 in=new Intent(getBaseContext(),newPost.class);
                                 startActivity(in);
                                 //  finish();
@@ -505,10 +539,21 @@ public class MainActivity<user> extends AppCompatActivity {
                             case R.id.action_music:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Profile selected", Toast.LENGTH_SHORT).show();
+                               /* MenuItem item7=findViewById(R.id.action_favorites);
+                                MenuItem item8=findViewById(R.id.action_schedules);
+                                MenuItem item9=findViewById(R.id.action_music);
+                                item9.setChecked(true);
+                                item7.setChecked(false);
+                                item8.setChecked(false);*/
+                                toolbar2.getMenu().findItem(R.id.action_favorites).setChecked(false);
+                                toolbar2.getMenu().findItem(R.id.action_schedules).setChecked(false);
+                                toolbar2.getMenu().findItem(R.id.action_music).setChecked(true);
+
                                 in=new Intent(getBaseContext(), profileActivity.class);
                                 startActivity(in);
                                 //finish();
                                 break;
+<<<<<<< HEAD:app/src/main/java/com/innovation/socialmedia/MainActivity.java
                            /* case R.id.action_reminder:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Reminder selected", Toast.LENGTH_SHORT).show();
@@ -517,6 +562,8 @@ public class MainActivity<user> extends AppCompatActivity {
                                 break;*/
                             default:
                                 break;
+=======
+>>>>>>> parent of bcfbd8f (changes):app/src/main/java/com/example/socialmedia/MainActivity.java
                         }
                         return true;
                     }

@@ -1,4 +1,4 @@
-package com.innovation.socialmedia;
+package com.example.socialmedia;
 
 import android.net.Uri;
 

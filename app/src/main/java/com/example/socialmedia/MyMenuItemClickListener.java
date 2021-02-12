@@ -1,10 +1,9 @@
-package com.innovation.socialmedia;
+package com.example.socialmedia;
 
 import android.view.MenuItem;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.socialmedia.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

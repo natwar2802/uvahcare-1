@@ -1,4 +1,4 @@
-package com.innovation.socialmedia;
+package com.example.socialmedia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.view.View;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.socialmedia.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

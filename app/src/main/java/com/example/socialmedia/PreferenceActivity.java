@@ -1,22 +1,22 @@
-package com.innovation.socialmedia;
+package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.socialmedia.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -50,15 +50,9 @@ public class PreferenceActivity extends AppCompatActivity {
         updatePreference.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(temp.isEmpty())
-                {
-                    Toast.makeText(getApplicationContext(), "Select Preferences before Proceeding...", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    prefeference1.setValue(temp);
-                    Intent i = new Intent(PreferenceActivity.this, MainActivity.class);
-                    startActivity(i);
-                }
+                prefeference1.setValue(temp);
+                Intent i = new Intent(PreferenceActivity.this, MainActivity.class);
+                startActivity(i);
             }
         });
         try{

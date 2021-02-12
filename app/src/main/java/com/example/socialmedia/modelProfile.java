@@ -1,7 +1,6 @@
-package com.innovation.socialmedia;
+package com.example.socialmedia;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class modelProfile {
     String usernameP,cityP,countryP,imgUrlP,id,userdetail,prevseenpost;

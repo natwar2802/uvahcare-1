@@ -10,6 +10,8 @@
         xmlns:cardView="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent">
 
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="Title (max 50 letters allowed)">
+            android:hint=" Add the title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/heading"
@@ -72,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="BRIEF OVERVIEW (max 120 letters allowed)">
+            android:hint="ADD THE BRIEF OVERVIEW">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/overview"
@@ -94,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="DETAIL DESCRIPTION (max 1000 letters allowed)">
+                android:hint="ADD IN DETAIL DESCRIPTION">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/description"
@@ -102,7 +104,12 @@
                     android:layout_height="wrap_content"
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
+<<<<<<< HEAD
                     android:maxLength="2000"
+=======
+                    android:maxLength="1000"
+                    android:lines="25"
+>>>>>>> parent of bcfbd8f (changes)
                     android:backgroundTint="#FFFFFF"
                     android:maxLines="25" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -117,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="BENEFITS (max 1000 letters allowed)">
+                android:hint="ADD BENEFITS">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/benefits"
@@ -125,9 +132,17 @@
                     android:layout_height="wrap_content"
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
+<<<<<<< HEAD
                     android:maxLength="1000"
                     android:maxLines="25"
                     android:backgroundTint="#FFFFFF" />
+=======
+                    android:maxLength="2000"
+                    android:lines="25"
+                    android:backgroundTint="#FFFFFF"
+                    android:maxLines="10"
+                    android:minLines="5"/>
+>>>>>>> parent of bcfbd8f (changes)
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -143,7 +158,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="HOW TO DO? (max 1000 letters allowed)">
+                android:hint="HOW TO DO?">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/howtodo"
@@ -165,12 +180,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="PROBLEM OR DISEASE DESCRIPTION (max 1000 letters)">
+                android:hint="PROBLEM OR DISEASE DESCRIPTION">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/problem"
                     android:inputType="textMultiLine"
+<<<<<<< HEAD
                     android:maxLength="1000"
+=======
+                    android:lines="25"
+                    android:minLines="5"
+                    android:maxLength="500"
+>>>>>>> parent of bcfbd8f (changes)
                     android:gravity="top|left"
                     android:maxLines="25"
                     android:backgroundTint="#FFFFFF"
@@ -187,7 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="SOLUTION DESCRIPTION (max 1000 letters)">
+                android:hint="SOLUTION DESCRIPTION">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/solution"
@@ -209,7 +230,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="ADD PRECAUTIONS (max 1000 letters)">
+                android:hint="ADD PRECAUTIONS">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/precautions"
@@ -307,28 +328,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Healthy Mind"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="15sp"></TextView>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/HealthNewsp"
-                    android:layout_width="match_parent"
-                    cardView2:strokeColor="@color/teal_200"
-                    cardView2:strokeWidth="2dp"
-                    android:layout_height="50dp"
-                    cardView:cardCornerRadius="50dp"
-                    cardView:cardElevation="8dp"
-                    android:layout_margin="10dp"
-                    cardView:cardBackgroundColor="#FFFFFF"
-                    android:onClick="f"
-                    >
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Healthy News"
+                        android:text="Loose Weight"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -349,7 +349,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Food Nutrition \n        info"
+                        android:text="Gain Weight"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -370,7 +370,7 @@
                         android:id="@+id/GasProblem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Stomach \n Problem"
+                        android:text="Gas Problem"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -391,7 +391,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hair Problem"
+                        android:text="Diabetes"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -412,7 +412,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Intoxication \n   Problem"
+                        android:text="Immunity"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -438,7 +438,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Yoga/Exercise"
+                        android:text="P1"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -458,7 +458,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Immunity"
+                        android:text="P2"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -478,7 +478,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diabetes"
+                        android:text="P3"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -498,7 +498,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="    Sense Organ \n       Problem"
+                        android:text="P4"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
@@ -518,11 +518,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Heart Health"
+                        android:text="P5"
                         android:layout_gravity="center"
                         android:textStyle="bold"
                         android:textSize="15sp"></TextView>
                 </com.google.android.material.card.MaterialCardView>
+<<<<<<< HEAD
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/otherp"
                     android:layout_width="match_parent"
@@ -571,71 +572,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:hint="Reminder Title">
+=======
+>>>>>>> parent of bcfbd8f (changes)
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/titleReminder"
-                android:layout_width="match_parent"
-                android:backgroundTint="#FFFFFF"
-                android:maxLength="50"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:minLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Reminder Notes">
+            </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/noteReminder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="top|left"
-                android:inputType="textMultiLine"
-                android:backgroundTint="#FFFFFF"
-                android:maxLength="120"
-                android:lines="2"
-                android:maxLines="10"
-                android:minLines="2" />
-        </com.google.android.material.textfield.TextInputLayout>
-            <!--
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Reminder Image"
-            android:layout_margin="10dp"></TextView>
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            cardView2:cardCornerRadius="15dp"
-            cardView2:cardElevation="12dp"
-            android:layout_margin="10dp"
-            cardView2:cardBackgroundColor="#FFFFFF"
-            >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/imgviewReminder"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    />
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:scaleType="centerCrop"
-                    android:backgroundTint="#FFFFFF"
-                    android:id="@+id/imgviewReminderBrowse"
-                    android:src="@drawable/plus"></ImageButton>
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>-->
         </LinearLayout>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnPost"
@@ -646,6 +588,7 @@
             android:layout_gravity="center"
             android:text = "upload post"
             android:onClick="display"/>
+
     </LinearLayout>
 
 </ScrollView>

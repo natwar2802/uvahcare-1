@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.socialmedia">
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,36 +12,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialMedia">
-
-
-        <activity android:name="com.innovation.socialmedia.splashScreen">
+        <activity android:name=".splashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.innovation.socialmedia.Notify" />
-        <activity android:name="com.innovation.socialmedia.followedBloggerActivity" />
-        <activity android:name="com.innovation.socialmedia.followDetail" />
-        <activity android:name="com.innovation.socialmedia.followActivity" />
-        <activity android:name="com.innovation.socialmedia.BookMarkPost" />
-        <activity android:name="com.innovation.socialmedia.MyPost" />
-        <activity android:name="com.innovation.socialmedia.OtpVerification" />
-        <activity android:name="com.innovation.socialmedia.loginActivity" />
-        <activity android:name="com.innovation.socialmedia.PreferenceActivity" />
-        <activity android:name="com.innovation.socialmedia.EditProfileActivity" />
-        <activity android:name="com.innovation.socialmedia.descriptionActivity" />
-        <activity android:name="com.innovation.socialmedia.profileActivity" />
-        <activity android:name="com.innovation.socialmedia.newPost" />
-        <activity android:name="com.innovation.socialmedia.MainActivity">
+        <activity android:name=".Notify" />
+        <activity android:name=".followedBloggerActivity" />
+        <activity android:name=".followDetail" />
+        <activity android:name=".followActivity" />
+        <activity android:name=".BookMarkPost" />
+        <activity android:name=".MyPost" />
+        <activity android:name=".OtpVerification" />
+        <activity android:name=".loginActivity" />
+        <activity android:name=".PreferenceActivity" />
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".descriptionActivity" />
+        <activity android:name=".profileActivity" />
+        <activity android:name=".newPost" />
+        <activity android:name=".MainActivity">
 
-            <!--
-            <intent-filter>
+           <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
+            </intent-filter>  -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -53,24 +48,7 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-        <activity android:name="com.innovation.socialmedia.NotificationMessage"></activity>
-        <activity android:name="com.innovation.socialmedia.CreateEvent" />
-        <activity android:name="com.innovation.socialmedia.Reminder">
-            <intent-filter>
-                <action android:name="android.intent.action." />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <receiver
-            android:name="com.innovation.socialmedia.BootUpReceiver"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.innovation.socialmedia.AlarmBrodcast" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.socialmedia.fileprovider"

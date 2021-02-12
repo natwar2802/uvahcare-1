@@ -1,10 +1,10 @@
-package com.innovation.socialmedia;
+package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.graphics.Color;
-import android.icu.text.CaseMap;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.ProgressDialog;
@@ -12,9 +12,14 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 //import android.support.annotation.NonNull;
 //import android.support.v7.app.AppCompatActivity;
+<<<<<<< HEAD:app/src/main/java/com/innovation/socialmedia/newPost.java
+=======
+import android.os.Bundle;
+>>>>>>> parent of bcfbd8f (changes):app/src/main/java/com/example/socialmedia/newPost.java
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
@@ -28,9 +33,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.socialmedia.R;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,12 +44,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static android.widget.Toast.LENGTH_SHORT;
@@ -53,22 +60,17 @@ import static android.widget.Toast.LENGTH_SHORT;
 public class newPost extends MainActivity implements AdapterView.OnItemSelectedListener {
     Button  btnupload;
     ImageButton btnbrowse;
-    Button suggestreminder;
     EditText etitle,etoverview,etdes,etbenefit,etprecausion,ethowtodo,etproblem,etsolution;
     ImageView imgview;
     Uri FilePathUri;
-   // Uri FilePathUri1;
     StorageReference storageReference;
     DatabaseReference databaseReference,mypostdatabaseReference,notifyreference,followerefernce;
     int Image_Request_Code = 7;
-    //int Image_Request_Code1 = 8;
     ProgressDialog progressDialog ;
     ArrayList<String> temp=new ArrayList<String>();
     Button select_text;
-    ImageButton imgviewReminderBrowse;
-    ImageView imgviewReminder;
-    LinearLayout l,reminderLayout;
-    EditText ReminderTitle,ReminderNotes;
+    LinearLayout l;
+
     String preference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,33 +98,6 @@ public class newPost extends MainActivity implements AdapterView.OnItemSelectedL
         // Spinner Drop down elements
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
-        reminderLayout = findViewById(R.id.reminderLayout);
-        suggestreminder= findViewById(R.id.suggestReminder);
-        ReminderTitle = findViewById(R.id.titleReminder);
-        ReminderNotes = findViewById(R.id.noteReminder);
-        suggestreminder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(reminderLayout.getVisibility()==View.VISIBLE)
-                    reminderLayout.setVisibility(View.GONE);
-                else
-                    reminderLayout.setVisibility(View.VISIBLE);
-            }
-        });
-        /*
-        imgviewReminderBrowse= findViewById(R.id.imgviewReminderBrowse);
-        imgviewReminderBrowse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Image"), Image_Request_Code1);
-            }
-        });
-        imgviewReminder = findViewById(R.id.imgviewReminder);*/
-        //implement Reminder image select here and send to firebase the ReminderElement using Constructor
-
         select_text=findViewById(R.id.select_text);
         select_text.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,7 +164,11 @@ try{        for(int i=0;i<l.getChildCount();i++)
         //txtemail=(EditText)findViewById(R.id.txtemail);
 
         imgview = (ImageView)findViewById(R.id.imgview);
-        progressDialog = new ProgressDialog(newPost.this);
+        progressDialog = new ProgressDialog(newPost.this);// context name as per your project name
+
+
+
+
 
         btnbrowse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,16 +213,13 @@ try{        for(int i=0;i<l.getChildCount();i++)
 
                     // allowSave = false;
                 }
-               /** else if(reminderLayout.getVisibility()==View.VISIBLE&&inputValidatorHelper.isNullOrEmpty(Remindertitle));
-                  {
-                      Toast.makeText(getApplicationContext(),"Reminder Title Should not be Empty",Toast.LENGTH_SHORT).show();
-                  }**/
                 else if(inputValidatorHelper.isNullOrEmpty(description1)) {
                     errMsg.append("- Description should not be empty.\n");
                     Toast.makeText(getApplicationContext(),"Description should not be empty.",Toast.LENGTH_SHORT).show();
 
                     //allowSave = false;
                 }
+
                 else if(position==0){
                     if(inputValidatorHelper.isNullOrEmpty(desc1)) {
                         errMsg.append(" Discription should not be empty.\n");
@@ -334,23 +310,6 @@ try{        for(int i=0;i<l.getChildCount();i++)
                 e.printStackTrace();
             }
         }
-        /*else if(requestCode == Image_Request_Code1 && resultCode == RESULT_OK && data != null && data.getData() != null)
-        {
-            FilePathUri1 = data.getData();
-
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri1);
-                // Bitmap bmp = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 25, baos);
-                //byte[] data = baos.toByteArray();
-                imgviewReminder.setImageBitmap(bitmap);
-            }
-            catch (IOException e) {
-
-                e.printStackTrace();
-            }
-        }*/
     }
 
 
@@ -367,7 +326,7 @@ try{        for(int i=0;i<l.getChildCount();i++)
 
         if (FilePathUri != null) {
 
-            progressDialog.setTitle("Post is Uploading...");
+            progressDialog.setTitle("Image is Uploading...");
             progressDialog.show();
             StorageReference storageReference2 = storageReference.child(System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
 
@@ -381,7 +340,6 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                     String desc=null,benefit=null,howtodo=null,problem=null,solution=null,precaution=null;
                                     String uri=Uri.toString();
                                     String title=etitle.getText().toString().trim();
-
                                     String overview= etoverview.getText().toString().trim();
                                      desc=etdes.getText().toString().trim();
                                         benefit=etbenefit.getText().toString().trim();
@@ -389,9 +347,6 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                         problem=etproblem.getText().toString().trim();
                                        solution=etsolution.getText().toString().trim();
                                        precaution=etprecausion.getText().toString().trim();
-                                       String Remindertitle= ReminderTitle.getText().toString().trim();
-                                       String Remindernotes= ReminderNotes.getText().toString().trim();
-
 
                                        String description=desc+"\n"+benefit+"\n"+howtodo+"\n"+problem+"\n"+solution+"\n"+precaution;
                                     long data=System.currentTimeMillis();
@@ -425,14 +380,7 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                     databaseReference.child(ImageUploadId).child("preference").setValue(preference);
                                    // databaseReference.child(ImageUploadId).child("datetime").setValue(data);
                                     mypostdatabaseReference.child(myuserida).child(ImageUploadId).setValue(true);
-                                    DatabaseReference reminderref=FirebaseDatabase.getInstance().getReference("Reminder");
-                                    if(!Remindertitle.equals("")){
-                                        reminderref.child(ImageUploadId).child("Title").setValue(Remindertitle);
-                                        if(!Remindernotes.equals("")){
-                                            reminderref.child(ImageUploadId).child("Notes").setValue(Remindernotes);
-                                        }
 
-                                    }
 
                                     final int[] cheker = {0};
                                     databaseReference.addValueEventListener(new ValueEventListener() {

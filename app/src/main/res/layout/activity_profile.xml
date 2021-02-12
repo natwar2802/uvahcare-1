@@ -217,6 +217,56 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        cardView:cardCornerRadius="20dp"
+                        cardView:cardElevation="8dp"
+                        android:layout_margin="10dp"
+                        android:id="@+id/gotopreferencecard"
+                        cardView:cardBackgroundColor="#FFFFFF"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/gotopreference"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:text="My Preference"
+                                android:textSize="20sp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        cardView:cardCornerRadius="20dp"
+                        cardView:cardElevation="8dp"
+                        android:layout_margin="10dp"
+                        android:id="@+id/gotofollowercard1"
+                        cardView:cardBackgroundColor="#FFFFFF"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:layout_margin="10dp">
+                            <TextView
+                                android:id="@+id/gotofollower"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Following"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -242,6 +292,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -251,70 +302,22 @@
                         android:id="@+id/gotofollowedcard"
                         cardView:cardBackgroundColor="#FFFFFF"
                         >
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:layout_margin="10dp">
-                            <TextView
-                                android:id="@+id/gotofollowed"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Following"
-                                android:textSize="20sp"/>
-
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        cardView:cardCornerRadius="20dp"
-                        cardView:cardElevation="8dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/gotofollowercard1"
-                        cardView:cardBackgroundColor="#FFFFFF"
-                        >
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_margin="10dp">
+                        <TextView
+                            android:id="@+id/gotofollowed"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center"
-                            android:layout_margin="10dp">
-                            <TextView
-                                android:id="@+id/gotofollower"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Followed by"
-                                android:textSize="20sp"/>
+                            android:text="Followed"
+                            android:textSize="20sp"/>
 
-                        </LinearLayout>
+                    </LinearLayout>
                     </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        cardView:cardCornerRadius="20dp"
-                        cardView:cardElevation="8dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/gotopreferencecard"
-                        cardView:cardBackgroundColor="#FFFFFF"
-                        >
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:id="@+id/gotopreference"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="3dp"
-                                android:text="My Preference"
-                                android:textSize="20sp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+
 
 
                 </LinearLayout>
