@@ -15,10 +15,6 @@ import android.net.Uri;
 import android.provider.MediaStore;
 //import android.support.annotation.NonNull;
 //import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD:app/src/main/java/com/innovation/socialmedia/newPost.java
-//go to 112
-=======
->>>>>>> 9f2ecbdfaf86dd8df4fe9b5465e94d6a441a2f28:app/src/main/java/com/example/socialmedia/newPost.java
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.MimeTypeMap;

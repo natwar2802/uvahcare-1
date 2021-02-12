@@ -34,7 +34,7 @@ public class EventAdapter extends RecyclerView.Adapter<com.innovation.socialmedi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.eventText.setText(entityClasses.get(position).getEventname());
-        holder.timeAndDateText.setText(entityClasses.get(position).getEventStartdate() + " " + entityClasses.get(position).getEventtime1());
+        holder.timeAndDateText.setText(entityClasses.get(position).getEventdate() + " " + entityClasses.get(position).getEventtime());
     }
 
     @Override

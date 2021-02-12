@@ -81,10 +81,7 @@
                 android:gravity="top|left"
                 android:inputType="textMultiLine"
                 android:backgroundTint="#FFFFFF"
-                android:maxLength="120"
-                android:lines="2"
-                android:maxLines="10"
-                android:minLines="2" />
+                android:maxLength="120" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -106,10 +103,8 @@
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:maxLength="2000"
-                    android:lines="25"
                     android:backgroundTint="#FFFFFF"
-                    android:maxLines="10"
-                    android:minLines="5"/>
+                    android:maxLines="25" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
@@ -131,10 +126,8 @@
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:maxLength="1000"
-                    android:lines="25"
-                    android:backgroundTint="#FFFFFF"
-                    android:maxLines="10"
-                    android:minLines="5"/>
+                    android:maxLines="25"
+                    android:backgroundTint="#FFFFFF" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -159,10 +152,8 @@
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:maxLength="1000"
-                    android:lines="25"
-                    android:maxLines="10"
-                    android:backgroundTint="#FFFFFF"
-                    android:minLines="5" />
+                    android:maxLines="25"
+                    android:backgroundTint="#FFFFFF" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
         <LinearLayout
@@ -179,11 +170,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/problem"
                     android:inputType="textMultiLine"
-                    android:lines="25"
-                    android:minLines="5"
                     android:maxLength="1000"
                     android:gravity="top|left"
-                    android:maxLines="10"
+                    android:maxLines="25"
                     android:backgroundTint="#FFFFFF"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
@@ -203,11 +192,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/solution"
                     android:inputType="textMultiLine"
-                    android:lines="25"
                     android:maxLength="1000"
-                    android:minLines="5"
                     android:gravity="top|left"
-                    android:maxLines="10"
+                    android:maxLines="25"
                     android:backgroundTint="#FFFFFF"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
@@ -227,12 +214,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/precautions"
                     android:inputType="textMultiLine"
-                    android:lines="25"
                     android:maxLength="1000"
-                    android:minLines="5"
                     android:gravity="top|left"
                     android:backgroundTint="#FFFFFF"
-                    android:maxLines="10"
+                    android:maxLines="25"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -563,6 +548,7 @@
 
         </LinearLayout>
         <com.google.android.material.button.MaterialButton
+            android:visibility="gone"
             android:text="  Suggest Reminder (Optional)  "
             android:id="@+id/suggestReminder"
             cardView2:cornerRadius="20dp"

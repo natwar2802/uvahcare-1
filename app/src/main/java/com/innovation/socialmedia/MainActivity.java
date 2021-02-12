@@ -509,12 +509,12 @@ public class MainActivity<user> extends AppCompatActivity {
                                 startActivity(in);
                                 //finish();
                                 break;
-                            case R.id.action_reminder:
+                           /* case R.id.action_reminder:
                                 Log.i("matching", "matching inside1 bro" + id1);
                                 Toast.makeText(MainActivity.this, "Reminder selected", Toast.LENGTH_SHORT).show();
                                 in=new Intent(getBaseContext(),Reminder.class);
                                 startActivity(in);
-                                break;
+                                break;*/
                             default:
                                 break;
                         }

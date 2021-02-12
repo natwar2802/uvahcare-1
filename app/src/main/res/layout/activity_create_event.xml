@@ -11,10 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/btn_record"
             android:layout_width="130dp"
             android:layout_height="130dp"
+            android:scaleType="fitXY"
+            android:background="#FFFFFF"
             android:layout_below="@+id/tv_record"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
@@ -145,12 +147,12 @@
                 android:scaleType="fitXY"
                 />
             <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:scaleType="centerCrop"
-                android:backgroundTint="#FFFFFF"
+                android:background="#FFFFFF"
                 android:id="@+id/imgviewReminderBrowse"
                 android:src="@drawable/plus"></ImageButton>
         </RelativeLayout>

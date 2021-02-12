@@ -56,6 +56,7 @@ public class descriptionActivity extends MainActivity {
     ImageButton inc2,btnshare2,btnshared,bmd;
     TextView displayclap2;
     TextView rate_text;
+    Button addReminder;
     LinearLayout user_feedback;
     ScrollView scrollView;
     TextView overview;
@@ -89,6 +90,7 @@ public class descriptionActivity extends MainActivity {
         btnsubmitrate=findViewById(R.id.submitrating);
         popupcard=findViewById(R.id.popupcard);
         btnshared= findViewById(R.id.btnsharepostd);
+        addReminder = findViewById(R.id.addReminder);
         ratingpop=findViewById(R.id.ratingpop);
         userNff=findViewById(R.id.itemuserNff);
         btnfollowff=findViewById(R.id.btnfollowff);
@@ -244,7 +246,7 @@ public class descriptionActivity extends MainActivity {
 
             }
         });
-        descReminder.setOnClickListener(new View.OnClickListener() {
+        addReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CreateEvent.ch_activity=1;
@@ -256,6 +258,7 @@ public class descriptionActivity extends MainActivity {
                 Intent i=new Intent(descriptionActivity.this,CreateEvent.class);
                 i.putExtra("ReminderTitle",RemTitle);
                 i.putExtra("ReminderNotes",RemNotes);
+                i.putExtra("imgurl",url);
                 //i.putExtra("image", byteArray);
                 startActivity(i);
             }
