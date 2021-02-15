@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -45,16 +46,16 @@ import java.util.Date;
 public class CreateEvent extends AppCompatActivity {
     private static final String TAG = "";
     Button btn_time1 ,btn_datestart ,btn_done;
-    ImageView btn_record;
+    ImageButton btn_record;
     EditText editext_message,edittext_Notes;
     String timeTonotify1;
     DatabaseClass databaseClass;
     int NotifCount;
     public static int ch_activity=0;
     DatabaseReference countref;
-    String RemTitle,RemNotes;
+    String RemTitle,RemNotes="";
     Bitmap RemBitmap;
-    ImageView imageViewReminder;
+    //ImageView imageViewReminder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class CreateEvent extends AppCompatActivity {
         btn_record = findViewById(R.id.btn_record);
         editext_message = findViewById(R.id.edittext_message);
         btn_time1 = findViewById(R.id.btn_time1);
-        imageViewReminder = findViewById(R.id.imgviewReminder);
+       // imageViewReminder = findViewById(R.id.imgviewReminder);
         //btn_time2 = findViewById(R.id.btn_time2);
         edittext_Notes = findViewById(R.id.edittext_Notes);
         if(ch_activity==1) {
@@ -145,10 +146,11 @@ public class CreateEvent extends AppCompatActivity {
 
     private void submit() {
         String text = editext_message.getText().toString().trim();
+        RemNotes = edittext_Notes.getText().toString().trim();
         if (text.isEmpty()) {
             Toast.makeText(this, "Please Enter or record the text", Toast.LENGTH_SHORT).show();
         } else {
-            if (btn_time1.getText().toString().equals("Select Time") || btn_datestart.getText().toString().equals("Select Start date")) {
+            if (btn_time1.getText().toString().equals("Select Time") || btn_datestart.getText().toString().equals("Select Date")) {
                 Toast.makeText(this, "Please select date and time", Toast.LENGTH_SHORT).show();
             } else {
                 EntityClass entityClass = new EntityClass();
@@ -158,6 +160,7 @@ public class CreateEvent extends AppCompatActivity {
                 String time1 = (btn_time1.getText().toString().trim());
                 //String time2 = (btn_time2.getText().toString().trim());
                 entityClass.setEventStartdate(dateStart);
+                entityClass.setNotes(RemNotes);
                 entityClass.setEventname(value);
                 entityClass.setEventtime1(time1);
                 //entityClass.setEventtime2(time2);
@@ -174,7 +177,7 @@ public class CreateEvent extends AppCompatActivity {
     {
         int j=i;
         String Startdateandtime;
-        DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
+        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         Date DateStart;
         //Date DateEnd;
         Startdateandtime = dateStart + " " + time;
@@ -235,7 +238,18 @@ public class CreateEvent extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                btn_datestart.setText(day + "-" + (month + 1) + "-" + year);
+                String days="";
+                if(day/10==0)
+                    days+="0"+day;
+                else
+                    days+=day;
+                int mth=month+1;
+                String months="";
+                if(mth<=9)
+                        months+="0"+mth;
+                else
+                    months+=mth;
+                btn_datestart.setText(days + "-" + (months) + "-" + year);
             }
         }, year, month, day);
         datePickerDialog.show();
@@ -316,6 +330,7 @@ public class CreateEvent extends AppCompatActivity {
         intent.putExtra("time", date);
         intent.putExtra("date", time);
         intent.putExtra("id", i);
+        intent.putExtra("RemNotes",RemNotes);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), i, intent, PendingIntent.FLAG_ONE_SHOT);
         am.set(AlarmManager.RTC_WAKEUP, time_milli+0, pendingIntent);
         finish();

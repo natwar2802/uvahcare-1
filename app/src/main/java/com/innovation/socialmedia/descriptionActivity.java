@@ -58,6 +58,7 @@ public class descriptionActivity extends MainActivity {
     TextView rate_text;
     LinearLayout user_feedback;
     ScrollView scrollView;
+    Button addReminder;
     TextView overview;
     boolean bookmarkcheckerd=false;
     CardView descReminder;
@@ -90,6 +91,7 @@ public class descriptionActivity extends MainActivity {
         popupcard=findViewById(R.id.popupcard);
         btnshared= findViewById(R.id.btnsharepostd);
         ratingpop=findViewById(R.id.ratingpop);
+        addReminder = findViewById(R.id.addReminder);
         userNff=findViewById(R.id.itemuserNff);
         btnfollowff=findViewById(R.id.btnfollowff);
         inc2=findViewById(R.id.inc2);
@@ -244,7 +246,7 @@ public class descriptionActivity extends MainActivity {
 
             }
         });
-        descReminder.setOnClickListener(new View.OnClickListener() {
+        addReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CreateEvent.ch_activity=1;

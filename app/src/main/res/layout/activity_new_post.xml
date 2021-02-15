@@ -52,6 +52,11 @@
                 />
 
         </androidx.cardview.widget.CardView> -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/postInfo"
+            android:orientation="vertical">
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,8 +69,7 @@
                 android:backgroundTint="#FFFFFF"
                 android:maxLength="50"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:minLines="1" />
+                android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -81,10 +85,7 @@
                 android:gravity="top|left"
                 android:inputType="textMultiLine"
                 android:backgroundTint="#FFFFFF"
-                android:maxLength="120"
-                android:lines="2"
-                android:maxLines="10"
-                android:minLines="2" />
+                android:maxLength="120" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -106,11 +107,9 @@
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:maxLength="2000"
-                    android:lines="25"
-                    android:backgroundTint="#FFFFFF"
-                    android:maxLines="10"
-                    android:minLines="5"/>
+                    android:backgroundTint="#FFFFFF" />
             </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
         </LinearLayout>
         <LinearLayout
@@ -131,12 +130,9 @@
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:maxLength="1000"
-                    android:lines="25"
-                    android:backgroundTint="#FFFFFF"
-                    android:maxLines="10"
-                    android:minLines="5"/>
+                    android:backgroundTint="#FFFFFF" />
             </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+
 
 
 
@@ -159,10 +155,7 @@
                     android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:maxLength="1000"
-                    android:lines="25"
-                    android:maxLines="10"
-                    android:backgroundTint="#FFFFFF"
-                    android:minLines="5" />
+                    android:backgroundTint="#FFFFFF" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
         <LinearLayout
@@ -179,11 +172,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/problem"
                     android:inputType="textMultiLine"
-                    android:lines="25"
-                    android:minLines="5"
                     android:maxLength="1000"
                     android:gravity="top|left"
-                    android:maxLines="10"
                     android:backgroundTint="#FFFFFF"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
@@ -203,11 +193,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/solution"
                     android:inputType="textMultiLine"
-                    android:lines="25"
                     android:maxLength="1000"
-                    android:minLines="5"
                     android:gravity="top|left"
-                    android:maxLines="10"
                     android:backgroundTint="#FFFFFF"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
@@ -227,15 +214,13 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/precautions"
                     android:inputType="textMultiLine"
-                    android:lines="25"
                     android:maxLength="1000"
-                    android:minLines="5"
                     android:gravity="top|left"
                     android:backgroundTint="#FFFFFF"
-                    android:maxLines="10"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
             </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,10 +16,13 @@ import com.innovation.socialmedia.Adapter.EventAdapter;
 import com.innovation.socialmedia.Database.DatabaseClass;
 import com.innovation.socialmedia.Database.EntityClass;
 
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class Reminder extends AppCompatActivity {
-   ImageView GoCreateEvent;
+   ImageButton GoCreateEvent;
     EventAdapter eventAdapter;
     RecyclerView recyclerview;
     DatabaseClass databaseClass;
@@ -50,5 +54,21 @@ public class Reminder extends AppCompatActivity {
         List<EntityClass> classList = databaseClass.EventDao().getAllData();
         eventAdapter = new EventAdapter(getApplicationContext(), classList);
         recyclerview.setAdapter(eventAdapter);
+        String currentdate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        int i=0;
+        while (i<classList.size()){
+            String eventd=classList.get(i).getEventStartdate();
+            int check=currentdate.compareTo(eventd);
+            if(check>0){
+
+                classList.remove(i);
+            }
+            else{
+                i++;
+            }
+
+        }
+        Collections.reverse(classList);
+        eventAdapter.notifyDataSetChanged();
     }
 }

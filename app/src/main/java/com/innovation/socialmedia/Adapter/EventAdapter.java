@@ -34,6 +34,11 @@ public class EventAdapter extends RecyclerView.Adapter<com.innovation.socialmedi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.eventText.setText(entityClasses.get(position).getEventname());
+        String notes=entityClasses.get(position).getNotes();
+        if(notes.equals(""))
+            holder.RemNotes.setVisibility(View.GONE);
+        else
+            holder.RemNotes.setText(notes);
         holder.timeAndDateText.setText(entityClasses.get(position).getEventStartdate() + " " + entityClasses.get(position).getEventtime1());
     }
 
@@ -43,7 +48,7 @@ public class EventAdapter extends RecyclerView.Adapter<com.innovation.socialmedi
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView eventText, timeAndDateText;
+        private TextView eventText, timeAndDateText,RemNotes;
         private LinearLayout toplayout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -51,6 +56,7 @@ public class EventAdapter extends RecyclerView.Adapter<com.innovation.socialmedi
             eventText = (TextView) itemView.findViewById(R.id.event);
             timeAndDateText = (TextView) itemView.findViewById(R.id.time_and_date);
             toplayout = (LinearLayout) itemView.findViewById(R.id.toplayout);
+            RemNotes = (TextView) itemView.findViewById(R.id.RemNotes);
         }
     }
 }

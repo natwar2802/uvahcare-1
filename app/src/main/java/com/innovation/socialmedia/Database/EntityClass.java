@@ -19,7 +19,8 @@ public class EntityClass {
    // @ColumnInfo(name = "eventtime2")
 
     //String eventtime2;
-
+    @ColumnInfo(name = "notes")
+    String notes;
 
     public String getEventname() {
         return eventname;
@@ -59,5 +60,13 @@ public class EntityClass {
 
     public void setEventtime1(String eventtime1) {
         this.eventtime1 = eventtime1;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

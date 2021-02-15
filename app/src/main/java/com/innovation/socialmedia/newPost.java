@@ -392,9 +392,20 @@ try{        for(int i=0;i<l.getChildCount();i++)
                                        precaution=etprecausion.getText().toString().trim();
                                        String Remindertitle= ReminderTitle.getText().toString().trim();
                                        String Remindernotes= ReminderNotes.getText().toString().trim();
+                                    Spinner spinner = (Spinner) findViewById(R.id.spinner);
+                                    int position=spinner.getSelectedItemPosition();
+                                       String description;
+                                       if(position==0)
+                                       {
+                                           description=desc;
+                                       }
+                                       else if(position==1){
+                                           description=benefit+"\n"+howtodo+"\n"+precaution;
+                                       }
+                                       else{
+                                           description=problem+"\n"+solution+"\n"+precaution;
+                                       }
 
-
-                                       String description=desc+"\n"+benefit+"\n"+howtodo+"\n"+problem+"\n"+solution+"\n"+precaution;
                                     long data=System.currentTimeMillis();
                                     long ratesum=0;
                                     float rating=0;

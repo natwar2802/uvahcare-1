@@ -24,6 +24,7 @@ public class AlarmBrodcast extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
         String text = bundle.getString("event");
+        String RemNotes = bundle.getString("RemNotes");
         String date = bundle.getString("date") + " " + bundle.getString("time");
         int id = bundle.getInt("id");
 
@@ -32,9 +33,10 @@ public class AlarmBrodcast extends BroadcastReceiver {
         Intent intent1 = new Intent(context, NotificationMessage.class);
         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent1.putExtra("message", text);
+        intent1.putExtra("RemNotes",RemNotes);
         //Notification Builder
         PendingIntent pendingIntent = PendingIntent.getActivity(context, (2*id+1), intent1, PendingIntent.FLAG_ONE_SHOT);
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager =  (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "notify_001");
 
         RemoteViews contentView = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
@@ -42,11 +44,12 @@ public class AlarmBrodcast extends BroadcastReceiver {
 
         PendingIntent pendingSwitchIntent = PendingIntent.getBroadcast(context, id, intent, 0);
         contentView.setOnClickPendingIntent(R.id.flashButton, pendingSwitchIntent);
-        contentView.setTextViewText(R.id.message, text+" "+id);
+        contentView.setTextViewText(R.id.message, text);
         contentView.setTextViewText(R.id.date, date);
         mBuilder.setSmallIcon(R.drawable.bell);
         mBuilder.setAutoCancel(true);
-        mBuilder.setOngoing(true);
+        mBuilder.setPriority(Notification.PRIORITY_MAX);
+        mBuilder.setOngoing(false);
         mBuilder.setOnlyAlertOnce(true);
         mBuilder.build().flags = Notification.FLAG_NO_CLEAR;
         mBuilder.setContent(contentView);
